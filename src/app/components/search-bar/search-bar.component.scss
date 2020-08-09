@@ -1,7 +1,6 @@
 .tb
 {
     display: table;
-    width: 100%;
 }
 
 .td
@@ -22,14 +21,8 @@ input, button
 }
 
 #cover
-{
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    width: 45vw;
+{    
     padding: 35px;
-    margin: -83px auto 0 auto;
     background-color: #7B77FF;
     border-radius: 150px;
     box-shadow: 0 10px 40px #7B77FF, 0 0 0 20px #ffffffeb;
@@ -63,8 +56,9 @@ input[type="text"]::placeholder
 
 button
 {
-    position: relative;
-    display: block;
+    position: fixed;
+    bottom: 25%;
+    right: 3%;
     width: 84px;
     height: 96px;
     cursor: pointer;
