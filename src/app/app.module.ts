@@ -11,6 +11,7 @@ import { MatInputModule } from "@angular/material/input";
 import { FormsModule } from "@angular/forms";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
 
 
 
@@ -20,7 +21,8 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
   declarations: [
     AppComponent,
     LandingPageComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    SignInComponent
   ],
   imports: [
     MatIconModule,

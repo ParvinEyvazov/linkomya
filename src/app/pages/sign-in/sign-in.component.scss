@@ -1,0 +1,128 @@
+.background {
+    position: fixed;
+    top: 80px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+main {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+}
+.image-part {
+   // background-color: rgb(123, 119, 255,0.2);
+}
+
+.form {
+    // background: lightgreen;
+    font-family: sans-serif;
+}
+
+//image side
+.cicle{
+        position: fixed;
+        left: -150px;
+        bottom: -200px;
+        background: #7B77FF;
+        border-radius: 50%;
+        width: 550px;
+        height: 550px;   
+}
+
+.image{
+    position: fixed;
+    bottom: 290px;
+    left: -150px;
+    width: 650px;
+    height: auto;
+}
+
+
+
+
+
+
+
+// form side
+.box {
+    // background: red;
+    width: 30%;
+    padding: 40px;
+    position: absolute;
+    top: 40%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.box h1 {
+    color: black;
+    font-size: 5em;
+    font-weight: 500;
+}
+::placeholder {
+    color: white;
+    font-size: 1.1em;
+}
+
+.box input[type="text"] {
+    margin-top: 50px;
+}
+
+.box input[type="text"],
+.box input[type="password"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin-bottom: 10px;
+    margin-left: 15%;
+    margin-right: 15%;
+    //text-align: center;
+    border: 2px solid #7b77ff;
+    background: #7b77ff;
+    padding: 14px;
+    width: 70%;
+    outline: none;
+    color: white;
+    border-radius: 50px;
+    transition: 0.25s;
+    font-size: 1.1em;
+}
+
+.box input[type="text"]:focus,
+.box input[type="password"]:focus {
+    width: 80%;
+    border-color: black;
+}
+
+.box input[type="submit"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #7b77ff;
+    //background: #7B77FF;
+    padding: 7px 60px;
+    outline: none;
+    color: black;
+    border-radius: 50px;
+    transition: 0.25s;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+.box input[type="submit"]:hover {
+    background: #7b77ff;
+}
+
+a {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+a:hover {
+    color: #7b77ff;
+}
