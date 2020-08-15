@@ -3,11 +3,15 @@
       <div class="tb">
         <div class="td"><input type="text" placeholder="Search"></div>
         <div class="td" id="s-cover">
-          <button type="submit">
-            <div id="s-circle"></div>
-            <span></span>
-          </button>
+          <a [routerLink]="['search']">
+            <button type="submit">
+              <div id="s-circle"></div>
+              <span></span>
+            </button>
+          </a>          
         </div>
       </div>
     </form>
   </div>
+
+  <!-- app-search-page -->

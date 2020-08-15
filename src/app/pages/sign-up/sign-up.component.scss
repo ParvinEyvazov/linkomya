@@ -2,8 +2,8 @@
     position: fixed;
     top: 80px;
     right: 0;
-    bottom: 0;
     left: 0;
+    bottom: 0;
 }
 
 main {
@@ -11,37 +11,35 @@ main {
     display: grid;
     grid-template-columns: 4fr 6fr;
 }
+
 .image-part {
-   // background-color: rgb(123, 119, 255,0.2);
 }
 
 .form {
-    // background: lightgreen;
     font-family: sans-serif;
 }
 
-//image side
-.cicle{
-        position: fixed;
-        left: -150px;
-        bottom: -200px;
-        background: #7B77FF;
-        border-radius: 50%;
-        width: 550px;
-        height: 550px;   
+.circle {
+    position: fixed;
+    left: -90px;
+    bottom: -200px;
+    background: #7b77ff;
+    border-radius: 50%;
+    width: 550px;
+    height: 550px;
+    z-index: -100;
 }
 
-.image{
+.image {
     position: fixed;
-    bottom: 290px;
-    left: -150px;
+    bottom: 200px;
+    left: -130px;
     width: 650px;
     height: auto;
 }
 
-// form side
+//form -side
 .box {
-    // background: red;
     width: 30%;
     padding: 40px;
     position: absolute;
@@ -56,12 +54,13 @@ main {
     font-size: 5em;
     font-weight: 500;
 }
+
 ::placeholder {
     color: white;
     font-size: 1.1em;
 }
 
-.box input[type="text"] {
+#name{
     margin-top: 50px;
 }
 
@@ -73,7 +72,6 @@ main {
     margin-bottom: 10px;
     margin-left: 15%;
     margin-right: 15%;
-    //text-align: center;
     border: 2px solid #7b77ff;
     background: #7b77ff;
     padding: 14px;

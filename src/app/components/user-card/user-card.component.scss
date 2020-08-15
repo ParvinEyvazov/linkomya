@@ -1,0 +1,60 @@
+.card {
+    cursor: pointer;
+    height: 200px;
+    width: 70%;
+    border: 2px solid black;
+    border-radius: 30px;
+    position: relative;
+    padding: 50px;
+    padding-left: 3%;
+    padding-right: 3%;
+    margin: 2% auto;
+}
+
+.image-part {
+    position: relative;
+    margin: 0;
+
+    display: inline-block;
+
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.image {
+    width: auto;
+    height: 100%;
+    overflow: hidden;
+    background-size: contain;
+    margin-left: -10px;
+}
+
+.name-part {
+    margin-left: 3%;
+    position: relative;
+}
+
+.name-part h1 {
+    margin: 0;
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.place-part{
+    background: lightsteelblue;
+    position: relative;
+    text-align: center;
+}
+
+.place{
+    margin: 0;
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
