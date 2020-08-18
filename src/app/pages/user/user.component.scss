@@ -1,0 +1,120 @@
+.background {
+    position: fixed;
+    top: 80px;
+    right: 0;
+    left: 0;
+}
+
+.cicle {
+    position: fixed;
+    left: -75px;
+    bottom: -100px;
+    background: #7b77ff;
+    border-radius: 50%;
+    width: 280px;
+    height: 280px;
+}
+
+.page {
+    height: 100vh;
+    overflow: auto;
+    // background: lightslategray;
+}
+
+main {
+    // background: lightskyblue;
+    text-align: center;
+}
+
+.background-image {
+    //background: lightsalmon;
+    .back-image {
+        position: relative;
+        width: 70%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 0px 0px 50px 50px;
+    }
+}
+.profile-photo {
+    position: relative;
+    top: -75px;
+    margin: auto;
+    width: 200px;
+    height: 200px;
+    //background: mediumaquamarine;
+
+    .photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px solid black;
+    }
+}
+
+.information {
+    position: relative;
+    top: -60px;
+    display: list-item;
+
+    // background: moccasin;
+
+    .name {
+        // background: cornflowerblue;
+        h1 {
+            font-size: 4.2em;
+            font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        }
+    }
+
+    .country {
+        //background: cornflowerblue;
+
+        p {
+            display: inline-flex;
+            font-size: 1.2em;
+            font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+            margin: 0;
+        }
+        .icon-place {
+            font-size: 1em;
+        }
+    }
+
+    .job {
+        //background: darkgreen;
+
+        p {
+            display: inline-flex;
+            font-size: 1.2em;
+            font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+            margin: 0;
+        }
+        .icon-job {
+            font-size: 1em;
+        }
+    }
+}
+
+.divider {
+    position: relative;
+    top: -50px;
+    width: 30%;
+}
+
+.links {
+    position: relative;
+    top: -50px;
+    margin: auto;
+    background: lightpink;
+    width: 30%;
+
+    .box {
+        float: left;
+        margin: 10px;
+        display: inline-table;
+        background: black;
+        width: 120px;
+    }
+}

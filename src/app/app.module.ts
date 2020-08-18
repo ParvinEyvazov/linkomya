@@ -15,6 +15,8 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
+import { UserComponent } from './pages/user/user.component';
+import { LinkBoxComponent } from './components/link-box/link-box.component';
 
 
 
@@ -28,7 +30,9 @@ import { UserCardComponent } from './components/user-card/user-card.component';
     SignInComponent,
     SignUpComponent,
     SearchPageComponent,
-    UserCardComponent
+    UserCardComponent,
+    UserComponent,
+    LinkBoxComponent
   ],
   imports: [
     MatIconModule,

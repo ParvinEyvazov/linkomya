@@ -20,6 +20,7 @@
     overflow: hidden;
     position: fixed;
     width: 100%;
+    display: block;
 
     height: 80px;
     display: flex;
@@ -42,6 +43,8 @@
 }
 
 .content {
+    position: absolute;
+    top: 80px;
 }
 
 @media screen and (max-width: 767px) {

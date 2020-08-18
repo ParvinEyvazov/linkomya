@@ -2,7 +2,7 @@
     cursor: pointer;
     height: 200px;
     width: 70%;
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 30px;
     position: relative;
     padding: 50px;
@@ -11,12 +11,14 @@
     margin: 2% auto;
 }
 
+.row {
+    position: relative;
+}
+
 .image-part {
     position: relative;
     margin: 0;
-
     display: inline-block;
-
     width: 100px;
     height: 100px;
     overflow: hidden;
@@ -44,13 +46,13 @@
     transform: translateY(-50%);
 }
 
-.place-part{
-    background: lightsteelblue;
-    position: relative;
-    text-align: center;
+.place-part {
+    position: absolute;
+    right: 0;
+    top: 55%;
 }
 
-.place{
+.place {
     margin: 0;
     position: relative;
     top: 50%;
@@ -58,3 +60,10 @@
     transform: translateY(-50%);
 }
 
+#place-row {
+    margin: auto;
+
+    h1 {
+        font-size: 1.3em;
+    }
+}
