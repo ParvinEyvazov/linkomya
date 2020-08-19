@@ -13,10 +13,11 @@
     border-radius: 50%;
     width: 280px;
     height: 280px;
+    z-index: -100;
 }
 
 .page {
-    height: 100vh;
+    height: calc(100vh - 80px);
     overflow: auto;
     // background: lightslategray;
 }
@@ -49,7 +50,7 @@ main {
         height: 100%;
         object-fit: cover;
         border-radius: 50%;
-        border: 1px solid black;
+        border: 1px solid rgba(0, 0, 0, 0.61);
     }
 }
 
@@ -63,8 +64,14 @@ main {
     .name {
         // background: cornflowerblue;
         h1 {
+            margin-left: 50px;
+            display: inline-flex;
             font-size: 4.2em;
             font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        }
+        .icon-verify {
+            margin-left: 10px;
+            color: rgb(4, 245, 4);
         }
     }
 
@@ -76,6 +83,7 @@ main {
             font-size: 1.2em;
             font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
             margin: 0;
+            margin-top: 5px;
         }
         .icon-place {
             font-size: 1em;
@@ -107,14 +115,14 @@ main {
     position: relative;
     top: -50px;
     margin: auto;
-    background: lightpink;
+    //  background: lightpink;
     width: 30%;
 
     .box {
-        float: left;
+        float: inline-start;
         margin: 10px;
         display: inline-table;
-        background: black;
+        //    background: black;
         width: 120px;
     }
 }
