@@ -29,6 +29,88 @@
     color: white;
     font-weight: 600;
     font-size: 2em;
+
+    .tools {
+        display: inline-flex;
+        position: absolute;
+        right: 10%;
+        width: 30%;
+        height: 50px;
+        // background: purple;
+
+        //search bar part
+        .search-bar {
+            width: 80%;
+            height: 100%;
+           // background: red;
+            margin: auto;
+
+            display: flex;
+
+            .search {
+               // background: black;
+                position: relative;
+                right: 0;
+                margin: auto;
+                margin-right: 0;
+                width: 90%;
+
+                .searchTerm {
+                    display: flex;
+                    font-size: 0.9em;
+                    width: 100%;
+                    border: 1px solid #7b77ff;
+                    padding: 5px;
+
+                    padding-left: 20px;
+                    padding-right: 50px;
+                    border-radius: 50px;
+                    outline: none;
+                    color: #1f1ab8;
+                }
+
+                .searchTerm:focus {
+                    color: #7b77ff;
+                }
+
+                .searchButton {
+                    background: transparent;
+                    border: none;
+                    position: absolute;
+                    top: 20%;
+                    right: 2%;
+                    text-align: center;
+                    color: #7b77ff;
+                    cursor: pointer;
+                    font-size: 20px;
+                    outline: none;
+                }
+            }
+        }
+
+        //menu part
+        .menu {
+            width: 20%;
+            height: 100%;
+            // background: blue;
+
+            .account_button {
+                cursor: pointer;
+                color: white;
+                padding: 0;
+                border: none;
+                border-radius: 50%;
+                height: 100%;
+                width: 50%;
+                background: transparent;
+                outline: none;
+            }
+        }
+    }
+}
+
+::ng-deep .menu-dropdown {
+    width: 250px;
 }
 
 .icon-login {

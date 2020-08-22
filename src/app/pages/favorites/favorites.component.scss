@@ -1,0 +1,41 @@
+.background {
+    overflow-x: hidden;
+
+    position: fixed;
+    top: 80px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    main {
+        height: 100vh;
+        width: 100vw;
+        display: grid;
+        grid-template-rows: 1fr 8fr;
+    }
+
+    .content-text {
+        //    background: lightcoral;
+        text-align: center;
+    //    background: lightcoral;
+    }
+
+    .profile-box {
+        width: 100%;
+        //  background: lightgray;
+    }
+}
+
+.text {
+   // background: lightcyan;
+    position: relative;
+    margin: auto;
+    margin-top: 30px;
+    width: 45%;
+    height: auto;
+    font-size: 3em;
+}
+
+// ::placeholder{
+//     margin: 10px;
+// }

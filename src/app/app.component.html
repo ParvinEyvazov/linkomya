@@ -2,6 +2,47 @@
 <div class="toolbar">
   <span class="logo-text" [routerLink]="['']">.linkomya</span>
 
+  <div class="tools">
+
+    <!-- search bar -->
+    <div class="search-bar">
+      <div class="search">
+        <input type="text" class="searchTerm" placeholder="Search...">
+        <button type="submit" class="searchButton">
+            <i class="fa fa-search"></i>
+        </button>
+    </div>
+    </div>
+
+
+    <!-- menu button -->
+    <div class="menu">
+      <button class="account_button" mat-icon-button [matMenuTriggerFor]="appMenu">
+        <mat-icon style="
+        font-size: 3em;">account_circle</mat-icon>
+      </button>
+
+      <mat-menu class="menu-dropdown" #appMenu="matMenu">
+        <button mat-menu-item [routerLink]="['/profile']">
+          <mat-icon style="color: #7c77ff8a;">account_circle</mat-icon>Profile
+        </button>
+        <button mat-menu-item [routerLink]="['favorites']">
+          <mat-icon style="color: rgba(255, 0, 0, 0.507);">favorites</mat-icon>Favorites
+        </button>
+        <button mat-menu-item [routerLink]="['/assets']">
+          <mat-icon style="color: black;">settings</mat-icon>Settings
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item [routerLink]="['/assets']">
+          <mat-icon style="color: black;">subdirectory_arrow_left</mat-icon>Log out
+        </button>
+      </mat-menu>
+
+    </div>
+
+
+  </div>
+
   <mat-icon [routerLink]="['sign-in']" class="icon-login" aria-label="login-button">login</mat-icon>
 
 </div>

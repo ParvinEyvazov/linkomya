@@ -1,0 +1,88 @@
+<div>
+    <div class="page">
+        <div class="cicle"></div>
+
+        <main>
+            <!-- background photo part -->
+            <div class="background-image">
+                <img class="back-image" src="../../../../assets/back_photo_2.jpg">
+                <div class="edit-photo">
+                    <img src="../../../../assets/social_media_icons/edit.svg">
+                </div>
+            </div>
+
+            <!-- profile photo and favorites part -->
+            <div class="profile-photo">
+                <img class="photo" src="../../../../assets/profile_photos/pp6.jpg">
+                <div class="edit-photo">
+                    <img src="../../../../assets/social_media_icons/edit.svg">
+                </div>
+            </div>
+
+            <!-- information, bio part -->
+            <div class="information">
+                <div class="name">
+                    <h1>Davis Miller</h1>
+                    <mat-icon class="icon-verify" aria-label="place">verified_user</mat-icon>
+                </div>
+
+                <div class="country">
+                    <mat-icon class="icon-place" aria-label="place">place</mat-icon>
+                    <p>Holland / Amsterdam</p>
+                </div>
+
+                <div class="job">
+                    <mat-icon class="icon-job" aria-label="place">work</mat-icon>
+                    <p>Software Developer</p>
+                </div>
+            </div>
+
+            <!-- edit button -->
+
+
+            <!-- divider -->
+
+
+            <div class="divider">
+                <div [ngClass]="{'edit-close' : edit_open==false, 'edit-open' : edit_open==true}"
+                    (click)="changeEditState()">
+                    <img src="../../../../assets/social_media_icons/edit.svg">
+                </div>
+                <hr>
+            </div>
+
+            <!-- links - main part  -->
+            <div class="links">
+                <!-- add more link -->
+                <div class="box">
+                    <a href="https://www.instagram.com/" target="_blank">
+                        <div class="child-box">
+
+                            <div class="circle">
+                                <img src="../../../../assets/social_media_icons/add.svg">
+                            </div>
+
+                            <div class="link-name">
+                                <h1>Add more</h1>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+
+                <!-- links -->
+                <div class="box" *ngFor="let number of array">
+                    <app-link-box></app-link-box>
+
+                    <div [ngClass]="{'edit-link-close' : edit_open==false, 'edit-link-open' : edit_open==true}">
+                        <img src="../../../../assets/social_media_icons/edit.svg">
+                    </div>
+
+                </div>
+
+
+            </div>
+        </main>
+
+    </div>
+</div>

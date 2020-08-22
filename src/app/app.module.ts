@@ -17,6 +17,12 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { UserComponent } from './pages/user/user.component';
 import { LinkBoxComponent } from './components/link-box/link-box.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from "@angular/material/divider";
+import { ProfileComponent } from './pages/profile/profile.component';
+import { CommonModule } from '@angular/common';
+import { FavoritesComponent } from './pages/favorites/favorites.component';
+
 
 
 
@@ -32,7 +38,9 @@ import { LinkBoxComponent } from './components/link-box/link-box.component';
     SearchPageComponent,
     UserCardComponent,
     UserComponent,
-    LinkBoxComponent
+    LinkBoxComponent,
+    ProfileComponent,
+    FavoritesComponent,
   ],
   imports: [
     MatIconModule,
@@ -43,7 +51,9 @@ import { LinkBoxComponent } from './components/link-box/link-box.component';
     MatInputModule,
     FormsModule,
     MatToolbarModule,
-
+    MatMenuModule,
+    MatDividerModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
