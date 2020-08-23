@@ -22,6 +22,7 @@ import { MatDividerModule } from "@angular/material/divider";
 import { ProfileComponent } from './pages/profile/profile.component';
 import { CommonModule } from '@angular/common';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 
 
@@ -41,6 +42,7 @@ import { FavoritesComponent } from './pages/favorites/favorites.component';
     LinkBoxComponent,
     ProfileComponent,
     FavoritesComponent,
+    SettingsComponent,
   ],
   imports: [
     MatIconModule,

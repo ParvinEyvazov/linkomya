@@ -2,7 +2,31 @@
     <div class="page">
         <div class="cicle"></div>
 
+
+
         <main>
+
+            <!-- ADD MORE MODAL -->
+            <input type="checkbox" name="dialog_state" id="dialog_state" class="dialog_state">
+
+            <div id='dialog'>
+                <label id="dlg-back" for="dialog_state"></label>
+                <div id='dlg-wrap'>
+                    <label id="dlg-close" for="dialog_state"><i class="icon ion-ios-close-empty"></i></label>
+                    <h2 id='dlg-header'>Are you sure?</h2>
+                    <div id='dlg-content'>You are about to kill a puppy, that's some serious shit. Have you really
+                        thought this
+                        through?</div>
+                    <div id='dlg-prompt'>
+                        <div class='button positive'><i class="icon ion-ios-checkmark-empty"></i> Yes, let's do it!
+                        </div>
+                        <div class='button'><i class="icon ion-ios-close-empty"></i> No, I'll reconsider</div>
+                    </div>
+                </div>
+            </div>
+
+
+
             <!-- background photo part -->
             <div class="background-image">
                 <img class="back-image" src="../../../../assets/back_photo_2.jpg">
@@ -41,8 +65,6 @@
 
 
             <!-- divider -->
-
-
             <div class="divider">
                 <div [ngClass]="{'edit-close' : edit_open==false, 'edit-open' : edit_open==true}"
                     (click)="changeEditState()">
@@ -51,24 +73,22 @@
                 <hr>
             </div>
 
+
             <!-- links - main part  -->
             <div class="links">
                 <!-- add more link -->
-                <div class="box">
-                    <a href="https://www.instagram.com/" target="_blank">
+                <label for="dialog_state">
+                    <div class="box">
                         <div class="child-box">
-
                             <div class="circle">
                                 <img src="../../../../assets/social_media_icons/add.svg">
                             </div>
-
                             <div class="link-name">
                                 <h1>Add more</h1>
                             </div>
-
                         </div>
-                    </a>
-                </div>
+                    </div>
+                </label>
 
                 <!-- links -->
                 <div class="box" *ngFor="let number of array">

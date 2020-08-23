@@ -7,6 +7,7 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { UserComponent } from './pages/user/user.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 const routes: Routes = [
   { path: "", component: LandingPageComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: "user", component: UserComponent },
   { path: "profile", component: ProfileComponent },
   { path: "favorites", component: FavoritesComponent },
+  { path: "settings", component: SettingsComponent },
 
 ];
 

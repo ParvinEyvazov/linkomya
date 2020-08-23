@@ -1,0 +1,136 @@
+.background {
+    overflow-x: hidden;
+
+    position: fixed;
+    top: 80px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    .cicle {
+        position: fixed;
+        left: -75px;
+        bottom: -100px;
+        background: #7b77ff;
+        border-radius: 50%;
+        width: 280px;
+        height: 280px;
+        z-index: -100;
+    }
+
+    main {
+        height: 100vh;
+        width: 100vw;
+        display: grid;
+        grid-template-rows: 1fr 10fr;
+    }
+
+    .content-text {
+        //    background: lightcoral;
+        text-align: center;
+        //    background: lightcoral;
+
+        .text {
+            // background: lightcyan;
+            position: relative;
+            margin: auto;
+            margin-top: 30px;
+            width: 45%;
+            height: auto;
+            font-size: 3em;
+        }
+    }
+
+    .settings-box {
+        position: relative;
+        top: 50px;
+        width: 100%;
+        // background: lightgreen;
+        text-align: center;
+
+        .form {
+            position: relative;
+            margin: auto;
+            text-align: center;
+            width: 30%;
+            // background: lightcoral;
+
+            .child-box {
+                position: relative;
+                margin-bottom: 25px;
+                p {
+                    margin: 0;
+                    position: relative;
+                    left: 3%;
+                    float: left;
+                    font-size: 1.1em;
+                }
+
+                input {
+                    border: 0;
+                    background: none;
+                    //text-align: center;
+                    border: 1px solid rgba(0, 0, 0, 0.397);
+                    background: #ffffff;
+                    padding: 14px;
+                    width: 100%;
+                    outline: none;
+                    color: black;
+                    border-radius: 50px;
+                    font-size: 1.3em;
+                }
+            }
+
+            .button-box {
+                input {
+                    border: 0;
+                    background: none;
+                    display: block;
+                    margin: auto;
+                    margin-top: 60px;
+                    text-align: center;
+                    border: 2px solid #7b77ff;
+                    padding: 7px 60px;
+                    outline: none;
+                    color: black;
+                    border-radius: 50px;
+                    transition: 0.25s;
+                    cursor: pointer;
+                    font-size: 1.1em;
+                }
+
+                input[type="submit"]:hover {
+                    background: #7b77ff;
+                }
+            }
+        }
+
+        .divider {
+            position: relative;
+            top: 60px;
+            text-align: center;
+            width: 45%;
+            margin: auto;
+        }
+
+        .delete-account {
+            cursor: pointer;
+            position: relative;
+            top: 120px;
+            display: inline-flex;
+            color: rgba(250, 4, 4, 0.411);
+
+            p {
+                font-size: 1.2em;
+            }
+
+            .icon-delete {
+                margin-right: 5px;
+            }
+        }
+
+        .delete-account:hover {
+            color: rgb(250, 4, 4);
+        }
+    }
+}
