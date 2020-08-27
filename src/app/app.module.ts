@@ -23,6 +23,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { CommonModule } from '@angular/common';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { MatSelectModule } from '@angular/material/select';
+
 
 
 
@@ -56,6 +58,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
     MatMenuModule,
     MatDividerModule,
     CommonModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

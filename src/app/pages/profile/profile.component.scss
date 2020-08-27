@@ -243,19 +243,6 @@ main {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //MODAL PART
 #console {
     display: none;
@@ -268,7 +255,6 @@ main {
     left: 0;
     width: 100%;
     height: calc(100vh - 80px);
-    background: rgba(255, 255, 255, 0.897);
     transition: visibility 0s linear 0.5s, opacity 0.5s linear;
     opacity: 0;
     visibility: hidden;
@@ -294,8 +280,6 @@ main {
     width: 100%;
     width: 100vw;
     height: calc(100vh - 80px);
-    filter: blur(20px);
-    -webkit-filter: blur(20px);
     cursor: pointer;
 }
 
@@ -314,8 +298,8 @@ main {
     top: 50%;
     transform: translateY(-50%);
     width: 640px;
-    padding: 2rem;
-    border-radius: 0.25rem;
+    padding: 3rem;
+    border-radius: 20px;
     /*border: 1px solid #969696;*/
     background: #fff;
     box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
@@ -412,3 +396,5 @@ a.button.positive:hover {
     line-height: inherit;
     font-size: 1.75em;
 }
+
+// model inside

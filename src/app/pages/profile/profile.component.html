@@ -1,35 +1,51 @@
 <div>
     <div class="page">
-        <div class="cicle"></div>
+
+        <!-- ------------------ADD MORE MODAL------------------ -->
+
+        <input type="checkbox" name="dialog_state" id="dialog_state" class="dialog_state">
+
+        <div id='dialog'>
+
+            <label id="dlg-back" for="dialog_state"></label>
+
+            <div id='dlg-wrap'>
+
+                <div class="add-content">
+                    <div class="page-title">
+                        Add New
+                    </div>
+                    <mat-divider></mat-divider>
+
+                    <div class="select">
+                        <div>select a social media</div>
+
+
+                        
 
 
 
-        <main>
-
-            <!-- ADD MORE MODAL -->
-            <input type="checkbox" name="dialog_state" id="dialog_state" class="dialog_state">
-
-            <div id='dialog'>
-                <label id="dlg-back" for="dialog_state"></label>
-                <div id='dlg-wrap'>
-                    <label id="dlg-close" for="dialog_state"><i class="icon ion-ios-close-empty"></i></label>
-                    <h2 id='dlg-header'>Are you sure?</h2>
-                    <div id='dlg-content'>You are about to kill a puppy, that's some serious shit. Have you really
-                        thought this
-                        through?</div>
-                    <div id='dlg-prompt'>
-                        <div class='button positive'><i class="icon ion-ios-checkmark-empty"></i> Yes, let's do it!
-                        </div>
-                        <div class='button'><i class="icon ion-ios-close-empty"></i> No, I'll reconsider</div>
                     </div>
                 </div>
+
+
+
             </div>
 
+        </div>
 
+
+
+        <!-- ---------------------------------------- -->
+
+
+
+        <main class="main_area">
+            <div class="cicle"></div>
 
             <!-- background photo part -->
             <div class="background-image">
-                <img class="back-image" src="../../../../assets/back_photo_2.jpg">
+                <img class="back-image" src="../../../../assets/back_photo.jpg">
                 <div class="edit-photo">
                     <img src="../../../../assets/social_media_icons/edit.svg">
                 </div>
@@ -77,6 +93,7 @@
             <!-- links - main part  -->
             <div class="links">
                 <!-- add more link -->
+
                 <label for="dialog_state">
                     <div class="box">
                         <div class="child-box">
@@ -89,6 +106,8 @@
                         </div>
                     </div>
                 </label>
+
+
 
                 <!-- links -->
                 <div class="box" *ngFor="let number of array">
