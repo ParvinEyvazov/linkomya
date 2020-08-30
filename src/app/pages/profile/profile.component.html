@@ -2,52 +2,35 @@
     <div class="page">
 
         <!-- ------------------ADD MORE MODAL------------------ -->
-
         <input type="checkbox" name="dialog_state" id="dialog_state" class="dialog_state">
-
         <div id='dialog'>
-
             <label id="dlg-back" for="dialog_state"></label>
-
             <div id='dlg-wrap'>
-
                 <div class="add-content">
                     <div class="page-title">
                         Add New
                     </div>
                     <mat-divider></mat-divider>
-
                     <!-- select social media part -->
                     <div class="select">
                         <div class="title">select a social media</div>
                         <div class="select-box">
-
-
                             <div class="select-box__current" tabindex="1">
                                 <div class="select-box__value" *ngFor="let socialMedia of socialMedias">
 
                                     <input class="select-box__input" type="radio" id="{{socialMedia.value}}" name="Ben"
                                         checked="checked" />
 
-
-
                                     <label class="select-box__input-text">
-
                                         <div class="circle">
                                             <img src="{{socialMedia.img}}">
                                         </div>
-
-
                                         <p>{{socialMedia.name}}</p>
-
                                     </label>
                                 </div>
-
                                 <img class="select-box__icon" src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
                                     alt="Arrow Icon" aria-hidden="true" />
                             </div>
-
-
                             <ul class="select-box__list">
                                 <li *ngFor="let socialMedia of socialMedias">
                                     <label class="select-box__option" for="{{socialMedia.value}}"
@@ -72,24 +55,43 @@
                         </div>
                     </div>
 
+
+
                     <!-- save link -->
                     <div class="button-box">
-                        <input type="submit" name="submit" value="SAVE">
-                    </div>
 
-                    <!-- cancel account -->
-                    <div class="delete-account">
-                        <p>CANCEL</p>
+                        <label for="dialog_state">
+                            <a (click)="addNewSocialMedia()">
+                                <input type="submit" name="submit" value="SAVE">
+                            </a>
+                        </label>
+
                     </div>
+                    <!-- cancel account -->
+                    <label for="dialog_state">
+                        <div class="delete-account">
+                            <p>CANCEL</p>
+                        </div>
+                    </label>
 
                 </div>
-
-
-
             </div>
-
         </div>
 
+
+        <!-- ------------------EDIT SOCIAL MEDIA------------------ -->
+        <input type="checkbox" name="dialog_state" id="{{testString}}" class="dialog_state">
+        <div id='dialog'>
+            <label id="dlg-back" for="{{testString}}"></label>
+            <div id="dlg-wrap">
+
+                <div class="add-content">
+                    <p>
+                        hello - {{testString}}
+                    </p>
+                </div>
+            </div>
+        </div>
 
 
         <!-- ---------------------------------------- -->
@@ -148,8 +150,8 @@
 
             <!-- links - main part  -->
             <div class="links">
-                <!-- add more link -->
 
+                <!-- add more link -->
                 <label for="dialog_state">
                     <div class="box">
                         <div class="child-box">
@@ -164,14 +166,17 @@
                 </label>
 
 
-
                 <!-- links -->
                 <div class="box" *ngFor="let number of array">
                     <app-link-box></app-link-box>
 
-                    <div [ngClass]="{'edit-link-close' : edit_open==false, 'edit-link-open' : edit_open==true}">
-                        <img src="../../../../assets/social_media_icons/edit.svg">
-                    </div>
+                    <label for="{{testString}}">
+                        <div [ngClass]="{'edit-link-close' : edit_open==false, 'edit-link-open' : edit_open==true}">
+                            <img src="../../../../assets/social_media_icons/edit.svg">
+                        </div>
+                    </label>
+
+
 
                 </div>
 

@@ -7,14 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  array: number[];
+  array: String[];
   edit_open: boolean = false;
   socialMedias: socialMedias[];
+  testString:string="a";
 
   constructor() { }
 
   ngOnInit(): void {
-    this.array = [1, 2, 3, 4, 5, 6];
+    this.array = ["1", "2", "3", "4", "5", "6"];
 
     this.socialMedias = [
       {
@@ -88,6 +89,10 @@ export class ProfileComponent implements OnInit {
 
   changeEditState() {
     this.edit_open = !this.edit_open;
+  }
+
+  addNewSocialMedia() {
+    console.log("ADDED NEW ONE");
   }
 
 }
