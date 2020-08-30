@@ -425,6 +425,12 @@ main {
     filter: blur(20px);
 }
 
+.dialog_state:checked {
+    .main_area {
+        filter: blur(20px);
+    }
+}
+
 //inside- modal
 .select {
     .select-box {
