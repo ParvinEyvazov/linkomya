@@ -79,22 +79,13 @@
         </div>
 
 
-        <!-- ------------------EDIT SOCIAL MEDIA------------------ -->
-        <input type="checkbox" name="dialog_state" id="{{testString}}" class="dialog_state">
-        <div id='dialog'>
-            <label id="dlg-back" for="{{testString}}"></label>
-            <div id="dlg-wrap">
 
-                <div class="add-content">
-                    <p>
-                        hello - {{testString}}
-                    </p>
-                </div>
-            </div>
-        </div>
+
+
 
 
         <!-- ---------------------------------------- -->
+
 
 
 
@@ -170,7 +161,19 @@
                 <div class="box" *ngFor="let number of array">
                     <app-link-box></app-link-box>
 
-                    <label for="{{testString}}">
+                    <!-- ------------------EDIT SOCIAL MEDIA------------------ -->
+                    <input type="checkbox" name="dialog_state" id="dialog-{{number}}" class="dialog_state">
+                    <div id='dialog'>
+                        <label id="dlg-back" for="dialog-{{number}}"></label>
+                        <div id="dlg-wrap">
+
+                            <div class="add-content">
+                                <p>hello -{{number}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <label for="dialog-{{number}}">
                         <div [ngClass]="{'edit-link-close' : edit_open==false, 'edit-link-open' : edit_open==true}">
                             <img src="../../../../assets/social_media_icons/edit.svg">
                         </div>

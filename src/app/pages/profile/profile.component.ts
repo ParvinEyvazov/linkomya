@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.array = ["1", "2", "3", "4", "5", "6"];
+    this.array = ["10", "2", "3", "4", "5", "6"];
 
     this.socialMedias = [
       {
