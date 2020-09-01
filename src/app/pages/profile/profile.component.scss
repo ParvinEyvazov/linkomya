@@ -18,6 +18,7 @@
 
 .page {
     height: calc(100vh - 80px);
+    width: 100vw;
     overflow: auto;
     overflow-x: hidden;
     // background: lightslategray;
@@ -336,6 +337,151 @@ main {
     }
 }
 
+.icon-title {
+    margin: auto;
+    text-align: center;
+    height: 35px;
+    width: 35px;
+
+    img {
+        max-width: 100%;
+    }
+}
+
+.edit-link-content {
+    .title {
+        margin: auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        font-size: 1.7em;
+
+        p {
+            text-align: center;
+        }
+    }
+
+    .previous-link {
+        margin: 0px 8% 15px 8%;
+        .previous-title {
+            font-size: 1.1em;
+            margin-left: 5%;
+            color: rgba(41, 39, 39, 0.5);
+        }
+
+        .link-field {
+            margin-top: 1.5%;
+            position: relative;
+            input {
+                border: 0;
+                background: none;
+                //text-align: center;
+                border: 1px solid rgba(0, 0, 0, 0.397);
+                background: #ffffff;
+                padding: 14px;
+                width: 100%;
+                outline: none;
+                color: rgba(41, 39, 39, 0.5);
+                border-radius: 20px;
+                font-size: 1.3em;
+            }
+
+            .copy-button {
+                background: transparent;
+                border: none;
+                position: absolute;
+                top: 20%;
+                right: 2%;
+                text-align: center;
+                cursor: pointer;
+                outline: none;
+            }
+        }
+    }
+
+    .new-link {
+        margin: 0px 8% 15px 8%;
+        .new-title {
+            font-size: 1.1em;
+            margin-left: 5%;
+        }
+        .link-field {
+            margin-top: 1.5%;
+            position: relative;
+            input {
+                border: 0;
+                background: none;
+                //text-align: center;
+                border: 1px solid rgba(0, 0, 0, 0.397);
+                background: #ffffff;
+                padding: 14px;
+                width: 100%;
+                outline: none;
+                border-radius: 20px;
+                font-size: 1.3em;
+            }
+        }
+    }
+
+    .button-box {
+        input {
+            border: 0;
+            background: none;
+            display: block;
+            margin: auto;
+            margin-top: 40px;
+            text-align: center;
+            border: 2px solid #7b77ff;
+            padding: 7px 60px;
+            outline: none;
+            color: black;
+            border-radius: 50px;
+            transition: 0.25s;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+
+        input[type="submit"]:hover {
+            background: #7b77ff;
+        }
+    }
+
+    .delete-account {
+        text-align: center;
+        cursor: pointer;
+        color: rgba(250, 4, 4, 0.411);
+        margin-top: 40px;
+
+        p {
+            margin: auto;
+            font-size: 1.2em;
+        }
+    }
+    .delete-account:hover {
+        color: rgb(250, 4, 4);
+    }
+
+    mat-divider {
+        margin: 20px 8% 15px 8%;
+        color: black;
+    }
+
+    .delete-button{
+        margin-top: 20px;
+        text-align: center;
+
+        mat-icon{
+            cursor: pointer;
+            color: rgba(250, 4, 4, 0.411);
+        }
+
+        mat-icon:hover{
+            color: rgb(250, 4, 4);
+        }
+
+
+    }
+}
+
 /////////////////////////////////////////////////////////////////
 //MODAL PART
 #console {
@@ -393,8 +539,8 @@ main {
     top: 50%;
     transform: translateY(-50%);
     width: 640px;
-    height: 500px;
-    border-radius: 20px;
+    max-height: 800px;
+    border-radius: 50px;
     /*border: 1px solid #969696;*/
     background: #fff;
     box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);

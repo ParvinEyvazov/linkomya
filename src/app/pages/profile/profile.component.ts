@@ -10,7 +10,7 @@ export class ProfileComponent implements OnInit {
   array: String[];
   edit_open: boolean = false;
   socialMedias: socialMedias[];
-  testString:string="a";
+  socialMedia: string = "a";
 
   constructor() { }
 
@@ -93,6 +93,24 @@ export class ProfileComponent implements OnInit {
 
   addNewSocialMedia() {
     console.log("ADDED NEW ONE");
+  }
+
+  openEditModal(number: string) {
+    this.socialMedia = number;
+  }
+
+  copyMessage(val: string) {
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = val;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
   }
 
 }
