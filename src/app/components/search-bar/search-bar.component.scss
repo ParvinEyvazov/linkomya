@@ -1,17 +1,15 @@
-.tb
-{
+.tb {
     display: table;
 }
 
-.td
-{
+.td {
     display: table-cell;
     vertical-align: middle;
     width: 100vw;
 }
 
-input, button
-{
+input,
+button {
     color: #fff;
     font-family: Nunito;
     padding: 0;
@@ -21,22 +19,19 @@ input, button
     outline: none;
 }
 
-#cover
-{    
+#cover {
     padding: 35px;
-    background-color: #7B77FF;
+    background-color: #7b77ff;
     border-radius: 150px;
-    box-shadow: 0 10px 40px #7B77FF, 0 0 0 20px #ffffffeb;
+    box-shadow: 0 5px 20px #7b77ff, 0 0 0 20px #ffffffeb;
     transform: scale(0.6);
 }
 
-form
-{
+form {
     height: 96px;
 }
 
-input[type="text"]
-{
+input[type="text"] {
     width: 100%;
     padding-left: 20px;
     height: 96px;
@@ -44,19 +39,16 @@ input[type="text"]
     line-height: 1;
 }
 
-input[type="text"]::placeholder
-{
+input[type="text"]::placeholder {
     color: black;
 }
 
-#s-cover
-{
+#s-cover {
     width: 1px;
     padding-left: 35px;
 }
 
-button
-{
+button {
     position: fixed;
     bottom: 25%;
     right: 3%;
@@ -65,8 +57,7 @@ button
     cursor: pointer;
 }
 
-#s-circle
-{
+#s-circle {
     position: relative;
     top: -8px;
     left: 0;
@@ -80,8 +71,7 @@ button
     transition: 0.5s ease all;
 }
 
-button span
-{
+button span {
     position: absolute;
     top: 68px;
     left: 43px;
@@ -94,9 +84,9 @@ button span
     transition: 0.5s ease all;
 }
 
-button span:before, button span:after
-{
-    content: '';
+button span:before,
+button span:after {
+    content: "";
     position: absolute;
     bottom: 0;
     right: 0;
@@ -108,8 +98,7 @@ button span:before, button span:after
     transition: 0.5s ease all;
 }
 
-#s-cover:hover #s-circle
-{
+#s-cover:hover #s-circle {
     top: -1px;
     width: 67px;
     height: 15px;
@@ -118,8 +107,7 @@ button span:before, button span:after
     border-radius: 20px;
 }
 
-#s-cover:hover span
-{
+#s-cover:hover span {
     top: 50%;
     left: 56px;
     width: 25px;
@@ -127,19 +115,17 @@ button span:before, button span:after
     transform: rotateZ(0);
 }
 
-#s-cover:hover button span:before
-{
+#s-cover:hover button span:before {
     bottom: 11px;
     transform: rotateZ(52deg);
 }
 
-#s-cover:hover button span:after
-{
+#s-cover:hover button span:after {
     bottom: -11px;
     transform: rotateZ(-52deg);
 }
-#s-cover:hover button span:before, #s-cover:hover button span:after
-{
+#s-cover:hover button span:before,
+#s-cover:hover button span:after {
     right: -6px;
     width: 40px;
     background-color: black;
