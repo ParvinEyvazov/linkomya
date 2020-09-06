@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  loginState: boolean = false;
+  loginState: boolean = true;
 
   title = 'linkomya';
 }

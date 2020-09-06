@@ -120,6 +120,7 @@
             //      background: lightgreen;
 
             .icon-login {
+                transition: 0.25s;
                 cursor: pointer;
                 color: white;
                 font-size: 1.5em;
@@ -135,6 +136,7 @@
             padding-top: 5px;
 
             .account_button {
+                transition: 0.25s;
                 margin: auto;
                 cursor: pointer;
                 color: white;
@@ -170,6 +172,13 @@
 
     .logo-text {
         font-size: 20px;
+    }
+    .account_button {
+        font-size: 10px;
+    }
+
+    .icon-login {
+        font-size: 1.1em !important;
     }
     
 }
