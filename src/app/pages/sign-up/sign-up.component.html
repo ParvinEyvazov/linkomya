@@ -1,37 +1,29 @@
-<div class="background">
+<div>
     <div class="page">
 
         <main>
+            <div class="row">
+                <div class="col-4 image-part">
+                    <img class="image" src="../../../../assets/sign-up.png">
+                    <div class="circle"></div>
+                </div>
 
-            <div class="image-part">
-                <img class="image" src="../../../../assets/sign-up.png">
-                <div class="circle">
+                <!-- REGISTER FORM -->
+                <div class="col-12 col-lg-7 form">
 
+                    <form class="box" action="" method="post">
+                        <h1>Sign up</h1>
+                        <input type="text" id="name" name="name" placeholder="full name">
+                        <input type="text" name="email" placeholder="email">
+                        <input type="password" name="password" placeholder="password">
+                        <input type="password" name="password" placeholder="re-enter password">
+                        <input type="submit" name="submit" value="register">
+                        <h2>or</h2>
+                        <a [routerLink]="['/sign-in']">already a member?</a>
+                    </form>
                 </div>
             </div>
 
-            <!-- REGISTER FORM -->
-            <div class="form">
-
-                <form class="box" action="" method="post">
-                    <h1>Sign up</h1>
-                    <input type="text" id="name" name="name" placeholder="full name">
-                    <input type="text" name="email" placeholder="email">
-                    <input type="password" name="password" placeholder="password">
-                    <input type="password" name="password" placeholder="re-enter password">
-                    <input type="submit" name="submit" value="register">
-                    <h2>or</h2>
-                    <a [routerLink]="['/sign-in']">already a member?</a>
-                </form>
-                 
-            </div>
-
-
         </main>
-
-        
-
     </div>
-
-
 </div>
