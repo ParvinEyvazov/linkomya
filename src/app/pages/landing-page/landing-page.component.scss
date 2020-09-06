@@ -2,20 +2,21 @@
     height: calc(100vh - 80px);
     background: #7b77ff;
     width: 100vw;
-    overflow: auto;
-    overflow-x: hidden;
 
     .page {
         clip-path: polygon(0 0, 90% 0, 100% 20%, 100% 73%, 72% 100%, 0 100%);
         background: white;
         height: calc(100vh - 80px);
         width: 100%;
+        overflow: auto;
+        overflow-x: hidden;
 
         main {
             .search-box {
                 transition: 0.25s;
                 padding-top: 2%;
                 padding-bottom: 2%;
+              //  background: lightcyan;
                 .search-bar {
                     transition: 0.25s;
                     background: #7b77ff;
@@ -30,6 +31,7 @@
                     position: relative;
 
                     .searchTerm {
+                        transition: 0.25s;
                         margin-left: 10px;
                         display: flex;
                         font-size: 2.5em;
@@ -50,6 +52,7 @@
                     }
 
                     .searchButton {
+                        transition: 0.25s;
                         position: absolute;
                         top: 18%;
                         right: 2%;
@@ -106,6 +109,18 @@
 }
 
 @media screen and (max-width: 767px) {
+    .searchTerm {
+        font-size: 1.9em !important;
+    }
+    .searchButton {        
+        top: 23% !important;
+        font-size: 22px !important;
+    }
+
+    .title {
+        // margin-top: 15%;
+        font-size: 4rem !important;
+    }
 }
 
 @media screen and (max-width: 575px) {
@@ -125,7 +140,7 @@
 
     .title {
         // margin-top: 15%;
-        font-size: 4rem !important;
+        font-size: 3rem !important;
     }
 
     .image-box {

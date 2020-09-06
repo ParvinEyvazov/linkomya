@@ -1,69 +1,157 @@
 .card {
     cursor: pointer;
     height: 200px;
-    width: 70%;
+    width: 50%;
     border: 1px solid black;
     border-radius: 30px;
     position: relative;
     padding: 50px;
     padding-left: 3%;
     padding-right: 3%;
-    margin: 2% auto;
+    margin: 10px auto;
+    // background: lightsalmon;
+    outline: none;
+    transition: 0.25s;
+
+    .row {
+        position: relative;
+
+        .image-part {
+            transition: 0.25s;
+            // background: lightskyblue;
+            position: relative;
+            margin: 0;
+            display: inline-block;
+            width: 100px !important;
+            height: 100px;
+            overflow: hidden;
+            border-radius: 50%;
+
+            .image {
+                width: auto;
+                height: 100%;
+                overflow: hidden;
+                background-size: contain;
+            }
+        }
+
+        .name-part {
+            transition: 0.25s;
+            margin-left: 3%;
+            position: relative;
+            h1 {
+                margin: 0;
+                position: relative;
+                top: 50%;
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+                font-size: 1.6em;
+            }
+        }
+
+        .place-part {
+            transition: 0.25s;
+            position: absolute;
+            //   background: lightskyblue;
+            right: 0;
+            top: 58%;
+            .place {
+                margin: 0;
+                position: relative;
+                top: 50%;
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+
+                #place-row {
+                    margin: auto;
+
+                    //    background: lightskyblue;
+                    .icon {
+                        //     background: lightslategrey;
+                        mat-icon {
+                            float: right;
+                            //     background: lightseagreen;
+                            transition: 0.25s;
+                            font-size: 1.8em;
+                        }
+                    }
+                    h1 {
+                        transition: 0.25s;
+                        font-size: 1.3em;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 992px) {
+    .card {
+        width: 80% !important;
+        .row {
+            .image-part {
+                .image {
+                }
+            }
+
+            .name-part {
+                h1 {
+                }
+            }
+
+            .place-part {
+                .place {
+                }
+
+                #place-row {
+                    h1 {
+                    }
+                }
+            }
+        }
+    }
 }
 
-.row {
-    position: relative;
-}
+@media screen and (max-width: 575px) {
+    .card {
+        height: 100px !important;
+        padding: 25px !important;
+        padding-left: 1.5% !important;
+        padding-right: 1.5% !important;
+        .row {
+            .image-part {
+                margin-left: 7% !important;
+                width: 50px !important;
+                height: 50px !important;
+                .image {
+                }
+            }
 
-.image-part {
-    position: relative;
-    margin: 0;
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-    overflow: hidden;
-    border-radius: 50%;
-}
+            .name-part {
+                margin-left: 3% !important;
+                h1 {
+                    font-size: 1em !important;
+                }
+            }
 
-.image {
-    width: auto;
-    height: 100%;
-    overflow: hidden;
-    background-size: contain;
-    margin-left: -10px;
-}
-
-.name-part {
-    margin-left: 3%;
-    position: relative;
-}
-
-.name-part h1 {
-    margin: 0;
-    position: relative;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-
-.place-part {
-    position: absolute;
-    right: 0;
-    top: 55%;
-}
-
-.place {
-    margin: 0;
-    position: relative;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-
-#place-row {
-    margin: auto;
-
-    h1 {
-        font-size: 1.3em;
+            .place-part {
+                right: 6%;
+                top: 62%;
+                .place {
+                    #place-row {
+                        .icon {
+                            position: relative;
+                            mat-icon {
+                                position: relative;
+                                top: 15%;
+                                font-size: 1.2em !important;
+                            }
+                        }
+                        h1 {
+                            font-size: 0.8em !important;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
