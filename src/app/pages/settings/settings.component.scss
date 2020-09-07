@@ -19,118 +19,196 @@
     }
 
     main {
-        height: 100vh;
+        height: calc(100vh - 80px);
         width: 100vw;
-        display: grid;
-        grid-template-rows: 1fr 10fr;
     }
 
-    .content-text {
+    .content {
         //    background: lightcoral;
         text-align: center;
-        //    background: lightcoral;
-
+        transition: 0.25s;
+        // background: lightcoral;
+        width: 40%;
+        margin: auto;
         .text {
             // background: lightcyan;
-            position: relative;
             margin: auto;
             margin-top: 30px;
-            width: 45%;
             height: auto;
             font-size: 3em;
+            transition: 0.25s;
+
+            .divider {
+                position: relative;
+                text-align: center;
+                width: 45%;
+                margin: auto;
+            }
+        }
+
+        .settings-box {
+            position: relative;
+            top: 30px;
+            width: 100%;
+          //  background: lightgreen;
+            text-align: center;
+
+            .form {
+                position: relative;
+                margin: auto;
+                text-align: center;
+                width: 90%;
+                // background: lightcoral;
+
+                .child-box {
+                    position: relative;
+                    margin-bottom: 25px;
+                    p {
+                        margin: 0;
+                        position: relative;
+                        left: 3%;
+                        float: left;
+                        font-size: 1.1em;
+                    }
+
+                    input {
+                        border: 0;
+                        background: none;
+                        //text-align: center;
+                        border: 1px solid rgba(0, 0, 0, 0.397);
+                        background: #ffffff;
+                        padding: 14px;
+                        width: 100%;
+                        outline: none;
+                        color: black;
+                        border-radius: 50px;
+                        font-size: 1.3em;
+                    }
+                }
+
+                .button-box {
+                    input {
+                        border: 0;
+                        background: none;
+                        display: block;
+                        margin: auto;
+                        margin-top: 60px;
+                        text-align: center;
+                        border: 2px solid #7b77ff;
+                        padding: 7px 60px;
+                        outline: none;
+                        color: black;
+                        border-radius: 50px;
+                        transition: 0.25s;
+                        cursor: pointer;
+                        font-size: 1.1em;
+                    }
+
+                    input[type="submit"]:hover {
+                        background: #7b77ff;
+                    }
+                }
+            }
+
+            .divider {
+                position: relative;
+                top: 60px;
+                text-align: center;
+                width: 45%;
+                margin: auto;
+            }
+
+            .delete-account {
+                cursor: pointer;
+                position: relative;
+                top: 120px;
+                display: inline-flex;
+                color: rgba(250, 4, 4, 0.411);
+
+                p {
+                    font-size: 1.2em;
+                }
+
+                .icon-delete {
+                    margin-right: 5px;
+                }
+            }
+
+            .delete-account:hover {
+                color: rgb(250, 4, 4);
+            }
         }
     }
+}
 
-    .settings-box {
-        position: relative;
-        top: 50px;
-        width: 100%;
-        // background: lightgreen;
-        text-align: center;
+@media screen and (max-width: 992px) {
+    .content {
+        width: 65% !important;
+    }
 
-        .form {
-            position: relative;
-            margin: auto;
-            text-align: center;
-            width: 30%;
-            // background: lightcoral;
+    .cicle {
+        display: none !important;
+    }
+}
 
-            .child-box {
-                position: relative;
-                margin-bottom: 25px;
+@media screen and (max-width: 575px) {
+    .content {
+        width: 90% !important;
+        .text {
+            font-size: 1.7em !important;
+
+            .divider {
+                width: 80% !important;
+            }
+        }
+
+        .settings-box {
+            top: 10px !important;
+
+            .form {
+                // background: lightcoral;
+
+                .child-box {
+                    margin-bottom: 10px !important;
+                    p {
+                    }
+
+                    input {
+                        font-size: 1em !important;
+                    }
+                }
+
+                .button-box {
+                    input {
+                        margin-top: 30px !important;
+                        padding: 3px 40px !important;
+                        font-size: 1em !important;
+                    }
+
+                    input[type="submit"]:hover {
+                    }
+                }
+            }
+
+            .divider {
+                width: 80% !important;
+            }
+
+            .delete-account {
+                top: 120px;
+
                 p {
-                    margin: 0;
-                    position: relative;
-                    left: 3%;
-                    float: left;
-                    font-size: 1.1em;
+                    font-size: 1em !important;
                 }
 
-                input {
-                    border: 0;
-                    background: none;
-                    //text-align: center;
-                    border: 1px solid rgba(0, 0, 0, 0.397);
-                    background: #ffffff;
-                    padding: 14px;
-                    width: 100%;
-                    outline: none;
-                    color: black;
-                    border-radius: 50px;
-                    font-size: 1.3em;
+                .icon-delete {
+                    margin-right: 0px !important;
+                    font-size: 1.3em !important;
                 }
             }
 
-            .button-box {
-                input {
-                    border: 0;
-                    background: none;
-                    display: block;
-                    margin: auto;
-                    margin-top: 60px;
-                    text-align: center;
-                    border: 2px solid #7b77ff;
-                    padding: 7px 60px;
-                    outline: none;
-                    color: black;
-                    border-radius: 50px;
-                    transition: 0.25s;
-                    cursor: pointer;
-                    font-size: 1.1em;
-                }
-
-                input[type="submit"]:hover {
-                    background: #7b77ff;
-                }
+            .delete-account:hover {
             }
-        }
-
-        .divider {
-            position: relative;
-            top: 60px;
-            text-align: center;
-            width: 45%;
-            margin: auto;
-        }
-
-        .delete-account {
-            cursor: pointer;
-            position: relative;
-            top: 120px;
-            display: inline-flex;
-            color: rgba(250, 4, 4, 0.411);
-
-            p {
-                font-size: 1.2em;
-            }
-
-            .icon-delete {
-                margin-right: 5px;
-            }
-        }
-
-        .delete-account:hover {
-            color: rgb(250, 4, 4);
         }
     }
 }

@@ -50,3 +50,9 @@
 // ::placeholder{
 //     margin: 10px;
 // }
+
+@media screen and (max-width: 992px) {
+    .cicle{
+        display: none !important;
+    }
+}
