@@ -19,7 +19,7 @@
     }
 
     main {
-        height: 100vh;
+        height: calc(100vh - 80px);
         width: 100vw;
         display: grid;
         grid-template-rows: 1fr 8fr;
@@ -28,7 +28,17 @@
     .content-text {
         //    background: lightcoral;
         text-align: center;
-    //    background: lightcoral;
+        //    background: lightcoral;
+        .text {
+            // background: lightcyan;
+            position: relative;
+            transition: 0.25s;
+            margin: auto;
+            margin-top: 30px;
+            width: 45%;
+            height: auto;
+            font-size: 3em;
+        }
     }
 
     .profile-box {
@@ -37,22 +47,20 @@
     }
 }
 
-.text {
-   // background: lightcyan;
-    position: relative;
-    margin: auto;
-    margin-top: 30px;
-    width: 45%;
-    height: auto;
-    font-size: 3em;
-}
-
 // ::placeholder{
 //     margin: 10px;
 // }
 
 @media screen and (max-width: 992px) {
-    .cicle{
+    .cicle {
         display: none !important;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .content-text {
+        .text {
+            font-size: 1.7em !important;
+        }
     }
 }
