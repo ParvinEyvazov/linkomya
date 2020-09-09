@@ -1,129 +1,353 @@
-.background {
+.page {
     position: fixed;
     top: 80px;
     right: 0;
     left: 0;
-}
-
-.cicle {
-    position: fixed;
-    left: -75px;
-    bottom: -100px;
-    background: #7b77ff;
-    border-radius: 50%;
-    width: 280px;
-    height: 280px;
-    z-index: -100;
-}
-
-.page {
     height: calc(100vh - 80px);
     overflow: auto;
     width: 100vw;
     // background: lightslategray;
-}
 
-main {
-    // background: lightskyblue;
-    text-align: center;
-}
-
-.background-image {
-    //background: lightsalmon;
-    .back-image {
-        position: relative;
-        width: 70%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 0px 0px 50px 50px;
-    }
-}
-.profile-photo {
-    position: relative;
-    top: -75px;
-    margin: auto;
-    width: 200px;
-    height: 200px;
-    //background: mediumaquamarine;
-
-    .photo {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    .cicle {
+        transition: 0.25s;
+        position: fixed;
+        left: -75px;
+        bottom: -100px;
+        background: #7b77ff;
         border-radius: 50%;
-        border: 1px solid rgba(0, 0, 0, 0.61);
+        width: 280px;
+        height: 280px;
+        z-index: -100;
+    }
+
+    main {
+        // background: lightskyblue;
+        text-align: center;
+
+        .background-image {
+            //background: lightsalmon;
+            .back-image {
+                transition: 0.25s;
+                position: relative;
+                width: 70%;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 0px 0px 50px 50px;
+            }
+        }
+
+        .profile-photo {
+            transition: 0.25s;
+            position: relative;
+            top: -75px;
+            margin: auto;
+            width: 200px;
+            height: 200px;
+            //background: mediumaquamarine;
+
+            .photo {
+                transition: 0.25s;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 50%;
+                border: 1px solid rgba(0, 0, 0, 0.61);
+            }
+        }
+
+        .information {
+            transition: 0.25s;
+            position: relative;
+            top: -60px;
+            display: list-item;
+
+            // background: moccasin;
+
+            .name {
+                transition: 0.25s;
+                // background: cornflowerblue;
+                span {
+                    margin-left: 50px;
+                    display: inline-flex;
+                    font-size: 4.2em;
+                    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+                }
+                .icon-verify {
+                    margin-left: 10px;
+                    color: rgb(4, 245, 4);
+                }
+            }
+
+            .country {
+                transition: 0.25s;
+                //background: cornflowerblue;
+
+                p {
+                    display: inline-flex;
+                    font-size: 1.2em;
+                    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+                    margin: 0;
+                    margin-top: 15px;
+                }
+                .icon-place {
+                    font-size: 1em;
+                }
+            }
+
+            .job {
+                transition: 0.25s;
+                //background: darkgreen;
+
+                p {
+                    display: inline-flex;
+                    font-size: 1.2em;
+                    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+                    margin: 0;
+                }
+                .icon-job {
+                    font-size: 1em;
+                }
+            }
+        }
+
+        .divider {
+            transition: 0.25s;
+            position: relative;
+            top: -50px;
+            width: 30%;
+        }
+
+        .links {
+            transition: 0.25s;
+            position: relative;
+            top: -50px;
+            margin: auto;
+            //background: lightpink;
+            width: 30%;
+
+            .box {
+                transition: 0.25s;
+                float: inline-start;
+                margin: 10px;
+                display: inline-table;
+                //    background: black;
+                width: 120px;
+            }
+        }
     }
 }
 
-.information {
-    position: relative;
-    top: -60px;
-    display: list-item;
+@media screen and (max-width: 992px) {
+    .page {
+        // background: lightslategray;
 
-    // background: moccasin;
-
-    .name {
-        // background: cornflowerblue;
-        h1 {
-            margin-left: 50px;
-            display: inline-flex;
-            font-size: 4.2em;
-            font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        .cicle {
+            left: -15px !important;
+            bottom: -20px !important;
+            width: 70px !important;
+            height: 70px !important;
         }
-        .icon-verify {
-            margin-left: 10px;
-            color: rgb(4, 245, 4);
-        }
-    }
 
-    .country {
-        //background: cornflowerblue;
+        main {
+            // background: lightskyblue;
+            text-align: center;
 
-        p {
-            display: inline-flex;
-            font-size: 1.2em;
-            font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-            margin: 0;
-            margin-top: 5px;
-        }
-        .icon-place {
-            font-size: 1em;
-        }
-    }
+            .background-image {
+                //background: lightsalmon;
+                .back-image {
+                    width: 100% !important;
+                    height: 150px !important;
+                    border-radius: 0px 0px 20px 20px !important;
+                }
+            }
 
-    .job {
-        //background: darkgreen;
+            .profile-photo {
+                //background: mediumaquamarine;
+                top: -50px !important;
+                width: 110px !important;
+                height: 110px !important;
 
-        p {
-            display: inline-flex;
-            font-size: 1.2em;
-            font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-            margin: 0;
-        }
-        .icon-job {
-            font-size: 1em;
+                .photo {
+                }
+            }
+
+            .information {
+                // background: moccasin;
+                top: -40px !important;
+
+                .name {
+                    // background: cornflowerblue;
+                    span {
+                        margin-left: 30px !important;
+                        font-size: 2em !important;
+                    }
+                    .icon-verify {
+                        margin-left: 2px !important;
+                        font-size: 1em !important;
+                    }
+                }
+
+                .country {
+                    position: relative;
+                    top: -5px;
+                    //background: cornflowerblue;
+
+                    p {
+                        font-size: 0.8em !important;
+                        margin: 0 !important;
+                        margin-top: 0px !important;
+                    }
+                    .icon-place {
+                        font-size: 0.7em !important;
+                    }
+                }
+
+                .job {
+                    position: relative !important;
+                    top: -20px !important;
+                    //background: darkgreen;
+
+                    p {
+                        font-size: 0.8em !important;
+                        margin: 0 !important;
+                        margin-top: -90px !important;
+                    }
+                    .icon-job {
+                        font-size: 0.7em !important;
+                    }
+                }
+            }
+
+            .divider {
+                top: -60px !important;
+                width: 50% !important;
+            }
+
+            .links {
+                width: 50% !important;
+                .box {
+                }
+            }
         }
     }
 }
 
-.divider {
-    position: relative;
-    top: -50px;
-    width: 30%;
+@media screen and (max-width: 767px) {
+    .page {
+        // background: lightslategray;
+
+        main {
+            // background: lightskyblue;
+            text-align: center;
+
+            .background-image {
+                //background: lightsalmon;
+                .back-image {
+                }
+            }
+
+            .profile-photo {
+                .photo {
+                }
+            }
+
+            .information {
+                .name {
+                    // background: cornflowerblue;
+                    span {
+                    }
+                    .icon-verify {
+                    }
+                }
+
+                .country {
+                    //background: cornflowerblue;
+
+                    p {
+                    }
+                    .icon-place {
+                    }
+                }
+
+                .job {
+                    //background: darkgreen;
+
+                    p {
+                    }
+                    .icon-job {
+                    }
+                }
+            }
+
+            .divider {
+                width: 60% !important;
+            }
+
+            .links {
+                width: 60% !important;
+                .box {
+                }
+            }
+        }
+    }
 }
 
-.links {
-    position: relative;
-    top: -50px;
-    margin: auto;
-    //  background: lightpink;
-    width: 30%;
+@media screen and (max-width: 575px) {
+    .page {
+        // background: lightslategray;
 
-    .box {
-        float: inline-start;
-        margin: 10px;
-        display: inline-table;
-        //    background: black;
-        width: 120px;
+        main {
+            // background: lightskyblue;
+            text-align: center;
+
+            .background-image {
+                //background: lightsalmon;
+                .back-image {
+                }
+            }
+
+            .profile-photo {
+                .photo {
+                }
+            }
+
+            .information {
+                .name {
+                    // background: cornflowerblue;
+                    span {
+                    }
+                    .icon-verify {
+                    }
+                }
+
+                .country {
+                    //background: cornflowerblue;
+
+                    p {
+                    }
+                    .icon-place {
+                    }
+                }
+
+                .job {
+                    //background: darkgreen;
+
+                    p {
+                    }
+                    .icon-job {
+                    }
+                }
+            }
+
+            .divider {
+                width: 80% !important;
+            }
+
+            .links {
+                width: 80% !important;
+                .box {
+                }
+            }
+        }
     }
 }
