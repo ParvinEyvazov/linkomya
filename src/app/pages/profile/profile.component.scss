@@ -278,6 +278,7 @@
         margin: auto;
         text-align: center;
         font-size: 2em;
+        transition: 0.25s;
     }
 
     mat-divider {
@@ -291,6 +292,7 @@
         .title {
             font-size: 1.1em;
             margin-left: 5%;
+            transition: 0.25s;
         }
 
         .select-box {
@@ -518,7 +520,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: calc(100vh - 80px);
+    height: 100vh;
     transition: visibility 0s linear 0.5s, opacity 0.5s linear;
     opacity: 0;
     visibility: hidden;
@@ -542,7 +544,7 @@
         margin: 0 auto;
         top: 50%;
         transform: translateY(-50%);
-        width: 40%;
+        width: 30%;
         max-height: 800px;
         border-radius: 50px;
         /*border: 1px solid #969696;*/
@@ -755,6 +757,14 @@
     }
 }
 
+@media screen and (max-width: 1350px) {
+    #dialog {
+        #dlg-wrap {
+            width: 40% !important;
+        }
+    }
+}
+
 @media screen and (max-width: 992px) {
     .page {
         main {
@@ -909,32 +919,44 @@
 
     .add-content {
         .page-title {
-        }
-
-        mat-divider {
+            font-size: 1.5em !important;
         }
 
         .select {
-
             .title {
+                font-size: 0.9em !important;
             }
 
             .select-box {
+                .select-box__list {
+                    .select-box__option {
+                        .circle {
+                            height: 25px !important;
+                            width: 25px !important;
+                        }
+                        p {
+                            font-size: 1rem;
+                        }
+                    }
+                }
             }
         }
 
         .profile-link {
             .title {
+                font-size: 0.9em !important;
             }
 
             .link-field {
                 input {
+                    font-size: 1em !important;
                 }
             }
         }
 
         .button-box {
             input {
+                font-size: 1em !important;
             }
 
             input[type="submit"]:hover {
@@ -942,12 +964,18 @@
         }
 
         .delete-account {
-
             p {
+                font-size: 1em !important;
             }
         }
 
         .delete-account:hover {
+        }
+    }
+
+    .select-box__input-text {
+        p {
+            font-size: 1.1rem !important;
         }
     }
 }
