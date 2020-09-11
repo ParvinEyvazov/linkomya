@@ -522,6 +522,38 @@
     transition: visibility 0s linear 0.5s, opacity 0.5s linear;
     opacity: 0;
     visibility: hidden;
+
+    #dlg-back {
+        position: absolute;
+        overflow-x: hidden;
+        top: 0;
+        left: 0;
+        width: 100%;
+        width: 100vw;
+        height: 100vh;
+        cursor: pointer;
+    }
+
+    #dlg-wrap {
+        position: relative;
+        z-index: 1;
+        display: block;
+        box-sizing: border-box;
+        margin: 0 auto;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40%;
+        max-height: 800px;
+        border-radius: 50px;
+        /*border: 1px solid #969696;*/
+        background: #fff;
+        box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        overflow: hidden;
+        transition: all 0.5s;
+    }
 }
 
 .dialog_state {
@@ -537,42 +569,10 @@
     visibility: visible;
 }
 
-#dlg-back {
-    position: absolute;
-    overflow-x: hidden;
-    top: 0;
-    left: 0;
-    width: 100%;
-    width: 100vw;
-    height: calc(100vh - 80px);
-    cursor: pointer;
-}
-
 .dialog_state:checked + #dialog #dlg-wrap {
     max-height: 80vh;
     opacity: 1;
     padding: 2rem;
-}
-
-#dlg-wrap {
-    position: relative;
-    z-index: 1;
-    display: block;
-    box-sizing: border-box;
-    margin: 0 auto;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-    max-height: 800px;
-    border-radius: 50px;
-    /*border: 1px solid #969696;*/
-    background: #fff;
-    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    overflow: hidden;
-    transition: all 0.5s;
 }
 
 #dlg-close {
@@ -900,6 +900,56 @@
             }
         }
     }
+
+    #dialog {
+        #dlg-wrap {
+            width: 60% !important;
+        }
+    }
+
+    .add-content {
+        .page-title {
+        }
+
+        mat-divider {
+        }
+
+        .select {
+
+            .title {
+            }
+
+            .select-box {
+            }
+        }
+
+        .profile-link {
+            .title {
+            }
+
+            .link-field {
+                input {
+                }
+            }
+        }
+
+        .button-box {
+            input {
+            }
+
+            input[type="submit"]:hover {
+            }
+        }
+
+        .delete-account {
+
+            p {
+            }
+        }
+
+        .delete-account:hover {
+        }
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -991,6 +1041,15 @@
             }
         }
     }
+
+    #dialog {
+        #dlg-back {
+        }
+
+        #dlg-wrap {
+            width: 80% !important;
+        }
+    }
 }
 
 @media screen and (max-width: 575px) {
@@ -1080,6 +1139,15 @@
                     }
                 }
             }
+        }
+    }
+
+    #dialog {
+        #dlg-back {
+        }
+
+        #dlg-wrap {
+            width: 90% !important;
         }
     }
 }
