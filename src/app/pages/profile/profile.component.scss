@@ -1078,6 +1078,79 @@
             width: 80% !important;
         }
     }
+
+    .icon-title {
+        height: 25px !important;
+        width: 25px !important;
+    }
+
+    .edit-link-content {
+        .title {
+            padding-top: 15px !important;
+            padding-bottom: 15px !important ;
+            font-size: 1.3em !important;
+        }
+
+        .previous-link {
+            .previous-title {
+                font-size: 0.9em !important;
+            }
+
+            .link-field {
+                input {
+                    padding: 14px !important;
+                    font-size: 1em !important;
+                }
+
+                .copy-button {
+                }
+            }
+        }
+
+        .new-link {
+            margin: 0px 8% 15px 8%;
+            .new-title {
+                font-size: 0.9em !important;
+            }
+            .link-field {
+                input {
+                    padding: 14px !important;
+                    font-size: 1em !important;
+                }
+            }
+        }
+
+        .button-box {
+            input {
+                margin-top: 20px !important;
+                font-size: 1em !important;
+            }
+
+            input[type="submit"]:hover {
+            }
+        }
+
+        .delete-account {
+            margin-top: 20px !important;
+            p {
+                font-size: 1em !important;
+            }
+        }
+        .delete-account:hover {
+        }
+
+        mat-divider {
+        }
+
+        .delete-button {
+            margin-top: 10px;
+            mat-icon {
+            }
+
+            mat-icon:hover {
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 575px) {
