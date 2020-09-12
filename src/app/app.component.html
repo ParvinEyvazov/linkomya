@@ -33,17 +33,20 @@
       </button>
       <mat-menu class="menu-dropdown" #appMenu="matMenu">
         <button mat-menu-item [routerLink]="['/profile']">
-          <mat-icon style="color: #7c77ff8a;">account_circle</mat-icon>Profile
+          <mat-icon style="color: #7c77ff8a;">account_circle</mat-icon><span class="menu-text">Profile</span>
         </button>
         <button mat-menu-item [routerLink]="['favorites']">
-          <mat-icon style="color: rgba(255, 0, 0, 0.507);">favorites</mat-icon>Favorites
+          <mat-icon style="color: rgba(255, 0, 0, 0.507);">favorites</mat-icon><span class="menu-text">Favorites</span>
+          
         </button>
         <button mat-menu-item [routerLink]="['/settings']">
-          <mat-icon style="color: black;">settings</mat-icon>Settings
+          <mat-icon style="color: black;">settings</mat-icon><span class="menu-text">Settings</span>
+          
         </button>
         <mat-divider></mat-divider>
         <button mat-menu-item [routerLink]="['']">
-          <mat-icon style="color: black;">subdirectory_arrow_left</mat-icon>Log out
+          <mat-icon style="color: black;">subdirectory_arrow_left</mat-icon><span class="menu-text">Log out</span>
+         
         </button>
       </mat-menu>
     </div>

@@ -67,6 +67,8 @@
                 transition: 0.25s;
                 // background: cornflowerblue;
                 span {
+                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+                        "Open Sans", "Helvetica Neue", sans-serif !important;
                     margin-left: 50px;
                     display: inline-flex;
                     font-size: 4.2em;
@@ -85,7 +87,8 @@
                 p {
                     display: inline-flex;
                     font-size: 1.2em;
-                    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+                        "Open Sans", "Helvetica Neue", sans-serif !important;
                     margin: 0;
                     margin-top: 15px;
                 }
@@ -101,8 +104,9 @@
                 p {
                     display: inline-flex;
                     font-size: 1.2em;
-                    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
                     margin: 0;
+                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+                        "Open Sans", "Helvetica Neue", sans-serif !important;
                 }
                 .icon-job {
                     font-size: 1em;
