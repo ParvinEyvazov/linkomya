@@ -1,7 +1,7 @@
 .card {
     cursor: pointer;
     height: 200px;
-    width: 50%;
+    width: 40%;
     border: 1px solid black;
     border-radius: 30px;
     position: relative;
@@ -88,6 +88,13 @@
         }
     }
 }
+
+@media screen and (max-width: 1350px) {
+    .card {
+        width: 50% !important;
+    }
+}
+
 @media screen and (max-width: 992px) {
     .card {
         width: 80% !important;
