@@ -65,12 +65,24 @@
     .cicle {
         display: none !important;
     }
+    .text {
+        width: 65% !important;
+        .divider {
+        }
+    }
 }
 
 @media screen and (max-width: 575px) {
     .content-text {
         .text {
             font-size: 1.7em !important;
+        }
+    }
+
+    .text {
+        width: 90% !important;
+        .divider {
+            width: 80% !important;
         }
     }
 }
