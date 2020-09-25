@@ -53,6 +53,15 @@
                 border-radius: 50%;
                 border: 1px solid rgba(0, 0, 0, 0.61);
             }
+            .icon-favorite {
+                color:  rgba(255, 0, 0, 0.507);
+                transform: 0.25s;
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                right: -25%;
+                font-size: 3em;
+            }
         }
 
         .information {

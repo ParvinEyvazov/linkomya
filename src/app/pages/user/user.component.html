@@ -12,6 +12,17 @@
             <!-- profile photo and favorites part -->
             <div class="profile-photo">
                 <img class="photo" src="../../../../assets/profile_photos/pp3.jpg">
+
+                <div (click)="makeFavorite()">
+                    <div *ngIf="isFavorite">
+                        <mat-icon class="icon-favorite">favorite</mat-icon>
+                    </div>
+                    <div *ngIf="!isFavorite">
+                        <mat-icon class="icon-favorite">favorite_border</mat-icon>
+                    </div>
+                </div>
+
+
             </div>
 
             <!-- information, bio part -->
