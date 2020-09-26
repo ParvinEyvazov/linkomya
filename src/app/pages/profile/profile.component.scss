@@ -160,42 +160,104 @@
             position: relative;
             top: -50px;
             width: 30%;
+            position: relative;
+            height: 70px;
 
-            .edit-close {
-                transition: 0.25s;
-                cursor: pointer;
-                border: 1px solid black;
-                border-radius: 50%;
-                position: relative;
-                left: 45%;
-                //background: skyblue;
-                margin: auto;
-                height: 45px;
-                width: 45px;
-                padding: 10px;
+            hr {
+                position: absolute;
+                bottom: -2px;
+                width: 100%;
+            }
 
-                img {
-                    max-width: 100%;
-                    max-height: 100%;
+            .profile-copy {
+                position: absolute;
+                left: 0;
+                .copy-button {
+                    transition: 0.25s;
+                    cursor: pointer;
+                    border: 1px solid rgba(var(--f52,142,142,142),1);
+                    border-radius: 50%;
+                    height: 45px;
+                    width: 45px;
+                    padding: 10px;
+                }
+                .copy-button:hover {
+                    background: lightgrey;
+                }
+                span {
                 }
             }
 
-            .edit-open {
-                transition: 0.25s;
-                cursor: pointer;
-                background: lightcoral;
-                border-radius: 50%;
-                position: relative;
-                left: 45%;
-                //background: skyblue;
-                margin: auto;
-                height: 45px;
-                width: 45px;
-                padding: 10px;
+            .see-profile {
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%);
+                //background: lightcoral;
+                .eye-button {
+                    transition: 0.25s;
+                    text-align: center;
+                    margin: auto;
+                    cursor: pointer;
+                    border: 1px solid rgba(var(--f52,142,142,142),1);
+                    border-radius: 50%;
+                    height: 45px;
+                    width: 45px;
+                    padding: 10px;
+                }
+                .eye-button:hover {
+                    background: lightgrey;
+                }
+                span {
+                }
+            }
 
-                img {
-                    max-width: 100%;
-                    max-height: 100%;
+            .edit-links {
+                position: absolute;
+                right: 0;
+
+                .edit-button-top {
+                    position: relative;
+                    height: 45px;
+                    .edit-close {
+                        transition: 0.25s;
+                        cursor: pointer;
+                        border: 1px solid black;
+                        border-radius: 50%;
+                        position: absolute;
+                        right: 0;
+
+                        //background: skyblue;
+                        height: 45px;
+                        width: 45px;
+                        padding: 10px;
+
+                        img {
+                            max-width: 90%;
+                            max-height: 90%;
+                        }
+                    }
+
+                    .edit-close:hover {
+                        background: lightgrey;
+                    }
+                    .edit-open {
+                        transition: 0.25s;
+                        cursor: pointer;
+                        background: lightcoral;
+                        border-radius: 50%;
+                        position: relative;
+                        //background: skyblue;
+                        position: absolute;
+                        right: 0;
+                        height: 45px;
+                        width: 45px;
+                        padding: 10px;
+
+                        img {
+                            max-width: 100%;
+                            max-height: 100%;
+                        }
+                    }
                 }
             }
         }
@@ -874,23 +936,61 @@
             .divider {
                 top: -60px !important;
                 width: 50% !important;
-                .edit-close {
-                    height: 30px !important;
-                    width: 30px !important;
-                    padding: 5px !important;
-                    img {
-                        max-width: 80% !important;
-                        max-height: 80% !important;
+                height: 55px !important;
+
+                .profile-copy {
+                    .copy-button {
+                        height: 30px !important;
+                        width: 30px !important;
+                        padding: 3px !important;
+
+                        mat-icon {
+                            padding-top: 3px !important;
+                            font-size: 1.2em !important;
+                        }
+                    }
+                    span {
+                        font-size: 0.8em !important;
                     }
                 }
 
-                .edit-open {
-                    height: 30px !important;
-                    width: 30px !important;
-                    padding: 5px !important;
-                    img {
-                        max-width: 80% !important;
-                        max-height: 80% !important;
+                .see-profile {
+                    .eye-button {
+                        height: 30px !important;
+                        width: 30px !important;
+                        padding: 5px !important;
+                    }
+                    span {
+                        font-size: 0.8em !important;
+                    }
+                }
+
+                .edit-links {
+                    .edit-button-top {
+                        height: 30px !important;
+                        .edit-close {
+                            height: 30px !important;
+                            width: 30px !important;
+                            padding: 5px !important;
+
+                            img {
+                                max-width: 80% !important;
+                                max-height: 80% !important;
+                            }
+                        }
+                        .edit-open {
+                            height: 30px !important;
+                            width: 30px !important;
+                            padding: 5px !important;
+
+                            img {
+                                max-width: 80% !important;
+                                max-height: 80% !important;
+                            }
+                        }
+                    }
+                    span {
+                        font-size: 0.8em !important;
                     }
                 }
             }

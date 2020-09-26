@@ -187,9 +187,36 @@
 
             <!-- divider -->
             <div class="divider">
-                <div [ngClass]="{'edit-close' : edit_open==false, 'edit-open' : edit_open==true}"
-                    (click)="changeEditState()">
-                    <img src="../../../../assets/social_media_icons/edit.svg">
+                <div class="row">
+
+                    <div class="profile-copy">
+                        <div class="copy-button">
+                            <mat-icon>content_copy</mat-icon>
+                        </div>
+                        <span>Copy profile link</span>
+                    </div>
+
+                    <div class="see-profile">
+                        <div class="eye-button">
+                            <img src="../../../../assets/social_media_icons/eye.svg">
+                        </div>
+                        <span>Look from outside</span>
+                    </div>
+
+
+                    <div class="edit-links">
+                        <div class="edit-button-top">
+                            <div [ngClass]="{'edit-close' : edit_open==false, 'edit-open' : edit_open==true}"
+                                (click)="changeEditState()">
+                                <img src="../../../../assets/social_media_icons/edit.svg">
+                            </div>
+                        </div>
+                        <span>Edit links</span>
+                    </div>
+
+
+
+
                 </div>
                 <hr>
             </div>
