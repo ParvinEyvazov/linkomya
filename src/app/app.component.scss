@@ -12,7 +12,8 @@
     cursor: pointer;
     outline: none;
     position: absolute;
-    left: 30px;
+    left: 5%;
+    width: 135px;
     color: black;
     font-size: 25px;
     transition: 0.25s;
@@ -180,7 +181,8 @@
 
 @media screen and (max-width: 767px) {
     .logo-text {
-        font-size: 20px;
+        left: 5%;
+        width: 100px !important;
     }
     .account_button {
         font-size: 10px;

@@ -1,6 +1,8 @@
 <!-- Toolbar -->
 <div class="toolbar">
-  <span class="logo-text" [routerLink]="['']">.linkomya</span>
+  <span class="logo-text" [routerLink]="['']">
+    <img src="../assets/logo/logo.svg">
+  </span>
 
   <div class="tools">
 
@@ -37,16 +39,16 @@
         </button>
         <button mat-menu-item [routerLink]="['favorites']">
           <mat-icon style="color: rgba(255, 0, 0, 0.507);">favorites</mat-icon><span class="menu-text">Favorites</span>
-          
+
         </button>
         <button mat-menu-item [routerLink]="['/settings']">
           <mat-icon style="color: black;">settings</mat-icon><span class="menu-text">Settings</span>
-          
+
         </button>
         <mat-divider></mat-divider>
         <button mat-menu-item [routerLink]="['']">
           <mat-icon style="color: black;">subdirectory_arrow_left</mat-icon><span class="menu-text">Log out</span>
-         
+
         </button>
       </mat-menu>
     </div>
