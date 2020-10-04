@@ -1,25 +1,53 @@
 <div>
-    <div class="page">
-        <main>
+  <div class="page">
+    <main>
+      <div class="row">
+        <div class="col-4 image-part">
+          <img class="image" src="../../../../assets/sign-in.png" />
+          <div class="circle"></div>
+        </div>
 
-            <div class="row">
-                <div class="col-4 image-part">
-                    <img class="image" src="../../../../assets/sign-in.png">
-                    <div class="circle"></div>
-                </div>
-
-                <!-- LOG IN FORM -->
-                <div class="col-12 col-lg-7 form">
-                    <form class="box" action="" method="post">
-                        <h1>Sign in</h1>
-                        <input type="text" name="email" placeholder="email">
-                        <input type="password" name="password" placeholder="password">
-                        <input type="submit" name="submit" value="login">
-                        <h2>or</h2>
-                        <a [routerLink]="['/sign-up']">not a member?</a>
-                    </form>
-                </div>
+        <!-- LOG IN FORM -->
+        <div class="col-12 col-lg-7 form">
+          <form class="box" action="" method="post" #form="ngForm">
+            <h1>Sign in</h1>
+            <input
+              [(ngModel)]="login_email"
+              type="text"
+              name="email"
+              placeholder="email"
+              required
+            />
+            <input
+              [(ngModel)]="login_password"
+              type="password"
+              name="password"
+              placeholder="password"
+              required
+            />
+            <span *ngIf="true" class="error">{{ error_message }}</span>
+            <input
+              *ngIf="!login_progress"
+              [disabled]="!form.valid"
+              (click)="login()"
+              type="submit"
+              name="submit"
+              value="login"
+            />
+            <div class="spinner" *ngIf="login_progress">
+              <mat-spinner [diameter]="25"></mat-spinner>
             </div>
-        </main>
-    </div>
+            <h2>or</h2>
+            <a class="forgot-password" [routerLink]="['/sign-up']"
+              >Forgotten password?
+            </a>
+            <span style="margin: 0"> | </span>
+            <a class="create-account" [routerLink]="['/sign-up']">
+              Create New Account</a
+            >
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
 </div>

@@ -9,20 +9,25 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 
-const routes: Routes = [
-  { path: "", component: LandingPageComponent },
-  { path: "sign-in", component: SignInComponent },
-  { path: "sign-up", component: SignUpComponent },
-  { path: "search", component: SearchPageComponent },
-  { path: "user", component: UserComponent },
-  { path: "profile", component: ProfileComponent },
-  { path: "favorites", component: FavoritesComponent },
-  { path: "settings", component: SettingsComponent },
+import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 
+const routes: Routes = [
+  { path: '', component: LandingPageComponent },
+  { path: 'sign-in', component: SignInComponent },
+  { path: 'sign-up', component: SignUpComponent },
+  { path: 'search', component: SearchPageComponent },
+  { path: 'user', component: UserComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  {
+    path: 'favorites',
+    component: FavoritesComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
