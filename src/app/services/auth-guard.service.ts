@@ -10,11 +10,9 @@ export class AuthGuardService {
 
   canActivate(): boolean {
     if (!this.auth.isAuthenticated()) {
-      console.log('not authenticated');
       this.router.navigate(['/']);
       return false;
     } else {
-      console.log('is authenticated!');
       return true;
     }
   }

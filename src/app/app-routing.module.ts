@@ -10,10 +10,11 @@ import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
-  { path: 'sign-in', component: SignInComponent },
+  { path: 'sign-in', component: SignInComponent, canLoad: [!AuthGuard] },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'search', component: SearchPageComponent },
   { path: 'user', component: UserComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

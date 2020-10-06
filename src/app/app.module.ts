@@ -30,6 +30,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TokenInterceptor } from './services/interceptor';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { TokenInterceptor } from './services/interceptor';
     ProfileComponent,
     FavoritesComponent,
     SettingsComponent,
+    NotFoundComponent,
   ],
   imports: [
     MatIconModule,

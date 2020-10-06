@@ -4,14 +4,6 @@ import { environment } from '../../environments/environment';
 import { AuthResult, JWT_AUTH } from '../interfaces/auth';
 import { tap } from 'rxjs/operators';
 
-// jwt_auth: {
-//   jwt_token: token,
-//   expire: 720
-// },
-// user_id: user._id,
-// fullname: user.fullname,
-// username: user.username
-
 @Injectable({
   providedIn: 'root',
 })
@@ -68,6 +60,7 @@ export class AuthService {
     localStorage.removeItem('expire');
     localStorage.removeItem('user_id');
     localStorage.removeItem('username');
+    localStorage.removeItem('fullname');
     this.http
       .post(
         `${environment.url}fn-execute/logout`,

@@ -4,6 +4,7 @@ import {
   HttpHandler,
   HttpEvent,
 } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
@@ -17,7 +18,7 @@ export class TokenInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const headers = {
-      Authorization: 'APIKEY 405opg1kfvo5ie1',
+      Authorization: `APIKEY ${environment.public_api_key}`,
     };
 
     if (this.authService.token) {
