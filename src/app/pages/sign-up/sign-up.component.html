@@ -1,29 +1,106 @@
 <div>
-    <div class="page">
+  <div class="page">
+    <main>
+      <div class="row">
+        <div class="col-4 image-part">
+          <img class="image" src="../../../../assets/sign-up.png" />
+          <div class="circle"></div>
+        </div>
 
-        <main>
-            <div class="row">
-                <div class="col-4 image-part">
-                    <img class="image" src="../../../../assets/sign-up.png">
-                    <div class="circle"></div>
-                </div>
+        <!-- REGISTER FORM -->
+        <div class="col-12 col-lg-7 form">
+          <form
+            *ngIf="first_step"
+            class="box"
+            action=""
+            method="post"
+            #form="ngForm"
+          >
+            <h1>Sign up</h1>
+            <input
+              [(ngModel)]="register_fullname"
+              type="text"
+              id="name"
+              name="name"
+              placeholder="full name"
+              required
+            />
+            <input
+              [(ngModel)]="register_email"
+              type="text"
+              name="email"
+              placeholder="email"
+              required
+            />
+            <input
+              [(ngModel)]="register_password1"
+              type="password"
+              name="password"
+              placeholder="password"
+              required
+            />
+            <input
+              [(ngModel)]="register_password2"
+              type="password"
+              name="password"
+              placeholder="re-enter password"
+              required
+            />
+            <span class="error">{{ error_message }}</span>
+            <input
+              *ngIf="!register_progress"
+              (click)="registerSendInfo()"
+              [disabled]="!form.valid"
+              type="submit"
+              name="submit"
+              value="register"
+            />
 
-                <!-- REGISTER FORM -->
-                <div class="col-12 col-lg-7 form">
-
-                    <form class="box" action="" method="post">
-                        <h1>Sign up</h1>
-                        <input type="text" id="name" name="name" placeholder="full name">
-                        <input type="text" name="email" placeholder="email">
-                        <input type="password" name="password" placeholder="password">
-                        <input type="password" name="password" placeholder="re-enter password">
-                        <input type="submit" name="submit" value="register">
-                        <h2>or</h2>
-                        <a [routerLink]="['/sign-in']">already a member?</a>
-                    </form>
-                </div>
+            <div class="spinner" *ngIf="register_progress">
+              <mat-spinner [diameter]="25"></mat-spinner>
             </div>
 
-        </main>
-    </div>
+            <h2>or</h2>
+            <a [routerLink]="['/sign-in']">already a member?</a>
+          </form>
+
+          <!-- VALIDATE CODE FORM -->
+          <form
+            *ngIf="!first_step"
+            class="box"
+            action=""
+            method="post"
+            #formValidate="ngForm"
+          >
+            <h1>Validate code</h1>
+            <span class="success">{{ success_message }}</span>
+            <input
+              [(ngModel)]="auth_code"
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Authentication code"
+              required
+            />
+            <span class="error">{{ error_message }}</span>
+            <input
+              *ngIf="!register_progress"
+              (click)="registerValidateCode()"
+              [disabled]="!formValidate.valid"
+              type="submit"
+              name="submit"
+              value="confirm"
+            />
+
+            <div class="spinner" *ngIf="register_progress">
+              <mat-spinner [diameter]="25"></mat-spinner>
+            </div>
+
+            <h2>or</h2>
+            <a [routerLink]="['/sign-up']">go back</a>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
 </div>

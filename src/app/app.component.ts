@@ -67,4 +67,9 @@ export class AppComponent implements OnInit {
       this.titleService.setTitle('Linkomya | ' + title);
     }
   }
+
+  logout() {
+    this.authService.logout();
+    location.reload();
+  }
 }

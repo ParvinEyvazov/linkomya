@@ -27,14 +27,12 @@ export class SignInComponent implements OnInit {
       .login(this.login_email, this.login_password)
       .toPromise()
       .then((data) => {
-        console.log('success: ', data);
         this.login_progress = false;
         this.router.navigate(['/']);
       })
       .catch((error_data) => {
         this.login_progress = false;
         this.error_message = error_data.error.message;
-        console.log('error: ', error_data.error);
       });
   }
 }

@@ -53,7 +53,7 @@
           ><span class="menu-text">Settings</span>
         </button>
         <mat-divider></mat-divider>
-        <button mat-menu-item [routerLink]="['']">
+        <button mat-menu-item (click)="logout()">
           <mat-icon style="color: black">subdirectory_arrow_left</mat-icon
           ><span class="menu-text">Log out</span>
         </button>

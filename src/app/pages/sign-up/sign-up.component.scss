@@ -1,163 +1,191 @@
 .page {
-    height: calc(100vh - 80px);
-    overflow: auto;
-    overflow-x: hidden;
+  height: calc(100vh - 80px);
+  overflow: auto;
+  overflow-x: hidden;
 
-    main {
-        //  background: lightblue;
-        width: 100vw;
-        .image-part {
-            //background-color: rgb(123, 119, 255,0.2);
-            .circle {
-                position: fixed;
-                left: -150px;
-                bottom: -200px;
-                background: #7b77ff;
-                border-radius: 50%;
-                width: 550px;
-                height: 550px;
-                transition: 0.25s;
-            }
+  main {
+    //  background: lightblue;
+    width: 100vw;
+    .image-part {
+      //background-color: rgb(123, 119, 255,0.2);
+      .circle {
+        position: fixed;
+        left: -150px;
+        bottom: -200px;
+        background: #7b77ff;
+        border-radius: 50%;
+        width: 550px;
+        height: 550px;
+        transition: 0.25s;
+      }
 
-            .image {
-                position: fixed;
-                bottom: 200px;
-                left: -150px;
-                width: 650px;
-                height: auto;
-                transition: 0.25s;
-                z-index: 1;
-            }
-        }
-
-        .form {
-            z-index: 999;
-            //background: lightgreen;
-            font-family: sans-serif;
-            margin: auto;
-            margin-top: 5%;
-            transition: 0.25s;
-            .box {
-                // background: red;
-                text-align: center;
-
-                h1 {
-                    color: black;
-                    font-size: 5em;
-                    font-weight: 500;
-                    transition: 0.25s;
-                }
-                ::placeholder {
-                    color: white;
-                    font-size: 1.1em;
-                }
-
-                input[type="text"],
-                input[type="password"] {
-                    border: 0;
-                    background: none;
-                    display: block;
-                    margin: auto;
-                    margin-bottom: 10px;
-                    //text-align: center;
-                    border: 2px solid #7b77ff;
-                    background: #7b77ff;
-                    padding: 14px;
-                    width: 50%;
-                    outline: none;
-                    color: white;
-                    border-radius: 50px;
-                    transition: 0.25s;
-                    font-size: 1.1em;
-                }
-                #name {
-                    margin-top: 50px;
-                }
-
-                input[type="text"]:hover,
-                input[type="password"]:hover {
-                    width: 51%;
-                }
-
-                input[type="text"]:focus,
-                input[type="password"]:focus {
-                    width: 51%;
-                }
-
-                input[type="submit"] {
-                    border: 0;
-                    background: none;
-                    display: block;
-                    margin: 20px auto;
-                    text-align: center;
-                    border: 2px solid #7b77ff;
-                    //background: #7B77FF;
-                    padding: 7px 60px;
-                    outline: none;
-                    color: black;
-                    border-radius: 50px;
-                    transition: 0.25s;
-                    cursor: pointer;
-                    font-size: 1.1em;
-                }
-
-                input[type="submit"]:hover {
-                    background: #7b77ff;
-                }
-
-                a {
-                    cursor: pointer;
-                    font-weight: bold;
-                    font-size: 1.1em;
-                    text-decoration: none;
-                }
-                a:hover {
-                    color: #7b77ff;
-                }
-            }
-        }
+      .image {
+        position: fixed;
+        bottom: 200px;
+        left: -150px;
+        width: 650px;
+        height: auto;
+        transition: 0.25s;
+        z-index: 1;
+      }
     }
+
+    .form {
+      z-index: 999;
+      //background: lightgreen;
+      font-family: sans-serif;
+      margin: auto;
+      margin-top: 5%;
+      transition: 0.25s;
+      .box {
+        // background: red;
+        text-align: center;
+
+        h1 {
+          color: black;
+          font-size: 5em;
+          font-weight: 500;
+          transition: 0.25s;
+        }
+        ::placeholder {
+          color: white;
+          font-size: 1.1em;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+          border: 0;
+          background: none;
+          display: block;
+          margin: auto;
+          margin-bottom: 10px;
+          //text-align: center;
+          border: 2px solid #7b77ff;
+          background: #7b77ff;
+          padding: 14px;
+          width: 50%;
+          outline: none;
+          color: white;
+          border-radius: 50px;
+          transition: 0.25s;
+          font-size: 1.1em;
+        }
+        #name {
+          margin-top: 50px;
+        }
+
+        input[type="text"]:hover,
+        input[type="password"]:hover {
+          width: 51%;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+          width: 51%;
+        }
+
+        .error {
+          color: rgba(255, 0, 0, 0.507);
+          font-size: 1.1em;
+        }
+
+        .success {
+          position: relative;
+          top: 10px;
+          left: 5px;
+          right: 5px;
+          color: rgb(4, 245, 4);
+          font-size: 1.3em;
+        }
+
+        input[type="submit"] {
+          border: 0;
+          background: none;
+          display: block;
+          margin: 20px auto;
+          text-align: center;
+          border: 2px solid #7b77ff;
+          //background: #7B77FF;
+          padding: 7px 60px;
+          outline: none;
+          color: black;
+          border-radius: 50px;
+          transition: 0.25s;
+          cursor: pointer;
+          font-size: 1.1em;
+        }
+
+        input[type="submit"]:hover {
+          background: #7b77ff;
+        }
+
+        .spinner {
+          display: block;
+          margin: 20px auto;
+          mat-spinner {
+            margin: auto;
+            text-align: center;
+          }
+        }
+
+        a {
+          cursor: pointer;
+          font-weight: bold;
+          font-size: 1.1em;
+          text-decoration: none;
+        }
+        a:hover {
+          color: #7b77ff;
+        }
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 992px) {
-    .image-part {
-        //background-color: rgb(123, 119, 255,0.2);
-        .circle {
-            position: fixed;
-            left: -65px !important;
-            bottom: -85px !important;
-            width: 250px !important;
-            height: 250px !important;
-            display: none !important;
-        }
-
-        .image {
-            bottom: 50px !important;
-            left: -50px !important;
-            width: 250px !important;
-            display: none !important;
-        }
+  .image-part {
+    //background-color: rgb(123, 119, 255,0.2);
+    .circle {
+      position: fixed;
+      left: -65px !important;
+      bottom: -85px !important;
+      width: 250px !important;
+      height: 250px !important;
+      display: none !important;
     }
 
-    .form {
-        h1 {
-            font-size: 4em !important;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            font-size: 0.9em !important;
-        }
+    .image {
+      bottom: 50px !important;
+      left: -50px !important;
+      width: 250px !important;
+      display: none !important;
     }
+  }
+
+  .form {
+    h1 {
+      font-size: 4em !important;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      font-size: 0.9em !important;
+    }
+  }
 }
 
 @media screen and (max-width: 575px) {
-    .form {
-        margin-top: 15% !important;
-        input[type="text"],
-        input[type="password"] {
-            width: 85% !important;
-            font-size: 0.9em !important;
-        }
+  .form {
+    margin-top: 15% !important;
+    input[type="text"],
+    input[type="password"] {
+      width: 85% !important;
+      font-size: 0.9em !important;
     }
+
+    .success {
+      margin: auto !important;
+      font-size: 1em !important;
+    }
+  }
 }
