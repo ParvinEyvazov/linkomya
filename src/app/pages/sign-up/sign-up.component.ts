@@ -23,11 +23,7 @@ export class SignUpComponent implements OnInit {
   error_message: string;
   success_message: string;
 
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -76,6 +72,7 @@ export class SignUpComponent implements OnInit {
       .then((data) => {
         this.register_progress = false;
         this.success_message = data.message;
+        this.register_progress = true;
         setTimeout(() => {
           this.router.navigate(['sign-in']);
         }, 2000);

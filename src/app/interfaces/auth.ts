@@ -18,3 +18,11 @@ export interface RegisterSendInfoResult {
 export interface RegisterValidateCodeResult {
   [key: string]: any;
 }
+
+export interface PasswordRecoverySendCodeResult {
+  [key: string]: any;
+}
+
+export interface passwordRecoveryValidateCodeResult {
+  [key: string]: any;
+}

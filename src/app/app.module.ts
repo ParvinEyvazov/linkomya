@@ -31,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TokenInterceptor } from './services/interceptor';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { PasswordRecoveryComponent } from './pages/password-recovery/password-recovery.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     FavoritesComponent,
     SettingsComponent,
     NotFoundComponent,
+    PasswordRecoveryComponent,
   ],
   imports: [
     MatIconModule,

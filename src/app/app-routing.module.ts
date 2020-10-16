@@ -12,6 +12,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 import { LoggedInAuthGuardService as LoggedInAuthGuard } from './services/logged-in-auth-guard.service';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { PasswordRecoveryComponent } from './pages/password-recovery/password-recovery.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -23,6 +24,11 @@ const routes: Routes = [
   {
     path: 'sign-up',
     component: SignUpComponent,
+    canActivate: [LoggedInAuthGuard],
+  },
+  {
+    path: 'password-recovery',
+    component: PasswordRecoveryComponent,
     canActivate: [LoggedInAuthGuard],
   },
   { path: 'search', component: SearchPageComponent },

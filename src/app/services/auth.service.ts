@@ -4,6 +4,8 @@ import { environment } from '../../environments/environment';
 import {
   AuthResult,
   JWT_AUTH,
+  PasswordRecoverySendCodeResult,
+  passwordRecoveryValidateCodeResult,
   RegisterSendInfoResult,
   RegisterValidateCodeResult,
 } from '../interfaces/auth';
@@ -107,6 +109,44 @@ export class AuthService {
         tap((res) => {
           if (res) {
             localStorage.removeItem('trace_id');
+          }
+        })
+      );
+  }
+
+  passwordRecoverySendCode(email: string) {
+    return this.http
+      .post<PasswordRecoverySendCodeResult>(
+        `${environment.url}fn-execute/passwordRecoverySendCode`,
+        { email },
+        { withCredentials: true }
+      )
+      .pipe(
+        tap((res) => {
+          if (res) {
+            localStorage.setItem('trace_id', res.trace_id);
+            localStorage.setItem('email', email);
+          }
+        })
+      );
+  }
+
+  passwordRecoveryValidateCode(auth_code: string) {
+    let email = localStorage.getItem('email');
+    let trace_id = localStorage.getItem('trace_id');
+    return this.http
+      .post<passwordRecoveryValidateCodeResult>(
+        `${environment.url}fn-execute/passwordRecoveryValidateCode`,
+        {
+          email,
+          trace_id,
+          auth_code,
+        }
+      )
+      .pipe(
+        tap((res) => {
+          if (res) {
+            localStorage.setItem('auth_code', auth_code);
           }
         })
       );
