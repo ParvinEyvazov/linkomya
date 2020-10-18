@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import {
   AuthResult,
   JWT_AUTH,
+  passwordRecoveryChangePassword,
   PasswordRecoverySendCodeResult,
   passwordRecoveryValidateCodeResult,
   RegisterSendInfoResult,
@@ -26,6 +27,7 @@ export class AuthService {
     return !!this.token;
   }
 
+  //-----------LOGIN-----------
   login(email: string, password: string) {
     return this.http
       .post<AuthResult>(
@@ -55,13 +57,7 @@ export class AuthService {
       );
   }
 
-  private setSession(authResult: JWT_AUTH) {
-    let date = new Date();
-    date.setHours(date.getHours() + Number(authResult.expire / 60));
-    localStorage.setItem('token', authResult.jwt_token);
-    localStorage.setItem('expire', date.toISOString());
-  }
-
+  //-----------REGISTER-----------
   registerSendInfo(fullname: string, email: string, password: string) {
     return this.http
       .post<RegisterSendInfoResult>(
@@ -114,6 +110,7 @@ export class AuthService {
       );
   }
 
+  //-----------PASSWORD RECOVERY-----------
   passwordRecoverySendCode(email: string) {
     return this.http
       .post<PasswordRecoverySendCodeResult>(
@@ -152,13 +149,29 @@ export class AuthService {
       );
   }
 
+  passwordRecoveryChangePassword(password: string) {
+    let email = localStorage.getItem('email');
+    let trace_id = localStorage.getItem('trace_id');
+    let auth_code = localStorage.getItem('auth_code');
+    return this.http
+      .post<passwordRecoveryChangePassword>(
+        `${environment.url}fn-execute/passwordRecoveryChangePassword`,
+        {
+          email,
+          trace_id,
+          auth_code,
+          password,
+        }
+      )
+      .pipe(
+        tap((res) => {
+          this.cleanLocalStorage();
+        })
+      );
+  }
+
   logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('expire');
-    localStorage.removeItem('user_id');
-    localStorage.removeItem('username');
-    localStorage.removeItem('fullname');
-    localStorage.removeItem('trace_id');
+    this.cleanLocalStorage();
     this.http
       .post(
         `${environment.url}fn-execute/logout`,
@@ -166,5 +179,18 @@ export class AuthService {
         { withCredentials: true }
       )
       .toPromise();
+  }
+
+  //helper functions
+
+  private setSession(authResult: JWT_AUTH) {
+    let date = new Date();
+    date.setHours(date.getHours() + Number(authResult.expire / 60));
+    localStorage.setItem('token', authResult.jwt_token);
+    localStorage.setItem('expire', date.toISOString());
+  }
+
+  private cleanLocalStorage() {
+    localStorage.clear();
   }
 }

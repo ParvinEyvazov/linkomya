@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { MessageService } from 'src/app/services/message.service';
+import { ValidationService } from 'src/app/services/validation.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -23,42 +25,62 @@ export class SignUpComponent implements OnInit {
   error_message: string;
   success_message: string;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private message: MessageService,
+    private validator: ValidationService
+  ) {}
 
   ngOnInit(): void {}
 
   registerSendInfo() {
     this.cleanMessages();
-    this.register_progress = true;
+    this.startProgressIndicator();
 
-    if (this.register_password1 == this.register_password2) {
-      this.register_password = this.register_password1;
-      this.authService
-        .registerSendInfo(
-          this.register_fullname,
-          this.register_email,
-          this.register_password
-        )
-        .toPromise()
-        .then((data) => {
-          this.register_progress = false;
-          this.first_step = false;
-          this.trace_id = data.trace_id;
-          this.success_message = data.message;
-        })
-        .catch((error_data) => {
-          this.register_progress = false;
-          this.error_message = error_data.error.message;
-        });
+    if (this.validator.validateFullname(this.register_fullname)) {
+      if (this.validator.validateEmail(this.register_email)) {
+        if (this.validator.validatePassword(this.register_password1)) {
+          if (this.register_password1 == this.register_password2) {
+            this.register_password = this.register_password1;
+            this.authService
+              .registerSendInfo(
+                this.register_fullname,
+                this.register_email,
+                this.register_password
+              )
+              .toPromise()
+              .then((data) => {
+                this.stopProgressIndicator();
+                this.first_step = false;
+                this.trace_id = data.trace_id;
+                this.showSuccessMessage(data.message);
+              })
+              .catch((error_data) => {
+                this.stopProgressIndicator();
+                this.showErrorMessage(error_data.error.message);
+              });
+          } else {
+            this.stopProgressIndicator();
+            this.showErrorMessage(this.message.ErrorMessages.password_not_same);
+          }
+        } else {
+          this.stopProgressIndicator();
+          this.showErrorMessage(this.message.ErrorMessages.password_validation);
+        }
+      } else {
+        this.stopProgressIndicator();
+        this.showErrorMessage(this.message.ErrorMessages.email_validation);
+      }
     } else {
-      this.register_progress = false;
-      this.error_message = 'Passwords are not same.';
+      this.stopProgressIndicator();
+      this.showErrorMessage(this.message.ErrorMessages.fullname_validation);
     }
   }
 
   registerValidateCode() {
     this.cleanMessages();
-    this.register_progress = true;
+    this.startProgressIndicator();
 
     this.authService
       .registerValidateCode(
@@ -70,17 +92,33 @@ export class SignUpComponent implements OnInit {
       )
       .toPromise()
       .then((data) => {
-        this.register_progress = false;
-        this.success_message = data.message;
-        this.register_progress = true;
+        this.showSuccessMessage(data.message);
+        this.startProgressIndicator();
         setTimeout(() => {
           this.router.navigate(['sign-in']);
         }, 2000);
       })
       .catch((error_data) => {
-        this.register_progress = false;
-        this.error_message = error_data.error.message;
+        this.stopProgressIndicator();
+        this.showErrorMessage(error_data.error.message);
       });
+  }
+
+  //helper functions
+  startProgressIndicator() {
+    this.register_progress = true;
+  }
+
+  stopProgressIndicator() {
+    this.register_progress = false;
+  }
+
+  showSuccessMessage(success_message) {
+    this.success_message = success_message;
+  }
+
+  showErrorMessage(error_message) {
+    this.error_message = error_message;
   }
 
   cleanMessages() {
