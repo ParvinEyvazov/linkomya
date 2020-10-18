@@ -11,12 +11,13 @@ import {
   RegisterValidateCodeResult,
 } from '../interfaces/auth';
 import { tap } from 'rxjs/operators';
+import { EncryptionService } from './encryption.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private encryptor: EncryptionService) {}
 
   get token(): string {
     return localStorage.getItem('token');
@@ -29,6 +30,7 @@ export class AuthService {
 
   //-----------LOGIN-----------
   login(email: string, password: string) {
+    password = this.encryptor.encode(password);
     return this.http
       .post<AuthResult>(
         `${environment.url}fn-execute/login`,
@@ -59,6 +61,7 @@ export class AuthService {
 
   //-----------REGISTER-----------
   registerSendInfo(fullname: string, email: string, password: string) {
+    password = this.encryptor.encode(password);
     return this.http
       .post<RegisterSendInfoResult>(
         `${environment.url}fn-execute/registerSendCode`,
@@ -87,6 +90,7 @@ export class AuthService {
     trace_id: string,
     auth_code: string
   ) {
+    password = this.encryptor.encode(password);
     return this.http
       .post<RegisterValidateCodeResult>(
         `${environment.url}fn-execute/registerValidateCode`,
@@ -150,6 +154,7 @@ export class AuthService {
   }
 
   passwordRecoveryChangePassword(password: string) {
+    password = this.encryptor.encode(password);
     let email = localStorage.getItem('email');
     let trace_id = localStorage.getItem('trace_id');
     let auth_code = localStorage.getItem('auth_code');
