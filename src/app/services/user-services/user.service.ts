@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import * as jwt_decode from 'jwt-decode';
+import JwtDecode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserServiceService {
+export class UserService {
   private token: any;
   private fullname: any;
   private expire: any;
@@ -42,7 +42,7 @@ export class UserServiceService {
   }
 
   getUserId() {
-    let decoded_token = jwt_decode(this.token);
+    const decoded_token = JwtDecode(this.token);
     return decoded_token['_id'];
   }
 }

@@ -1,89 +1,91 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user-services/user.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-
   array: String[];
   edit_open: boolean = false;
+  new_user: boolean = true;
   socialMedias: socialMedias[];
-  socialMedia: string = "a";
+  socialMedia: string = 'a';
 
-  constructor() { }
+  constructor(private userService: UserService) {
+    console.log(userService.getUserId());
+  }
 
   ngOnInit(): void {
-    this.array = ["10", "2", "3", "4", "5", "6"];
+    this.array = ['10', '2', '3', '4', '5', '6'];
 
     this.socialMedias = [
       {
-        name: "Instagram",
+        name: 'Instagram',
         value: 0,
-        img: "../../../../assets/social_media_icons/instagram.svg"
+        img: '../../../../assets/social_media_icons/instagram.svg',
       },
       {
-        name: "Twitter",
+        name: 'Twitter',
         value: 1,
-        img: "../../../../assets/social_media_icons/twitter.svg"
+        img: '../../../../assets/social_media_icons/twitter.svg',
       },
       {
-        name: "Linkedin",
+        name: 'Linkedin',
         value: 2,
-        img: "../../../../assets/social_media_icons/linkedin.svg"
+        img: '../../../../assets/social_media_icons/linkedin.svg',
       },
       {
-        name: "Facebook",
+        name: 'Facebook',
         value: 3,
-        img: "../../../../assets/social_media_icons/facebook.svg"
+        img: '../../../../assets/social_media_icons/facebook.svg',
       },
       {
-        name: "Github",
+        name: 'Github',
         value: 4,
-        img: "../../../../assets/social_media_icons/github.svg"
+        img: '../../../../assets/social_media_icons/github.svg',
       },
       {
-        name: "Whatsapp",
+        name: 'Whatsapp',
         value: 5,
-        img: "../../../../assets/social_media_icons/whatsapp.svg"
+        img: '../../../../assets/social_media_icons/whatsapp.svg',
       },
       {
-        name: "Telegram",
+        name: 'Telegram',
         value: 6,
-        img: "../../../../assets/social_media_icons/telegram.svg"
+        img: '../../../../assets/social_media_icons/telegram.svg',
       },
       {
-        name: "Discord",
+        name: 'Discord',
         value: 7,
-        img: "../../../../assets/social_media_icons/discord.svg"
+        img: '../../../../assets/social_media_icons/discord.svg',
       },
       {
-        name: "Medium",
+        name: 'Medium',
         value: 8,
-        img: "../../../../assets/social_media_icons/medium.svg"
+        img: '../../../../assets/social_media_icons/medium.svg',
       },
       {
-        name: "Reddit",
+        name: 'Reddit',
         value: 9,
-        img: "../../../../assets/social_media_icons/reddit.svg"
+        img: '../../../../assets/social_media_icons/reddit.svg',
       },
       {
-        name: "Tiktok",
+        name: 'Tiktok',
         value: 10,
-        img: "../../../../assets/social_media_icons/tiktok.svg"
+        img: '../../../../assets/social_media_icons/tiktok.svg',
       },
       {
-        name: "Wechat",
+        name: 'Wechat',
         value: 11,
-        img: "../../../../assets/social_media_icons/wechat.svg"
+        img: '../../../../assets/social_media_icons/wechat.svg',
       },
       {
-        name: "Youtube",
+        name: 'Youtube',
         value: 12,
-        img: "../../../../assets/social_media_icons/youtube.svg"
+        img: '../../../../assets/social_media_icons/youtube.svg',
       },
-
     ];
   }
 
@@ -92,7 +94,7 @@ export class ProfileComponent implements OnInit {
   }
 
   addNewSocialMedia() {
-    console.log("ADDED NEW ONE");
+    console.log('ADDED NEW ONE');
   }
 
   openEditModal(number: string) {
@@ -113,6 +115,7 @@ export class ProfileComponent implements OnInit {
     document.body.removeChild(selBox);
   }
 
+  hasUsername() {}
 }
 
 export interface socialMedias {
