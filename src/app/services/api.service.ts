@@ -22,7 +22,23 @@ export class ApiService {
     });
   }
 
-  getBucketUrl(bucket_id) {
+  checkUsername(username) {
+    const url = this.getFunctionUrl(environment.function.check_username);
+
+    return this.http.post(url, { username });
+  }
+
+  postUsername(username) {
+    const url = this.getFunctionUrl(environment.function.post_username);
+
+    return this.http.post(url, { username });
+  }
+
+  private getBucketUrl(bucket_id) {
     return environment.url + 'bucket/' + bucket_id + 'data';
+  }
+
+  private getFunctionUrl(function_name) {
+    return environment.url + 'fn-execute/' + function_name;
   }
 }

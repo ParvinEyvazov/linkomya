@@ -31,4 +31,14 @@ export class ValidationService {
       return false;
     }
   }
+
+  validateUsername(username: string) {
+    var wrongUsernameFormat = /^[a-zA-Z0-9._]+$/;
+
+    if (wrongUsernameFormat.test(String(username).toLowerCase())) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

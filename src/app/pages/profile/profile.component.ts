@@ -1,9 +1,17 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  AfterViewInit,
+  ViewChildren,
+} from '@angular/core';
 import { UserService } from '../../services/user-services/user.service';
 import { ApiService } from '../../services/api.service';
 
 import { User } from '../../interfaces/data';
 import { debounceTime } from 'rxjs/operators';
+import { ValidationService } from 'src/app/services/validation.service';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-profile',
@@ -20,19 +28,24 @@ export class ProfileComponent implements AfterViewInit {
   socialMedia: string = 'a';
   user: User;
   username: string;
+  username_error: string;
+
+  //create user name states
+  username_check_error: boolean = false;
+  username_check_loading: boolean = false;
+  username_check_success: boolean = false;
 
   constructor(
     private userService: UserService,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private validator: ValidationService,
+    private message: MessageService
   ) {}
 
   ngAfterViewInit(): void {
-      console.log('a');
-      this.input.update.pipe(debounceTime(100)).subscribe((value) => {
-        console.log('val: ', value);
-        console.log('username: ', this.username);
-      });
-    
+    this.input.update.pipe(debounceTime(1000)).subscribe((value) => {
+      this.usernameOperation(false);
+    });
   }
 
   ngOnInit(): void {
@@ -110,7 +123,7 @@ export class ProfileComponent implements AfterViewInit {
     ];
   }
 
-  //--non-new user
+  //------------------------NON NEW USER------------------------
   changeEditState() {
     this.edit_open = !this.edit_open;
   }
@@ -137,12 +150,89 @@ export class ProfileComponent implements AfterViewInit {
     document.body.removeChild(selBox);
   }
 
-  //--new user
-  checkUserName(username) {
-    console.log(username);
+  //-------------------------NEW USER------------------------
+  private assignUsername() {
+    this.usernameOperation(true);
   }
 
-  //--api functions
+  private usernameOperation(post_username) {
+    this.clearErrorMessages();
+    this.usernameState('clear');
+
+    //check username validation
+    if (this.validator.validateUsername(this.username)) {
+      this.usernameState('loading');
+
+      this.apiService
+        .checkUsername(this.username)
+        .toPromise()
+        .then((data) => {
+          if (data == true) {
+            this.usernameState('success');
+            //post username
+            if (post_username) {
+              this.apiService
+                .postUsername(this.username)
+                .toPromise()
+                .then((data) => {
+                  //works when username posted successfully
+
+                  console.log('sended data : ', data);
+                })
+                .catch((error) => {
+                  this.showUsernameError(error.error.message);
+                  this.usernameState('error');
+                });
+            }
+          } else {
+            this.showUsernameError(this.message.ErrorMessages.used_username);
+            this.usernameState('error');
+          }
+        })
+        .catch((error) => {
+          this.showUsernameError(error.error.message);
+          this.usernameState('error');
+        });
+    } else {
+      if (this.username.length > 0) {
+        this.showUsernameError(this.message.ErrorMessages.username_validation);
+        this.usernameState('error');
+      }
+    }
+  }
+
+  private usernameState(state) {
+    switch (state) {
+      case 'error':
+        this.username_check_error = true;
+        this.username_check_loading = false;
+        this.username_check_success = false;
+        break;
+      case 'loading':
+        this.username_check_error = false;
+        this.username_check_loading = true;
+        this.username_check_success = false;
+        break;
+      case 'success':
+        this.username_check_error = false;
+        this.username_check_loading = false;
+        this.username_check_success = true;
+        break;
+      case 'clear':
+        this.username_check_error = false;
+        this.username_check_loading = false;
+        this.username_check_success = false;
+        break;
+      default:
+        break;
+    }
+  }
+
+  private showUsernameError(error_message) {
+    this.username_error = error_message;
+  }
+
+  //-------------------------API FUNCTIONS------------------------
   getUser(user_id) {
     this.apiService
       .getUser(user_id)
@@ -154,13 +244,17 @@ export class ProfileComponent implements AfterViewInit {
       });
   }
 
-  //helper common function
+  //-------------------------HELPER FUNCTIONS------------------------
   showPage(user) {
     if (user.username) {
       this.new_user = false;
     } else {
       this.new_user = true;
     }
+  }
+
+  clearErrorMessages() {
+    this.username_error = '';
   }
 }
 

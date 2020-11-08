@@ -13,6 +13,11 @@ export const environment = {
     link: '5f8df29b85c7864751fafc89/',
     favorites: '5f8df36385c786f39ffafc8b/',
   },
+
+  function: {
+    check_username: 'checkUsername',
+    post_username: 'postUsername',
+  },
 };
 
 /*
