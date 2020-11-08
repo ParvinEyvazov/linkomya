@@ -6,6 +6,13 @@ export const environment = {
   url: 'http://localhost:4500/api/',
   production: false,
   public_api_key: '405opg1kfvo5ie1',
+
+  bucket: {
+    user: '5f70766c3c717f1a0b8a4ab6/',
+    social_media: '5f8df21a85c7865453fafc87/',
+    link: '5f8df29b85c7864751fafc89/',
+    favorites: '5f8df36385c786f39ffafc8b/',
+  },
 };
 
 /*

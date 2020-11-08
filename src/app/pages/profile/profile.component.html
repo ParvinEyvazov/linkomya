@@ -1,4 +1,8 @@
-<div *ngIf="new_user">
+<div *ngIf="new_user == undefined">
+  <app-loading></app-loading>
+</div>
+
+<div >
   <div class="page">
     <div class="context">
       <span class="title"
@@ -7,7 +11,14 @@
 
       <div class="child-box">
         <p>username</p>
-        <input type="text" name="username" placeholder="username" />
+        <input
+          matInput
+          #input="ngModel"
+          [(ngModel)]="username"
+          placeholder="username"
+          type="text"
+          name="username"
+        />
         <div class="icon">
           <mat-icon *ngIf="false" class="clear">clear</mat-icon>
           <mat-spinner *ngIf="false" [diameter]="23"></mat-spinner>
@@ -22,7 +33,7 @@
   </div>
 </div>
 
-<div *ngIf="!new_user">
+<div *ngIf="new_user == false">
   <div class="page">
     <!-- ------------------ADD MORE MODAL------------------ -->
     <input

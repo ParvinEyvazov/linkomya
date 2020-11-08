@@ -1,23 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { UserService } from '../../services/user-services/user.service';
+import { ApiService } from '../../services/api.service';
+
+import { User } from '../../interfaces/data';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements AfterViewInit {
+  @ViewChild('input') input;
+
   array: String[];
   edit_open: boolean = false;
-  new_user: boolean = true;
+  new_user: boolean;
   socialMedias: socialMedias[];
   socialMedia: string = 'a';
+  user: User;
+  username: string;
 
-  constructor(private userService: UserService) {
-    console.log(userService.getUserId());
+  constructor(
+    private userService: UserService,
+    private apiService: ApiService
+  ) {}
+
+  ngAfterViewInit(): void {
+      console.log('a');
+      this.input.update.pipe(debounceTime(100)).subscribe((value) => {
+        console.log('val: ', value);
+        console.log('username: ', this.username);
+      });
+    
   }
 
   ngOnInit(): void {
+    //get user info
+    this.getUser(this.userService.getUserId());
+
     this.array = ['10', '2', '3', '4', '5', '6'];
 
     this.socialMedias = [
@@ -89,6 +110,7 @@ export class ProfileComponent implements OnInit {
     ];
   }
 
+  //--non-new user
   changeEditState() {
     this.edit_open = !this.edit_open;
   }
@@ -115,7 +137,31 @@ export class ProfileComponent implements OnInit {
     document.body.removeChild(selBox);
   }
 
-  hasUsername() {}
+  //--new user
+  checkUserName(username) {
+    console.log(username);
+  }
+
+  //--api functions
+  getUser(user_id) {
+    this.apiService
+      .getUser(user_id)
+      .toPromise()
+      .then((data) => {
+        this.user = data[0];
+
+        this.showPage(this.user);
+      });
+  }
+
+  //helper common function
+  showPage(user) {
+    if (user.username) {
+      this.new_user = false;
+    } else {
+      this.new_user = true;
+    }
+  }
 }
 
 export interface socialMedias {

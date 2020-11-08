@@ -1,0 +1,15 @@
+.page {
+  height: calc(100vh - 80px);
+  width: 100vw;
+  overflow: auto;
+  overflow-x: hidden;
+
+  .spinner {
+    position: relative;
+    top: 10%;
+
+    mat-spinner {
+      margin: auto;
+    }
+  }
+}
