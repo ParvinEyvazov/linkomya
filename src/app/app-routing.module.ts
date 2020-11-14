@@ -9,8 +9,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 
-import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
-import { LoggedInAuthGuardService as LoggedInAuthGuard } from './services/logged-in-auth-guard.service';
+import { AuthGuardService as AuthGuard } from './services/auth-services/auth-guard.service';
+import { LoggedInAuthGuardService as LoggedInAuthGuard } from './services/auth-services/logged-in-auth-guard.service';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { PasswordRecoveryComponent } from './pages/password-recovery/password-recovery.component';
 

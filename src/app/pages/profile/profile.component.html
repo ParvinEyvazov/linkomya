@@ -3,6 +3,7 @@
 </div>
 
 <!-- used hidden because of ngif viewchild err -->
+<!-- IF NEW USER (WITHOUT USERNAME) -->
 <div [hidden]="!new_user == true">
   <div class="page">
     <div class="context">
@@ -229,14 +230,14 @@
       </div>
     </div>
 
-    <!-- ---------------------------------------- -->
+    <!-- --------------------PROFILE-------------------- -->
 
     <main class="main_area">
       <div class="cicle"></div>
 
       <!-- background photo part -->
       <div class="background-image">
-        <img class="back-image" src="../../../../assets/back_photo.jpg" />
+        <img class="back-image" src="{{ user.background_photo }}" />
         <div class="edit-photo">
           <img src="../../../../assets/social_media_icons/edit.svg" />
         </div>
@@ -244,7 +245,7 @@
 
       <!-- profile photo and favorites part -->
       <div class="profile-photo">
-        <img class="photo" src="../../../../assets/profile_photos/pp6.jpg" />
+        <img class="photo" src="{{ user.profile_photo }}" />
         <div class="edit-photo">
           <img src="../../../../assets/social_media_icons/edit.svg" />
         </div>
@@ -253,20 +254,30 @@
       <!-- information, bio part -->
       <div class="information">
         <div class="name">
-          <span>Davis Miller</span>
-          <mat-icon class="icon-verify" aria-label="place"
+          <span style="text-align: center !important">{{ user.fullname }}</span>
+          <mat-icon *ngIf="user.verified" class="icon-verify" aria-label="place"
             >verified_user</mat-icon
           >
         </div>
 
         <div class="country">
-          <mat-icon class="icon-place" aria-label="place">place</mat-icon>
-          <p>Holland / Amsterdam</p>
+          <mat-icon
+            *ngIf="user.country || user.city"
+            class="icon-place"
+            aria-label="place"
+            >place</mat-icon
+          >
+          <p>
+            {{ user.country }} {{ user.city && user.country ? "/" : "" }}
+            {{ user.city }}
+          </p>
         </div>
 
         <div class="job">
-          <mat-icon class="icon-job" aria-label="place">work</mat-icon>
-          <p>Software Developer</p>
+          <mat-icon *ngIf="user.job" class="icon-job" aria-label="place"
+            >work</mat-icon
+          >
+          <p>{{ user.job }}</p>
         </div>
       </div>
 

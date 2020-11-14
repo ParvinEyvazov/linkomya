@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth-services/auth.service';
 import { ValidationService } from '../../services/validation.service';
 import { MessageService } from '../../services/message.service';
 import { Router, ActivatedRoute } from '@angular/router';

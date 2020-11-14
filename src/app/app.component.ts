@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, RoutesRecognized } from '@angular/router';
 import { Subject } from 'rxjs';
-import { AuthService } from './services/auth.service';
+import { AuthService } from './services/auth-services/auth.service';
 
 @Component({
   selector: 'app-root',

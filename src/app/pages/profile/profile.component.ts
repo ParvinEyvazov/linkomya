@@ -6,7 +6,7 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { UserService } from '../../services/user-services/user.service';
-import { ApiService } from '../../services/api.service';
+import { ApiService } from '../../services/api-services/api.service';
 
 import { User } from '../../interfaces/data';
 import { debounceTime } from 'rxjs/operators';
@@ -123,35 +123,8 @@ export class ProfileComponent implements AfterViewInit {
     ];
   }
 
-  //------------------------NON NEW USER------------------------
-  changeEditState() {
-    this.edit_open = !this.edit_open;
-  }
-
-  addNewSocialMedia() {
-    console.log('ADDED NEW ONE');
-  }
-
-  openEditModal(number: string) {
-    this.socialMedia = number;
-  }
-
-  copyMessage(val: string) {
-    const selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
-    selBox.value = val;
-    document.body.appendChild(selBox);
-    selBox.focus();
-    selBox.select();
-    document.execCommand('copy');
-    document.body.removeChild(selBox);
-  }
-
   //-------------------------NEW USER------------------------
-  private assignUsername() {
+  assignUsername() {
     this.usernameOperation(true);
   }
 
@@ -176,7 +149,8 @@ export class ProfileComponent implements AfterViewInit {
                 .toPromise()
                 .then((data) => {
                   //works when username posted successfully
-
+                  //get user info
+                  this.getUser(this.userService.getUserId());
                   console.log('sended data : ', data);
                 })
                 .catch((error) => {
@@ -232,25 +206,57 @@ export class ProfileComponent implements AfterViewInit {
     this.username_error = error_message;
   }
 
+  //------------------------NON NEW USER------------------------
+  changeEditState() {
+    this.edit_open = !this.edit_open;
+  }
+
+  addNewSocialMedia() {
+    console.log('ADDED NEW ONE');
+  }
+
+  openEditModal(number: string) {
+    this.socialMedia = number;
+  }
+
+  copyMessage(val: string) {
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = val;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+  }
+
   //-------------------------API FUNCTIONS------------------------
   getUser(user_id) {
     this.apiService
       .getUser(user_id)
       .toPromise()
       .then((data) => {
-        this.user = data[0];
-
-        this.showPage(this.user);
+        if (data) {
+          this.user = data[0];
+          this.showPage(this.user);
+        }
       });
   }
 
   //-------------------------HELPER FUNCTIONS------------------------
   showPage(user) {
     if (user.username) {
-      this.new_user = false;
+      this.isNewUser(false);
     } else {
-      this.new_user = true;
+      this.isNewUser(true);
     }
+  }
+
+  isNewUser(is_new_user) {
+    this.new_user = is_new_user;
   }
 
   clearErrorMessages() {

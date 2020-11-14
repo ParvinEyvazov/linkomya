@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import {
   AuthResult,
   JWT_AUTH,
@@ -9,9 +9,9 @@ import {
   passwordRecoveryValidateCodeResult,
   RegisterSendInfoResult,
   RegisterValidateCodeResult,
-} from '../interfaces/auth';
+} from '../../interfaces/auth';
 import { tap } from 'rxjs/operators';
-import { EncryptionService } from './encryption.service';
+import { EncryptionService } from '../encryption.service';
 
 @Injectable({
   providedIn: 'root',
