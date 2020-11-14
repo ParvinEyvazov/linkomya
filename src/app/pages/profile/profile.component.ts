@@ -8,7 +8,7 @@ import {
 import { UserService } from '../../services/user-services/user.service';
 import { ApiService } from '../../services/api-services/api.service';
 
-import { User } from '../../interfaces/data';
+import { Connection, User } from '../../interfaces/data';
 import { debounceTime } from 'rxjs/operators';
 import { ValidationService } from 'src/app/services/validation.service';
 import { MessageService } from 'src/app/services/message.service';
@@ -25,12 +25,13 @@ export class ProfileComponent implements AfterViewInit {
   edit_open: boolean = false;
   new_user: boolean;
   socialMedias: socialMedias[];
+  connections: Connection[];
   socialMedia: string = 'a';
   user: User;
   username: string;
   username_error: string;
 
-  //create user name states
+  // create user name states
   username_check_error: boolean = false;
   username_check_loading: boolean = false;
   username_check_success: boolean = false;
@@ -58,67 +59,67 @@ export class ProfileComponent implements AfterViewInit {
       {
         name: 'Instagram',
         value: 0,
-        img: '../../../../assets/social_media_icons/instagram.svg',
+        img: '../../../../assets/icons/social_media_icons/instagram.svg',
       },
       {
         name: 'Twitter',
         value: 1,
-        img: '../../../../assets/social_media_icons/twitter.svg',
+        img: '../../../../assets/icons/social_media_icons/twitter.svg',
       },
       {
         name: 'Linkedin',
         value: 2,
-        img: '../../../../assets/social_media_icons/linkedin.svg',
+        img: '../../../../assets/icons/social_media_icons/linkedin.svg',
       },
       {
         name: 'Facebook',
         value: 3,
-        img: '../../../../assets/social_media_icons/facebook.svg',
+        img: '../../../../assets/icons/social_media_icons/facebook.svg',
       },
       {
         name: 'Github',
         value: 4,
-        img: '../../../../assets/social_media_icons/github.svg',
+        img: '../../../../assets/icons/social_media_icons/github.svg',
       },
       {
         name: 'Whatsapp',
         value: 5,
-        img: '../../../../assets/social_media_icons/whatsapp.svg',
+        img: '../../../../assets/icons/social_media_icons/whatsapp.svg',
       },
       {
         name: 'Telegram',
         value: 6,
-        img: '../../../../assets/social_media_icons/telegram.svg',
+        img: '../../../../assets/icons/social_media_icons/telegram.svg',
       },
       {
         name: 'Discord',
         value: 7,
-        img: '../../../../assets/social_media_icons/discord.svg',
+        img: '../../../../assets/icons/social_media_icons/discord.svg',
       },
       {
         name: 'Medium',
         value: 8,
-        img: '../../../../assets/social_media_icons/medium.svg',
+        img: '../../../../assets/icons/social_media_icons/medium.svg',
       },
       {
         name: 'Reddit',
         value: 9,
-        img: '../../../../assets/social_media_icons/reddit.svg',
+        img: '../../../../assets/icons/social_media_icons/reddit.svg',
       },
       {
         name: 'Tiktok',
         value: 10,
-        img: '../../../../assets/social_media_icons/tiktok.svg',
+        img: '../../../../assets/icons/social_media_icons/tiktok.svg',
       },
       {
         name: 'Wechat',
         value: 11,
-        img: '../../../../assets/social_media_icons/wechat.svg',
+        img: '../../../../assets/icons/social_media_icons/wechat.svg',
       },
       {
         name: 'Youtube',
         value: 12,
-        img: '../../../../assets/social_media_icons/youtube.svg',
+        img: '../../../../assets/icons/social_media_icons/youtube.svg',
       },
     ];
   }
@@ -246,10 +247,23 @@ export class ProfileComponent implements AfterViewInit {
       });
   }
 
+  getConnections(user_id) {
+    this.apiService
+      .getConnections(user_id)
+      .toPromise()
+      .then((data) => {
+        if (data) {
+          console.log(data);
+          this.connections = data;
+        }
+      });
+  }
+
   //-------------------------HELPER FUNCTIONS------------------------
   showPage(user) {
     if (user.username) {
       this.isNewUser(false);
+      this.getConnections(user._id);
     } else {
       this.isNewUser(true);
     }

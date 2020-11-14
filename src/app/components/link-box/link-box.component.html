@@ -1,13 +1,18 @@
-<a href="https://www.instagram.com/" target="_blank">
-    <div class="box">
-
-        <div class="circle">
-            <img src="../../../../assets/social_media_icons/discord.svg">
-        </div>
-
-        <div class="link-name">
-            <h1>Instagram</h1>
-        </div>
-
+<a href="{{ connection.link }}" target="_blank">
+  <div class="box">
+    <div
+      class="circle"
+      style="background:{{ connection.social_media.icon_background_color }}10;"
+    >
+      <img
+        src="../../../../assets/icons/social_media_icons/{{
+          connection.social_media.icon_name
+        }}.svg"
+      />
     </div>
+
+    <div class="link-name">
+      <h1>{{ connection.social_media.name }}</h1>
+    </div>
+  </div>
 </a>

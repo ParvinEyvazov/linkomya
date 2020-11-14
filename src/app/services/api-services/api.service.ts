@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { User } from '../../interfaces/data';
+import { Connection, User } from '../../interfaces/data';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +18,22 @@ export class ApiService {
     return this.http.get<User[]>(url, {
       params: {
         filter: JSON.stringify(filter),
+      },
+    });
+  }
+
+  getConnections(user_id) {
+    const filter = {
+      'user._id': user_id,
+      status: false,
+    };
+
+    const url = this.getBucketUrl(environment.bucket.connection);
+
+    return this.http.get<Connection[]>(url, {
+      params: {
+        filter: JSON.stringify(filter),
+        relation: 'true',
       },
     });
   }

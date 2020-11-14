@@ -160,7 +160,7 @@
       <div id="dlg-wrap">
         <!-- social media icon -->
         <div class="icon-title">
-          <img src="../../../../assets/social_media_icons/twitter.svg" />
+          <img src="../../../../assets/icons/social_media_icons/twitter.svg" />
         </div>
 
         <!-- content part -->
@@ -231,7 +231,6 @@
     </div>
 
     <!-- --------------------PROFILE-------------------- -->
-
     <main class="main_area">
       <div class="cicle"></div>
 
@@ -239,7 +238,7 @@
       <div class="background-image">
         <img class="back-image" src="{{ user.background_photo }}" />
         <div class="edit-photo">
-          <img src="../../../../assets/social_media_icons/edit.svg" />
+          <img src="../../../../assets/icons/social_media_icons/edit.svg" />
         </div>
       </div>
 
@@ -247,7 +246,7 @@
       <div class="profile-photo">
         <img class="photo" src="{{ user.profile_photo }}" />
         <div class="edit-photo">
-          <img src="../../../../assets/social_media_icons/edit.svg" />
+          <img src="../../../../assets/icons/social_media_icons/edit.svg" />
         </div>
       </div>
 
@@ -295,7 +294,7 @@
 
           <div class="see-profile">
             <div class="eye-button">
-              <img src="../../../../assets/social_media_icons/eye.svg" />
+              <img src="../../../../assets/icons/social_media_icons/eye.svg" />
             </div>
             <span>Look from outside</span>
           </div>
@@ -309,7 +308,9 @@
                 }"
                 (click)="changeEditState()"
               >
-                <img src="../../../../assets/social_media_icons/edit.svg" />
+                <img
+                  src="../../../../assets/icons/social_media_icons/edit.svg"
+                />
               </div>
             </div>
             <span>Edit links</span>
@@ -325,7 +326,9 @@
           <div class="box">
             <div class="child-box">
               <div class="circle">
-                <img src="../../../../assets/social_media_icons/add.svg" />
+                <img
+                  src="../../../../assets/icons/social_media_icons/add.svg"
+                />
               </div>
               <div class="link-name">
                 <h1>Add more</h1>
@@ -335,8 +338,8 @@
         </label>
 
         <!-- links -->
-        <div class="box" *ngFor="let number of array">
-          <app-link-box></app-link-box>
+        <div class="box" *ngFor="let connection of connections">
+          <app-link-box [connection]="connection"></app-link-box>
 
           <label for="dialog-${socialMedia}">
             <div
@@ -346,7 +349,7 @@
                 'edit-link-open': edit_open == true
               }"
             >
-              <img src="../../../../assets/social_media_icons/edit.svg" />
+              <img src="../../../../assets/icons/social_media_icons/edit.svg" />
             </div>
           </label>
         </div>
