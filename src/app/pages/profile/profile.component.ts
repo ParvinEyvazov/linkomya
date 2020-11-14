@@ -8,10 +8,12 @@ import {
 import { UserService } from '../../services/user-services/user.service';
 import { ApiService } from '../../services/api-services/api.service';
 
-import { Connection, User } from '../../interfaces/data';
+import { Connection, SocialMedia, User } from '../../interfaces/data';
 import { debounceTime } from 'rxjs/operators';
 import { ValidationService } from 'src/app/services/validation.service';
 import { MessageService } from 'src/app/services/message.service';
+import { SocialMediaService } from 'src/app/services/social-media-services/social-media.service';
+import { FormControl, FormGroup, ControlContainer } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -24,9 +26,16 @@ export class ProfileComponent implements AfterViewInit {
   array: String[];
   edit_open: boolean = false;
   new_user: boolean;
-  socialMedias: socialMedias[];
+
+  all_social_media: SocialMedia[];
   connections: Connection[];
   socialMedia: string = 'a';
+  new_connection_link: string;
+
+  selectedSocialMediaToAdd;
+
+  dialog_state_add_connection: boolean = false;
+
   user: User;
   username: string;
   username_error: string;
@@ -40,7 +49,8 @@ export class ProfileComponent implements AfterViewInit {
     private userService: UserService,
     private apiService: ApiService,
     private validator: ValidationService,
-    private message: MessageService
+    private message: MessageService,
+    private socialMediaService: SocialMediaService
   ) {}
 
   ngAfterViewInit(): void {
@@ -55,73 +65,13 @@ export class ProfileComponent implements AfterViewInit {
 
     this.array = ['10', '2', '3', '4', '5', '6'];
 
-    this.socialMedias = [
-      {
-        name: 'Instagram',
-        value: 0,
-        img: '../../../../assets/icons/social_media_icons/instagram.svg',
-      },
-      {
-        name: 'Twitter',
-        value: 1,
-        img: '../../../../assets/icons/social_media_icons/twitter.svg',
-      },
-      {
-        name: 'Linkedin',
-        value: 2,
-        img: '../../../../assets/icons/social_media_icons/linkedin.svg',
-      },
-      {
-        name: 'Facebook',
-        value: 3,
-        img: '../../../../assets/icons/social_media_icons/facebook.svg',
-      },
-      {
-        name: 'Github',
-        value: 4,
-        img: '../../../../assets/icons/social_media_icons/github.svg',
-      },
-      {
-        name: 'Whatsapp',
-        value: 5,
-        img: '../../../../assets/icons/social_media_icons/whatsapp.svg',
-      },
-      {
-        name: 'Telegram',
-        value: 6,
-        img: '../../../../assets/icons/social_media_icons/telegram.svg',
-      },
-      {
-        name: 'Discord',
-        value: 7,
-        img: '../../../../assets/icons/social_media_icons/discord.svg',
-      },
-      {
-        name: 'Medium',
-        value: 8,
-        img: '../../../../assets/icons/social_media_icons/medium.svg',
-      },
-      {
-        name: 'Reddit',
-        value: 9,
-        img: '../../../../assets/icons/social_media_icons/reddit.svg',
-      },
-      {
-        name: 'Tiktok',
-        value: 10,
-        img: '../../../../assets/icons/social_media_icons/tiktok.svg',
-      },
-      {
-        name: 'Wechat',
-        value: 11,
-        img: '../../../../assets/icons/social_media_icons/wechat.svg',
-      },
-      {
-        name: 'Youtube',
-        value: 12,
-        img: '../../../../assets/icons/social_media_icons/youtube.svg',
-      },
-    ];
+    this.socialMediaService
+      .getAllSocialMedias()
+      .toPromise()
+      .then((data) => {
+        console.log(data);
+        this.all_social_media = data;
+      });
   }
 
   //-------------------------NEW USER------------------------
@@ -212,8 +162,19 @@ export class ProfileComponent implements AfterViewInit {
     this.edit_open = !this.edit_open;
   }
 
-  addNewSocialMedia() {
-    console.log('ADDED NEW ONE');
+  addNewConnection(event) {
+    this.dialog_state_add_connection = false;
+    console.log(event);
+    if (this.validator.validateLink(this.new_connection_link)) {
+      let social_media_id = this.selectedSocialMediaToAdd._id;
+
+      // this.apiService
+      //   .addNewConnection(social_media_id, this.new_connection_link)
+      //   .toPromise()
+      //   .then((data) => {
+      //     console.log(data);
+      //   });
+    }
   }
 
   openEditModal(number: string) {
@@ -253,7 +214,6 @@ export class ProfileComponent implements AfterViewInit {
       .toPromise()
       .then((data) => {
         if (data) {
-          console.log(data);
           this.connections = data;
         }
       });
@@ -276,8 +236,4 @@ export class ProfileComponent implements AfterViewInit {
   clearErrorMessages() {
     this.username_error = '';
   }
-}
-
-export interface socialMedias {
-  [key: string]: any;
 }

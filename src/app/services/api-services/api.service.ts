@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { Connection, User } from '../../interfaces/data';
+import { Connection, SocialMedia, User } from '../../interfaces/data';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +22,24 @@ export class ApiService {
     });
   }
 
+  getAllSocialMedia() {
+    const url = this.getBucketUrl(environment.bucket.social_media);
+
+    return this.http.get<SocialMedia[]>(url);
+  }
+
+  checkUsername(username) {
+    const url = this.getFunctionUrl(environment.function.check_username);
+
+    return this.http.post(url, { username });
+  }
+
+  postUsername(username) {
+    const url = this.getFunctionUrl(environment.function.post_username);
+
+    return this.http.post(url, { username });
+  }
+
   getConnections(user_id) {
     const filter = {
       'user._id': user_id,
@@ -38,16 +56,10 @@ export class ApiService {
     });
   }
 
-  checkUsername(username) {
-    const url = this.getFunctionUrl(environment.function.check_username);
+  addNewConnection(social_media_id, link) {
+    const url = this.getFunctionUrl(environment.function.add_new_connection);
 
-    return this.http.post(url, { username });
-  }
-
-  postUsername(username) {
-    const url = this.getFunctionUrl(environment.function.post_username);
-
-    return this.http.post(url, { username });
+    return this.http.post(url, { social_media_id, link });
   }
 
   private getBucketUrl(bucket_id) {

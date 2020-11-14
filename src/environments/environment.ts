@@ -17,6 +17,7 @@ export const environment = {
   function: {
     check_username: 'checkUsername',
     post_username: 'postUsername',
+    add_new_connection: 'addNewConnection',
   },
 };
 

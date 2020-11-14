@@ -61,6 +61,7 @@
       type="checkbox"
       name="dialog_state"
       id="dialog_state"
+      [(ngModel)]="dialog_state_add_connection"
       class="dialog_state"
     />
     <div id="dialog">
@@ -76,21 +77,26 @@
               <div class="select-box__current" tabindex="1">
                 <div
                   class="select-box__value"
-                  *ngFor="let socialMedia of socialMedias"
+                  *ngFor="let social_media of all_social_media"
                 >
                   <input
                     class="select-box__input"
                     type="radio"
-                    id="{{ socialMedia.value }}"
-                    name="Ben"
+                    id="{{ social_media._id }}"
+                    name="social_media"
                     checked="checked"
+                    (change)="selectedSocialMediaToAdd = social_media"
                   />
 
                   <label class="select-box__input-text">
                     <div class="circle">
-                      <img src="{{ socialMedia.img }}" />
+                      <img
+                        src="../../../../assets/icons/social_media_icons/{{
+                          social_media.icon_name
+                        }}.svg"
+                      />
                     </div>
-                    <p>{{ socialMedia.name }}</p>
+                    <p>{{ social_media.name }}</p>
                   </label>
                 </div>
                 <img
@@ -101,16 +107,20 @@
                 />
               </div>
               <ul class="select-box__list">
-                <li *ngFor="let socialMedia of socialMedias">
+                <li *ngFor="let social_media of all_social_media">
                   <label
                     class="select-box__option"
-                    for="{{ socialMedia.value }}"
+                    for="{{ social_media._id }}"
                     aria-hidden="aria-hidden"
                   >
                     <div class="circle">
-                      <img src="{{ socialMedia.img }}" />
+                      <img
+                        src="../../../../assets/icons/social_media_icons/{{
+                          social_media.icon_name
+                        }}.svg"
+                      />
                     </div>
-                    <p>{{ socialMedia.name }}</p>
+                    <p>{{ social_media.name }}</p>
                   </label>
                 </li>
               </ul>
@@ -125,6 +135,7 @@
               <input
                 type="text"
                 name="media-link"
+                [(ngModel)]="new_connection_link"
                 placeholder="copy link here..."
               />
             </div>
@@ -132,11 +143,14 @@
 
           <!-- save link -->
           <div class="button-box">
-            <label for="dialog_state">
-              <a (click)="addNewSocialMedia()">
-                <input type="submit" name="submit" value="SAVE" />
-              </a>
-            </label>
+            <a>
+              <input
+                (click)="addNewConnection(this)"
+                type="submit"
+                name="submit"
+                value="SAVE"
+              />
+            </a>
           </div>
           <!-- cancel account -->
           <label for="dialog_state">
@@ -220,7 +234,7 @@
 
           <mat-divider></mat-divider>
 
-          <!-- save link -->
+          <!-- delete link -->
           <div class="delete-button">
             <label for="dialog-${socialMedia}">
               <mat-icon>delete</mat-icon>
