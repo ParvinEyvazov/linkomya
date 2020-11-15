@@ -21,29 +21,28 @@ import { FormControl, FormGroup, ControlContainer } from '@angular/forms';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements AfterViewInit {
-  @ViewChild('input') input;
-
-  array: String[];
-  edit_open: boolean = false;
   new_user: boolean;
 
-  all_social_media: SocialMedia[];
-  connections: Connection[];
-  socialMedia: string = 'a';
-  new_connection_link: string;
-
-  selectedSocialMediaToAdd;
-
-  dialog_state_add_connection: boolean = false;
-
-  user: User;
+  //-------NEW USER
+  @ViewChild('input') input;
   username: string;
   username_error: string;
-
-  // create user name states
   username_check_error: boolean = false;
   username_check_loading: boolean = false;
   username_check_success: boolean = false;
+
+  //--------NON-NEW USER
+  edit_open: boolean = false;
+  user: User;
+  // -add new connection
+  all_social_media: SocialMedia[];
+  connections: Connection[];
+  selected_social_media_to_add: SocialMedia;
+  dialog_state_add_connection: boolean = false;
+  socialMedia: string = 'a';
+  new_connection_link: string;
+  add_new_connection_loading: boolean = false;
+  add_new_connection_error_message: string = '';
 
   constructor(
     private userService: UserService,
@@ -63,14 +62,16 @@ export class ProfileComponent implements AfterViewInit {
     //get user info
     this.getUser(this.userService.getUserId());
 
-    this.array = ['10', '2', '3', '4', '5', '6'];
-
+    //get all social medias
     this.socialMediaService
       .getAllSocialMedias()
       .toPromise()
       .then((data) => {
         console.log(data);
         this.all_social_media = data;
+        this.selected_social_media_to_add = this.all_social_media[
+          this.all_social_media.length - 1
+        ];
       });
   }
 
@@ -158,23 +159,56 @@ export class ProfileComponent implements AfterViewInit {
   }
 
   //------------------------NON NEW USER------------------------
-  changeEditState() {
-    this.edit_open = !this.edit_open;
+  //--ADD NEW CONNECTION
+  addNewConnection() {
+    this.startAddNewConnectionProgressIndicator();
+    console.log(this.selected_social_media_to_add);
+    if (this.validator.validateLink(this.new_connection_link)) {
+      let social_media_id = this.selected_social_media_to_add._id;
+      this.apiService
+        .addNewConnection(social_media_id, this.new_connection_link)
+        .toPromise()
+        .then((data) => {
+          console.log(data);
+          this.clearAddNewConnectionErrorMessage();
+          this.closeAddNewConnectionDialog();
+          this.stopAddNewConnectionProgressIndicator();
+        })
+        .catch((error) => {
+          this.stopAddNewConnectionProgressIndicator();
+          this.showAddNewConnectionError(error.error.message);
+        });
+    } else {
+      this.showAddNewConnectionError(
+        this.message.ErrorMessages.wrong_link_type
+      );
+      this.stopAddNewConnectionProgressIndicator();
+    }
   }
 
-  addNewConnection(event) {
-    this.dialog_state_add_connection = false;
-    console.log(event);
-    if (this.validator.validateLink(this.new_connection_link)) {
-      let social_media_id = this.selectedSocialMediaToAdd._id;
+  startAddNewConnectionProgressIndicator() {
+    this.add_new_connection_loading = true;
+  }
 
-      // this.apiService
-      //   .addNewConnection(social_media_id, this.new_connection_link)
-      //   .toPromise()
-      //   .then((data) => {
-      //     console.log(data);
-      //   });
-    }
+  stopAddNewConnectionProgressIndicator() {
+    this.add_new_connection_loading = false;
+  }
+
+  closeAddNewConnectionDialog() {
+    this.dialog_state_add_connection = false;
+  }
+
+  showAddNewConnectionError(error_message) {
+    this.add_new_connection_error_message = error_message;
+  }
+
+  clearAddNewConnectionErrorMessage() {
+    this.add_new_connection_error_message = '';
+  }
+
+  //--EDIT CONNECTION LINK
+  changeEditState() {
+    this.edit_open = !this.edit_open;
   }
 
   openEditModal(number: string) {

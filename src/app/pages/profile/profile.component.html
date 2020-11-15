@@ -2,8 +2,7 @@
   <app-loading></app-loading>
 </div>
 
-<!-- used hidden because of ngif viewchild err -->
-<!-- IF NEW USER (WITHOUT USERNAME) -->
+<!-- IF NEW USER -->
 <div [hidden]="!new_user == true">
   <div class="page">
     <div class="context">
@@ -56,7 +55,7 @@
 
 <div *ngIf="new_user == false">
   <div class="page">
-    <!-- ------------------ADD MORE MODAL------------------ -->
+    <!-- ------------------ADD MORE MODAL-------------------->
     <input
       type="checkbox"
       name="dialog_state"
@@ -85,7 +84,7 @@
                     id="{{ social_media._id }}"
                     name="social_media"
                     checked="checked"
-                    (change)="selectedSocialMediaToAdd = social_media"
+                    (change)="selected_social_media_to_add = social_media"
                   />
 
                   <label class="select-box__input-text">
@@ -141,19 +140,26 @@
             </div>
           </div>
 
+          <div class="error">
+            <span>{{ add_new_connection_error_message }}</span>
+          </div>
+
           <!-- save link -->
           <div class="button-box">
-            <a>
+            <a *ngIf="!add_new_connection_loading">
               <input
-                (click)="addNewConnection(this)"
+                (click)="addNewConnection()"
                 type="submit"
                 name="submit"
                 value="SAVE"
               />
             </a>
+            <div class="spinner" *ngIf="add_new_connection_loading">
+              <mat-spinner [diameter]="25"></mat-spinner>
+            </div>
           </div>
           <!-- cancel account -->
-          <label for="dialog_state">
+          <label for="dialog_state" *ngIf="!add_new_connection_loading">
             <div class="delete-account">
               <p>CANCEL</p>
             </div>

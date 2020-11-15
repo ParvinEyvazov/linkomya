@@ -11,6 +11,7 @@ export class MessageService {
     fullname_validation: 'Full name must be at least 1 characters',
     username_validation: 'Username with non valid characters.',
     used_username: 'This username is already taken.',
+    wrong_link_type: 'This is not a valid url.',
   };
 
   SuccessMessages = {};

@@ -497,6 +497,13 @@
     }
   }
 
+  .error {
+    text-align: center;
+    span {
+      color: rgba(255, 0, 0, 0.507);
+    }
+  }
+
   .button-box {
     input {
       border: 0;
@@ -517,6 +524,15 @@
 
     input[type="submit"]:hover {
       background: #7b77ff;
+    }
+    .spinner {
+      display: block;
+      margin: auto;
+      margin-top: 40px;
+      mat-spinner {
+        margin: auto;
+        text-align: center;
+      }
     }
   }
 
