@@ -172,22 +172,33 @@
     <input
       type="checkbox"
       name="dialog_state"
-      id="dialog-${socialMedia}"
+      id="dialog-${editing_connection_id}"
+      [(ngModel)]="dialog_state_edit_connection"
       class="dialog_state"
     />
-    <div id="dialog">
-      <label id="dlg-back" for="dialog-${socialMedia}"></label>
+    <div id="dialog" *ngIf="editing_connection">
+      <label id="dlg-back" for="dialog-${editing_connection_id}"></label>
       <div id="dlg-wrap">
         <!-- social media icon -->
         <div class="icon-title">
-          <img src="../../../../assets/icons/social_media_icons/twitter.svg" />
+          <img
+            src="../../../../assets/icons/social_media_icons/{{
+              editing_connection.social_media.icon_name
+            }}.svg"
+          />
         </div>
 
         <!-- content part -->
         <div class="edit-link-content">
           <!-- title -->
           <div class="title">
-            <p>Edit your Twitter profile link</p>
+            <p>
+              Edit your<span
+                style="color:{{ editing_connection.social_media.icon_color }};"
+              >
+                {{ editing_connection.social_media.name }} </span
+              >profile link
+            </p>
           </div>
 
           <!-- previous link -->
@@ -197,13 +208,13 @@
               <input
                 type="text"
                 name="media-link"
-                value="www.link.com"
+                value="{{ editing_connection.link }}"
                 disabled
               />
               <button
                 type="button"
                 class="copy-button"
-                (click)="copyMessage('copiedmessage')"
+                (click)="copyMessage(editing_connection.link)"
               >
                 <mat-icon>content_copy</mat-icon>
               </button>
@@ -232,7 +243,7 @@
           </div>
 
           <!-- cancel account -->
-          <label for="dialog-${socialMedia}">
+          <label for="dialog-${editing_connection_id}">
             <div class="delete-account">
               <p>CANCEL</p>
             </div>
@@ -242,7 +253,7 @@
 
           <!-- delete link -->
           <div class="delete-button">
-            <label for="dialog-${socialMedia}">
+            <label for="dialog-${editing_connection_id}">
               <mat-icon>delete</mat-icon>
             </label>
           </div>
@@ -351,7 +362,7 @@
                 />
               </div>
               <div class="link-name">
-                <h1>Add more</h1>
+                <h1>Add a link</h1>
               </div>
             </div>
           </div>
@@ -361,9 +372,9 @@
         <div class="box" *ngFor="let connection of connections">
           <app-link-box [connection]="connection"></app-link-box>
 
-          <label for="dialog-${socialMedia}">
+          <label for="dialog-${editing_connection_id}">
             <div
-              (click)="openEditModal(number)"
+              (click)="openEditDialog(connection._id)"
               [ngClass]="{
                 'edit-link-close': edit_open == false,
                 'edit-link-open': edit_open == true

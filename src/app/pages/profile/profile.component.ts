@@ -39,10 +39,14 @@ export class ProfileComponent implements AfterViewInit {
   connections: Connection[];
   selected_social_media_to_add: SocialMedia;
   dialog_state_add_connection: boolean = false;
-  socialMedia: string = 'a';
   new_connection_link: string;
   add_new_connection_loading: boolean = false;
   add_new_connection_error_message: string = '';
+
+  //-edit connection link
+  editing_connection_id: string;
+  editing_connection: Connection;
+  dialog_state_edit_connection: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -67,7 +71,6 @@ export class ProfileComponent implements AfterViewInit {
       .getAllSocialMedias()
       .toPromise()
       .then((data) => {
-        console.log(data);
         this.all_social_media = data;
         this.selected_social_media_to_add = this.all_social_media[
           this.all_social_media.length - 1
@@ -169,9 +172,10 @@ export class ProfileComponent implements AfterViewInit {
         .addNewConnection(social_media_id, this.new_connection_link)
         .toPromise()
         .then((data) => {
-          console.log(data);
+          this.getConnections(this.userService.getUserId());
           this.clearAddNewConnectionErrorMessage();
           this.closeAddNewConnectionDialog();
+          this.clearLinkText();
           this.stopAddNewConnectionProgressIndicator();
         })
         .catch((error) => {
@@ -206,13 +210,21 @@ export class ProfileComponent implements AfterViewInit {
     this.add_new_connection_error_message = '';
   }
 
+  clearLinkText() {
+    this.new_connection_link = '';
+  }
+
   //--EDIT CONNECTION LINK
   changeEditState() {
     this.edit_open = !this.edit_open;
   }
 
-  openEditModal(number: string) {
-    this.socialMedia = number;
+  openEditDialog(editing_connection_id: string) {
+    this.editing_connection_id = editing_connection_id;
+    this.editing_connection = this.getConnectionFromId(
+      this.editing_connection_id
+    );
+    console.log(this.editing_connection_id, this.editing_connection);
   }
 
   copyMessage(val: string) {
@@ -227,6 +239,14 @@ export class ProfileComponent implements AfterViewInit {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+  }
+
+  getConnectionFromId(editin_connection_id) {
+    for (let connection of this.connections) {
+      if (connection._id == editin_connection_id) {
+        return connection;
+      }
+    }
   }
 
   //-------------------------API FUNCTIONS------------------------
