@@ -228,31 +228,51 @@
               <input
                 type="text"
                 name="media-link"
+                [(ngModel)]="new_editing_connection_link"
                 placeholder="copy new link there..."
               />
             </div>
           </div>
 
+          <div class="error">
+            <span>{{ edit_connection_error_message }}</span>
+          </div>
+
           <!-- save link -->
           <div class="button-box">
-            <label for="dialog_state">
-              <a>
-                <input type="submit" name="submit" value="SAVE" />
-              </a>
-            </label>
+            <a *ngIf="!edit_connection_loading">
+              <input
+                (click)="
+                  editConnection(
+                    editing_connection,
+                    new_editing_connection_link
+                  )
+                "
+                type="submit"
+                name="submit"
+                value="SAVE"
+              />
+            </a>
+
+            <div class="spinner" *ngIf="edit_connection_loading">
+              <mat-spinner [diameter]="25"></mat-spinner>
+            </div>
           </div>
 
           <!-- cancel account -->
-          <label for="dialog-${editing_connection_id}">
+          <label
+            *ngIf="!edit_connection_loading"
+            for="dialog-${editing_connection_id}"
+          >
             <div class="delete-account">
               <p>CANCEL</p>
             </div>
           </label>
 
-          <mat-divider></mat-divider>
+          <mat-divider *ngIf="!edit_connection_loading"></mat-divider>
 
           <!-- delete link -->
-          <div class="delete-button">
+          <div *ngIf="!edit_connection_loading" class="delete-button">
             <label for="dialog-${editing_connection_id}">
               <mat-icon>delete</mat-icon>
             </label>

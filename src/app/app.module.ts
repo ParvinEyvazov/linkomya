@@ -33,6 +33,7 @@ import { TokenInterceptor } from './services/api-services/interceptor';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { PasswordRecoveryComponent } from './pages/password-recovery/password-recovery.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { AddConnectionDialogComponent } from './components/add-connection-dialog/add-connection-dialog.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { LoadingComponent } from './components/loading/loading.component';
     NotFoundComponent,
     PasswordRecoveryComponent,
     LoadingComponent,
+    AddConnectionDialogComponent,
   ],
   imports: [
     MatIconModule,

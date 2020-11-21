@@ -47,6 +47,9 @@ export class ProfileComponent implements AfterViewInit {
   editing_connection_id: string;
   editing_connection: Connection;
   dialog_state_edit_connection: boolean = false;
+  new_editing_connection_link: string;
+  edit_connection_loading: boolean = false;
+  edit_connection_error_message: string = '';
 
   constructor(
     private userService: UserService,
@@ -215,8 +218,35 @@ export class ProfileComponent implements AfterViewInit {
   }
 
   //--EDIT CONNECTION LINK
+  editConnection(connection, new_link) {
+    this.startEditConnectionProgressIndicator();
+
+    setTimeout(() => {
+      this.closeEditDialog();
+      this.stopEditConnectionProgressIndicator();
+    }, 2000);
+
+    console.log('edit connection: ', connection, ' with new link: ', new_link);
+  }
+
   changeEditState() {
     this.edit_open = !this.edit_open;
+  }
+
+  clearEditConnectionLinkText() {
+    this.new_editing_connection_link = '';
+  }
+
+  startEditConnectionProgressIndicator() {
+    this.edit_connection_loading = true;
+  }
+
+  stopEditConnectionProgressIndicator() {
+    this.edit_connection_loading = false;
+  }
+
+  closeEditDialog() {
+    this.dialog_state_edit_connection = false;
   }
 
   openEditDialog(editing_connection_id: string) {
