@@ -13,7 +13,6 @@ import { debounceTime } from 'rxjs/operators';
 import { ValidationService } from 'src/app/services/validation.service';
 import { MessageService } from 'src/app/services/message.service';
 import { SocialMediaService } from 'src/app/services/social-media-services/social-media.service';
-import { FormControl, FormGroup, ControlContainer } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -35,28 +34,19 @@ export class ProfileComponent implements AfterViewInit {
   edit_open: boolean = false;
   user: User;
   // -add new connection
-  all_social_media: SocialMedia[];
   connections: Connection[];
-  selected_social_media_to_add: SocialMedia;
   dialog_state_add_connection: boolean = false;
-  new_connection_link: string;
-  add_new_connection_loading: boolean = false;
-  add_new_connection_error_message: string = '';
 
   //-edit connection link
   editing_connection_id: string;
   editing_connection: Connection;
   dialog_state_edit_connection: boolean = false;
-  new_editing_connection_link: string;
-  edit_connection_loading: boolean = false;
-  edit_connection_error_message: string = '';
 
   constructor(
     private userService: UserService,
     private apiService: ApiService,
     private validator: ValidationService,
-    private message: MessageService,
-    private socialMediaService: SocialMediaService
+    private message: MessageService
   ) {}
 
   ngAfterViewInit(): void {
@@ -68,17 +58,6 @@ export class ProfileComponent implements AfterViewInit {
   ngOnInit(): void {
     //get user info
     this.getUser(this.userService.getUserId());
-
-    //get all social medias
-    this.socialMediaService
-      .getAllSocialMedias()
-      .toPromise()
-      .then((data) => {
-        this.all_social_media = data;
-        this.selected_social_media_to_add = this.all_social_media[
-          this.all_social_media.length - 1
-        ];
-      });
   }
 
   //-------------------------NEW USER------------------------
@@ -166,83 +145,32 @@ export class ProfileComponent implements AfterViewInit {
 
   //------------------------NON NEW USER------------------------
   //--ADD NEW CONNECTION
-  addNewConnection() {
-    this.startAddNewConnectionProgressIndicator();
-    console.log(this.selected_social_media_to_add);
-    if (this.validator.validateLink(this.new_connection_link)) {
-      let social_media_id = this.selected_social_media_to_add._id;
-      this.apiService
-        .addNewConnection(social_media_id, this.new_connection_link)
-        .toPromise()
-        .then((data) => {
-          this.getConnections(this.userService.getUserId());
-          this.clearAddNewConnectionErrorMessage();
-          this.closeAddNewConnectionDialog();
-          this.clearLinkText();
-          this.stopAddNewConnectionProgressIndicator();
-        })
-        .catch((error) => {
-          this.stopAddNewConnectionProgressIndicator();
-          this.showAddNewConnectionError(error.error.message);
-        });
+  closeAddConnectionDialog(event) {
+    if (event == true) {
+      this.getConnections(this.userService.getUserId());
+      this.closeAddNewConnectionDialog();
     } else {
-      this.showAddNewConnectionError(
-        this.message.ErrorMessages.wrong_link_type
-      );
-      this.stopAddNewConnectionProgressIndicator();
+      this.closeAddNewConnectionDialog();
     }
-  }
-
-  startAddNewConnectionProgressIndicator() {
-    this.add_new_connection_loading = true;
-  }
-
-  stopAddNewConnectionProgressIndicator() {
-    this.add_new_connection_loading = false;
   }
 
   closeAddNewConnectionDialog() {
     this.dialog_state_add_connection = false;
   }
 
-  showAddNewConnectionError(error_message) {
-    this.add_new_connection_error_message = error_message;
-  }
-
-  clearAddNewConnectionErrorMessage() {
-    this.add_new_connection_error_message = '';
-  }
-
-  clearLinkText() {
-    this.new_connection_link = '';
-  }
-
   //--EDIT CONNECTION LINK
-  editConnection(connection, new_link) {
-    this.startEditConnectionProgressIndicator();
-
-    setTimeout(() => {
+  closeEditConnectionDialog(event) {
+    if (event) {
       this.closeEditDialog();
-      this.stopEditConnectionProgressIndicator();
-    }, 2000);
-
-    console.log('edit connection: ', connection, ' with new link: ', new_link);
+      this.getConnections(this.userService.getUserId());
+      //connectionlari cek
+    } else {
+      this.closeEditDialog();
+    }
   }
 
   changeEditState() {
     this.edit_open = !this.edit_open;
-  }
-
-  clearEditConnectionLinkText() {
-    this.new_editing_connection_link = '';
-  }
-
-  startEditConnectionProgressIndicator() {
-    this.edit_connection_loading = true;
-  }
-
-  stopEditConnectionProgressIndicator() {
-    this.edit_connection_loading = false;
   }
 
   closeEditDialog() {
@@ -254,29 +182,6 @@ export class ProfileComponent implements AfterViewInit {
     this.editing_connection = this.getConnectionFromId(
       this.editing_connection_id
     );
-    console.log(this.editing_connection_id, this.editing_connection);
-  }
-
-  copyMessage(val: string) {
-    const selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
-    selBox.value = val;
-    document.body.appendChild(selBox);
-    selBox.focus();
-    selBox.select();
-    document.execCommand('copy');
-    document.body.removeChild(selBox);
-  }
-
-  getConnectionFromId(editin_connection_id) {
-    for (let connection of this.connections) {
-      if (connection._id == editin_connection_id) {
-        return connection;
-      }
-    }
   }
 
   //-------------------------API FUNCTIONS------------------------
@@ -310,6 +215,14 @@ export class ProfileComponent implements AfterViewInit {
       this.getConnections(user._id);
     } else {
       this.isNewUser(true);
+    }
+  }
+
+  getConnectionFromId(editin_connection_id) {
+    for (let connection of this.connections) {
+      if (connection._id == editin_connection_id) {
+        return connection;
+      }
     }
   }
 

@@ -18,6 +18,7 @@ export const environment = {
     check_username: 'checkUsername',
     post_username: 'postUsername',
     add_new_connection: 'addNewConnection',
+    edit_connection: 'editConnection',
   },
 };
 

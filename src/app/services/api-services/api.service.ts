@@ -62,6 +62,12 @@ export class ApiService {
     return this.http.post(url, { social_media_id, link });
   }
 
+  editConnection(connection_id, link) {
+    const url = this.getFunctionUrl(environment.function.edit_connection);
+
+    return this.http.post(url, { connection_id, link });
+  }
+
   private getBucketUrl(bucket_id) {
     return environment.url + 'bucket/' + bucket_id + 'data';
   }

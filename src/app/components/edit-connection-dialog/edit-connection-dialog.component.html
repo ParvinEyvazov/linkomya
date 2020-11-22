@@ -1,0 +1,84 @@
+<!-- social media icon -->
+<div class="icon-title">
+  <img
+    src="../../../../assets/icons/social_media_icons/{{
+      connection.social_media.icon_name
+    }}.svg"
+  />
+</div>
+
+<!-- content part -->
+<div class="edit-link-content">
+  <!-- title -->
+  <div class="title">
+    <p>
+      Edit your<span style="color:{{ connection.social_media.icon_color }};">
+        {{ connection.social_media.name }} </span
+      >profile link
+    </p>
+  </div>
+
+  <!-- previous link -->
+  <div class="previous-link">
+    <div class="previous-title">previous link</div>
+    <div class="link-field">
+      <input
+        type="text"
+        name="media-link"
+        value="{{ connection.link }}"
+        disabled
+      />
+      <button
+        type="button"
+        class="copy-button"
+        (click)="copyMessage(connection.link)"
+      >
+        <mat-icon>content_copy</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- new link -->
+  <div class="new-link">
+    <div class="new-title">new link</div>
+    <div class="link-field">
+      <input
+        type="text"
+        name="media-link"
+        [(ngModel)]="link"
+        placeholder="copy new link there..."
+      />
+    </div>
+  </div>
+
+  <div class="error">
+    <span>{{ error }}</span>
+  </div>
+
+  <!-- save link -->
+  <div class="button-box">
+    <a *ngIf="!loading">
+      <input (click)="save()" type="submit" name="submit" value="SAVE" />
+    </a>
+
+    <div class="spinner" *ngIf="loading">
+      <mat-spinner [diameter]="25"></mat-spinner>
+    </div>
+  </div>
+
+  <!-- cancel account -->
+  <label (click)="cancel()" *ngIf="!loading">
+    <div class="delete-account">
+      <p>CANCEL</p>
+    </div>
+  </label>
+
+  <mat-divider *ngIf="!loading"></mat-divider>
+
+  <!-- delete link -->
+  <div *ngIf="!loading" (click)="delete()" class="delete-button">
+    <label>
+      <mat-icon>delete</mat-icon>
+    </label>
+  </div>
+</div>

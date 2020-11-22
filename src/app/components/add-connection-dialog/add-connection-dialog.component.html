@@ -1,1 +1,94 @@
-<p>add-connection-dialog works!</p>
+<div class="add-content">
+  <div class="page-title">Add New</div>
+  <mat-divider></mat-divider>
+  <!-- select social media part -->
+  <div class="select">
+    <div class="title">select a social media</div>
+    <div class="select-box">
+      <div class="select-box__current" tabindex="1">
+        <div
+          class="select-box__value"
+          *ngFor="let social_media of social_medias"
+        >
+          <input
+            class="select-box__input"
+            type="radio"
+            id="{{ social_media._id }}"
+            name="social_media"
+            checked="checked"
+            (change)="selected_social_media = social_media"
+          />
+
+          <label class="select-box__input-text">
+            <div class="circle">
+              <img
+                src="../../../../assets/icons/social_media_icons/{{
+                  social_media.icon_name
+                }}.svg"
+              />
+            </div>
+            <p>{{ social_media.name }}</p>
+          </label>
+        </div>
+        <img
+          class="select-box__icon"
+          src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
+          alt="Arrow Icon"
+          aria-hidden="true"
+        />
+      </div>
+      <ul class="select-box__list">
+        <li *ngFor="let social_media of social_medias">
+          <label
+            class="select-box__option"
+            for="{{ social_media._id }}"
+            aria-hidden="aria-hidden"
+          >
+            <div class="circle">
+              <img
+                src="../../../../assets/icons/social_media_icons/{{
+                  social_media.icon_name
+                }}.svg"
+              />
+            </div>
+            <p>{{ social_media.name }}</p>
+          </label>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- media link text field -->
+  <div class="profile-link">
+    <div class="title">profile link</div>
+
+    <div class="link-field">
+      <input
+        type="text"
+        name="media-link"
+        [(ngModel)]="link"
+        placeholder="copy link here..."
+      />
+    </div>
+  </div>
+
+  <div class="error">
+    <span>{{ error }}</span>
+  </div>
+
+  <!-- save link -->
+  <div class="button-box">
+    <a *ngIf="!loading">
+      <input (click)="add()" type="submit" name="submit" value="SAVE" />
+    </a>
+    <div class="spinner" *ngIf="loading">
+      <mat-spinner [diameter]="25"></mat-spinner>
+    </div>
+  </div>
+  <!-- cancel account -->
+  <label (click)="cancel()" *ngIf="!loading">
+    <div class="delete-account">
+      <p>CANCEL</p>
+    </div>
+  </label>
+</div>
