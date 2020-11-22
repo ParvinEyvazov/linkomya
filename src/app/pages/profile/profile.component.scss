@@ -110,12 +110,12 @@
     text-align: center;
     justify-items: center;
     .cicle {
+      clip-path: circle(77.9% at 19% 83%);
       transition: 0.25s;
       position: fixed;
-      left: -75px;
-      bottom: -100px;
+      left: 0px;
+      bottom: 0px;
       background: #7b77ff;
-      border-radius: 50%;
       width: 280px;
       height: 280px;
       z-index: -100;
@@ -519,17 +519,17 @@
 }
 
 .main_area {
-  transition: all 0.5s ease-out;
+  transition: all 0.1s ease-out;
 }
 
 .dialog_state:checked ~ .main_area,
 .main_area.dialog_open {
-  filter: blur(20px);
+  filter: blur(5px);
 }
 
 .dialog_state:checked {
   .main_area {
-    filter: blur(20px);
+    filter: blur(5px);
   }
 }
 
