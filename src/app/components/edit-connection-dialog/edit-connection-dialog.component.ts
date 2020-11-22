@@ -57,11 +57,20 @@ export class EditConnectionDialogComponent implements OnInit {
 
   delete() {
     this.startLoading();
+    this.cleanError();
 
-    setTimeout(() => {
-      this.stopLoading();
-      this.event.emit(true);
-    }, 2000);
+    this.apiService
+      .deleteConnection(this.connection._id)
+      .toPromise()
+      .then((data) => {
+        this.stopLoading();
+        this.cleanDialog();
+        this.event.emit(true);
+      })
+      .catch((error) => {
+        this.stopLoading();
+        this.showError(error.error.message);
+      });
   }
 
   //helper functions

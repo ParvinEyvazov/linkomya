@@ -68,6 +68,12 @@ export class ApiService {
     return this.http.post(url, { connection_id, link });
   }
 
+  deleteConnection(connection_id) {
+    const url = this.getFunctionUrl(environment.function.delete_connection);
+
+    return this.http.post(url, { connection_id });
+  }
+
   private getBucketUrl(bucket_id) {
     return environment.url + 'bucket/' + bucket_id + 'data';
   }

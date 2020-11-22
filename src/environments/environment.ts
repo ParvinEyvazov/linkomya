@@ -19,6 +19,7 @@ export const environment = {
     post_username: 'postUsername',
     add_new_connection: 'addNewConnection',
     edit_connection: 'editConnection',
+    delete_connection: 'deleteConnection',
   },
 };
 

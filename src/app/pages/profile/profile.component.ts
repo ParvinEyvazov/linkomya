@@ -160,10 +160,9 @@ export class ProfileComponent implements AfterViewInit {
 
   //--EDIT CONNECTION LINK
   closeEditConnectionDialog(event) {
-    if (event) {
+    if (event == true) {
       this.closeEditDialog();
       this.getConnections(this.userService.getUserId());
-      //connectionlari cek
     } else {
       this.closeEditDialog();
     }
