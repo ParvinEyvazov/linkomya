@@ -524,12 +524,12 @@
 
 .dialog_state:checked ~ .main_area,
 .main_area.dialog_open {
-  filter: blur(5px);
+  filter: blur(20px);
 }
 
 .dialog_state:checked {
   .main_area {
-    filter: blur(5px);
+    filter: blur(20px);
   }
 }
 
