@@ -76,9 +76,9 @@
   <mat-divider *ngIf="!loading"></mat-divider>
 
   <!-- delete link -->
-  <div *ngIf="!loading" (click)="delete()" class="delete-button">
+  <div *ngIf="!loading" class="delete-button">
     <label>
-      <mat-icon>delete</mat-icon>
+      <mat-icon (click)="delete()">delete</mat-icon>
     </label>
   </div>
 </div>

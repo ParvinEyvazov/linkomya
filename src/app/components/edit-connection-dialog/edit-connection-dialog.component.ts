@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Connection } from 'src/app/interfaces/data';
 import { ApiService } from 'src/app/services/api-services/api.service';
 import { MessageService } from 'src/app/services/message.service';
+import { MicroService } from 'src/app/services/micro-services/micro.service';
 import { ValidationService } from 'src/app/services/validation.service';
 
 @Component({
@@ -21,7 +22,8 @@ export class EditConnectionDialogComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private validator: ValidationService,
-    private message: MessageService
+    private message: MessageService,
+    private microService: MicroService
   ) {}
 
   ngOnInit(): void {}
@@ -97,16 +99,6 @@ export class EditConnectionDialogComponent implements OnInit {
   }
 
   copyMessage(val: string) {
-    const selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
-    selBox.value = val;
-    document.body.appendChild(selBox);
-    selBox.focus();
-    selBox.select();
-    document.execCommand('copy');
-    document.body.removeChild(selBox);
+    this.microService.copyMessage(val);
   }
 }

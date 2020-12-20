@@ -12,6 +12,8 @@ import { Connection, User } from '../../interfaces/data';
 import { debounceTime } from 'rxjs/operators';
 import { ValidationService } from 'src/app/services/validation.service';
 import { MessageService } from 'src/app/services/message.service';
+import { MicroService } from 'src/app/services/micro-services/micro.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-profile',
@@ -46,7 +48,8 @@ export class ProfileComponent implements AfterViewInit {
     private userService: UserService,
     private apiService: ApiService,
     private validator: ValidationService,
-    private message: MessageService
+    private message: MessageService,
+    private microService: MicroService
   ) {}
 
   ngAfterViewInit(): void {
@@ -231,5 +234,9 @@ export class ProfileComponent implements AfterViewInit {
 
   clearErrorMessages() {
     this.username_error = '';
+  }
+
+  copyMessage() {
+    this.microService.copyMessage(environment.host_url + this.user.username);
   }
 }
