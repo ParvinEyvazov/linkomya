@@ -1,227 +1,247 @@
 .background {
-    overflow-x: hidden;
+  overflow-x: hidden;
 
+  position: fixed;
+  top: 80px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  .cicle {
     position: fixed;
-    top: 80px;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    left: -75px;
+    bottom: -100px;
+    background: #7b77ff;
+    border-radius: 50%;
+    width: 280px;
+    height: 280px;
+    z-index: -100;
+  }
 
-    .cicle {
-        position: fixed;
-        left: -75px;
-        bottom: -100px;
-        background: #7b77ff;
-        border-radius: 50%;
-        width: 280px;
-        height: 280px;
-        z-index: -100;
-    }
+  main {
+    height: calc(100vh - 80px);
+    width: 100vw;
+  }
 
-    main {
-        height: calc(100vh - 80px);
-        width: 100vw;
-    }
+  .content {
+    //    background: lightcoral;
+    text-align: center;
+    transition: 0.25s;
+    // background: lightcoral;
+    width: 40%;
+    margin: auto;
+    .text {
+      // background: lightcyan;
+      margin: auto;
+      margin-top: 30px;
+      height: auto;
+      font-size: 3em;
+      transition: 0.25s;
+      p {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
+      }
 
-    .content {
-        //    background: lightcoral;
+      .divider {
+        position: relative;
         text-align: center;
-        transition: 0.25s;
-        // background: lightcoral;
-        width: 40%;
+        width: 45%;
         margin: auto;
-        .text {
-            // background: lightcyan;
+      }
+    }
+
+    .settings-box {
+      position: relative;
+      top: 30px;
+      width: 100%;
+      //  background: lightgreen;
+      text-align: center;
+
+      .form {
+        position: relative;
+        margin: auto;
+        text-align: center;
+        width: 90%;
+        // background: lightcoral;
+
+        .child-box {
+          position: relative;
+          margin-bottom: 25px;
+          p {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+              Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+              sans-serif !important;
+            margin: 0;
+            position: relative;
+            left: 3%;
+            float: left;
+            font-size: 1.1em;
+          }
+
+          input {
+            border: 0;
+            background: none;
+            //text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.397);
+            background: #ffffff;
+            padding: 14px;
+            width: 100%;
+            outline: none;
+            color: black;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+              Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+              sans-serif !important;
+          }
+        }
+        .error {
+          text-align: center;
+          margin-top: 30px;
+          span {
+            color: rgba(255, 0, 0, 0.507);
+          }
+        }
+
+        .button-box {
+          input {
+            border: 0;
+            background: none;
+            display: block;
             margin: auto;
             margin-top: 30px;
-            height: auto;
-            font-size: 3em;
-            transition: 0.25s;
-            p {
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
-                    "Open Sans", "Helvetica Neue", sans-serif !important;
-            }
-
-            .divider {
-                position: relative;
-                text-align: center;
-                width: 45%;
-                margin: auto;
-            }
-        }
-
-        .settings-box {
-            position: relative;
-            top: 30px;
-            width: 100%;
-            //  background: lightgreen;
             text-align: center;
+            border: 2px solid #7b77ff;
+            padding: 7px 60px;
+            outline: none;
+            color: black;
+            border-radius: 50px;
+            transition: 0.25s;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+              Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+              sans-serif !important;
+          }
 
-            .form {
-                position: relative;
-                margin: auto;
-                text-align: center;
-                width: 90%;
-                // background: lightcoral;
+          input[type="submit"]:hover {
+            background: #7b77ff;
+          }
 
-                .child-box {
-                    position: relative;
-                    margin-bottom: 25px;
-                    p {
-                        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
-                            "Open Sans", "Helvetica Neue", sans-serif !important;
-                        margin: 0;
-                        position: relative;
-                        left: 3%;
-                        float: left;
-                        font-size: 1.1em;
-                    }
-
-                    input {
-                        border: 0;
-                        background: none;
-                        //text-align: center;
-                        border: 1px solid rgba(0, 0, 0, 0.397);
-                        background: #ffffff;
-                        padding: 14px;
-                        width: 100%;
-                        outline: none;
-                        color: black;
-                        border-radius: 50px;
-                        font-size: 1.3em;
-                        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
-                            "Open Sans", "Helvetica Neue", sans-serif !important;
-                    }
-                }
-
-                .button-box {
-                    input {
-                        border: 0;
-                        background: none;
-                        display: block;
-                        margin: auto;
-                        margin-top: 60px;
-                        text-align: center;
-                        border: 2px solid #7b77ff;
-                        padding: 7px 60px;
-                        outline: none;
-                        color: black;
-                        border-radius: 50px;
-                        transition: 0.25s;
-                        cursor: pointer;
-                        font-size: 1.1em;
-                        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
-                            "Open Sans", "Helvetica Neue", sans-serif !important;
-                    }
-
-                    input[type="submit"]:hover {
-                        background: #7b77ff;
-                    }
-                }
+          .spinner {
+            display: block;
+            margin: auto;
+            margin-top: 40px;
+            mat-spinner {
+              margin: auto;
+              text-align: center;
             }
-
-            .divider {
-                position: relative;
-                top: 60px;
-                text-align: center;
-                width: 45%;
-                margin: auto;
-            }
-
-            .delete-account {
-                cursor: pointer;
-                position: relative;
-                top: 120px;
-                padding-bottom: 50px;
-                display: inline-flex;
-                color: rgba(250, 4, 4, 0.411);
-
-                p {
-                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
-                        "Open Sans", "Helvetica Neue", sans-serif !important;
-                    font-size: 1.2em;
-                }
-
-                .icon-delete {
-                    margin-right: 5px;
-                }
-            }
-
-            .delete-account:hover {
-                color: rgb(250, 4, 4);
-            }
+          }
         }
+      }
+
+      .divider {
+        position: relative;
+        top: 60px;
+        text-align: center;
+        width: 45%;
+        margin: auto;
+      }
+
+      .delete-account {
+        cursor: pointer;
+        position: relative;
+        top: 120px;
+        padding-bottom: 50px;
+        display: inline-flex;
+        color: rgba(250, 4, 4, 0.411);
+
+        p {
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
+          font-size: 1.2em;
+        }
+
+        .icon-delete {
+          margin-right: 5px;
+        }
+      }
+
+      .delete-account:hover {
+        color: rgb(250, 4, 4);
+      }
     }
+  }
 }
 
 @media screen and (max-width: 992px) {
-    .content {
-        width: 65% !important;
-    }
+  .content {
+    width: 65% !important;
+  }
 
-    .cicle {
-        display: none !important;
-    }
+  .cicle {
+    display: none !important;
+  }
 }
 
 @media screen and (max-width: 575px) {
-    .content {
-        width: 90% !important;
-        .text {
-            font-size: 1.7em !important;
+  .content {
+    width: 90% !important;
+    .text {
+      font-size: 1.7em !important;
 
-            .divider {
-                width: 80% !important;
-            }
-        }
-
-        .settings-box {
-            top: 10px !important;
-
-            .form {
-                // background: lightcoral;
-
-                .child-box {
-                    margin-bottom: 10px !important;
-                    p {
-                    }
-
-                    input {
-                        font-size: 1em !important;
-                    }
-                }
-
-                .button-box {
-                    input {
-                        margin-top: 30px !important;
-                        padding: 3px 40px !important;
-                        font-size: 1em !important;
-                    }
-
-                    input[type="submit"]:hover {
-                    }
-                }
-            }
-
-            .divider {
-                width: 80% !important;
-            }
-
-            .delete-account {
-                top: 120px;
-
-                p {
-                    font-size: 1em !important;
-                }
-
-                .icon-delete {
-                    margin-right: 0px !important;
-                    font-size: 1.3em !important;
-                }
-            }
-
-            .delete-account:hover {
-            }
-        }
+      .divider {
+        width: 80% !important;
+      }
     }
+
+    .settings-box {
+      top: 10px !important;
+
+      .form {
+        // background: lightcoral;
+
+        .child-box {
+          margin-bottom: 10px !important;
+          p {
+          }
+
+          input {
+            font-size: 1em !important;
+          }
+        }
+
+        .button-box {
+          input {
+            margin-top: 30px !important;
+            padding: 3px 40px !important;
+            font-size: 1em !important;
+          }
+
+          input[type="submit"]:hover {
+          }
+        }
+      }
+
+      .divider {
+        width: 80% !important;
+      }
+
+      .delete-account {
+        top: 120px;
+
+        p {
+          font-size: 1em !important;
+        }
+
+        .icon-delete {
+          margin-right: 0px !important;
+          font-size: 1.3em !important;
+        }
+      }
+
+      .delete-account:hover {
+      }
+    }
+  }
 }

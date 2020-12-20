@@ -1,59 +1,93 @@
-<div class="background">
-    <div class="cicle"></div>
+<div *ngIf="user == undefined">
+  <app-loading></app-loading>
+</div>
 
-    <!-- MAIN PART -->
-    <main>
-        <!-- Settings Text and Divider -->
-        <div class="content">
-            <div class="text">
-                <p>Settings</p>
+<div *ngIf="user != undefined" class="background">
+  <div class="cicle"></div>
 
-                <div class="divider">
-                    <hr>
-                </div>
+  <!-- MAIN PART -->
+  <main>
+    <!-- Settings Text and Divider -->
+    <div class="content">
+      <div class="text">
+        <p>Settings</p>
 
-            </div>
-
-
-            <div class="settings-box">
-                <!-- form part -->
-                <div class="form">
-                    <form class="box" action="" method="POST">
-                        <div class="child-box">
-                            <p>name</p>
-                            <input type="text" name="name" placeholder="name" value="Davis Miller">
-                        </div>
-                        <div class="child-box">
-                            <p>country</p>
-                            <input type="text" name="country" placeholder="country" value="France">
-                        </div>
-                        <div class="child-box">
-                            <p>city</p>
-                            <input type="text" name="country" placeholder="city" value="Paris">
-                        </div>
-                        <div class="child-box">
-                            <p>job</p>
-                            <input type="text" name="country" placeholder="job" value="Software Developer">
-                        </div>
-                        <div class="button-box">
-                            <input type="submit" name="submit" value="SAVE">
-                        </div>
-                    </form>
-                </div>
-
-                <!-- divider -->
-                <div class="divider">
-                    <hr>
-                </div>
-
-                <!-- delete button -->
-                <div class="delete-account">
-                    <mat-icon class="icon-delete" aria-label="place">delete</mat-icon>
-                    <p>DELETE ACCOUNT</p>
-                </div>
-
-            </div>
+        <div class="divider">
+          <hr />
         </div>
-    </main>
+      </div>
 
+      <div class="settings-box">
+        <!-- form part -->
+        <div class="form">
+          <form class="box" action="" method="POST">
+            <div class="child-box">
+              <p>full name</p>
+              <input
+                type="text"
+                name="name"
+                placeholder="name"
+                [(ngModel)]="user.fullname"
+              />
+            </div>
+            <div class="child-box">
+              <p>country</p>
+              <input
+                type="text"
+                name="country"
+                placeholder="country"
+                [(ngModel)]="user.country"
+              />
+            </div>
+            <div class="child-box">
+              <p>city</p>
+              <input
+                type="text"
+                name="city"
+                placeholder="city"
+                [(ngModel)]="user.city"
+              />
+            </div>
+            <div class="child-box">
+              <p>job</p>
+              <input
+                type="text"
+                name="job"
+                placeholder="job"
+                [(ngModel)]="user.job"
+              />
+            </div>
+
+            <div class="error">
+              <span>{{ error }}</span>
+            </div>
+
+            <div class="button-box">
+              <input
+                *ngIf="!loading"
+                type="submit"
+                name="submit"
+                (click)="save()"
+                value="SAVE"
+              />
+
+              <div class="spinner" *ngIf="loading">
+                <mat-spinner [diameter]="25"></mat-spinner>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- divider -->
+        <div class="divider">
+          <hr />
+        </div>
+
+        <!-- delete button -->
+        <div class="delete-account">
+          <mat-icon class="icon-delete" aria-label="place">delete</mat-icon>
+          <p>DELETE ACCOUNT</p>
+        </div>
+      </div>
+    </div>
+  </main>
 </div>
