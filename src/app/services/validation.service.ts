@@ -43,12 +43,20 @@ export class ValidationService {
   }
 
   validateLink(link: string) {
-    var linkFormat = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/;
+    var linkFormat = /(https?:\/\/)?([\w\-])+\.{1}([a-zA-Z]{2,63})([\/\w-]*)*\/?\??([^#\n\r]*)?#?([^\n\r]*)/;
 
     if (linkFormat.test(String(link).toLowerCase())) {
       return true;
     } else {
       return false;
+    }
+  }
+
+  updateLink(link: string) {
+    if (link.includes('https://') || link.includes('http://')) {
+      return link;
+    } else {
+      return 'https://' + link;
     }
   }
 }

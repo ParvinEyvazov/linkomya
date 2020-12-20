@@ -37,6 +37,7 @@ export class AddConnectionDialogComponent implements OnInit {
     this.startLoading();
     this.cleanError();
     if (this.validator.validateLink(this.link)) {
+      this.link = this.validator.updateLink(this.link);
       let social_media_id = this.selected_social_media._id;
       this.apiService
         .addNewConnection(social_media_id, this.link)

@@ -8,11 +8,10 @@ import {
 import { UserService } from '../../services/user-services/user.service';
 import { ApiService } from '../../services/api-services/api.service';
 
-import { Connection, SocialMedia, User } from '../../interfaces/data';
+import { Connection, User } from '../../interfaces/data';
 import { debounceTime } from 'rxjs/operators';
 import { ValidationService } from 'src/app/services/validation.service';
 import { MessageService } from 'src/app/services/message.service';
-import { SocialMediaService } from 'src/app/services/social-media-services/social-media.service';
 
 @Component({
   selector: 'app-profile',
@@ -33,6 +32,7 @@ export class ProfileComponent implements AfterViewInit {
   //--------NON-NEW USER
   edit_open: boolean = false;
   user: User;
+
   // -add new connection
   connections: Connection[];
   dialog_state_add_connection: boolean = false;
@@ -88,7 +88,7 @@ export class ProfileComponent implements AfterViewInit {
                   //works when username posted successfully
                   //get user info
                   this.getUser(this.userService.getUserId());
-                  console.log('sended data : ', data);
+                  // console.log('sended data : ', data);
                 })
                 .catch((error) => {
                   this.showUsernameError(error.error.message);

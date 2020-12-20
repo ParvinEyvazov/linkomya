@@ -32,6 +32,7 @@ export class EditConnectionDialogComponent implements OnInit {
     this.startLoading();
     this.cleanError();
     if (this.validator.validateLink(this.link)) {
+      this.link = this.validator.updateLink(this.link);
       this.apiService
         .editConnection(this.connection._id, this.link)
         .toPromise()
