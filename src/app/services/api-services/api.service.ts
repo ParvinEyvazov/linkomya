@@ -74,6 +74,12 @@ export class ApiService {
     return this.http.post(url, { connection_id });
   }
 
+  updateUser(user: User) {
+    const url = this.getFunctionUrl(environment.function.update_user);
+
+    return this.http.post(url, { user });
+  }
+
   private getBucketUrl(bucket_id) {
     return environment.url + 'bucket/' + bucket_id + 'data';
   }

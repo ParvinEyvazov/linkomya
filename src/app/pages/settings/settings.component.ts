@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/interfaces/data';
 import { ApiService } from 'src/app/services/api-services/api.service';
 import { MessageService } from 'src/app/services/message.service';
 import { UserService } from 'src/app/services/user-services/user.service';
@@ -10,7 +11,7 @@ import { ValidationService } from 'src/app/services/validation.service';
   styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent implements OnInit {
-  user;
+  user: User;
   loading: boolean = false;
   error: string;
 
@@ -26,13 +27,21 @@ export class SettingsComponent implements OnInit {
   }
 
   save() {
+    console.log('save button clicked');
     this.startLoading();
     this.cleanError();
     if (this.validator.validateFullname(this.user.fullname)) {
-      setTimeout(() => {
-        this.stopLoading();
-      }, 2000);
-      console.log('saving new data');
+      this.apiService
+        .updateUser(this.user)
+        .toPromise()
+        .then((data) => {
+          this.stopLoading();
+          console.log('data updated', data);
+        })
+        .catch((error) => {
+          this.stopLoading();
+          this.showError(error.error);
+        });
     } else {
       this.stopLoading();
       this.showError(this.messageService.ErrorMessages.fullname_validation);
