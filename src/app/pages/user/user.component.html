@@ -1,88 +1,78 @@
-<div>
+<div *ngIf="user_loading">
+  <app-loading></app-loading>
+</div>
+
+<div *ngIf="!user_loading">
+  <div *ngIf="!user">
+    <app-not-found></app-not-found>
+  </div>
+
+  <div *ngIf="user">
     <div class="page">
-        <div class="cicle"></div>
+      <div class="cicle"></div>
 
-        <main>
+      <main>
+        <!-- background photo part -->
+        <div class="background-image">
+          <img class="back-image" src="{{ user.background_photo }}" />
+        </div>
 
-            <!-- background photo part -->
-            <div class="background-image">
-                <img class="back-image" src="../../../../assets/back_photo.jpg">
+        <!-- profile photo and favorites part -->
+        <div class="profile-photo">
+          <img class="photo" src="{{ user.profile_photo }}" />
+
+          <div (click)="makeFavorite()">
+            <div *ngIf="isFavorite">
+              <mat-icon class="icon-favorite">favorite</mat-icon>
             </div>
-
-            <!-- profile photo and favorites part -->
-            <div class="profile-photo">
-                <img class="photo" src="../../../../assets/profile_photos/pp3.jpg">
-
-                <div (click)="makeFavorite()">
-                    <div *ngIf="isFavorite">
-                        <mat-icon class="icon-favorite">favorite</mat-icon>
-                    </div>
-                    <div *ngIf="!isFavorite">
-                        <mat-icon class="icon-favorite">favorite_border</mat-icon>
-                    </div>
-                </div>
-
-
+            <div *ngIf="!isFavorite">
+              <mat-icon class="icon-favorite">favorite_border</mat-icon>
             </div>
+          </div>
+        </div>
 
-            <!-- information, bio part -->
-            <div class="information">
+        <!-- information, bio part -->
+        <div class="information">
+          <div class="name">
+            <span>{{ user.fullname }}</span>
+            <mat-icon
+              *ngIf="user.verified"
+              class="icon-verify"
+              aria-label="place"
+              >verified_user</mat-icon
+            >
+          </div>
 
-                <div class="name">
-                    <span>Mary Smith</span>
-                    <mat-icon class="icon-verify" aria-label="place">verified_user</mat-icon>
-                </div>
+          <div class="country">
+            <mat-icon
+              *ngIf="user.country || user.city"
+              class="icon-place"
+              aria-label="place"
+              >place</mat-icon
+            >
+            <p>
+              {{ user.country }} {{ user.city && user.country ? "/" : "" }}
+              {{ user.city }}
+            </p>
+          </div>
 
-                <div class="country">
-                    <mat-icon class="icon-place" aria-label="place">place</mat-icon>
-                    <p>USA / San Francisco (CA)</p>
-                </div>
+          <div class="job">
+            <mat-icon *ngIf="user.job" class="icon-job" aria-label="place"
+              >work</mat-icon
+            >
+            <p>{{ user.job }}</p>
+          </div>
+        </div>
 
-                <div class="job">
-                    <mat-icon class="icon-job" aria-label="place">work</mat-icon>
-                    <p>Developer Advocate</p>
-                </div>
+        <hr class="divider" />
 
-
-            </div>
-
-            <hr class="divider">
-
-            <!-- links - main part  -->
-            <div class="links">
-                <div class="box">
-                    <app-link-box></app-link-box>
-                </div>
-                <div class="box">
-                    <app-link-box></app-link-box>
-                </div>
-                <div class="box">
-                    <app-link-box></app-link-box>
-                </div>
-                <div class="box">
-                    <app-link-box></app-link-box>
-                </div>
-                <div class="box">
-                    <app-link-box></app-link-box>
-                </div>
-                <div class="box">
-                    <app-link-box></app-link-box>
-                </div>
-                <div class="box">
-                    <app-link-box></app-link-box>
-                </div>
-                <div class="box">
-                    <app-link-box></app-link-box>
-                </div>
-                <div class="box">
-                    <app-link-box></app-link-box>
-                </div>
-            </div>
-
-
-
-
-        </main>
-
+        <!-- links - main part  -->
+        <div class="links" *ngIf="connections">
+          <div class="box" *ngFor="let connection of connections">
+            <app-link-box [connection]="connection"></app-link-box>
+          </div>
+        </div>
+      </main>
     </div>
+  </div>
 </div>

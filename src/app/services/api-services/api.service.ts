@@ -91,6 +91,19 @@ export class ApiService {
     );
   }
 
+  getUserWithUsername(username) {
+    const filter = {
+      username: username,
+    };
+    const url = this.getBucketUrl(environment.bucket.user);
+
+    return this.http.get<User[]>(url, {
+      params: {
+        filter: JSON.stringify(filter),
+      },
+    });
+  }
+
   private getBucketUrl(bucket_id) {
     return environment.url + 'bucket/' + bucket_id + 'data';
   }

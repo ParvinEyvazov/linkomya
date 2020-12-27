@@ -32,7 +32,6 @@ const routes: Routes = [
     canActivate: [LoggedInAuthGuard],
   },
   { path: 'search', component: SearchPageComponent },
-  { path: 'user', component: UserComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   {
     path: 'favorites',
@@ -40,6 +39,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
+  { path: ':username', component: UserComponent },
   { path: '**', component: NotFoundComponent },
 ];
 
