@@ -275,7 +275,8 @@
         .copy-button {
           transition: 0.25s;
           cursor: pointer;
-          border: 1px solid rgba(var(--f52, 142, 142, 142), 1);
+          //border: 1px solid rgba(var(--f52, 142, 142, 142), 1);
+          border: 1px solid rgba(73, 73, 73, 0.104);
           border-radius: 50%;
           height: 45px;
           width: 45px;
@@ -298,7 +299,8 @@
           text-align: center;
           margin: auto;
           cursor: pointer;
-          border: 1px solid rgba(var(--f52, 142, 142, 142), 1);
+          //border: 1px solid rgba(var(--f52, 142, 142, 142), 1);
+          border: 1px solid rgba(73, 73, 73, 0.104);
           border-radius: 50%;
           height: 45px;
           width: 45px;
@@ -321,7 +323,8 @@
           .edit-close {
             transition: 0.25s;
             cursor: pointer;
-            border: 1px solid rgba(var(--f52, 142, 142, 142), 1);
+            //border: 1px solid rgba(var(--f52, 142, 142, 142), 1);
+          border: 1px solid rgba(73, 73, 73, 0.104);
             border-radius: 50%;
             position: absolute;
             right: 0;

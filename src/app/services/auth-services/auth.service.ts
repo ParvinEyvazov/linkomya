@@ -175,6 +175,7 @@ export class AuthService {
       );
   }
 
+  //-----------LOGOUT-----------
   logout() {
     this.cleanLocalStorage();
     this.http

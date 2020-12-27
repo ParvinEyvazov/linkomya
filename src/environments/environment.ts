@@ -22,6 +22,7 @@ export const environment = {
     edit_connection: 'editConnection',
     delete_connection: 'deleteConnection',
     update_user: 'updateUser',
+    delete_account: 'deleteUser',
   },
 };
 

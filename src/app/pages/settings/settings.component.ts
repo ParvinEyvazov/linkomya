@@ -15,6 +15,8 @@ export class SettingsComponent implements OnInit {
   loading: boolean = false;
   error: string;
 
+  dialog_state_delele_account: boolean = false;
+
   constructor(
     private apiService: ApiService,
     private userService: UserService,
@@ -27,7 +29,6 @@ export class SettingsComponent implements OnInit {
   }
 
   save() {
-    console.log('save button clicked');
     this.startLoading();
     this.cleanError();
     if (this.validator.validateFullname(this.user.fullname)) {
@@ -36,7 +37,6 @@ export class SettingsComponent implements OnInit {
         .toPromise()
         .then((data) => {
           this.stopLoading();
-          console.log('data updated', data);
         })
         .catch((error) => {
           this.stopLoading();
@@ -48,6 +48,16 @@ export class SettingsComponent implements OnInit {
     }
   }
 
+  closeDeleteDialog(event) {
+    if (event == false) {
+      this.closeDialog();
+    }
+  }
+
+  closeDialog() {
+    this.dialog_state_delele_account = false;
+  }
+
   getUser(user_id) {
     this.apiService
       .getUser(user_id)
@@ -55,7 +65,6 @@ export class SettingsComponent implements OnInit {
       .then((data) => {
         if (data) {
           this.user = data[0];
-          console.log(this.user);
         }
       });
   }

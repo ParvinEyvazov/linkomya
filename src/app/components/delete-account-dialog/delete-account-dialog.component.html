@@ -1,0 +1,45 @@
+<div class="delete-content">
+  <div class="page-title">DELETE ACCOUNT</div>
+  <mat-divider></mat-divider>
+
+  <div class="text">
+    <span class="information"
+      >After deleting your account you could not get it back it anytime.</span
+    >
+    <br />
+    <br />
+    <br />
+
+    <div class="question-box">
+      <span class="question"> Are you sure about deleting account? </span>
+    </div>
+  </div>
+
+  <div class="error">
+    <span>{{ error }}</span>
+  </div>
+
+  <div class="buttons">
+    <!-- confirm button -->
+    <div class="confirm-button">
+      <a *ngIf="!loading">
+        <input
+          (click)="delete_account()"
+          type="submit"
+          name="submit"
+          value="CONFIRM"
+        />
+      </a>
+      <div class="spinner" *ngIf="loading">
+        <mat-spinner [diameter]="25"></mat-spinner>
+      </div>
+    </div>
+
+    <!-- cancel button -->
+    <div class="cancel-button">
+      <a *ngIf="!loading">
+        <input (click)="cancel()" type="submit" name="submit" value="CANCEL" />
+      </a>
+    </div>
+  </div>
+</div>

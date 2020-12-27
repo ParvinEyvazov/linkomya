@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Connection, SocialMedia, User } from '../../interfaces/data';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -80,11 +81,25 @@ export class ApiService {
     return this.http.post(url, { user });
   }
 
+  deleteAccount(user_id) {
+    const url = this.getFunctionUrl(environment.function.delete_account);
+
+    return this.http.post(url, { user_id }).pipe(
+      tap((_) => {
+        this.cleanLocalStorage();
+      })
+    );
+  }
+
   private getBucketUrl(bucket_id) {
     return environment.url + 'bucket/' + bucket_id + 'data';
   }
 
   private getFunctionUrl(function_name) {
     return environment.url + 'fn-execute/' + function_name;
+  }
+
+  private cleanLocalStorage() {
+    localStorage.clear();
   }
 }

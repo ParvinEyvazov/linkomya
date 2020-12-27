@@ -35,6 +35,7 @@ import { PasswordRecoveryComponent } from './pages/password-recovery/password-re
 import { LoadingComponent } from './components/loading/loading.component';
 import { AddConnectionDialogComponent } from './components/add-connection-dialog/add-connection-dialog.component';
 import { EditConnectionDialogComponent } from './components/edit-connection-dialog/edit-connection-dialog.component';
+import { DeleteAccountDialogComponent } from './components/delete-account-dialog/delete-account-dialog.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { EditConnectionDialogComponent } from './components/edit-connection-dial
     LoadingComponent,
     AddConnectionDialogComponent,
     EditConnectionDialogComponent,
+    DeleteAccountDialogComponent,
   ],
   imports: [
     MatIconModule,

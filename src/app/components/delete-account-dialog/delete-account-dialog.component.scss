@@ -1,0 +1,154 @@
+.delete-content {
+  .page-title {
+    margin: auto;
+    text-align: center;
+    font-size: 2em;
+    transition: 0.25s;
+    color: rgba(250, 4, 4, 0.411);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
+  }
+
+  mat-divider {
+    margin: 15px 8% 15px 8%;
+    color: black;
+  }
+
+  .text {
+    font-size: 1.2em;
+    margin-left: 8%;
+    margin-right: 8%;
+    .information {
+      //margin: 15px 8% 15px 8%;
+    }
+
+    .question-box {
+      text-align: center;
+      .question {
+        margin: auto;
+        font-weight: bold;
+        //display: none;
+      }
+    }
+  }
+
+  .error {
+    margin-top: 10px;
+    text-align: center;
+    span {
+      color: rgba(255, 0, 0, 0.507);
+    }
+  }
+
+  .buttons {
+    margin-top: 10px;
+    text-align: center;
+    .confirm-button {
+      input {
+        border: 0;
+        background: none;
+        margin: auto;
+        margin-top: 10px;
+        text-align: center;
+        padding: 7px 60px;
+        outline: none;
+        color: rgba(0, 0, 0, 0.645);
+        border-radius: 50px;
+        transition: 0.25s;
+        cursor: pointer;
+        font-size: 1.1em;
+        background: rgba(250, 4, 4, 0.411);
+      }
+
+      input[type="submit"]:hover {
+        color: rgb(0, 0, 0);
+        background: rgba(250, 4, 4, 0.809);
+      }
+      .spinner {
+        display: block;
+        margin: auto;
+        margin-top: 40px;
+        mat-spinner {
+          margin: auto;
+          text-align: center;
+        }
+      }
+    }
+
+    .cancel-button {
+      input {
+        border: 0;
+        background: none;
+        margin: auto;
+        margin-top: 10px;
+        text-align: center;
+        padding: 7px 64px;
+        outline: none;
+        border: 2px solid #7b77ff;
+        color: rgba(0, 0, 0, 0.645);
+        border-radius: 50px;
+        transition: 0.25s;
+        cursor: pointer;
+        font-size: 1.1em;
+      }
+
+      input[type="submit"]:hover {
+        color: rgb(0, 0, 0);
+        background: #7b77ff;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .delete-content {
+    .page-title {
+      font-size: 1.4em !important;
+    }
+
+    mat-divider {
+      margin: 15px 2% 15px 2% !important;
+    }
+
+    .text {
+      font-size: 1.1em;
+      margin-left: 2% !important;
+      margin-right: 2% !important;
+      .information {
+        //margin: 15px 8% 15px 8%;
+      }
+
+      .question-box {
+        .question {
+          //display: none;
+        }
+      }
+    }
+
+    .buttons {
+      .confirm-button {
+        input {
+          font-size: 1em !important;
+          padding: 7px 40px !important;
+        }
+
+        input[type="submit"]:hover {
+        }
+        .spinner {
+          mat-spinner {
+          }
+        }
+      }
+
+      .cancel-button {
+        input {
+          font-size: 1em;
+          padding: 7px 43.5px !important;
+        }
+
+        input[type="submit"]:hover {
+        }
+      }
+    }
+  }
+}
