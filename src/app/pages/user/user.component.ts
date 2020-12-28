@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Connection, User } from 'src/app/interfaces/data';
 import { ApiService } from 'src/app/services/api-services/api.service';
+import { UserService } from 'src/app/services/user-services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -9,16 +10,27 @@ import { ApiService } from 'src/app/services/api-services/api.service';
   styleUrls: ['./user.component.scss'],
 })
 export class UserComponent implements OnInit {
-  isFavorite: boolean = false;
   user: User;
   user_loading: boolean = true;
   connections: Connection[];
+  is_own_profile: boolean = true;
+  is_favorite: boolean = false;
+  is_logged_in: boolean = false;
 
-  constructor(private route: ActivatedRoute, private apiService: ApiService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private apiService: ApiService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
+    if (this.userService.getUserId()) {
+      this.is_logged_in = true;
+    } else {
+      this.is_logged_in = false;
+    }
+
     this.route.params.subscribe((data) => {
-      console.log(data.username);
       this.getUser(data.username);
     });
   }
@@ -32,12 +44,17 @@ export class UserComponent implements OnInit {
         if (data.length > 0) {
           this.user = data[0];
           this.getConnections(this.user._id);
+
+          if (this.is_logged_in) {
+            this.isOwnProfile(this.user._id);
+            this.isFavorite(this.userService.getUserId(), this.user._id);
+          } else {
+          }
         } else {
         }
       })
       .catch((error) => {
         this.stopUserLoading();
-        console.log('error: ', error);
       });
   }
 
@@ -47,11 +64,34 @@ export class UserComponent implements OnInit {
       .toPromise()
       .then((data) => {
         this.connections = data;
-        console.log('connections: ', this.connections);
+      })
+      .catch((error) => {});
+  }
+
+  isOwnProfile(user_id) {
+    if (user_id == this.userService.getUserId()) {
+      this.is_own_profile = true;
+    } else {
+      this.is_own_profile = false;
+    }
+  }
+
+  isFavorite(user_id, favorite_user_id) {
+    this.apiService
+      .checkFavoriteRelation(user_id, favorite_user_id)
+      .toPromise()
+      .then((data) => {
+        console.log('data: ');
+        if (data == true) {
+          this.is_favorite = true;
+        } else if (data == false) {
+          this.is_favorite = false;
+        }
       })
       .catch((error) => {
-        console.log('error: ', error);
+        console.log('err: ', error);
       });
+    console.log(user_id, favorite_user_id);
   }
 
   stopUserLoading() {
@@ -59,6 +99,6 @@ export class UserComponent implements OnInit {
   }
 
   makeFavorite() {
-    this.isFavorite = !this.isFavorite;
+    this.is_favorite = !this.is_favorite;
   }
 }

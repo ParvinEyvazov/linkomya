@@ -23,6 +23,8 @@ export const environment = {
     delete_connection: 'deleteConnection',
     update_user: 'updateUser',
     delete_account: 'deleteUser',
+    add_to_favorites: 'addToFavorites',
+    check_favorite_relation: 'checkFavoriteRelation',
   },
 };
 

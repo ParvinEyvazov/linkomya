@@ -104,6 +104,17 @@ export class ApiService {
     });
   }
 
+  checkFavoriteRelation(user_id, favorite_user_id) {
+    const url = this.getFunctionUrl(
+      environment.function.check_favorite_relation
+    );
+
+    return this.http.post(url, {
+      user_id: user_id,
+      favorite_user_id: favorite_user_id,
+    });
+  }
+
   private getBucketUrl(bucket_id) {
     return environment.url + 'bucket/' + bucket_id + 'data';
   }

@@ -21,11 +21,11 @@
         <div class="profile-photo">
           <img class="photo" src="{{ user.profile_photo }}" />
 
-          <div (click)="makeFavorite()">
-            <div *ngIf="isFavorite">
+          <div *ngIf="!is_own_profile || is_logged_in" (click)="makeFavorite()">
+            <div *ngIf="is_favorite">
               <mat-icon class="icon-favorite">favorite</mat-icon>
             </div>
-            <div *ngIf="!isFavorite">
+            <div *ngIf="!is_favorite">
               <mat-icon class="icon-favorite">favorite_border</mat-icon>
             </div>
           </div>

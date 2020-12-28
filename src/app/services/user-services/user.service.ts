@@ -42,7 +42,12 @@ export class UserService {
   }
 
   getUserId() {
-    const decoded_token = JwtDecode(this.token);
-    return decoded_token['_id'];
+    try {
+      const decoded_token = JwtDecode(this.token);
+      return decoded_token['_id'];
+      // valid token format
+    } catch (error) {
+      // invalid token format
+    }
   }
 }
