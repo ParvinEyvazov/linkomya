@@ -75,6 +75,18 @@ export class ApiService {
     return this.http.post(url, { connection_id });
   }
 
+  uploadPhoto(photo_url, is_profile_photo) {
+    const url = this.getFunctionUrl(environment.function.upload_photo);
+    console.log(photo_url, is_profile_photo);
+
+    const data = {
+      url: photo_url,
+      is_profile_photo: is_profile_photo,
+    };
+
+    return this.http.post(url, data);
+  }
+
   updateUser(user: User) {
     const url = this.getFunctionUrl(environment.function.update_user);
 

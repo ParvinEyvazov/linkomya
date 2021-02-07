@@ -21,6 +21,7 @@ export const environment = {
     add_new_connection: 'addNewConnection',
     edit_connection: 'editConnection',
     delete_connection: 'deleteConnection',
+    upload_photo: 'uploadPhoto',
     update_user: 'updateUser',
     delete_account: 'deleteUser',
     add_to_favorites: 'addToFavorites',

@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  AfterViewInit,
-  ViewChildren,
-} from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { UserService } from '../../services/user-services/user.service';
 import { ApiService } from '../../services/api-services/api.service';
 
@@ -13,6 +7,7 @@ import { debounceTime } from 'rxjs/operators';
 import { ValidationService } from 'src/app/services/validation.service';
 import { MessageService } from 'src/app/services/message.service';
 import { MicroService } from 'src/app/services/micro-services/micro.service';
+import { StorageService } from 'src/app/services/storage-service/storage.service';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -34,6 +29,10 @@ export class ProfileComponent implements AfterViewInit {
   //--------NON-NEW USER
   edit_open: boolean = false;
   user: User;
+  profile_photo_loading = false;
+  profile_photo_error: string = '';
+  background_photo_loading = false;
+  background_photo_error: string = '';
 
   // -add new connection
   connections: Connection[];
@@ -49,7 +48,8 @@ export class ProfileComponent implements AfterViewInit {
     private apiService: ApiService,
     private validator: ValidationService,
     private message: MessageService,
-    private microService: MicroService
+    private microService: MicroService,
+    private storageService: StorageService
   ) {}
 
   ngAfterViewInit(): void {
@@ -88,10 +88,7 @@ export class ProfileComponent implements AfterViewInit {
                 .postUsername(this.username)
                 .toPromise()
                 .then((data) => {
-                  //works when username posted successfully
-                  //get user info
                   this.getUser(this.userService.getUserId());
-                  // console.log('sended data : ', data);
                 })
                 .catch((error) => {
                   this.showUsernameError(error.error.message);
@@ -186,6 +183,38 @@ export class ProfileComponent implements AfterViewInit {
     );
   }
 
+  onFileChanged(event, is_profile_photo) {
+    let file;
+    const files = event.target.files;
+    if (files.length > 0 && files) {
+      file = files[0];
+      this.startPhotoLoading(is_profile_photo);
+      this.storageService
+        .giveFileAndGetUrl(file)
+        .then((url) => {
+          this.uploadPhoto(url, is_profile_photo);
+        })
+        .catch((error) => {
+          this.stopPhotoLoading(is_profile_photo);
+          this.showPhotoError(error, is_profile_photo);
+        });
+    }
+  }
+
+  uploadPhoto(url, is_profile_photo) {
+    this.apiService
+      .uploadPhoto(url, is_profile_photo)
+      .toPromise()
+      .then((data) => {
+        this.getUser(this.userService.getUserId());
+        this.stopPhotoLoading(is_profile_photo);
+      })
+      .catch((error) => {
+        this.stopPhotoLoading(is_profile_photo);
+        this.showPhotoError(error.error.message, is_profile_photo);
+      });
+  }
+
   //-------------------------API FUNCTIONS------------------------
   getUser(user_id) {
     this.apiService
@@ -238,5 +267,40 @@ export class ProfileComponent implements AfterViewInit {
 
   copyMessage() {
     this.microService.copyMessage(environment.host_url + this.user.username);
+  }
+
+  startProfilePhotoLoading() {
+    this.profile_photo_loading = true;
+  }
+
+  stopProfilePhotoLoading() {
+    this.profile_photo_loading = false;
+  }
+
+  startPhotoLoading(is_profile_photo) {
+    is_profile_photo == true
+      ? (this.profile_photo_loading = true)
+      : (this.background_photo_loading = true);
+  }
+
+  stopPhotoLoading(is_profile_photo) {
+    is_profile_photo == true
+      ? (this.profile_photo_loading = false)
+      : (this.background_photo_loading = false);
+  }
+
+  showPhotoError(error_message, is_profile_photo) {
+    is_profile_photo == true
+      ? (this.profile_photo_error = error_message)
+      : (this.background_photo_error = error_message);
+
+    setTimeout(() => {
+      this.profile_photo_error = '';
+      this.background_photo_error = '';
+    }, 3000);
+  }
+
+  cleanProfilePhotoError() {
+    this.profile_photo_error = '';
   }
 }

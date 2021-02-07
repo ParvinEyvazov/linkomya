@@ -97,18 +97,51 @@
 
       <!-- background photo part -->
       <div class="background-image">
+        <input
+          style="display: none"
+          type="file"
+          (change)="onFileChanged($event, false)"
+          [disabled]="background_photo_loading"
+          #fileInputBackground
+        />
+
         <img class="back-image" src="{{ user.background_photo }}" />
-        <div class="edit-photo">
-          <img src="../../../../assets/icons/social_media_icons/edit.svg" />
+        <div (click)="fileInputBackground.click()" class="edit-photo">
+          <mat-spinner
+            *ngIf="background_photo_loading"
+            [diameter]="25"
+          ></mat-spinner>
+          <img
+            *ngIf="!background_photo_loading"
+            src="../../../../assets/icons/social_media_icons/edit.svg"
+          />
         </div>
       </div>
 
       <!-- profile photo and favorites part -->
       <div class="profile-photo">
+        <input
+          style="display: none"
+          type="file"
+          (change)="onFileChanged($event, true)"
+          [disabled]="profile_photo_loading"
+          #fileInput
+        />
         <img class="photo" src="{{ user.profile_photo }}" />
-        <div class="edit-photo">
-          <img src="../../../../assets/icons/social_media_icons/edit.svg" />
+        <div (click)="fileInput.click()" class="edit-photo">
+          <mat-spinner
+            *ngIf="profile_photo_loading"
+            [diameter]="25"
+          ></mat-spinner>
+          <img
+            *ngIf="!profile_photo_loading"
+            src="../../../../assets/icons/social_media_icons/edit.svg"
+          />
         </div>
+      </div>
+
+      <div class="photo-upload-error">
+        <span>{{ profile_photo_error }} {{ background_photo_error }}</span>
       </div>
 
       <!-- information, bio part -->
@@ -120,23 +153,16 @@
           >
         </div>
 
-        <div class="country">
-          <mat-icon
-            *ngIf="user.country || user.city"
-            class="icon-place"
-            aria-label="place"
-            >place</mat-icon
-          >
+        <div class="country" *ngIf="user.country || user.city">
+          <mat-icon class="icon-place" aria-label="place">place</mat-icon>
           <p>
             {{ user.country }} {{ user.city && user.country ? "/" : "" }}
             {{ user.city }}
           </p>
         </div>
 
-        <div class="job">
-          <mat-icon *ngIf="user.job" class="icon-job" aria-label="place"
-            >work</mat-icon
-          >
+        <div class="job" *ngIf="user.job">
+          <mat-icon class="icon-job" aria-label="place">work</mat-icon>
           <p>{{ user.job }}</p>
         </div>
       </div>
