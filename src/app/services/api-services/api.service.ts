@@ -127,6 +127,18 @@ export class ApiService {
     });
   }
 
+  addToFavorites(user_id, favorite_user_id) {
+    const url = this.getFunctionUrl(environment.function.add_to_favorites);
+
+    return this.http.post(url, { user_id, favorite_user_id });
+  }
+
+  deleteFromFavorites(user_id, favorite_user_id) {
+    const url = this.getFunctionUrl(environment.function.delete_from_favorites);
+    
+    return this.http.post(url, { user_id, favorite_user_id });
+  }
+
   private getBucketUrl(bucket_id) {
     return environment.url + 'bucket/' + bucket_id + 'data';
   }

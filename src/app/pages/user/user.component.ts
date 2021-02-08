@@ -17,6 +17,8 @@ export class UserComponent implements OnInit {
   is_favorite: boolean = false;
   is_logged_in: boolean = false;
 
+  favorite_loading: boolean = true;
+
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiService,
@@ -44,13 +46,9 @@ export class UserComponent implements OnInit {
         if (data.length > 0) {
           this.user = data[0];
           this.getConnections(this.user._id);
-
           if (this.is_logged_in) {
             this.isOwnProfile(this.user._id);
-            this.isFavorite(this.userService.getUserId(), this.user._id);
-          } else {
           }
-        } else {
         }
       })
       .catch((error) => {
@@ -71,9 +69,13 @@ export class UserComponent implements OnInit {
   isOwnProfile(user_id) {
     if (user_id == this.userService.getUserId()) {
       this.is_own_profile = true;
+      this.stopFavoriteLoading();
     } else {
       this.is_own_profile = false;
+      this.isFavorite(this.userService.getUserId(), user_id);
     }
+
+    console.log(this.is_own_profile);
   }
 
   isFavorite(user_id, favorite_user_id) {
@@ -81,24 +83,55 @@ export class UserComponent implements OnInit {
       .checkFavoriteRelation(user_id, favorite_user_id)
       .toPromise()
       .then((data) => {
-        console.log('data: ');
         if (data == true) {
           this.is_favorite = true;
         } else if (data == false) {
           this.is_favorite = false;
         }
+        this.stopFavoriteLoading();
       })
       .catch((error) => {
-        console.log('err: ', error);
+        this.stopFavoriteLoading();
       });
-    console.log(user_id, favorite_user_id);
   }
 
   stopUserLoading() {
     this.user_loading = false;
   }
 
-  makeFavorite() {
-    this.is_favorite = !this.is_favorite;
+  startFavoriteLoading() {
+    this.favorite_loading = true;
+  }
+
+  stopFavoriteLoading() {
+    this.favorite_loading = false;
+  }
+
+  addToFavorites() {
+    if (this.is_favorite == true) {
+      this.startFavoriteLoading();
+      this.apiService
+        .deleteFromFavorites(this.userService.getUserId(), this.user._id)
+        .toPromise()
+        .then((data) => {
+          this.stopFavoriteLoading();
+          this.is_favorite = !this.is_favorite;
+        })
+        .catch((error) => {
+          this.stopFavoriteLoading();
+        });
+    } else if (this.is_favorite == false) {
+      this.startFavoriteLoading();
+      this.apiService
+        .addToFavorites(this.userService.getUserId(), this.user._id)
+        .toPromise()
+        .then((data) => {
+          this.stopFavoriteLoading();
+          this.is_favorite = !this.is_favorite;
+        })
+        .catch((error) => {
+          this.stopFavoriteLoading();
+        });
+    }
   }
 }

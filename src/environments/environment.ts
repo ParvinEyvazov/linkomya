@@ -24,8 +24,9 @@ export const environment = {
     upload_photo: 'uploadPhoto',
     update_user: 'updateUser',
     delete_account: 'deleteUser',
-    add_to_favorites: 'addToFavorites',
     check_favorite_relation: 'checkFavoriteRelation',
+    add_to_favorites: 'addToFavorites',
+    delete_from_favorites: 'deleteFromFavorites',
   },
 };
 
