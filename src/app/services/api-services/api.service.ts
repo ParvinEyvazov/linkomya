@@ -135,7 +135,7 @@ export class ApiService {
 
   deleteFromFavorites(user_id, favorite_user_id) {
     const url = this.getFunctionUrl(environment.function.delete_from_favorites);
-    
+
     return this.http.post(url, { user_id, favorite_user_id });
   }
 

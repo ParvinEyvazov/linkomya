@@ -1,70 +1,70 @@
 .background {
-    overflow-x: hidden;
+  overflow-x: hidden;
 
-    position: fixed;
-    top: 80px;
-    right: 0;
-    bottom: 0;
-    left: 0;
+  position: fixed;
+  top: 80px;
+  right: 0;
+  bottom: 0;
+  left: 0;
 
-    main {
-     //   background: lightblue;
-        height: calc(100vh - 80px);
-        width: 100vw;
+  main {
+    //   background: lightblue;
+    height: calc(100vh - 80px);
+    width: 100vw;
 
-        .search-bar {
-            text-align: center;
-         //   background: lightcoral;
-            padding-top: 15px;
-            padding-bottom: 20px;
-            transition: 0.25s;
+    .search-bar {
+      text-align: center;
+      //   background: lightcoral;
+      padding-top: 15px;
+      padding-bottom: 20px;
+      transition: 0.25s;
 
-            .search {
-                position: relative;
-                margin: auto;
-                margin-left: 32%;
-                margin-right: 32%;
-                height: auto;
-                transition: 0.25s;
+      .search {
+        position: relative;
+        margin: auto;
+        margin-left: 32%;
+        margin-right: 32%;
+        height: auto;
+        transition: 0.25s;
 
-                .searchTerm {
-                    transition: 0.25s;
-                    display: flex;
-                    font-size: 2em;
-                    width: 100%;
-                    border: 1px solid #7b77ff;
-                    padding: 5px;
-                    padding-left: 20px;
-                    padding-right: 50px;
-                    border-radius: 50px;
-                    outline: none;
-                    color: #1f1ab8;
-                }
-                .searchTerm:focus {
-                    color: #7b77ff;
-                }
-
-                .searchButton {
-                    background: transparent;
-                    border: none;
-                    position: absolute;
-                    top: 20%;
-                    right: 2%;
-                    text-align: center;
-                    color: #7b77ff;
-                    cursor: pointer;
-                    font-size: 20px;
-                    outline: none;
-                }
-            }
+        .searchTerm {
+          transition: 0.25s;
+          display: flex;
+          font-size: 2em;
+          width: 100%;
+          border: 1px solid #7b77ff;
+          padding: 5px;
+          padding-left: 20px;
+          padding-right: 50px;
+          border-radius: 50px;
+          outline: none;
+          color: #1f1ab8;
+        }
+        .searchTerm:focus {
+          color: #7b77ff;
         }
 
-        .profile-box {
-        //    background: lightgreen;
-            width: 100%;
-            //  background: lightgray;
+        .searchButton {
+          background: transparent;
+          border: none;
+          position: absolute;
+          top: 20%;
+          right: 2%;
+          text-align: center;
+          color: #7b77ff;
+          cursor: pointer;
+          font-size: 20px;
+          outline: none;
         }
+      }
     }
+
+    .profile-box {
+      //    background: lightgreen;
+      width: 100%;
+      //  background: lightgray;
+    }
+  }
 }
 
 // ::placeholder{
@@ -72,44 +72,44 @@
 // }
 
 @media screen and (max-width: 992px) {
-    main {
-        .search-bar {
-            .search {
-                margin-left: 10% !important;
-                margin-right: 10% !important;
+  main {
+    .search-bar {
+      .search {
+        margin-left: 10% !important;
+        margin-right: 10% !important;
 
-                .searchTerm {
-                }
-
-                .searchButton {
-                }
-            }
+        .searchTerm {
         }
 
-        .profile-box {
-            //  background: lightgray;
+        .searchButton {
         }
+      }
     }
+
+    .profile-box {
+      //  background: lightgray;
+    }
+  }
 }
 
 @media screen and (max-width: 575px) {
-    main {
-        .search-bar {
-            padding-top: 25px !important;
-            padding-bottom: 35px !important;
-            .search {
-                .searchTerm {
-                    font-size: 1.5em !important;
-                }
-
-                .searchButton {
-                    font-size: 15px !important;
-                }
-            }
+  main {
+    .search-bar {
+      padding-top: 25px !important;
+      padding-bottom: 35px !important;
+      .search {
+        .searchTerm {
+          font-size: 1.5em !important;
         }
 
-        .profile-box {
-            //  background: lightgray;
+        .searchButton {
+          font-size: 15px !important;
         }
+      }
     }
+
+    .profile-box {
+      //  background: lightgray;
+    }
+  }
 }

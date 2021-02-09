@@ -1,196 +1,196 @@
 :host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
-    color: #333;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .logo-text {
-    cursor: pointer;
-    outline: none;
-    position: absolute;
-    left: 5%;
-    width: 135px;
-    color: black;
-    font-size: 25px;
-    transition: 0.25s;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-        "Helvetica Neue", sans-serif !important;
+  cursor: pointer;
+  outline: none;
+  position: absolute;
+  left: 5%;
+  width: 135px;
+  color: black;
+  font-size: 25px;
+  transition: 0.25s;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
 }
 
 .menu-text {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-        "Helvetica Neue", sans-serif !important;
-    font-size: 1.1em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
+  font-size: 1.1em;
 }
 
 .toolbar {
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    display: block;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  display: block;
 
-    height: 80px;
-    display: flex;
-    align-items: center;
-    background-color: #7b77ff;
-    color: white;
-    font-weight: 600;
-    font-size: 2em;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  background-color: #7b77ff;
+  color: white;
+  font-weight: 600;
+  font-size: 2em;
 
-    .tools {
-        display: inline-flex;
-        position: absolute;
-        right: 10%;
-        width: 30%;
-        height: 50px;
-        //     background: purple;
-
-        //search bar part
-        .search-bar {
-            width: 90%;
-            height: 100%;
-            //      background: red;
-
-            display: flex;
-            transition: 0.25s;
-
-            .search {
-                // background: black;
-                position: relative;
-                right: 0;
-                margin: auto;
-                margin-right: 0;
-                width: 85%;
-
-                .searchTerm {
-                    display: flex;
-                    font-size: 0.9em;
-                    width: 100%;
-                    border: 1px solid #7b77ff;
-                    padding: 5px;
-                    padding-left: 20px;
-                    padding-right: 50px;
-                    border-radius: 50px;
-                    outline: none;
-                    color: #1f1ab8;
-                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
-                        "Open Sans", "Helvetica Neue", sans-serif !important;
-                }
-
-                .searchTerm:focus {
-                    color: #7b77ff;
-                }
-
-                .searchButton {
-                    background: transparent;
-                    border: none;
-                    position: absolute;
-                    top: 20%;
-                    right: 2%;
-                    text-align: center;
-                    color: #7b77ff;
-                    cursor: pointer;
-                    font-size: 20px;
-                    outline: none;
-                }
-            }
-        }
-
-        .search-phone-button {
-            transition: 0.25s;
-            display: none;
-            width: 90%;
-            height: 100%;
-            //     background: lightpink;
-            text-align: end;
-
-            .search-phone-icon {
-                margin: 0;
-                position: relative;
-                top: 50%;
-                right: 5%;
-                -ms-transform: translateY(-50%);
-                transform: translateY(-50%);
-                //   background: lightsalmon;
-                background: transparent;
-                border: none;
-                text-align: center;
-                color: #000000;
-                cursor: pointer;
-                font-size: 23px;
-                outline: none;
-            }
-        }
-
-        .login-button {
-            margin: auto;
-            //      background: lightgreen;
-
-            .icon-login {
-                transition: 0.25s;
-                cursor: pointer;
-                color: white;
-                font-size: 1.5em;
-                outline: none;
-            }
-        }
-
-        //menu part
-        .menu {
-            text-align: center;
-            margin: auto;
-            //      background: blue;
-            padding-top: 5px;
-
-            .account_button {
-                transition: 0.25s;
-                margin: auto;
-                cursor: pointer;
-                color: white;
-                border: none;
-                border-radius: 50%;
-                background: transparent;
-                outline: none;
-            }
-        }
-    }
-}
-
-::ng-deep .menu-dropdown {
-    width: 250px;
-}
-
-.content {
+  .tools {
+    display: inline-flex;
     position: absolute;
-    top: 80px;
-}
+    right: 10%;
+    width: 30%;
+    height: 50px;
+    //     background: purple;
 
-@media screen and (max-width: 992px) {
+    //search bar part
     .search-bar {
-        display: none !important;
+      width: 90%;
+      height: 100%;
+      //      background: red;
+
+      display: flex;
+      transition: 0.25s;
+
+      .search {
+        // background: black;
+        position: relative;
+        right: 0;
+        margin: auto;
+        margin-right: 0;
+        width: 85%;
+
+        .searchTerm {
+          display: flex;
+          font-size: 0.9em;
+          width: 100%;
+          border: 1px solid #7b77ff;
+          padding: 5px;
+          padding-left: 20px;
+          padding-right: 50px;
+          border-radius: 50px;
+          outline: none;
+          color: #1f1ab8;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
+        }
+
+        .searchTerm:focus {
+          color: #7b77ff;
+        }
+
+        .searchButton {
+          background: transparent;
+          border: none;
+          position: absolute;
+          top: 20%;
+          right: 2%;
+          text-align: center;
+          color: #7b77ff;
+          cursor: pointer;
+          font-size: 20px;
+          outline: none;
+        }
+      }
     }
 
     .search-phone-button {
-        display: inline !important;
+      transition: 0.25s;
+      display: none;
+      width: 90%;
+      height: 100%;
+      //     background: lightpink;
+      text-align: end;
+
+      .search-phone-icon {
+        margin: 0;
+        position: relative;
+        top: 50%;
+        right: 5%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        //   background: lightsalmon;
+        background: transparent;
+        border: none;
+        text-align: center;
+        color: #000000;
+        cursor: pointer;
+        font-size: 23px;
+        outline: none;
+      }
     }
+
+    .login-button {
+      margin: auto;
+      //      background: lightgreen;
+
+      .icon-login {
+        transition: 0.25s;
+        cursor: pointer;
+        color: white;
+        font-size: 1.5em;
+        outline: none;
+      }
+    }
+
+    //menu part
+    .menu {
+      text-align: center;
+      margin: auto;
+      //      background: blue;
+      padding-top: 5px;
+
+      .account_button {
+        transition: 0.25s;
+        margin: auto;
+        cursor: pointer;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        background: transparent;
+        outline: none;
+      }
+    }
+  }
+}
+
+::ng-deep .menu-dropdown {
+  width: 250px;
+}
+
+.content {
+  position: absolute;
+  top: 80px;
+}
+
+@media screen and (max-width: 992px) {
+  .search-bar {
+    display: none !important;
+  }
+
+  .search-phone-button {
+    display: inline !important;
+  }
 }
 
 @media screen and (max-width: 767px) {
-    .logo-text {
-        left: 5%;
-        width: 100px !important;
-    }
-    .account_button {
-        font-size: 10px;
-    }
+  .logo-text {
+    left: 5%;
+    width: 100px !important;
+  }
+  .account_button {
+    font-size: 10px;
+  }
 
-    .icon-login {
-        font-size: 1.1em !important;
-    }
+  .icon-login {
+    font-size: 1.1em !important;
+  }
 }
 
 @media screen and (max-width: 575px) {

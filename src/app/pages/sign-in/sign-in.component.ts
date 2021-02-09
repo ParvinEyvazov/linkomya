@@ -18,7 +18,6 @@ export class SignInComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private activatedRoute: ActivatedRoute,
     private validator: ValidationService,
     private message: MessageService
   ) {}

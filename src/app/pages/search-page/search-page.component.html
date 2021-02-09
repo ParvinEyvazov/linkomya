@@ -1,26 +1,23 @@
 <div class="background">
+  <main>
+    <div class="search-bar">
+      <!-- <app-search-bar></app-search-bar> -->
+      <div class="search">
+        <input type="text" class="searchTerm" placeholder="search..." />
+        <button type="submit" class="searchButton">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </div>
 
-    <main>
-        <div class="search-bar">
-            <!-- <app-search-bar></app-search-bar> -->
-            <div class="search">
-                <input type="text" class="searchTerm" placeholder="search...">
-                <button type="submit" class="searchButton">
-                    <i class="fa fa-search"></i>
-                </button>
-            </div>
-        </div>
+    <div class="profile-box">
+      <app-user-card></app-user-card>
 
-        <div class="profile-box">
-            <app-user-card></app-user-card>
+      <app-user-card></app-user-card>
 
-            <app-user-card></app-user-card>
+      <app-user-card></app-user-card>
 
-            <app-user-card></app-user-card>
-
-            <app-user-card></app-user-card>
-
-        </div>
-    </main>
-
+      <app-user-card></app-user-card>
+    </div>
+  </main>
 </div>

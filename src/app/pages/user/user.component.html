@@ -21,7 +21,10 @@
         <div class="profile-photo">
           <img class="photo" src="{{ user.profile_photo }}" />
 
-          <div *ngIf="!is_own_profile && is_logged_in" (click)="addToFavorites()">
+          <div
+            *ngIf="!is_own_profile && is_logged_in"
+            (click)="addToFavorites()"
+          >
             <div class="favorite-loading" *ngIf="favorite_loading">
               <mat-spinner [diameter]="30"></mat-spinner>
             </div>
