@@ -18,5 +18,20 @@ export class MicroService {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+    this.copyMessageGuarantee(string);
+  }
+
+  copyMessageGuarantee(string: string) {
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = string;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
   }
 }

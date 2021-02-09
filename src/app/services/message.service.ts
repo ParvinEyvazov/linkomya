@@ -10,7 +10,7 @@ export class MessageService {
     password_not_same: 'Passwords are not same',
     fullname_validation: 'Full name must be at least 1 character',
     username_validation: 'Username with non valid characters.',
-    used_username: 'This username is already taken.',
+    used_username: 'This username is already taken or forbidden word.',
     wrong_link_type: 'This is not a valid url.',
     wrong_file_type: "The file type doesn't match.",
     cannot_upload_file: 'File cannot be uploaded.',
