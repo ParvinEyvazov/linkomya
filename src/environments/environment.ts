@@ -27,6 +27,7 @@ export const environment = {
     check_favorite_relation: 'checkFavoriteRelation',
     add_to_favorites: 'addToFavorites',
     delete_from_favorites: 'deleteFromFavorites',
+    get_favorites: 'getFavorites'
   },
 };
 

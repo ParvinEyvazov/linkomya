@@ -1,4 +1,8 @@
-<div class="background">
+<div *ngIf="!favorites">
+  <app-loading></app-loading>
+</div>
+
+<div class="background" *ngIf="favorites">
   <div class="cicle"></div>
   <div class="main">
     <main>
@@ -12,9 +16,13 @@
       </div>
 
       <div class="profile-box">
-        <app-user-card></app-user-card>
-        <app-user-card></app-user-card>
-        <app-user-card></app-user-card>
+        <app-user-card
+          *ngFor="let favorite of favorites"
+          [username]="favorite.favorite_user.username"
+          [profile_photo]="favorite.favorite_user.profile_photo"
+          [name]="favorite.favorite_user.fullname"
+          [country]="favorite.favorite_user.country"
+        ></app-user-card>
       </div>
     </main>
   </div>

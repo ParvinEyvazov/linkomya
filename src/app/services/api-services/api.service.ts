@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { Connection, SocialMedia, User } from '../../interfaces/data';
+import { Connection, Favorites, SocialMedia, User } from '../../interfaces/data';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -137,6 +137,12 @@ export class ApiService {
     const url = this.getFunctionUrl(environment.function.delete_from_favorites);
 
     return this.http.post(url, { user_id, favorite_user_id });
+  }
+
+  getFavorites() {
+    const url = this.getFunctionUrl(environment.function.get_favorites);
+
+    return this.http.get<Favorites[]>(url);
   }
 
   private getBucketUrl(bucket_id) {
