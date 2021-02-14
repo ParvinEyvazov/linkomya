@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { Connection, Favorites, SocialMedia, User } from '../../interfaces/data';
+import {
+  Connection,
+  Favorites,
+  SocialMedia,
+  User,
+} from '../../interfaces/data';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -137,6 +142,20 @@ export class ApiService {
     const url = this.getFunctionUrl(environment.function.delete_from_favorites);
 
     return this.http.post(url, { user_id, favorite_user_id });
+  }
+
+  getSearchedUsers(search_text, max_limit?) {
+    const url = this.getFunctionUrl(environment.function.search_user);
+
+    let filter = `?search_text=${search_text}`;
+    max_limit != undefined ? (filter += `&max_limit=${max_limit}`) : undefined;
+
+    // let filter = {
+    //   search_text: search_text,
+    //   max_limit: max_limit,
+    // };
+
+    return this.http.get(url + filter);
   }
 
   getFavorites() {

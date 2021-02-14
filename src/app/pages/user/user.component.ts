@@ -74,8 +74,6 @@ export class UserComponent implements OnInit {
       this.is_own_profile = false;
       this.isFavorite(this.userService.getUserId(), user_id);
     }
-
-    console.log(this.is_own_profile);
   }
 
   isFavorite(user_id, favorite_user_id) {

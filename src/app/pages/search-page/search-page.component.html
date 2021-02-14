@@ -3,7 +3,13 @@
     <div class="search-bar">
       <!-- <app-search-bar></app-search-bar> -->
       <div class="search">
-        <input type="text" class="searchTerm" placeholder="search..." />
+        <input
+          type="text"
+          #input="ngModel"
+          class="searchTerm"
+          placeholder="search..."
+          [(ngModel)]="search_text"
+        />
         <button type="submit" class="searchButton">
           <i class="fa fa-search"></i>
         </button>
@@ -11,12 +17,6 @@
     </div>
 
     <div class="profile-box">
-      <app-user-card></app-user-card>
-
-      <app-user-card></app-user-card>
-
-      <app-user-card></app-user-card>
-
       <app-user-card></app-user-card>
     </div>
   </main>
