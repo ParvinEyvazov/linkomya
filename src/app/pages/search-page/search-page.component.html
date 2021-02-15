@@ -16,8 +16,19 @@
       </div>
     </div>
 
-    <div class="profile-box">
-      <app-user-card></app-user-card>
+    <div class="profile-box" *ngIf="users != undefined">
+      <app-user-card
+        *ngFor="let user of users"
+        [username]="user.username"
+        [profile_photo]="user.profile_photo"
+        [fullname]="user.fullname"
+        [country]="user.country"
+      ></app-user-card>
+    </div>
+
+    <div class="search-information">
+      
+
     </div>
   </main>
 </div>

@@ -20,7 +20,7 @@
           *ngFor="let favorite of favorites"
           [username]="favorite.favorite_user.username"
           [profile_photo]="favorite.favorite_user.profile_photo"
-          [name]="favorite.favorite_user.fullname"
+          [fullname]="favorite.favorite_user.fullname"
           [country]="favorite.favorite_user.country"
         ></app-user-card>
       </div>

@@ -6,10 +6,10 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./user-card.component.scss'],
 })
 export class UserCardComponent implements OnInit {
-  @Input() username: string;
-  @Input() profile_photo: string;
-  @Input() name: string;
-  @Input() country: string;
+  @Input() username: string = '';
+  @Input() profile_photo: string = '';
+  @Input() fullname: string = '';
+  @Input() country: string = '';
 
   constructor() {}
 

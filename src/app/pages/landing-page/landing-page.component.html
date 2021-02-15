@@ -4,9 +4,19 @@
       <div class="search-box">
         <form method="get" action="">
           <div class="search-bar">
-            <input type="text" class="searchTerm" placeholder="Search..." />
-            <a [routerLink]="['search']">
-              <button type="submit" class="searchButton">
+            <input
+              type="text"
+              class="searchTerm"
+              placeholder="Search..."
+              [(ngModel)]="search_text"
+              name="search_text"
+            />
+            <a>
+              <button
+                type="submit"
+                class="searchButton"
+                (click)="navigateSearchPage(search_text)"
+              >
                 <i class="fa fa-search"></i>
               </button>
             </a>

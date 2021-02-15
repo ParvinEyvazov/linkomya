@@ -13,3 +13,7 @@ export interface SocialMedia {
 export interface Favorites {
   [key: string]: any;
 }
+
+export interface SearchResult {
+  [key: string]: any;
+}

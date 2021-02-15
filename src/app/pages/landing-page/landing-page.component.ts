@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
@@ -6,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landing-page.component.scss'],
 })
 export class LandingPageComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
+
+  search_text: string;
 
   ngOnInit(): void {}
+
+  navigateSearchPage(search_text) {
+    this.router.navigate(['search'], {
+      queryParams: { search_text: search_text },
+    });
+  }
 }

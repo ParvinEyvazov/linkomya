@@ -53,7 +53,7 @@ export class ValidationService {
   }
 
   validateSearchText(search_text) {
-    return search_text.length > 0;
+    return search_text?.length > 0;
   }
 
   updateLink(link: string) {

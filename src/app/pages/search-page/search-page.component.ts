@@ -47,11 +47,13 @@ export class SearchPageComponent implements OnInit {
   }
 
   getUsers(search_text) {
+    this.startLoading();
     this.apiService
       .getSearchedUsers(search_text, 10)
       .toPromise()
       .then((data) => {
-        console.log(data);
+        this.users = data.users;
+        this.stopLoading();
       });
   }
 

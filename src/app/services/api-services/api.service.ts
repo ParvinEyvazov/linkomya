@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import {
   Connection,
   Favorites,
+  SearchResult,
   SocialMedia,
   User,
 } from '../../interfaces/data';
@@ -155,7 +156,7 @@ export class ApiService {
     //   max_limit: max_limit,
     // };
 
-    return this.http.get(url + filter);
+    return this.http.get<SearchResult>(url + filter);
   }
 
   getFavorites() {
