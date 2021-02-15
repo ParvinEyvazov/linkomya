@@ -26,9 +26,17 @@
       ></app-user-card>
     </div>
 
-    <div class="search-information">
-      
+    <div class="spinner" *ngIf="loading">
+      <mat-spinner diameter="25"></mat-spinner>
+    </div>
 
+    <div class="search-information" *ngIf="users == undefined && !loading">
+      <div class="image-container">
+        <img src="../../../assets/svg/search.svg" />
+      </div>
+      <div class="information-container">
+        <span> search with username or fullname</span>
+      </div>
     </div>
   </main>
 </div>
