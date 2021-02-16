@@ -45,3 +45,23 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+// variables
+:root {
+  // colors
+  --primary-color: #7b77ff;
+  --page-background-color: #fafafa;
+  --text-color: rgb(0, 0, 0);
+
+  // border radius
+  --border-radius-sharp: 10px;
+  --border-radius-soft: 20px;
+  --border-radius-circle: 50%;
+
+  --border-radius-background-image-sharp: 0px 0px 10px 10px;
+  --border-radius-background-image-soft: 0px 0px 20px 20px;
+
+  // borders
+  --confirm-button-border: 1px solid var(--primary-color);
+  --small-button-border: 1px solid rgba(73, 73, 73, 0.104);
+}

@@ -17,6 +17,8 @@ export class AppComponent implements OnInit {
   activeUrl: string;
   routeData = new Subject();
 
+  search_text: string = '';
+
   constructor(
     private authService: AuthService,
     public router: Router,

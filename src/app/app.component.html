@@ -8,10 +8,27 @@
     <!-- search bar -->
     <div class="search-bar">
       <div class="search">
-        <input type="text" class="searchTerm" placeholder="Search..." />
+        <input
+          type="text"
+          class="searchTerm"
+          [(ngModel)]="search_text"
+          placeholder="Search..."
+          [matAutocomplete]="auto"
+        />
         <button type="submit" class="searchButton">
           <i class="fa fa-search"></i>
         </button>
+
+        <mat-autocomplete #auto="matAutocomplete">
+          <div class="loading" style="margin: 13px">
+            <mat-spinner style="margin: auto" diameter="22"> </mat-spinner>
+          </div>
+          <div class="search-result">
+            <mat-option>
+              <span><b>user</b></span>
+            </mat-option>
+          </div>
+        </mat-autocomplete>
       </div>
     </div>
 
