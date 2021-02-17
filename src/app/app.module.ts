@@ -36,6 +36,8 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { AddConnectionDialogComponent } from './components/add-connection-dialog/add-connection-dialog.component';
 import { EditConnectionDialogComponent } from './components/edit-connection-dialog/edit-connection-dialog.component';
 import { DeleteAccountDialogComponent } from './components/delete-account-dialog/delete-account-dialog.component';
+import { DesignCircleComponent } from './components/design-circle/design-circle.component';
+import { VectorImagesComponent } from './components/vector-images/vector-images.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { DeleteAccountDialogComponent } from './components/delete-account-dialog
     AddConnectionDialogComponent,
     EditConnectionDialogComponent,
     DeleteAccountDialogComponent,
+    DesignCircleComponent,
+    VectorImagesComponent,
   ],
   imports: [
     MatIconModule,

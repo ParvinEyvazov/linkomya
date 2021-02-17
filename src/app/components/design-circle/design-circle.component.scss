@@ -1,0 +1,33 @@
+.circle {
+  background: #7b77ff;
+  border-radius: var(--border-radius-circle);
+
+  transition: var(--transition-normal);
+}
+
+.large {
+  width: 550px;
+  height: 550px;
+}
+
+.normal {
+  width: 250px;
+  height: 250px;
+}
+
+@media screen and (max-width: 992px) {
+  .circle {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  .hide {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+}
+
+@media screen and (max-width: 575px) {
+}

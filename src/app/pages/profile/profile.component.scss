@@ -109,16 +109,11 @@
     // background: lightskyblue;
     text-align: center;
     justify-items: center;
-    .cicle {
-      clip-path: circle(77.9% at 19% 83%);
-      transition: 0.25s;
+
+    app-design-circle {
       position: fixed;
-      left: 0px;
-      bottom: 0px;
-      background: #7b77ff;
-      width: 280px;
-      height: 280px;
-      z-index: -100;
+      left: -75px;
+      bottom: -100px;
     }
 
     .background-image {
@@ -590,6 +585,11 @@
     }
 
     main {
+      app-design-circle {
+        left: -15px;
+        bottom: -20px;
+      }
+
       .cicle {
         left: -15px !important;
         bottom: -20px !important;

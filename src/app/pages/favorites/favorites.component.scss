@@ -7,15 +7,10 @@
   bottom: 0;
   left: 0;
 
-  .cicle {
+  app-design-circle {
     position: fixed;
     left: -75px;
     bottom: -100px;
-    background: #7b77ff;
-    border-radius: 50%;
-    width: 280px;
-    height: 280px;
-    z-index: -100;
   }
 
   main {
@@ -62,9 +57,6 @@
 // }
 
 @media screen and (max-width: 992px) {
-  .cicle {
-    display: none !important;
-  }
   .text {
     width: 65% !important;
     .divider {

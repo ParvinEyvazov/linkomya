@@ -8,15 +8,10 @@
     width: 100vw;
     .image-part {
       //background-color: rgb(123, 119, 255,0.2);
-      .circle {
+      app-design-circle {
         position: fixed;
         left: -150px;
         bottom: -200px;
-        background: #7b77ff;
-        border-radius: 50%;
-        width: 550px;
-        height: 550px;
-        transition: 0.25s;
       }
 
       .image {
@@ -144,16 +139,6 @@
 
 @media screen and (max-width: 992px) {
   .image-part {
-    //background-color: rgb(123, 119, 255,0.2);
-    .circle {
-      position: fixed;
-      left: -65px !important;
-      bottom: -85px !important;
-      width: 250px !important;
-      height: 250px !important;
-      display: none !important;
-    }
-
     .image {
       bottom: 50px !important;
       left: -50px !important;

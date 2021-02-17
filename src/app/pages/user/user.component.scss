@@ -6,18 +6,11 @@
   height: calc(100vh - 80px);
   overflow: auto;
   width: 100vw;
-  // background: lightslategray;
 
-  .cicle {
-    transition: 0.25s;
+  app-design-circle {
     position: fixed;
     left: -75px;
     bottom: -100px;
-    background: #7b77ff;
-    border-radius: 50%;
-    width: 280px;
-    height: 280px;
-    z-index: -100;
   }
 
   main {
@@ -159,13 +152,9 @@
 
 @media screen and (max-width: 992px) {
   .page {
-    // background: lightslategray;
-
-    .cicle {
-      left: -15px !important;
-      bottom: -20px !important;
-      width: 70px !important;
-      height: 70px !important;
+    app-design-circle {
+      left: -15px;
+      bottom: -20px;
     }
 
     main {
