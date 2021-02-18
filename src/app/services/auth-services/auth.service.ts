@@ -4,9 +4,9 @@ import { environment } from '../../../environments/environment';
 import {
   AuthResult,
   JWT_AUTH,
-  passwordRecoveryChangePassword,
+  PasswordRecoveryChangePassword,
   PasswordRecoverySendCodeResult,
-  passwordRecoveryValidateCodeResult,
+  PasswordRecoveryValidateCodeResult,
   RegisterSendInfoResult,
   RegisterValidateCodeResult,
 } from '../../interfaces/auth';
@@ -136,7 +136,7 @@ export class AuthService {
     let email = localStorage.getItem('email');
     let trace_id = localStorage.getItem('trace_id');
     return this.http
-      .post<passwordRecoveryValidateCodeResult>(
+      .post<PasswordRecoveryValidateCodeResult>(
         `${environment.url}fn-execute/passwordRecoveryValidateCode`,
         {
           email,
@@ -159,7 +159,7 @@ export class AuthService {
     let trace_id = localStorage.getItem('trace_id');
     let auth_code = localStorage.getItem('auth_code');
     return this.http
-      .post<passwordRecoveryChangePassword>(
+      .post<PasswordRecoveryChangePassword>(
         `${environment.url}fn-execute/passwordRecoveryChangePassword`,
         {
           email,
