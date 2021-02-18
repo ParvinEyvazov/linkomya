@@ -183,36 +183,12 @@ export class ProfileComponent implements AfterViewInit {
     );
   }
 
-  onFileChanged(event, is_profile_photo) {
-    let file;
-    const files = event.target.files;
-    if (files.length > 0 && files) {
-      file = files[0];
-      this.startPhotoLoading(is_profile_photo);
-      this.storageService
-        .giveFileAndGetUrl(file)
-        .then((url) => {
-          this.uploadPhoto(url, is_profile_photo);
-        })
-        .catch((error) => {
-          this.stopPhotoLoading(is_profile_photo);
-          this.showPhotoError(error, is_profile_photo);
-        });
+  uploadPhotoEvent(event, is_profile_photo) {
+    if (!event.error) {
+      this.getUser(this.userService.getUserId());
+    } else {
+      this.showPhotoError(event.error, is_profile_photo);
     }
-  }
-
-  uploadPhoto(url, is_profile_photo) {
-    this.apiService
-      .uploadPhoto(url, is_profile_photo)
-      .toPromise()
-      .then((data) => {
-        this.getUser(this.userService.getUserId());
-        this.stopPhotoLoading(is_profile_photo);
-      })
-      .catch((error) => {
-        this.stopPhotoLoading(is_profile_photo);
-        this.showPhotoError(error.error.message, is_profile_photo);
-      });
   }
 
   //-------------------------API FUNCTIONS------------------------

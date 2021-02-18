@@ -117,27 +117,11 @@
         </div>
       </div>
 
-      <!-- profile photo and favorites part -->
-      <div class="profile-photo">
-        <input
-          style="display: none"
-          type="file"
-          (change)="onFileChanged($event, true)"
-          [disabled]="profile_photo_loading"
-          #fileInput
-        />
-        <img class="photo" src="{{ user.profile_photo }}" />
-        <div (click)="fileInput.click()" class="edit-photo">
-          <mat-spinner
-            *ngIf="profile_photo_loading"
-            [diameter]="25"
-          ></mat-spinner>
-          <img
-            *ngIf="!profile_photo_loading"
-            src="../../../../assets/icons/social_media_icons/edit.svg"
-          />
-        </div>
-      </div>
+      <app-profile-photo
+        [url]="user.profile_photo"
+        [can_edit]="true"
+        (event)="uploadPhotoEvent($event, true)"
+      ></app-profile-photo>
 
       <div class="photo-upload-error">
         <span>{{ profile_photo_error }} {{ background_photo_error }}</span>

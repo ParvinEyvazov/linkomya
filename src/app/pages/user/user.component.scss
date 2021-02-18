@@ -29,38 +29,9 @@
       }
     }
 
-    .profile-photo {
-      transition: 0.25s;
+    app-profile-photo {
       position: relative;
       top: -75px;
-      margin: auto;
-      width: 200px;
-      height: 200px;
-      //background: mediumaquamarine;
-
-      .photo {
-        transition: 0.25s;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 50%;
-        border: 1px solid rgba(73, 73, 73, 0.104);
-      }
-      .icon-favorite {
-        color: rgba(255, 0, 0, 0.507);
-        transform: 0.25s;
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        right: -25%;
-        font-size: 3em;
-      }
-
-      .favorite-loading {
-        position: absolute;
-        top: 53%;
-        right: -31%;
-      }
     }
 
     .information {
@@ -169,20 +140,8 @@
           border-radius: 0px 0px 20px 20px !important;
         }
       }
-
-      .profile-photo {
-        //background: mediumaquamarine;
+      app-profile-photo {
         top: -50px !important;
-        width: 110px !important;
-        height: 110px !important;
-
-        .photo {
-        }
-
-        .favorite-loading {
-          top: 55% !important;
-          right: -36% !important;
-        }
       }
 
       .information {
@@ -260,11 +219,6 @@
         }
       }
 
-      .profile-photo {
-        .photo {
-        }
-      }
-
       .information {
         .name {
           // background: cornflowerblue;
@@ -317,11 +271,6 @@
       .background-image {
         //background: lightsalmon;
         .back-image {
-        }
-      }
-
-      .profile-photo {
-        .photo {
         }
       }
 

@@ -83,8 +83,7 @@ export class ApiService {
 
   uploadPhoto(photo_url, is_profile_photo) {
     const url = this.getFunctionUrl(environment.function.upload_photo);
-    console.log(photo_url, is_profile_photo);
-
+    
     const data = {
       url: photo_url,
       is_profile_photo: is_profile_photo,

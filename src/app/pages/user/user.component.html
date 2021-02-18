@@ -17,28 +17,10 @@
           <img class="back-image" src="{{ user.background_photo }}" />
         </div>
 
-        <!-- profile photo and favorites part -->
-        <div class="profile-photo">
-          <img class="photo" src="{{ user.profile_photo }}" />
-
-          <div
-            *ngIf="!is_own_profile && is_logged_in"
-            (click)="addToFavorites()"
-          >
-            <div class="favorite-loading" *ngIf="favorite_loading">
-              <mat-spinner [diameter]="30"></mat-spinner>
-            </div>
-            <div *ngIf="!favorite_loading">
-              <div *ngIf="is_favorite">
-                <mat-icon class="icon-favorite">favorite</mat-icon>
-              </div>
-
-              <div *ngIf="!is_favorite">
-                <mat-icon class="icon-favorite">favorite_border</mat-icon>
-              </div>
-            </div>
-          </div>
-        </div>
+        <app-profile-photo
+          [url]="user.profile_photo"
+          [can_edit]="false"
+        ></app-profile-photo>
 
         <!-- information, bio part -->
         <div class="information">
