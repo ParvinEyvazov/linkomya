@@ -12,15 +12,11 @@
       <app-design-circle></app-design-circle>
 
       <main>
-        <!-- background photo part -->
-        <div class="background-image">
-          <img class="back-image" src="{{ user.background_photo }}" />
-        </div>
+        <app-background-photo
+          [url]="user.background_photo"
+        ></app-background-photo>
 
-        <app-profile-photo
-          [url]="user.profile_photo"
-          [can_edit]="false"
-        ></app-profile-photo>
+        <app-profile-photo [url]="user.profile_photo"></app-profile-photo>
 
         <!-- information, bio part -->
         <div class="information">

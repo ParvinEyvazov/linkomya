@@ -1,18 +1,13 @@
-import { EventEmitter, Input, Output, Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api-services/api.service';
 import { StorageService } from 'src/app/services/storage-service/storage.service';
 
 @Component({
-  selector: 'app-profile-photo',
-  templateUrl: './profile-photo.component.html',
-  styleUrls: ['./profile-photo.component.scss'],
+  selector: 'app-background-photo',
+  templateUrl: './background-photo.component.html',
+  styleUrls: ['./background-photo.component.scss'],
 })
-export class ProfilePhotoComponent implements OnInit {
-  constructor(
-    private storageService: StorageService,
-    private apiService: ApiService
-  ) {}
-
+export class BackgroundPhotoComponent implements OnInit {
   @Input() can_edit: boolean = false;
   @Input() url: string =
     '../../../assets/profile_photos/default_profile_photo.png';
@@ -20,6 +15,11 @@ export class ProfilePhotoComponent implements OnInit {
   @Output() event = new EventEmitter<object>();
 
   loading: boolean = false;
+
+  constructor(
+    private storageService: StorageService,
+    private apiService: ApiService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -41,10 +41,11 @@ export class ProfilePhotoComponent implements OnInit {
     }
   }
 
+
   uploadPhoto(url) {
     if (this.can_edit) {
       this.apiService
-        .uploadPhoto(url, true)
+        .uploadPhoto(url, false)
         .toPromise()
         .then((data) => {
           this.stopLoading();
@@ -56,6 +57,9 @@ export class ProfilePhotoComponent implements OnInit {
         });
     }
   }
+
+
+
 
   startLoading() {
     this.loading = true;

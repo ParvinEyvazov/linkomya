@@ -94,28 +94,12 @@
     <!-- --------------------PROFILE-------------------- -->
     <main class="main_area">
       <app-design-circle></app-design-circle>
-      <!-- background photo part -->
-      <div class="background-image">
-        <input
-          style="display: none"
-          type="file"
-          (change)="onFileChanged($event, false)"
-          [disabled]="background_photo_loading"
-          #fileInputBackground
-        />
 
-        <img class="back-image" src="{{ user.background_photo }}" />
-        <div (click)="fileInputBackground.click()" class="edit-photo">
-          <mat-spinner
-            *ngIf="background_photo_loading"
-            [diameter]="25"
-          ></mat-spinner>
-          <img
-            *ngIf="!background_photo_loading"
-            src="../../../../assets/icons/social_media_icons/edit.svg"
-          />
-        </div>
-      </div>
+      <app-background-photo
+        [url]="user.background_photo"
+        [can_edit]="true"
+        (event)="uploadPhotoEvent($event, false)"
+      ></app-background-photo>
 
       <app-profile-photo
         [url]="user.profile_photo"

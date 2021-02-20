@@ -39,6 +39,7 @@ import { DeleteAccountDialogComponent } from './components/delete-account-dialog
 import { DesignCircleComponent } from './components/design-circle/design-circle.component';
 import { VectorImagesComponent } from './components/vector-images/vector-images.component';
 import { ProfilePhotoComponent } from './components/profile-photo/profile-photo.component';
+import { BackgroundPhotoComponent } from './components/background-photo/background-photo.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { ProfilePhotoComponent } from './components/profile-photo/profile-photo.
     DesignCircleComponent,
     VectorImagesComponent,
     ProfilePhotoComponent,
+    BackgroundPhotoComponent,
   ],
   imports: [
     MatIconModule,
