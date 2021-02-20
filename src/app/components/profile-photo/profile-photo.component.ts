@@ -13,15 +13,18 @@ export class ProfilePhotoComponent implements OnInit {
     private apiService: ApiService
   ) {}
 
+  default_photo = '../../../assets/profile_photos/default_profile_photo.png';
+
   @Input() can_edit: boolean = false;
-  @Input() url: string =
-    '../../../assets/profile_photos/default_profile_photo.png';
+  @Input() url: string;
 
   @Output() event = new EventEmitter<object>();
 
   loading: boolean = false;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.url == undefined ? (this.url = this.default_photo) : undefined;
+  }
 
   onFileChanged(event) {
     let file;

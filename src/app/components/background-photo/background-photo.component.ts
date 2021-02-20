@@ -8,9 +8,11 @@ import { StorageService } from 'src/app/services/storage-service/storage.service
   styleUrls: ['./background-photo.component.scss'],
 })
 export class BackgroundPhotoComponent implements OnInit {
+  default_photo =
+    '../../../assets/background_photo/default_background_photo.jpeg';
+
   @Input() can_edit: boolean = false;
-  @Input() url: string =
-    '../../../assets/profile_photos/default_profile_photo.png';
+  @Input() url: string;
 
   @Output() event = new EventEmitter<object>();
 
@@ -21,7 +23,9 @@ export class BackgroundPhotoComponent implements OnInit {
     private apiService: ApiService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.url == undefined ? (this.url = this.default_photo) : undefined;
+  }
 
   onFileChanged(event) {
     let file;
@@ -41,7 +45,6 @@ export class BackgroundPhotoComponent implements OnInit {
     }
   }
 
-
   uploadPhoto(url) {
     if (this.can_edit) {
       this.apiService
@@ -57,9 +60,6 @@ export class BackgroundPhotoComponent implements OnInit {
         });
     }
   }
-
-
-
 
   startLoading() {
     this.loading = true;
