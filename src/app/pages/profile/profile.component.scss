@@ -131,37 +131,6 @@
       position: relative;
       top: -60px;
       display: list-item;
-
-      .country {
-        transition: 0.25s;
-
-        p {
-          display: inline-flex;
-          font-size: 1.2em;
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-            Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
-          margin: 0;
-          margin-top: 5px;
-        }
-        .icon-place {
-          font-size: 1em;
-        }
-      }
-
-      .job {
-        transition: 0.25s;
-
-        p {
-          display: inline-flex;
-          font-size: 1.2em;
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-            Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
-          margin: 0;
-        }
-        .icon-job {
-          font-size: 1em;
-        }
-      }
     }
 
     .divider {
@@ -491,36 +460,6 @@
       .information {
         // background: moccasin;
         top: -40px !important;
-
-        .country {
-          //background: cornflowerblue;
-          position: relative;
-          top: -5px;
-
-          p {
-            font-size: 0.8em !important;
-            margin: 0 !important;
-            margin-top: 0px !important;
-          }
-          .icon-place {
-            font-size: 0.7em !important;
-          }
-        }
-
-        .job {
-          //background: darkgreen;
-          position: relative !important;
-          top: -20px !important;
-
-          p {
-            font-size: 0.8em !important;
-            margin: 0 !important;
-            margin-top: -90px !important;
-          }
-          .icon-job {
-            font-size: 0.7em !important;
-          }
-        }
       }
 
       .divider {
@@ -638,19 +577,6 @@
       }
 
       .information {
-        .country {
-          p {
-          }
-          .icon-place {
-          }
-        }
-
-        .job {
-          p {
-          }
-          .icon-job {
-          }
-        }
       }
 
       .divider {
@@ -746,19 +672,6 @@
       }
 
       .information {
-        .country {
-          p {
-          }
-          .icon-place {
-          }
-        }
-
-        .job {
-          p {
-          }
-          .icon-job {
-          }
-        }
       }
 
       .divider {

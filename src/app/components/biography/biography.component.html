@@ -1,0 +1,14 @@
+<div class="country">
+  <mat-icon class="icon-place" aria-label="place" *ngIf="country || city"
+    >place</mat-icon
+  >
+  <p>
+    {{ country }} {{ city && country ? "/" : "" }}
+    {{ city }}
+  </p>
+</div>
+
+<div class="job">
+  <mat-icon class="icon-job" aria-label="place" *ngIf="job">work</mat-icon>
+  <p>{{ job }}</p>
+</div>

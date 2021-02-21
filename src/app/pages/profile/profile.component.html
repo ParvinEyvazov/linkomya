@@ -116,25 +116,8 @@
         <fullname [fullname]="user.fullname" [verified]="user.verified">
         </fullname>
 
-        <div class="country">
-          <mat-icon
-            class="icon-place"
-            aria-label="place"
-            *ngIf="user.country || user.city"
-            >place</mat-icon
-          >
-          <p>
-            {{ user.country }} {{ user.city && user.country ? "/" : "" }}
-            {{ user.city }}
-          </p>
-        </div>
-
-        <div class="job">
-          <mat-icon class="icon-job" aria-label="place" *ngIf="user.job"
-            >work</mat-icon
-          >
-          <p>{{ user.job }}</p>
-        </div>
+        <biography [country]="user.country" [city]="user.city" [job]="user.job">
+        </biography>
       </div>
 
       <!-- edit button -->
