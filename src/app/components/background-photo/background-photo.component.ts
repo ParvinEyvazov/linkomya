@@ -3,7 +3,7 @@ import { ApiService } from 'src/app/services/api-services/api.service';
 import { StorageService } from 'src/app/services/storage-service/storage.service';
 
 @Component({
-  selector: 'app-background-photo',
+  selector: 'background-photo',
   templateUrl: './background-photo.component.html',
   styleUrls: ['./background-photo.component.scss'],
 })

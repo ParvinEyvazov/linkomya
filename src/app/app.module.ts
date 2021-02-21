@@ -41,6 +41,7 @@ import { VectorImagesComponent } from './components/vector-images/vector-images.
 import { ProfilePhotoComponent } from './components/profile-photo/profile-photo.component';
 import { BackgroundPhotoComponent } from './components/background-photo/background-photo.component';
 import { FavoritingComponent } from './components/favoriting/favoriting.component';
+import { FullnameComponent } from './components/fullname/fullname.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { FavoritingComponent } from './components/favoriting/favoriting.componen
     ProfilePhotoComponent,
     BackgroundPhotoComponent,
     FavoritingComponent,
+    FullnameComponent,
   ],
   imports: [
     MatIconModule,

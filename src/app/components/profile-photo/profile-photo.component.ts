@@ -3,7 +3,7 @@ import { ApiService } from 'src/app/services/api-services/api.service';
 import { StorageService } from 'src/app/services/storage-service/storage.service';
 
 @Component({
-  selector: 'app-profile-photo',
+  selector: 'profile-photo',
   templateUrl: './profile-photo.component.html',
   styleUrls: ['./profile-photo.component.scss'],
 })

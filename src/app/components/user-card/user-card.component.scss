@@ -15,7 +15,7 @@
   .row {
     position: relative;
 
-    app-profile-photo {
+    profile-photo {
       transition: var(--transition-normal);
     }
 
@@ -106,7 +106,7 @@
     padding-left: 1.5% !important;
     padding-right: 1.5% !important;
     .row {
-      app-profile-photo {
+      profile-photo {
         margin-left: 7% !important;
       }
 

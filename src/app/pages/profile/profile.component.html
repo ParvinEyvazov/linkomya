@@ -93,19 +93,19 @@
 
     <!-- --------------------PROFILE-------------------- -->
     <main class="main_area">
-      <app-design-circle></app-design-circle>
+      <design-circle></design-circle>
 
-      <app-background-photo
+      <background-photo
         [url]="user.background_photo"
         [can_edit]="true"
         (event)="uploadPhotoEvent($event, false)"
-      ></app-background-photo>
+      ></background-photo>
 
-      <app-profile-photo
+      <profile-photo
         [url]="user.profile_photo"
         [can_edit]="true"
         (event)="uploadPhotoEvent($event, true)"
-      ></app-profile-photo>
+      ></profile-photo>
 
       <div class="photo-upload-error">
         <span>{{ profile_photo_error }} {{ background_photo_error }}</span>
@@ -113,12 +113,8 @@
 
       <!-- information, bio part -->
       <div class="information">
-        <div class="name">
-          <span style="text-align: center !important">{{ user.fullname }}</span>
-          <mat-icon *ngIf="user.verified" class="icon-verify" aria-label="place"
-            >verified_user</mat-icon
-          >
-        </div>
+        <fullname [fullname]="user.fullname" [verified]="user.verified">
+        </fullname>
 
         <div class="country">
           <mat-icon

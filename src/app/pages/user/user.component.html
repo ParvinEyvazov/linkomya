@@ -9,17 +9,15 @@
 
   <div *ngIf="user">
     <div class="page">
-      <app-design-circle></app-design-circle>
+      <design-circle></design-circle>
 
       <main>
         <div class="background-photo">
-          <app-background-photo
-            [url]="user.background_photo"
-          ></app-background-photo>
+          <background-photo [url]="user.background_photo"></background-photo>
         </div>
 
         <div class="profile-photo">
-          <app-profile-photo [url]="user.profile_photo"></app-profile-photo>
+          <profile-photo [url]="user.profile_photo"></profile-photo>
         </div>
 
         <div class="favoriting">
@@ -28,15 +26,8 @@
 
         <!-- information, bio part -->
         <div class="information">
-          <div class="name">
-            <span>{{ user.fullname }}</span>
-            <mat-icon
-              *ngIf="user.verified"
-              class="icon-verify"
-              aria-label="place"
-              >verified_user</mat-icon
-            >
-          </div>
+          <fullname [fullname]="user.fullname" [verified]="user.verified">
+          </fullname>
 
           <div class="country">
             <mat-icon

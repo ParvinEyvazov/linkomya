@@ -2,7 +2,7 @@ import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-design-circle',
+  selector: 'design-circle',
   templateUrl: './design-circle.component.html',
   styleUrls: ['./design-circle.component.scss'],
 })
