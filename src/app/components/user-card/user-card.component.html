@@ -1,8 +1,10 @@
 <div class="card" [routerLink]="['/', username]">
   <div class="row">
-    <div class="image-part">
-      <img class="image" src="{{ profile_photo }}" />
-    </div>
+    <app-profile-photo
+      [url]="profile_photo"
+      [in_user_card]="true"
+    ></app-profile-photo>
+
     <div class="name-part">
       <h1>{{ fullname }}</h1>
     </div>

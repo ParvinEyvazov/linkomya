@@ -13,6 +13,7 @@
       border-radius: var(--border-radius-circle);
       border: var(--profile-photo-border);
     }
+
     .edit-photo {
       cursor: pointer;
       transition: var(--transition-normal);
@@ -41,6 +42,11 @@
     }
   }
 
+  .small {
+    width: 100px;
+    height: 100px;
+  }
+
   @media screen and (max-width: 992px) {
     .profile-photo {
       width: 110px !important;
@@ -61,6 +67,17 @@
           max-height: 80% !important;
         }
       }
+    }
+    .small {
+      width: 100px !important;
+      height: 100px !important;
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    .small {
+      width: 50px !important;
+      height: 50px !important;
     }
   }
 }

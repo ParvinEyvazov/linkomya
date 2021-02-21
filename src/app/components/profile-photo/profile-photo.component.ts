@@ -17,6 +17,8 @@ export class ProfilePhotoComponent implements OnInit {
 
   @Input() can_edit: boolean = false;
   @Input() url: string;
+  @Input() in_user_card: boolean = false;
+  @Input() user_id: string;
 
   @Output() event = new EventEmitter<object>();
 

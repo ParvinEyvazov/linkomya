@@ -12,11 +12,19 @@
       <app-design-circle></app-design-circle>
 
       <main>
-        <app-background-photo
-          [url]="user.background_photo"
-        ></app-background-photo>
+        <div class="background-photo">
+          <app-background-photo
+            [url]="user.background_photo"
+          ></app-background-photo>
+        </div>
 
-        <app-profile-photo [url]="user.profile_photo"></app-profile-photo>
+        <div class="profile-photo">
+          <app-profile-photo [url]="user.profile_photo"></app-profile-photo>
+        </div>
+
+        <div class="favoriting">
+          <app-favoriting [favorite_user_id]="user._id"></app-favoriting>
+        </div>
 
         <!-- information, bio part -->
         <div class="information">

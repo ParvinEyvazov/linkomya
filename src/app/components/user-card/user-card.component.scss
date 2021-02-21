@@ -2,44 +2,29 @@
   cursor: pointer;
   height: 200px;
   width: 40%;
-  border: 1px solid black;
-  border-radius: 30px;
+  border: var(--user-card-border);
+  border-radius: var(--border-radius-soft);
   position: relative;
   padding: 50px;
   padding-left: 3%;
   padding-right: 3%;
   margin: 10px auto;
-  // background: lightsalmon;
   outline: none;
-  transition: 0.25s;
+  transition: var(--transition-normal);
 
   .row {
     position: relative;
 
-    .image-part {
-      transition: 0.25s;
-      // background: lightskyblue;
-      position: relative;
-      margin: 0;
-      display: inline-block;
-      width: 100px !important;
-      height: 100px;
-      overflow: hidden;
-      border-radius: 50%;
-
-      .image {
-        width: auto;
-        height: 100%;
-        overflow: hidden;
-        background-size: contain;
-      }
+    app-profile-photo {
+      transition: var(--transition-normal);
     }
 
     .name-part {
-      transition: 0.25s;
+      transition: var(--transition-normal);
       margin-left: 3%;
       position: relative;
       h1 {
+        transition: var(--transition-normal);
         margin: 0;
         position: relative;
         top: 50%;
@@ -52,9 +37,8 @@
     }
 
     .place-part {
-      transition: 0.25s;
+      transition: var(--transition-normal);
       position: absolute;
-      //   background: lightskyblue;
       right: 0;
       top: 58%;
       .place {
@@ -67,21 +51,18 @@
         #place-row {
           margin: auto;
 
-          //    background: lightskyblue;
           .icon {
-            //     background: lightslategrey;
             mat-icon {
+              transition: var(--transition-normal);
               float: right;
-              //     background: lightseagreen;
-              transition: 0.25s;
               font-size: 1.8em;
             }
           }
           h1 {
+            transition: var(--transition-normal);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
               Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
               sans-serif !important;
-            transition: 0.25s;
             font-size: 1.3em;
           }
         }
@@ -100,11 +81,6 @@
   .card {
     width: 80% !important;
     .row {
-      .image-part {
-        .image {
-        }
-      }
-
       .name-part {
         h1 {
         }
@@ -130,12 +106,8 @@
     padding-left: 1.5% !important;
     padding-right: 1.5% !important;
     .row {
-      .image-part {
+      app-profile-photo {
         margin-left: 7% !important;
-        width: 50px !important;
-        height: 50px !important;
-        .image {
-        }
       }
 
       .name-part {

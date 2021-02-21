@@ -40,6 +40,7 @@ import { DesignCircleComponent } from './components/design-circle/design-circle.
 import { VectorImagesComponent } from './components/vector-images/vector-images.component';
 import { ProfilePhotoComponent } from './components/profile-photo/profile-photo.component';
 import { BackgroundPhotoComponent } from './components/background-photo/background-photo.component';
+import { FavoritingComponent } from './components/favoriting/favoriting.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { BackgroundPhotoComponent } from './components/background-photo/backgrou
     VectorImagesComponent,
     ProfilePhotoComponent,
     BackgroundPhotoComponent,
+    FavoritingComponent,
   ],
   imports: [
     MatIconModule,
