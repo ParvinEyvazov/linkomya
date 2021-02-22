@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  padding: 0px;
+  outline: none;
+  .profile-photo {
+    width: 50px;
+    height: 50px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--border-radius-circle);
+    }
+  }
+
+  .fullname {
+    margin-left: 10px;
+    span {
+    }
+  }
+}

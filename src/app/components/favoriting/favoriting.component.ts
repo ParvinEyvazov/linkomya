@@ -22,7 +22,6 @@ export class FavoritingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('calisti : ', this.favorite_user_id);
     if (this.userService.getUserId()) {
       this.is_logged_in = true;
       this.user_id = this.userService.getUserId();
@@ -66,10 +65,8 @@ export class FavoritingComponent implements OnInit {
         .deleteFromFavorites(this.user_id, this.favorite_user_id)
         .toPromise()
         .then((data) => {
-          console.log(this.is_favorite);
           this.stopLoading();
           this.is_favorite = !this.is_favorite;
-          console.log(this.is_favorite);
         })
         .catch((error) => {
           this.stopLoading();

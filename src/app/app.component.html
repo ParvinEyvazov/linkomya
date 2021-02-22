@@ -10,6 +10,7 @@
       <div class="search">
         <input
           type="text"
+          #input="ngModel"
           class="searchTerm"
           [(ngModel)]="search_text"
           placeholder="Search..."
@@ -19,16 +20,23 @@
           <i class="fa fa-search"></i>
         </button>
 
-        <mat-autocomplete #auto="matAutocomplete">
-          <div class="loading" style="margin: 13px">
-            <mat-spinner style="margin: auto" diameter="22"> </mat-spinner>
-          </div>
-          <div class="search-result">
-            <mat-option>
-              <span><b>user</b></span>
-            </mat-option>
-          </div>
-        </mat-autocomplete>
+        <div class="auto-complete">
+          <mat-autocomplete #auto="matAutocomplete">
+            <div *ngIf="search_loading" class="loading" style="margin: 13px">
+              <mat-spinner style="margin: auto" diameter="22"> </mat-spinner>
+            </div>
+            <div class="search-result" *ngFor="let user of users">
+              <mat-option style="height: 70px">
+                <search-option
+                  [url]="user.profile_photo"
+                  [fullname]="user.fullname"
+                  [username]="user.username"
+                >
+                </search-option>
+              </mat-option>
+            </div>
+          </mat-autocomplete>
+        </div>
       </div>
     </div>
 

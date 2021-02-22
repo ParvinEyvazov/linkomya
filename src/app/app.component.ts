@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, RoutesRecognized } from '@angular/router';
 import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+import { User } from './interfaces/data';
+import { ApiService } from './services/api-services/api.service';
 import { AuthService } from './services/auth-services/auth.service';
 
 @Component({
@@ -10,6 +14,8 @@ import { AuthService } from './services/auth-services/auth.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  @ViewChild('input') input;
+
   //constants
   token;
   loginState = false;
@@ -18,11 +24,14 @@ export class AppComponent implements OnInit {
   routeData = new Subject();
 
   search_text: string = '';
+  search_loading: boolean = false;
+  users: User[];
 
   constructor(
     private authService: AuthService,
     public router: Router,
-    private titleService: Title
+    private titleService: Title,
+    private apiService: ApiService
   ) {}
 
   //functions
@@ -39,6 +48,39 @@ export class AppComponent implements OnInit {
       this.setToken();
       this.setTitle(data);
     });
+  }
+
+  ngAfterViewInit() {
+    this.input.update.pipe(debounceTime(500)).subscribe((value) => {
+      if (value) {
+        value.length == 0 ? (this.users = []) : this.getUsers(value);
+      } else {
+        this.users = [];
+      }
+    });
+    this.input.update.pipe().subscribe((value) => {
+      if (value) {
+        if (value.length == 0) {
+          this.users = [];
+        }
+      } else {
+        this.users = [];
+      }
+    });
+  }
+
+  getUsers(search_text) {
+    this.startSearchLoading();
+    this.apiService
+      .getSearchedUsers(search_text, 3)
+      .toPromise()
+      .then((data) => {
+        this.users = data.users;
+        this.stopSearchLoading();
+      })
+      .catch((error) => {
+        this.stopSearchLoading();
+      });
   }
 
   setToken() {
@@ -68,6 +110,14 @@ export class AppComponent implements OnInit {
 
       this.titleService.setTitle('Linkomya | ' + title);
     }
+  }
+
+  startSearchLoading() {
+    this.search_loading = true;
+  }
+
+  stopSearchLoading() {
+    this.search_loading = false;
   }
 
   logout() {

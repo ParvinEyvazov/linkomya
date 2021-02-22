@@ -288,7 +288,7 @@
 
         .edit-link-open {
           cursor: pointer;
-          background: lightcoral;
+          background: var(--edit-link-background-color);
           border-radius: 50%;
           position: absolute;
           bottom: 35%;

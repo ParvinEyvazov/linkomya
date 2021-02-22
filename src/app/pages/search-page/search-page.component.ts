@@ -1,5 +1,4 @@
-import { ViewChild } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 import { User } from 'src/app/interfaces/data';

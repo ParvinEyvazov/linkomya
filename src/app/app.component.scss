@@ -97,6 +97,15 @@
           font-size: 20px;
           outline: none;
         }
+
+        .auto-complete {
+          display: none;
+          width: 100px;
+          height: 100px;
+          mat-autocomplete {
+            display: none;
+          }
+        }
       }
     }
 
@@ -176,6 +185,10 @@
 
   .search-phone-button {
     display: inline !important;
+  }
+
+  .auto-complete {
+    display: none;
   }
 }
 

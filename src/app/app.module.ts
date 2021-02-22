@@ -43,6 +43,7 @@ import { BackgroundPhotoComponent } from './components/background-photo/backgrou
 import { FavoritingComponent } from './components/favoriting/favoriting.component';
 import { FullnameComponent } from './components/fullname/fullname.component';
 import { BiographyComponent } from './components/biography/biography.component';
+import { SearchOptionComponent } from './components/search-option/search-option.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { BiographyComponent } from './components/biography/biography.component';
     FavoritingComponent,
     FullnameComponent,
     BiographyComponent,
+    SearchOptionComponent,
   ],
   imports: [
     MatIconModule,
