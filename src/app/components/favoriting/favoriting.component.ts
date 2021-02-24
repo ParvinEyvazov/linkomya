@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api-services/api.service';
 import { UserService } from 'src/app/services/user-services/user.service';
 
@@ -18,7 +19,8 @@ export class FavoritingComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private activeRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -29,6 +31,29 @@ export class FavoritingComponent implements OnInit {
     } else {
       this.is_logged_in = false;
     }
+
+    this.activeRoute.params.subscribe((routeParams) => {
+      this.activeRoute.queryParams.subscribe((routeParams) => {
+        // this.is_favorite = false;
+        // this.is_own_profile = false;
+        // console.log(
+        //   'values:',
+        //   '\nis_logged_in:',
+        //   this.is_logged_in,
+        //   '\nis_own_profile:',
+        //   this.is_own_profile,
+        //   '\nis_favorite:',
+        //   this.is_favorite
+        // );
+        if (this.userService.getUserId()) {
+          this.is_logged_in = true;
+          this.user_id = this.userService.getUserId();
+          this.isOwnProfile(this.favorite_user_id);
+        } else {
+          this.is_logged_in = false;
+        }
+      });
+    });
   }
 
   isOwnProfile(user_id) {
