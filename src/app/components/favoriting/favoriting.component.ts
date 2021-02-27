@@ -1,7 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from 'src/app/services/api-services/api.service';
-import { UserService } from 'src/app/services/user-services/user.service';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  ChangeDetectorRef,
+} from '@angular/core';
+import { FavoritingSpinnerService } from '../../services/spinner-services/favoriting-spinner/favoriting-spinner.service';
 
 @Component({
   selector: 'app-favoriting',
@@ -9,113 +14,27 @@ import { UserService } from 'src/app/services/user-services/user.service';
   styleUrls: ['./favoriting.component.scss'],
 })
 export class FavoritingComponent implements OnInit {
-  @Input() favorite_user_id: string;
-
-  is_favorite: boolean = false;
-  loading: boolean = true;
-  user_id: string;
-  is_own_profile: boolean = true;
-  is_logged_in: boolean = false;
+  @Input() is_favorite: boolean = false;
+  @Output() event = new EventEmitter<boolean>();
+  loading: boolean = false;
 
   constructor(
-    private userService: UserService,
-    private apiService: ApiService,
-    private activeRoute: ActivatedRoute
+    private favoritingSpinnerService: FavoritingSpinnerService,
+    private cdRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    if (this.userService.getUserId()) {
-      this.is_logged_in = true;
-      this.user_id = this.userService.getUserId();
-      this.isOwnProfile(this.favorite_user_id);
-    } else {
-      this.is_logged_in = false;
-    }
+    this.init();
+  }
 
-    this.activeRoute.params.subscribe((routeParams) => {
-      this.activeRoute.queryParams.subscribe((routeParams) => {
-        // this.is_favorite = false;
-        // this.is_own_profile = false;
-        // console.log(
-        //   'values:',
-        //   '\nis_logged_in:',
-        //   this.is_logged_in,
-        //   '\nis_own_profile:',
-        //   this.is_own_profile,
-        //   '\nis_favorite:',
-        //   this.is_favorite
-        // );
-        if (this.userService.getUserId()) {
-          this.is_logged_in = true;
-          this.user_id = this.userService.getUserId();
-          this.isOwnProfile(this.favorite_user_id);
-        } else {
-          this.is_logged_in = false;
-        }
-      });
+  init() {
+    this.favoritingSpinnerService.getSpinner().subscribe((state) => {
+      this.loading = state;
+      this.cdRef.detectChanges();
     });
   }
 
-  isOwnProfile(user_id) {
-    if (user_id == this.userService.getUserId()) {
-      this.is_own_profile = true;
-      this.stopLoading();
-    } else {
-      this.is_own_profile = false;
-      this.isFavorite(this.user_id, this.favorite_user_id);
-    }
-  }
-
-  isFavorite(user_id, favorite_user_id) {
-    this.apiService
-      .checkFavoriteRelation(user_id, favorite_user_id)
-      .toPromise()
-      .then((data) => {
-        if (data == true) {
-          this.is_favorite = true;
-        } else {
-          this.is_favorite = false;
-        }
-        this.stopLoading();
-      })
-      .catch((error) => {
-        this.stopLoading();
-      });
-  }
-
   changeFavoriteRelation() {
-    if (this.is_favorite == true) {
-      this.startLoading();
-      this.apiService
-        .deleteFromFavorites(this.user_id, this.favorite_user_id)
-        .toPromise()
-        .then((data) => {
-          this.stopLoading();
-          this.is_favorite = !this.is_favorite;
-        })
-        .catch((error) => {
-          this.stopLoading();
-        });
-    } else if (this.is_favorite == false) {
-      this.startLoading();
-      this.apiService
-        .addToFavorites(this.user_id, this.favorite_user_id)
-        .toPromise()
-        .then((data) => {
-          this.stopLoading();
-          this.is_favorite = !this.is_favorite;
-        })
-        .catch((error) => {
-          this.stopLoading();
-        });
-    }
-  }
-
-  startLoading() {
-    this.loading = true;
-  }
-
-  stopLoading() {
-    this.loading = false;
+    this.event.emit(this.is_favorite);
   }
 }

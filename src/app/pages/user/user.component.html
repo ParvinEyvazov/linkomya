@@ -21,7 +21,11 @@
         </div>
 
         <div class="favoriting">
-          <app-favoriting [favorite_user_id]="user._id"></app-favoriting>
+          <app-favoriting
+            *ngIf="!is_own_profile && is_logged_in"
+            [is_favorite]="is_favorite"
+            (event)="changeFavoriteRelation($event)"
+          ></app-favoriting>
         </div>
 
         <!-- information, bio part -->

@@ -1,10 +1,6 @@
 <!-- *ngIf="!is_own_profile && is_logged_in" -->
 
-<div
-  *ngIf="!is_own_profile && is_logged_in"
-  class="favorite-container"
-  (click)="changeFavoriteRelation()"
->
+<div class="favorite-container" (click)="changeFavoriteRelation()">
   <div class="favorite-loading" *ngIf="loading">
     <mat-spinner [diameter]="30"></mat-spinner>
   </div>
@@ -18,4 +14,3 @@
     </div>
   </div>
 </div>
-is_own_profile: {{ is_own_profile }} is_logged_in:{{ is_logged_in }}
