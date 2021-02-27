@@ -104,7 +104,6 @@ export class UserComponent implements OnInit {
   }
 
   changeFavoriteRelation(event) {
-    console.log(event, this.is_favorite);
     if (this.is_favorite == event) {
       this.favoritingSpinnerService.start();
       this.is_favorite == true
@@ -114,7 +113,6 @@ export class UserComponent implements OnInit {
   }
 
   addToFavorites(main_user_id, user_id) {
-    console.log('addToFavorites');
     this.apiService
       .addToFavorites(main_user_id, user_id)
       .toPromise()

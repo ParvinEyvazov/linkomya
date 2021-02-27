@@ -10,6 +10,7 @@ export class UserCardComponent implements OnInit {
   @Input() profile_photo: string = '';
   @Input() fullname: string = '';
   @Input() country: string = '';
+  @Input() verified: boolean = false;
 
   constructor() {}
 

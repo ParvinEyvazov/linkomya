@@ -8,13 +8,11 @@
   left: 0;
 
   main {
-    //   background: lightblue;
     height: calc(100vh - 80px);
     width: 100vw;
 
     .search-bar {
       text-align: center;
-      //   background: lightcoral;
       padding-top: 15px;
       padding-bottom: 20px;
       transition: 0.25s;
@@ -60,9 +58,7 @@
     }
 
     .profile-box {
-      //    background: lightgreen;
       width: 100%;
-      //  background: lightgray;
     }
 
     .spinner {
@@ -97,10 +93,6 @@
   }
 }
 
-// ::placeholder{
-//     margin: 10px;
-// }
-
 @media screen and (max-width: 992px) {
   main {
     .search-bar {
@@ -117,7 +109,6 @@
     }
 
     .profile-box {
-      //  background: lightgray;
     }
 
     .search-information {
@@ -150,7 +141,6 @@
     }
 
     .profile-box {
-      //  background: lightgray;
     }
 
     .search-information {

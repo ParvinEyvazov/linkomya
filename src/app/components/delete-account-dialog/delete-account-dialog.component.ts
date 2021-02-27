@@ -28,7 +28,6 @@ export class DeleteAccountDialogComponent implements OnInit {
       })
       .catch((error) => {
         this.stopLoading();
-        console.log(error);
         this.showError(error.error.message);
       });
   }
