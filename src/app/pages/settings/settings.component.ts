@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/data';
 import { ApiService } from 'src/app/services/api-services/api.service';
 import { MessageService } from 'src/app/services/message.service';
+import { PageSpinnerService } from 'src/app/services/spinner-services/page-spinner/page-spinner.service';
 import { UserService } from 'src/app/services/user-services/user.service';
 import { ValidationService } from 'src/app/services/validation.service';
 
@@ -21,7 +22,8 @@ export class SettingsComponent implements OnInit {
     private apiService: ApiService,
     private userService: UserService,
     private validator: ValidationService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private pageSpinnerService: PageSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -59,6 +61,7 @@ export class SettingsComponent implements OnInit {
   }
 
   getUser(user_id) {
+    this.pageSpinnerService.start();
     this.apiService
       .getUser(user_id)
       .toPromise()
@@ -66,6 +69,10 @@ export class SettingsComponent implements OnInit {
         if (data) {
           this.user = data[0];
         }
+        this.pageSpinnerService.stop();
+      })
+      .catch((error) => {
+        this.pageSpinnerService.reset();
       });
   }
 

@@ -1,4 +1,3 @@
-import { ViewEncapsulation } from '@angular/core';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, RoutesRecognized } from '@angular/router';
@@ -7,6 +6,8 @@ import { debounceTime } from 'rxjs/operators';
 import { User } from './interfaces/data';
 import { ApiService } from './services/api-services/api.service';
 import { AuthService } from './services/auth-services/auth.service';
+import { PageSpinnerService } from '../app/services/spinner-services/page-spinner/page-spinner.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -27,15 +28,20 @@ export class AppComponent implements OnInit {
   search_loading: boolean = false;
   users: User[];
 
+  page_loading: boolean = true;
+
   constructor(
     private authService: AuthService,
     public router: Router,
     private titleService: Title,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private pageSpinnerService: PageSpinnerService,
+    private cdRef: ChangeDetectorRef
   ) {}
 
-  //functions
   ngOnInit(): void {
+    this.init();
+
     this.router.events.subscribe((data) => {
       this.activeUrl = this.router.url;
       if (data instanceof RoutesRecognized) {
@@ -66,6 +72,13 @@ export class AppComponent implements OnInit {
       } else {
         this.users = [];
       }
+    });
+  }
+
+  init() {
+    this.pageSpinnerService.getSpinner().subscribe((state) => {
+      this.page_loading = state;
+      this.cdRef.detectChanges();
     });
   }
 

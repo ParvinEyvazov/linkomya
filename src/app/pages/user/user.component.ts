@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Connection, User } from 'src/app/interfaces/data';
 import { ApiService } from 'src/app/services/api-services/api.service';
 import { FavoritingSpinnerService } from 'src/app/services/spinner-services/favoriting-spinner/favoriting-spinner.service';
+import { PageSpinnerService } from 'src/app/services/spinner-services/page-spinner/page-spinner.service';
 import { UserService } from 'src/app/services/user-services/user.service';
 
 @Component({
@@ -25,7 +26,8 @@ export class UserComponent implements OnInit {
     private route: ActivatedRoute,
     private apiService: ApiService,
     private userService: UserService,
-    private favoritingSpinnerService: FavoritingSpinnerService
+    private favoritingSpinnerService: FavoritingSpinnerService,
+    private pageSpinnerService: PageSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -36,11 +38,13 @@ export class UserComponent implements OnInit {
   }
 
   getUser(username) {
+    this.pageSpinnerService.start();
     this.apiService
       .getUserWithUsername(username)
       .toPromise()
       .then((data) => {
         this.stopUserLoading();
+        this.pageSpinnerService.stop();
         if (data.length > 0) {
           this.user = data[0];
           this.getConnections(this.user._id);
@@ -49,6 +53,7 @@ export class UserComponent implements OnInit {
       })
       .catch((error) => {
         this.stopUserLoading();
+        this.pageSpinnerService.reset();
       });
   }
 
@@ -119,7 +124,6 @@ export class UserComponent implements OnInit {
       })
       .catch((error) => {
         this.favoritingSpinnerService.reset();
-        // stop loading
       });
   }
 
@@ -133,7 +137,6 @@ export class UserComponent implements OnInit {
       })
       .catch((error) => {
         this.favoritingSpinnerService.reset();
-        // stop loading
       });
   }
 

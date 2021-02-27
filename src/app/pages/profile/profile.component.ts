@@ -9,6 +9,7 @@ import { MessageService } from 'src/app/services/message.service';
 import { MicroService } from 'src/app/services/micro-services/micro.service';
 import { StorageService } from 'src/app/services/storage-service/storage.service';
 import { environment } from '../../../environments/environment';
+import { PageSpinnerService } from 'src/app/services/spinner-services/page-spinner/page-spinner.service';
 
 @Component({
   selector: 'app-profile',
@@ -49,7 +50,8 @@ export class ProfileComponent implements AfterViewInit {
     private validator: ValidationService,
     private message: MessageService,
     private microService: MicroService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private pageSpinnerService: PageSpinnerService
   ) {}
 
   ngAfterViewInit(): void {
@@ -193,14 +195,19 @@ export class ProfileComponent implements AfterViewInit {
 
   //-------------------------API FUNCTIONS------------------------
   getUser(user_id) {
+    this.pageSpinnerService.start();
     this.apiService
       .getUser(user_id)
       .toPromise()
       .then((data) => {
         if (data) {
           this.user = data[0];
+          this.pageSpinnerService.stop();
           this.showPage(this.user);
         }
+      })
+      .catch((error) => {
+        this.pageSpinnerService.reset();
       });
   }
 
