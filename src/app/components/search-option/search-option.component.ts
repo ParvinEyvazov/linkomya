@@ -9,6 +9,7 @@ export class SearchOptionComponent implements OnInit {
   @Input() url: string;
   @Input() fullname: string;
   @Input() username: string;
+  @Input() verified: boolean = false;
   default_photo = '../../../assets/profile_photos/default_profile_photo.png';
 
   constructor() {}

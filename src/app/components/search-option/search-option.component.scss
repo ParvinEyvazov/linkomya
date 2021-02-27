@@ -14,8 +14,20 @@
   }
 
   .fullname {
+    display: flex;
     margin-left: 10px;
     span {
+    }
+
+    .icon-verify {
+      margin-top: 5px;
+      margin-left: 3%;
+      display: flex;
+      align-self: center;
+      transition: var(--transition-normal);
+      font-size: 1em;
+      // margin-top: 5px;
+      color: var(--verified-icon-color);
     }
   }
 }
