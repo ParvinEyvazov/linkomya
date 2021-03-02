@@ -8,6 +8,8 @@ import { ApiService } from './services/api-services/api.service';
 import { AuthService } from './services/auth-services/auth.service';
 import { PageSpinnerService } from '../app/services/spinner-services/page-spinner/page-spinner.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { HostListener } from '@angular/core';
+import { timeStamp } from 'console';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +29,6 @@ export class AppComponent implements OnInit {
   search_text: string = '';
   search_loading: boolean = false;
   users: User[];
-
   page_loading: boolean = true;
 
   constructor(
@@ -39,6 +40,13 @@ export class AppComponent implements OnInit {
     private cdRef: ChangeDetectorRef
   ) {}
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    if (event.target.innerWidth < 993) {
+      this.clearSearchList();
+    }
+  }
+
   ngOnInit(): void {
     this.init();
 
@@ -49,7 +57,6 @@ export class AppComponent implements OnInit {
       }
     });
 
-    //works when path change
     this.routeData.subscribe((data: any) => {
       this.setToken();
       this.setTitle(data);
@@ -61,16 +68,16 @@ export class AppComponent implements OnInit {
       if (value) {
         value.length == 0 ? (this.users = []) : this.getUsers(value);
       } else {
-        this.users = [];
+        this.clearSearchList();
       }
     });
     this.input.update.pipe().subscribe((value) => {
       if (value) {
         if (value.length == 0) {
-          this.users = [];
+          this.clearSearchList();
         }
       } else {
-        this.users = [];
+        this.clearSearchList();
       }
     });
   }
@@ -125,12 +132,22 @@ export class AppComponent implements OnInit {
     }
   }
 
+  navigateSearchPage(search_text) {
+    this.router.navigate(['search'], {
+      queryParams: { search_text: search_text },
+    });
+  }
+
   startSearchLoading() {
     this.search_loading = true;
   }
 
   stopSearchLoading() {
     this.search_loading = false;
+  }
+
+  clearSearchList() {
+    this.users = [];
   }
 
   logout() {

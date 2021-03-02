@@ -16,7 +16,11 @@
           placeholder="Search..."
           [matAutocomplete]="auto"
         />
-        <button type="submit" class="searchButton">
+        <button
+          type="submit"
+          class="searchButton"
+          (click)="navigateSearchPage(search_text)"
+        >
           <i class="fa fa-search"></i>
         </button>
 
@@ -41,7 +45,7 @@
       </div>
     </div>
 
-    <div class="search-phone-button">
+    <div class="search-phone-button" (click)="navigateSearchPage('')">
       <button type="submit" class="search-phone-icon">
         <i class="fa fa-search"></i>
       </button>
