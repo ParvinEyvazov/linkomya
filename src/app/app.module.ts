@@ -37,7 +37,6 @@ import { AddConnectionDialogComponent } from './components/add-connection-dialog
 import { EditConnectionDialogComponent } from './components/edit-connection-dialog/edit-connection-dialog.component';
 import { DeleteAccountDialogComponent } from './components/delete-account-dialog/delete-account-dialog.component';
 import { DesignCircleComponent } from './components/design-circle/design-circle.component';
-import { VectorImagesComponent } from './components/vector-images/vector-images.component';
 import { ProfilePhotoComponent } from './components/profile-photo/profile-photo.component';
 import { BackgroundPhotoComponent } from './components/background-photo/background-photo.component';
 import { FavoritingComponent } from './components/favoriting/favoriting.component';
@@ -66,7 +65,6 @@ import { SearchOptionComponent } from './components/search-option/search-option.
     EditConnectionDialogComponent,
     DeleteAccountDialogComponent,
     DesignCircleComponent,
-    VectorImagesComponent,
     ProfilePhotoComponent,
     BackgroundPhotoComponent,
     FavoritingComponent,
