@@ -1,4 +1,7 @@
 :host {
+  .input {
+    display: none;
+  }
   .profile-photo {
     transition: var(--transition-normal);
     position: relative;
