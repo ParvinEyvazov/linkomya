@@ -43,6 +43,7 @@ import { FavoritingComponent } from './components/favoriting/favoriting.componen
 import { FullnameComponent } from './components/fullname/fullname.component';
 import { BiographyComponent } from './components/biography/biography.component';
 import { SearchOptionComponent } from './components/search-option/search-option.component';
+import { EditPhotoDialogComponent } from './components/edit-photo-dialog/edit-photo-dialog.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { SearchOptionComponent } from './components/search-option/search-option.
     FullnameComponent,
     BiographyComponent,
     SearchOptionComponent,
+    EditPhotoDialogComponent,
   ],
   imports: [
     MatIconModule,

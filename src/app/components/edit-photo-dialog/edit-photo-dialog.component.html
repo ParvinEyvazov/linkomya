@@ -1,0 +1,62 @@
+<!-- <div class="container" style="max-height: 350px; overflow: auto"> </div> -->
+<div class="tabs" style="max-height: 500px; min-height: 350px">
+  <input type="radio" id="tab1" name="tab-control" checked />
+  <input type="radio" id="tab2" name="tab-control" />
+  <ul>
+    <li title="Shipping">
+      <label for="tab1" role="button"
+        ><svg class="svg-icon" viewBox="0 0 20 20">
+          <path
+            d="M18.555,15.354V4.592c0-0.248-0.202-0.451-0.45-0.451H1.888c-0.248,0-0.451,0.203-0.451,0.451v10.808c0,0.559,0.751,0.451,0.451,0.451h16.217h0.005C18.793,15.851,18.478,14.814,18.555,15.354 M2.8,14.949l4.944-6.464l4.144,5.419c0.003,0.003,0.003,0.003,0.003,0.005l0.797,1.04H2.8z M13.822,14.949l-1.006-1.317l1.689-2.218l2.688,3.535H13.822z M17.654,14.064l-2.791-3.666c-0.181-0.237-0.535-0.237-0.716,0l-1.899,2.493l-4.146-5.42c-0.18-0.237-0.536-0.237-0.716,0l-5.047,6.598V5.042h15.316V14.064z M12.474,6.393c-0.869,0-1.577,0.707-1.577,1.576s0.708,1.576,1.577,1.576s1.577-0.707,1.577-1.576S13.343,6.393,12.474,6.393 M12.474,8.645c-0.371,0-0.676-0.304-0.676-0.676s0.305-0.676,0.676-0.676c0.372,0,0.676,0.304,0.676,0.676S12.846,8.645,12.474,8.645"
+          ></path></svg
+        ><br /><span>Explore</span></label
+      >
+    </li>
+    <li title="Returns">
+      <label for="tab2" role="button"
+        ><svg class="svg-icon" viewBox="0 0 20 20">
+          <path
+            d="M10,6.536c-2.263,0-4.099,1.836-4.099,4.098S7.737,14.732,10,14.732s4.099-1.836,4.099-4.098S12.263,6.536,10,6.536M10,13.871c-1.784,0-3.235-1.453-3.235-3.237S8.216,7.399,10,7.399c1.784,0,3.235,1.452,3.235,3.235S11.784,13.871,10,13.871M17.118,5.672l-3.237,0.014L12.52,3.697c-0.082-0.105-0.209-0.168-0.343-0.168H7.824c-0.134,0-0.261,0.062-0.343,0.168L6.12,5.686H2.882c-0.951,0-1.726,0.748-1.726,1.699v7.362c0,0.951,0.774,1.725,1.726,1.725h14.236c0.951,0,1.726-0.773,1.726-1.725V7.195C18.844,6.244,18.069,5.672,17.118,5.672 M17.98,14.746c0,0.477-0.386,0.861-0.862,0.861H2.882c-0.477,0-0.863-0.385-0.863-0.861V7.384c0-0.477,0.386-0.85,0.863-0.85l3.451,0.014c0.134,0,0.261-0.062,0.343-0.168l1.361-1.989h3.926l1.361,1.989c0.082,0.105,0.209,0.168,0.343,0.168l3.451-0.014c0.477,0,0.862,0.184,0.862,0.661V14.746z"
+          ></path>
+        </svg>
+        <br /><span>Custom</span></label
+      >
+    </li>
+  </ul>
+
+  <div class="slider">
+    <div class="indicator"></div>
+  </div>
+
+  <!-- ALL CONTENT HERE -->
+  <div class="content">
+    <section>
+      <h1>GIF PART</h1>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nemo
+      ducimus eius, magnam error quisquam sunt voluptate labore, excepturi
+      numquam! Alias libero optio sed harum debitis! Veniam, quia in eum.
+      <span>HEYO</span>
+    </section>
+    <section>
+      <h1>CUSTOM PHOTO PART</h1>
+      <h2>Returns</h2>
+      
+    </section>
+  </div>
+</div>
+
+<mat-divider></mat-divider>
+
+<div class="buttons">
+  <mat-spinner *ngIf="false" class="spinner" diameter="25"></mat-spinner>
+
+  <div *ngIf="true" class="cancel-box">
+    <p>CANCEL</p>
+  </div>
+
+  <div *ngIf="true" class="confirm-box">
+    <a *ngIf="true">
+      <input type="submit" name="submit" value="Confirm" />
+    </a>
+  </div>
+</div>

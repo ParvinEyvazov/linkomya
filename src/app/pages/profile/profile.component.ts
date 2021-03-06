@@ -37,12 +37,15 @@ export class ProfileComponent implements AfterViewInit {
 
   // -add new connection
   connections: Connection[];
-  dialog_state_add_connection: boolean = false;
 
   //-edit connection link
   editing_connection_id: string;
   editing_connection: Connection;
+
+  //dialog states
   dialog_state_edit_connection: boolean = false;
+  dialog_state_add_connection: boolean = false;
+  dialog_state_edit_profile_photo: boolean = true;
 
   constructor(
     private userService: UserService,

@@ -73,6 +73,7 @@ body {
 
   // transition and animations
   --transition-fast: all 0.2s cubic-bezier(0.32, 0, 0.67, 0);
+  // all 0.33s cubic-bezier(0.38, 0.8, 0.32, 1.07) -> smooth animation
   --transition-normal: all 0.4s cubic-bezier(0.32, 0, 0.67, 0);
   --transition-slow: all 1s cubic-bezier(0.32, 0, 0.67, 0);
 }
