@@ -207,19 +207,44 @@ $content-selector: "~ .content > section";
             display: flex;
             flex-wrap: wrap;
             margin-top: 10px;
+
+            .image input[type="radio"] {
+              display: none;
+            }
+
             .image {
-              cursor: pointer;
               margin: auto;
               margin-bottom: 2px;
-              // background: chocolate;
-              width: 100px;
-              height: 100px;
-              img {
-                object-fit: cover;
-                border-radius: 15px;
-                width: 100%;
-                height: 100%;
+
+              .checkbox-alias {
+                display: inline-block;
+                width: 100px;
+                height: 100px;
+                // position: relative;
+                cursor: pointer;
+                margin: 2px;
+                border: 1px solid transparent;
+                img {
+                  object-fit: cover;
+                  border-radius: 14px;
+                  width: 100%;
+                  height: 100%;
+                }
               }
+            }
+
+            .image input[type="radio"]:checked + .checkbox-alias {
+              transition: 0.25s;
+              border-image-slice: 1;
+              border-width: 3px;
+              -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+              -moz-box-sizing: border-box; /* Firefox*/
+              box-sizing: border-box; /* Opera/IE 8+ */
+              border-radius: 17px;
+              background-image: linear-gradient(white, white),
+                linear-gradient(#51ff0d, #9fff79, #0fd850, #51ff0d, #9fff79);
+              background-origin: border-box;
+              background-clip: content-box, border-box;
             }
           }
         }

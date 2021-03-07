@@ -41,47 +41,19 @@
         <div class="content-container">
           <span>gifs</span>
           <div class="image-container">
-            <div class="image">
-              <img
-                src="https://media4.giphy.com/media/e5EcjjJx3dCFi/giphy.gif?cid=6efe4c6d8bgqw7vq3tx1enm1evzcve55xnrsnod4j0jgbk89&rid=giphy.gif"
-                alt="gif"
+            <div class="image" *ngFor="let gif of gifs">
+              <!-- radio start -->
+              <input
+                type="radio"
+                name="contentGroup"
+                value="1"
+                id="{{ gif }}"
               />
-            </div>
-            <div class="image">
-              <img
-                src="https://media1.giphy.com/media/8m4R4pvViWtRzbloJ1/giphy.gif?cid=6efe4c6d8bgqw7vq3tx1enm1evzcve55xnrsnod4j0jgbk89&rid=giphy.gif"
-                alt="gif"
-              />
-            </div>
-            <div class="image">
-              <img
-                src="https://media4.giphy.com/media/o0vwzuFwCGAFO/giphy.gif?cid=6efe4c6d8bgqw7vq3tx1enm1evzcve55xnrsnod4j0jgbk89&rid=giphy.gif"
-                alt="gif"
-              />
-            </div>
-            <div class="image">
-              <img
-                src="https://media3.giphy.com/media/1dIo6kDOPMzsnMOJTj/giphy.gif?cid=6efe4c6d8bgqw7vq3tx1enm1evzcve55xnrsnod4j0jgbk89&rid=giphy.gif"
-                alt="gif"
-              />
-            </div>
-            <div class="image">
-              <img
-                src="https://media0.giphy.com/media/BmmfETghGOPrW/giphy.gif?cid=6efe4c6d8bgqw7vq3tx1enm1evzcve55xnrsnod4j0jgbk89&rid=giphy.gif"
-                alt="gif"
-              />
-            </div>
-            <div class="image">
-              <img
-                src="https://media1.giphy.com/media/8m4R4pvViWtRzbloJ1/giphy.gif?cid=6efe4c6d8bgqw7vq3tx1enm1evzcve55xnrsnod4j0jgbk89&rid=giphy.gif"
-                alt="gif"
-              />
-            </div>
-            <div class="image">
-              <img
-                src="https://media4.giphy.com/media/o0vwzuFwCGAFO/giphy.gif?cid=6efe4c6d8bgqw7vq3tx1enm1evzcve55xnrsnod4j0jgbk89&rid=giphy.gif"
-                alt="gif"
-              />
+              <label class="checkbox-alias" for="{{ gif }}">
+                <img src="{{ gif }}" alt="gif" />
+              </label>
+
+              <!-- radio over -->
             </div>
           </div>
         </div>
@@ -90,59 +62,16 @@
         <div class="content-container">
           <span>stickers</span>
           <div class="image-container">
-            <div class="image">
-              <img
-                src="https://media3.giphy.com/media/fYqQBDobkehZCsi7cL/giphy.gif?cid=6efe4c6d841xi39pd62162c7p14er3rhfwu99g4jggzwg8mq&rid=giphy.gif"
-                alt="gif"
+            <div class="image" *ngFor="let sticker of stickers">
+              <input
+                type="radio"
+                name="contentGroup"
+                value="1"
+                id="{{ sticker }}"
               />
-            </div>
-            <div class="image">
-              <img
-                src="https://media1.giphy.com/media/2sk6lK6vjeOmrYke6X/giphy.gif?cid=6efe4c6d841xi39pd62162c7p14er3rhfwu99g4jggzwg8mq&rid=giphy.gif"
-                alt="gif"
-              />
-            </div>
-            <div class="image">
-              <img
-                src="https://media3.giphy.com/media/qxRMbqPKaXbUYB28Eu/giphy.gif?cid=6efe4c6d841xi39pd62162c7p14er3rhfwu99g4jggzwg8mq&rid=giphy.gif"
-                alt="gif"
-              />
-            </div>
-            <div class="image">
-              <img
-                src="https://media3.giphy.com/media/qxRMbqPKaXbUYB28Eu/giphy.gif?cid=6efe4c6d841xi39pd62162c7p14er3rhfwu99g4jggzwg8mq&rid=giphy.gif"
-                alt="gif"
-              />
-            </div>
-            <div class="image">
-              <img
-                src="https://media3.giphy.com/media/qxRMbqPKaXbUYB28Eu/giphy.gif?cid=6efe4c6d841xi39pd62162c7p14er3rhfwu99g4jggzwg8mq&rid=giphy.gif"
-                alt="gif"
-              />
-            </div>
-            <div class="image">
-              <img
-                src="https://media3.giphy.com/media/qxRMbqPKaXbUYB28Eu/giphy.gif?cid=6efe4c6d841xi39pd62162c7p14er3rhfwu99g4jggzwg8mq&rid=giphy.gif"
-                alt="gif"
-              />
-            </div>
-            <div class="image">
-              <img
-                src="https://media0.giphy.com/media/tZYaAQkRc4j430flM4/giphy.gif?cid=6efe4c6d841xi39pd62162c7p14er3rhfwu99g4jggzwg8mq&rid=giphy.gif"
-                alt="gif"
-              />
-            </div>
-            <div class="image">
-              <img
-                src="https://media0.giphy.com/media/UsSqPfG7BlJqU/giphy.gif?cid=6efe4c6d841xi39pd62162c7p14er3rhfwu99g4jggzwg8mq&rid=giphy.gif"
-                alt="gif"
-              />
-            </div>
-            <div class="image">
-              <img
-                src="https://media0.giphy.com/media/mFBmP0nCK1JsdqaTeW/giphy.gif?cid=6efe4c6d841xi39pd62162c7p14er3rhfwu99g4jggzwg8mq&rid=giphy.gif"
-                alt="gif"
-              />
+              <label class="checkbox-alias" for="{{ sticker }}">
+                <img src="{{ sticker }}" alt="gif" />
+              </label>
             </div>
           </div>
         </div>
