@@ -17,17 +17,22 @@ export class TokenInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const headers = {
-      Authorization: `APIKEY ${environment.public_api_key}`,
-    };
-
-    if (this.authService.token) {
-      headers['X-Authorization'] = this.authService.token;
+    // works on anonymous http calls
+    if (request.headers.get('Anonymous') != undefined) {
+      const headers = request.headers.delete('Anonymous');
+      request = request.clone({ headers: headers });
+      return next.handle(request);
+    } else {
+      const headers = {
+        Authorization: `APIKEY ${environment.public_api_key}`,
+      };
+      if (this.authService.token) {
+        headers['X-Authorization'] = this.authService.token;
+      }
+      request = request.clone({
+        setHeaders: headers,
+      });
+      return next.handle(request);
     }
-
-    request = request.clone({
-      setHeaders: headers,
-    });
-    return next.handle(request);
   }
 }

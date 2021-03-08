@@ -1,14 +1,6 @@
-.test-title {
-  font-size: 5rem;
-  background: red;
-  color: purple;
-}
-// @import "https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400";
-
 /* colors */
 $blue: #7b77ff;
 $red: #ff4a53;
-$dark: #333;
 
 $accent: $blue;
 $accent-inactive: desaturate($accent, 85%);
@@ -187,21 +179,47 @@ $content-selector: "~ .content > section";
         }
       }
 
+      .giphy-message {
+        display: flex;
+        justify-content: center;
+        margin: 5px;
+        .giphy-text {
+          color: #b1b1c5;
+          font-size: 0.6rem;
+
+          a {
+            text-decoration: none;
+            color: #b1b1c5;
+            .giphy-link {
+              cursor: pointer;
+              outline: none;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+
       .images {
         display: flex;
         justify-content: center;
         text-align: center;
         overflow-y: scroll;
-        max-height: 400px;
+        max-height: 350px;
         .content-container {
           margin-top: 10px;
           width: 50%;
           span {
             color: #b1b1c5;
             font-size: 1rem;
-            // font-weight: bold;
-            // font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
           }
+
+          .spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+          }
+
           .image-container {
             overflow-y: auto;
             display: flex;
@@ -220,7 +238,6 @@ $content-selector: "~ .content > section";
                 display: inline-block;
                 width: 100px;
                 height: 100px;
-                // position: relative;
                 cursor: pointer;
                 margin: 2px;
                 border: 1px solid transparent;
@@ -283,10 +300,6 @@ $content-selector: "~ .content > section";
   @media (max-width: map-get($breakpoints, medium)) {
     ul li label {
       white-space: initial;
-
-      // br {
-      //   display: initial;
-      // }
 
       svg {
         height: 1em;

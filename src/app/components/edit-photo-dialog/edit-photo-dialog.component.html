@@ -33,24 +33,42 @@
     <!-- gif/sticker section -->
     <section class="explore-section">
       <div class="search-box">
-        <input type="text" name="search-text" placeholder="search..." />
+        <input
+          type="text"
+          #input="ngModel"
+          [(ngModel)]="search_text"
+          name="search-text"
+          placeholder="search..."
+        />
+      </div>
+
+      <div class="giphy-message">
+        <span class="giphy-text"
+          >Powered By
+          <a href="https://giphy.com"><span class="giphy-link">GIPHY</span></a>
+        </span>
       </div>
 
       <div class="images">
         <!-- gifs -->
         <div class="content-container">
           <span>gifs</span>
-          <div class="image-container">
-            <div class="image" *ngFor="let gif of gifs">
+
+          <div class="spinner" *ngIf="!gifs">
+            <mat-spinner diameter="25"></mat-spinner>
+          </div>
+
+          <div class="image-container" *ngIf="gifs">
+            <div class="image" *ngFor="let gif of gifs.data">
               <!-- radio start -->
               <input
                 type="radio"
                 name="contentGroup"
                 value="1"
-                id="{{ gif }}"
+                id="{{ gif.images.original.url }}"
               />
-              <label class="checkbox-alias" for="{{ gif }}">
-                <img src="{{ gif }}" alt="gif" />
+              <label class="checkbox-alias" for="{{ gif.images.original.url }}">
+                <img src="{{ gif.images.fixed_height.url }}" alt="gif" />
               </label>
 
               <!-- radio over -->
@@ -61,16 +79,24 @@
         <!-- stickers -->
         <div class="content-container">
           <span>stickers</span>
-          <div class="image-container">
-            <div class="image" *ngFor="let sticker of stickers">
+
+          <div class="spinner" *ngIf="!stickers">
+            <mat-spinner diameter="25"></mat-spinner>
+          </div>
+
+          <div class="image-container" *ngIf="stickers">
+            <div class="image" *ngFor="let sticker of stickers.data">
               <input
                 type="radio"
                 name="contentGroup"
                 value="1"
-                id="{{ sticker }}"
+                id="{{ sticker.images.original.url }}"
               />
-              <label class="checkbox-alias" for="{{ sticker }}">
-                <img src="{{ sticker }}" alt="gif" />
+              <label
+                class="checkbox-alias"
+                for="{{ sticker.images.original.url }}"
+              >
+                <img src="{{ sticker.images.fixed_height.url }}" alt="gif" />
               </label>
             </div>
           </div>

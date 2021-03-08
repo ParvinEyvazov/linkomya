@@ -17,3 +17,11 @@ export interface Favorites {
 export interface SearchResult {
   [key: string]: any;
 }
+
+export interface Gif {
+  [key: string]: any;
+}
+
+export interface Sticker {
+  [key: string]: any;
+}
