@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GiphyService } from '../../services/giphy-service/giphy.service';
-import { Gif, Sticker } from '../../interfaces/data';
+import { GiphyContent } from '../../interfaces/data';
 import { debounceTime } from 'rxjs/operators';
 
 @Component({
@@ -13,11 +13,13 @@ export class EditPhotoDialogComponent implements OnInit {
 
   search_text: string = '';
 
-  gifs: Gif[];
-  stickers: Sticker[];
+  gifs: GiphyContent[];
+  stickers: GiphyContent[];
 
   gifs_loading: boolean = false;
   stickers_loading: boolean = false;
+
+  selected_content;
 
   constructor(private giphyService: GiphyService) {}
 
@@ -47,7 +49,6 @@ export class EditPhotoDialogComponent implements OnInit {
   }
 
   getCustomContent(search_text) {
-    console.log('getting custom', search_text);
     this.getCustomGifs(search_text);
     this.getCustomStickers(search_text);
   }
@@ -57,7 +58,7 @@ export class EditPhotoDialogComponent implements OnInit {
     this.giphyService
       .getTrendingGifs()
       .toPromise()
-      .then((data: Gif[]) => {
+      .then((data) => {
         if (data) {
           this.gifs = data;
           this.stopGifsLoading();
@@ -98,7 +99,10 @@ export class EditPhotoDialogComponent implements OnInit {
       });
   }
 
-  // call it when new text written
+  onContentSelected(content) {
+    console.log('content:', content);
+  }
+
   cleanAllContent() {
     this.gifs = undefined;
     this.stickers = undefined;

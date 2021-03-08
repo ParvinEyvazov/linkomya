@@ -6,18 +6,15 @@ $accent: $blue;
 $accent-inactive: desaturate($accent, 85%);
 $secondary: $accent-inactive;
 
-/* tab setting */
 $tab-count: 2;
 $indicator-width: 100px;
 $indicator-height: 2px;
 
-/* breakpoints */
 $breakpoints: (
   medium: #{$tab-count * 250px},
   small: #{$tab-count * 150px},
 );
 
-/* selectors relative to radio inputs */
 $label-selector: "~ ul > li";
 $slider-selector: "~ .slider";
 $content-selector: "~ .content > section";
@@ -52,8 +49,6 @@ $content-selector: "~ .content > section";
 
   .content section h2,
   ul li label {
-    // font-family: "Montserrat";
-    // font-weight: bold;
     font-size: 18px;
     color: $accent;
   }
@@ -87,8 +82,6 @@ $content-selector: "~ .content > section";
         transition: all 0.2s ease-in-out;
         white-space: nowrap;
         -webkit-touch-callout: none;
-        // @include user-select(none);
-
         br {
           display: none;
         }
@@ -168,7 +161,6 @@ $content-selector: "~ .content > section";
         input {
           border: 0;
           background: none;
-          //text-align: center;
           border: 1px solid rgba(0, 0, 0, 0.397);
           background: #ffffff;
           padding: 10px;

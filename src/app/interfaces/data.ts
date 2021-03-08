@@ -18,10 +18,6 @@ export interface SearchResult {
   [key: string]: any;
 }
 
-export interface Gif {
-  [key: string]: any;
-}
-
-export interface Sticker {
+export interface GiphyContent {
   [key: string]: any;
 }
