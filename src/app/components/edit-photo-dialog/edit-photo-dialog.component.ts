@@ -19,7 +19,7 @@ export class EditPhotoDialogComponent implements OnInit {
   gifs_loading: boolean = false;
   stickers_loading: boolean = false;
 
-  selected_content;
+  selected_content_url: string;
 
   constructor(private giphyService: GiphyService) {}
 
@@ -100,7 +100,8 @@ export class EditPhotoDialogComponent implements OnInit {
   }
 
   onContentSelected(content) {
-    console.log('content:', content);
+    this.selected_content_url = content.images?.original?.url;
+    console.log('selected:', this.selected_content_url);
   }
 
   cleanAllContent() {

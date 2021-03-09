@@ -259,6 +259,57 @@ $content-selector: "~ .content > section";
         }
       }
     }
+
+    .custom-section {
+      .title {
+        display: flex;
+        justify-content: center;
+        span {
+          color: #b1b1c5;
+          font-size: 0.9rem;
+        }
+      }
+
+      .image-container {
+        height: 350px;
+        margin: 10px 20px;
+
+        .upload-container {
+          height: 100%;
+          background: #b2b2b288;
+          border-radius: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: 0.25s;
+          cursor: pointer;
+          .upload-message {
+            text-align: center;
+            svg {
+              fill: aliceblue;
+              height: 4em;
+              vertical-align: bottom;
+              transition: all 0.2s ease-in-out;
+              display: block;
+              margin: auto;
+            }
+            span {
+              color: #59595a;
+            }
+          }
+        }
+
+        .upload-container:hover {
+          background: #b2b2b254;
+          .upload-message {
+            text-align: center;
+            svg {
+              fill: var(--primary-color);
+            }
+          }
+        }
+      }
+    }
   }
 
   input[name="tab-control"] {
