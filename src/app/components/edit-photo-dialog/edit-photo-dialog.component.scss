@@ -274,6 +274,10 @@ $content-selector: "~ .content > section";
         height: 350px;
         margin: 10px 20px;
 
+        .uploadInput {
+          display: none;
+        }
+
         .upload-container {
           height: 100%;
           background: #b2b2b288;

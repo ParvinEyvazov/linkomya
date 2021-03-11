@@ -44,6 +44,7 @@ import { FullnameComponent } from './components/fullname/fullname.component';
 import { BiographyComponent } from './components/biography/biography.component';
 import { SearchOptionComponent } from './components/search-option/search-option.component';
 import { EditPhotoDialogComponent } from './components/edit-photo-dialog/edit-photo-dialog.component';
+import { DragAndDropDirective } from './directives/drag-and-drop.directive';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { EditPhotoDialogComponent } from './components/edit-photo-dialog/edit-ph
     BiographyComponent,
     SearchOptionComponent,
     EditPhotoDialogComponent,
+    DragAndDropDirective,
   ],
   imports: [
     MatIconModule,

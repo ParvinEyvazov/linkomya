@@ -111,7 +111,21 @@
 
       <div class="image-container">
         <!-- 1 - show upload message -->
-        <div class="upload-container">
+
+        <input
+          class="uploadInput"
+          type="file"
+          (change)="onFileUpload($event?.target?.files)"
+          accept="image/*"
+          #fileInput
+        />
+
+        <div
+          class="upload-container"
+          (click)="fileInput.click()"
+          DragAndDrop
+          (fileDropped)="onFileUpload($event)"
+        >
           <div class="upload-message">
             <svg class="svg-icon" viewBox="0 0 20 20">
               <path

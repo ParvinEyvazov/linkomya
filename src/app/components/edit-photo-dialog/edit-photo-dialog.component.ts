@@ -43,6 +43,7 @@ export class EditPhotoDialogComponent implements OnInit {
     });
   }
 
+  //--EXPLORE PART
   getInitialContent() {
     this.getTrendingGifs();
     this.getTrendingStickers();
@@ -53,7 +54,6 @@ export class EditPhotoDialogComponent implements OnInit {
     this.getCustomStickers(search_text);
   }
 
-  // Trending - Initial content
   getTrendingGifs() {
     this.giphyService
       .getTrendingGifs()
@@ -78,7 +78,6 @@ export class EditPhotoDialogComponent implements OnInit {
       });
   }
 
-  // Custom content
   getCustomGifs(search_text) {
     this.giphyService
       .getCustomGifs(search_text)
@@ -120,5 +119,10 @@ export class EditPhotoDialogComponent implements OnInit {
 
   stopStickersLoading() {
     this.stickers_loading = false;
+  }
+
+  //--CUSTOM IMAGE UPLOAD PART
+  onFileUpload(event) {
+    console.log('event: ', event);
   }
 }
