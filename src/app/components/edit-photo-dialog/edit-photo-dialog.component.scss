@@ -318,6 +318,28 @@ $content-selector: "~ .content > section";
             }
           }
         }
+
+        .gif-showcase {
+          width: 100%;
+          height: 100%;
+          background: #b2b2b254;
+          transition: 0.25s;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 20px;
+
+          .gif-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            img {
+              max-height: 280px;
+              max-width: 100%;
+              border-radius: 10px;
+            }
+          }
+        }
       }
     }
   }

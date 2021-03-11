@@ -125,6 +125,7 @@
           (click)="fileInput.click()"
           DragAndDrop
           (fileDropped)="onFileUpload($event)"
+          *ngIf="!file_uploaded"
         >
           <div class="upload-message">
             <svg class="svg-icon" viewBox="0 0 20 20">
@@ -141,6 +142,11 @@
         </div>
 
         <!-- preview if it is gif -->
+        <div class="gif-showcase" *ngIf="file_uploaded && uploaded_file_is_gif">
+          <div class="gif-container">
+            <img [src]="uploaded_gif" alt="gif" />
+          </div>
+        </div>
 
         <!-- image cropper -->
       </div>

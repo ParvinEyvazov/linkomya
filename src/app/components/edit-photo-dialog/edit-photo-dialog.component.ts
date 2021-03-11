@@ -9,17 +9,19 @@ import { debounceTime } from 'rxjs/operators';
   styleUrls: ['./edit-photo-dialog.component.scss'],
 })
 export class EditPhotoDialogComponent implements OnInit {
+  // VARIABLE - explore section
   @ViewChild('input') input;
-
   search_text: string = '';
-
   gifs: GiphyContent[];
   stickers: GiphyContent[];
-
   gifs_loading: boolean = false;
   stickers_loading: boolean = false;
-
   selected_content_url: string;
+
+  // VARIABLE - custom image upload
+  file_uploaded: boolean = false;
+  uploaded_file_is_gif: boolean;
+  uploaded_gif;
 
   constructor(private giphyService: GiphyService) {}
 
@@ -124,12 +126,33 @@ export class EditPhotoDialogComponent implements OnInit {
   //--CUSTOM IMAGE UPLOAD PART
   onFileUpload(files_event) {
     let file = files_event[0];
-    // if (file) {
-    //   console.log('is valid: ', this.isValidImage(file));
-    // }
+    console.log(file);
+    console.log('is gif: ', this.isGif(file));
+
+    if (this.isValidImage(file)) {
+      this.uploaded_file_is_gif = this.isGif(file);
+      this.file_uploaded = true;
+
+      if (this.uploaded_file_is_gif) {
+        this.showUploadedGif(file);
+      }
+    }
+  }
+
+  showUploadedGif(file) {
+    const reader = new FileReader();
+    reader.onload = (e) => (this.uploaded_gif = reader.result);
+    reader.readAsDataURL(file);
   }
 
   isValidImage(file) {
     return file['type'].split('/')[0] === 'image';
+  }
+
+  isGif(file) {
+    return (
+      file['type'].split('/')[1] === 'gif' ||
+      file['type'].split('/')[1] === 'webp'
+    );
   }
 }
