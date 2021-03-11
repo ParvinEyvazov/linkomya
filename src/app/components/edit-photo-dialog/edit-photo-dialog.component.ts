@@ -122,7 +122,14 @@ export class EditPhotoDialogComponent implements OnInit {
   }
 
   //--CUSTOM IMAGE UPLOAD PART
-  onFileUpload(event) {
-    console.log('event: ', event);
+  onFileUpload(files_event) {
+    let file = files_event[0];
+    // if (file) {
+    //   console.log('is valid: ', this.isValidImage(file));
+    // }
+  }
+
+  isValidImage(file) {
+    return file['type'].split('/')[0] === 'image';
   }
 }
