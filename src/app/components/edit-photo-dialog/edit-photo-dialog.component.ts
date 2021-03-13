@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { GiphyService } from '../../services/giphy-service/giphy.service';
 import { GiphyContent } from '../../interfaces/data';
 import { debounceTime } from 'rxjs/operators';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
 
 @Component({
   selector: 'edit-photo-dialog',
@@ -22,6 +23,9 @@ export class EditPhotoDialogComponent implements OnInit {
   file_uploaded: boolean = false;
   uploaded_file_is_gif: boolean;
   uploaded_gif;
+  image_for_cropper: any = '';
+  cropped_image: any = '';
+  image_cropping_loading: boolean = true;
 
   constructor(private giphyService: GiphyService) {}
 
@@ -124,8 +128,10 @@ export class EditPhotoDialogComponent implements OnInit {
   }
 
   //--CUSTOM IMAGE UPLOAD PART
-  onFileUpload(files_event) {
-    let file = files_event[0];
+  onFileUpload(event) {
+    //let file = files_event[0];
+    let file = event?.target?.files[0];
+
     console.log(file);
     console.log('is gif: ', this.isGif(file));
 
@@ -135,7 +141,13 @@ export class EditPhotoDialogComponent implements OnInit {
 
       if (this.uploaded_file_is_gif) {
         this.showUploadedGif(file);
+      } else {
+        // show croppper
+        this.image_for_cropper = event;
+        console.log('image cropper', this.image_for_cropper);
       }
+    } else {
+      // show image is not valid
     }
   }
 
@@ -154,5 +166,37 @@ export class EditPhotoDialogComponent implements OnInit {
       file['type'].split('/')[1] === 'gif' ||
       file['type'].split('/')[1] === 'webp'
     );
+  }
+
+  // CROP FUNCTİONS
+  imageCropped(event: ImageCroppedEvent) {
+    // console.log('cropped');
+    this.stopImageCroppingLoading();
+    this.cropped_image = event;
+  }
+
+  imageLoaded() {
+    // console.log('imageLoaded');
+  }
+
+  cropperReady() {
+    // console.log('cropperReady');
+  }
+
+  loadImageFailed() {
+    // console.log('loadImageFailed');
+  }
+
+  startCropImage() {
+    this.startImageCroppingLoading();
+    this.image_cropping_loading = true;
+  }
+
+  startImageCroppingLoading() {
+    this.image_cropping_loading = true;
+  }
+
+  stopImageCroppingLoading() {
+    this.image_cropping_loading = false;
   }
 }

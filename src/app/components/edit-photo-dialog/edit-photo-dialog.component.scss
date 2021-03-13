@@ -273,6 +273,37 @@ $content-selector: "~ .content > section";
       .image-container {
         height: 350px;
         margin: 10px 20px;
+        position: relative;
+
+        .cancel-loading-button {
+          z-index: 150;
+          position: absolute;
+          right: -10px;
+          top: -10px;
+          border-radius: 50%;
+          background: #ff6767;
+          width: 25px;
+          height: 25px;
+          cursor: pointer;
+          .cancel {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            svg {
+              fill: aliceblue;
+              height: 15px;
+            }
+          }
+          .loading {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
 
         .uploadInput {
           display: none;
@@ -338,6 +369,21 @@ $content-selector: "~ .content > section";
               max-width: 100%;
               border-radius: 10px;
             }
+          }
+        }
+
+        .image-cropper-container {
+          width: 100%;
+          height: 100%;
+          image-cropper {
+            border-radius: 20px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            --cropper-overlay-color: #b2b2b254;
+            --cropper-outline-color: rgba(0, 0, 0, 0.59);
           }
         }
       }

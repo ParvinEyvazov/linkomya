@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 // import { TokenInterceptor } from './services/token.interceptor';
-
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
@@ -45,6 +47,7 @@ import { BiographyComponent } from './components/biography/biography.component';
 import { SearchOptionComponent } from './components/search-option/search-option.component';
 import { EditPhotoDialogComponent } from './components/edit-photo-dialog/edit-photo-dialog.component';
 import { DragAndDropDirective } from './directives/drag-and-drop.directive';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [
@@ -91,6 +94,7 @@ import { DragAndDropDirective } from './directives/drag-and-drop.directive';
     MatSelectModule,
     HttpClientModule,
     MatProgressSpinnerModule,
+    ImageCropperModule,
   ],
   providers: [
     {
