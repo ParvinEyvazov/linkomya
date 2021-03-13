@@ -25,7 +25,7 @@ export class EditPhotoDialogComponent implements OnInit {
   uploaded_gif;
   image_for_cropper: any = '';
   cropped_image: any = '';
-  image_cropping_loading: boolean = true;
+  image_cropping_loading: boolean = false;
 
   constructor(private giphyService: GiphyService) {}
 
@@ -106,7 +106,7 @@ export class EditPhotoDialogComponent implements OnInit {
 
   onContentSelected(content) {
     this.selected_content_url = content.images?.original?.url;
-    console.log('selected:', this.selected_content_url);
+    // console.log('selected:', this.selected_content_url);
   }
 
   cleanAllContent() {
@@ -129,11 +129,9 @@ export class EditPhotoDialogComponent implements OnInit {
 
   //--CUSTOM IMAGE UPLOAD PART
   onFileUpload(event) {
-    //let file = files_event[0];
     let file = event?.target?.files[0];
 
-    console.log(file);
-    console.log('is gif: ', this.isGif(file));
+    // console.log(file);
 
     if (this.isValidImage(file)) {
       this.uploaded_file_is_gif = this.isGif(file);
@@ -144,7 +142,6 @@ export class EditPhotoDialogComponent implements OnInit {
       } else {
         // show croppper
         this.image_for_cropper = event;
-        console.log('image cropper', this.image_for_cropper);
       }
     } else {
       // show image is not valid
@@ -177,10 +174,12 @@ export class EditPhotoDialogComponent implements OnInit {
 
   imageLoaded() {
     // console.log('imageLoaded');
+    this.startImageCroppingLoading();
   }
 
   cropperReady() {
     // console.log('cropperReady');
+    this.stopImageCroppingLoading();
   }
 
   loadImageFailed() {
@@ -189,7 +188,7 @@ export class EditPhotoDialogComponent implements OnInit {
 
   startCropImage() {
     this.startImageCroppingLoading();
-    this.image_cropping_loading = true;
+    // console.log('start crop image');
   }
 
   startImageCroppingLoading() {
