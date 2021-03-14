@@ -23,8 +23,8 @@ export class EditPhotoDialogComponent implements OnInit {
   file_uploaded: boolean = false;
   uploaded_file_is_gif: boolean;
   uploaded_gif;
-  image_for_cropper: any = '';
-  cropped_image: any = '';
+  image_for_cropper: any; // = ''
+  cropped_image: any; // = ''
   image_cropping_loading: boolean = false;
 
   constructor(private giphyService: GiphyService) {}
@@ -131,8 +131,6 @@ export class EditPhotoDialogComponent implements OnInit {
   onFileUpload(event) {
     let file = event?.target?.files[0];
 
-    // console.log(file);
-
     if (this.isValidImage(file)) {
       this.uploaded_file_is_gif = this.isGif(file);
       this.file_uploaded = true;
@@ -167,9 +165,15 @@ export class EditPhotoDialogComponent implements OnInit {
 
   // CROP FUNCTİONS
   imageCropped(event: ImageCroppedEvent) {
-    // console.log('cropped');
     this.stopImageCroppingLoading();
-    this.cropped_image = event;
+    const url = event.base64;
+    fetch(url)
+      .then((res) => res.blob())
+      .then((blob) => {
+        this.cropped_image = new File([blob], 'user-profile-photo', {
+          type: 'image/png',
+        });
+      });
   }
 
   imageLoaded() {
@@ -196,6 +200,16 @@ export class EditPhotoDialogComponent implements OnInit {
   }
 
   stopImageCroppingLoading() {
+    this.image_cropping_loading = false;
+  }
+
+  removeImage() {
+    console.log('removing image');
+    this.file_uploaded = false;
+    this.uploaded_file_is_gif = undefined;
+    this.uploaded_gif = undefined;
+    this.image_for_cropper = undefined;
+    this.cropped_image = undefined;
     this.image_cropping_loading = false;
   }
 }
