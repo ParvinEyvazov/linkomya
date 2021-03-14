@@ -32,7 +32,6 @@ export class DragAndDropDirective {
     dropEvent.stopPropagation();
     this.fileOver = false;
     let files = { target: { files: dropEvent.dataTransfer.files } };
-    console.log('files: ', files);
     this.fileDropped.emit(files);
   }
 }

@@ -1,5 +1,6 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GiphyService } from '../../services/giphy-service/giphy.service';
+import { ImageService } from '../../services/image-service/image.service';
 import { GiphyContent } from '../../interfaces/data';
 import { debounceTime } from 'rxjs/operators';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
@@ -22,12 +23,17 @@ export class EditPhotoDialogComponent implements OnInit {
   // VARIABLE - custom image upload
   file_uploaded: boolean = false;
   uploaded_file_is_gif: boolean;
-  uploaded_gif;
-  image_for_cropper: any; // = ''
-  cropped_image: any; // = ''
+  uploaded_gif: any;
+  image_for_cropper: any;
+  cropped_image: any;
   image_cropping_loading: boolean = false;
 
-  constructor(private giphyService: GiphyService) {}
+  compressed_image_height_size = 1000;
+
+  constructor(
+    private giphyService: GiphyService,
+    private imageService: ImageService
+  ) {}
 
   ngOnInit(): void {
     this.startContentLoadings();
@@ -36,28 +42,28 @@ export class EditPhotoDialogComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.input.update.pipe(debounceTime(500)).subscribe((value) => {
+      this.cleanAllContent();
+      this.startContentLoadings();
       if (value) {
-        this.cleanAllContent();
-        this.startContentLoadings();
         this.getCustomContent(value);
       } else {
-        //getting initial content
-        this.cleanAllContent();
-        this.startContentLoadings();
         this.getInitialContent();
       }
     });
+  }
+
+  confirm() {
+    // send back just url
+  }
+
+  cancel() {
+    // clean everything - gif search to images
   }
 
   //--EXPLORE PART
   getInitialContent() {
     this.getTrendingGifs();
     this.getTrendingStickers();
-  }
-
-  getCustomContent(search_text) {
-    this.getCustomGifs(search_text);
-    this.getCustomStickers(search_text);
   }
 
   getTrendingGifs() {
@@ -84,6 +90,11 @@ export class EditPhotoDialogComponent implements OnInit {
       });
   }
 
+  getCustomContent(search_text) {
+    this.getCustomGifs(search_text);
+    this.getCustomStickers(search_text);
+  }
+
   getCustomGifs(search_text) {
     this.giphyService
       .getCustomGifs(search_text)
@@ -106,7 +117,6 @@ export class EditPhotoDialogComponent implements OnInit {
 
   onContentSelected(content) {
     this.selected_content_url = content.images?.original?.url;
-    // console.log('selected:', this.selected_content_url);
   }
 
   cleanAllContent() {
@@ -128,18 +138,32 @@ export class EditPhotoDialogComponent implements OnInit {
   }
 
   //--CUSTOM IMAGE UPLOAD PART
-  onFileUpload(event) {
+  async onFileUpload(event) {
     let file = event?.target?.files[0];
 
-    if (this.isValidImage(file)) {
-      this.uploaded_file_is_gif = this.isGif(file);
-      this.file_uploaded = true;
+    if (this.imageService.isValidImage(file)) {
+      this.uploaded_file_is_gif = this.imageService.isGif(file);
 
+      /*
+      Uploaded file is: 
+        gif -> show gif
+        not gif -> show cropper to crop the image
+      */
       if (this.uploaded_file_is_gif) {
+        this.file_uploaded = true;
         this.showUploadedGif(file);
       } else {
-        // show croppper
-        this.image_for_cropper = event;
+        this.startImageCroppingLoading();
+        let base64 = await this.imageService.fileTobase64(file);
+        this.imageService
+          .compressImage(base64, this.compressed_image_height_size)
+          .then(async (compressed_base64) => {
+            let compressed_file = await this.imageService.base64ToFile(
+              compressed_base64
+            );
+            this.image_for_cropper = { target: { files: [compressed_file] } };
+            this.file_uploaded = true;
+          });
       }
     } else {
       // show image is not valid
@@ -152,47 +176,28 @@ export class EditPhotoDialogComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-  isValidImage(file) {
-    return file['type'].split('/')[0] === 'image';
-  }
-
-  isGif(file) {
-    return (
-      file['type'].split('/')[1] === 'gif' ||
-      file['type'].split('/')[1] === 'webp'
-    );
-  }
-
-  // CROP FUNCTİONS
-  imageCropped(event: ImageCroppedEvent) {
+  // CROPPING FUNCTİONS
+  async imageCropped(event: ImageCroppedEvent) {
     this.stopImageCroppingLoading();
     const url = event.base64;
-    fetch(url)
-      .then((res) => res.blob())
-      .then((blob) => {
-        this.cropped_image = new File([blob], 'user-profile-photo', {
-          type: 'image/png',
-        });
-      });
+
+    this.cropped_image = await this.imageService.base64ToFile(url);
   }
 
   imageLoaded() {
-    // console.log('imageLoaded');
     this.startImageCroppingLoading();
   }
 
   cropperReady() {
-    // console.log('cropperReady');
     this.stopImageCroppingLoading();
   }
 
   loadImageFailed() {
-    // console.log('loadImageFailed');
+    // show error when failed to load
   }
 
   startCropImage() {
     this.startImageCroppingLoading();
-    // console.log('start crop image');
   }
 
   startImageCroppingLoading() {
@@ -204,7 +209,6 @@ export class EditPhotoDialogComponent implements OnInit {
   }
 
   removeImage() {
-    console.log('removing image');
     this.file_uploaded = false;
     this.uploaded_file_is_gif = undefined;
     this.uploaded_gif = undefined;
@@ -212,4 +216,6 @@ export class EditPhotoDialogComponent implements OnInit {
     this.cropped_image = undefined;
     this.image_cropping_loading = false;
   }
+
+  // HELPER - COMMON functions
 }
