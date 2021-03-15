@@ -11,6 +11,9 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
   styleUrls: ['./edit-photo-dialog.component.scss'],
 })
 export class EditPhotoDialogComponent implements OnInit {
+  // VARIABLE - Tab
+  selected_tab: string = 'explore-tab';
+
   // VARIABLE - explore section
   @ViewChild('input') input;
   search_text: string = '';
@@ -18,15 +21,18 @@ export class EditPhotoDialogComponent implements OnInit {
   stickers: GiphyContent[];
   gifs_loading: boolean = false;
   stickers_loading: boolean = false;
-  selected_content_url: string;
+  selected_content_url: string = undefined;
 
   // VARIABLE - custom image upload
   file_uploaded: boolean = false;
   uploaded_file_is_gif: boolean;
   uploaded_gif: any;
   image_for_cropper: any;
-  cropped_image: any;
+  // cropped_image: any;
+  custom_image: any;
   image_cropping_loading: boolean = false;
+  // just created for ng binding
+  cropped_image_value;
 
   compressed_image_height_size = 1000;
 
@@ -54,7 +60,19 @@ export class EditPhotoDialogComponent implements OnInit {
 
   confirm() {
     // send back just url
-    console.log(this.selected_content_url);
+    if (this.custom_image && this.selected_content_url) {
+      console.log('both have, take tab one', this.selected_tab);
+    } else if (this.custom_image) {
+      console.log('this.custom_image', this.custom_image);
+    } else if (this.selected_content_url) {
+      console.log('this.selected_content_url', this.selected_content_url);
+    } else {
+      console.log('secilmemis hicbisey');
+    }
+  }
+
+  selectTab(tab) {
+    this.selected_tab = tab;
   }
 
   cancel() {
@@ -127,10 +145,6 @@ export class EditPhotoDialogComponent implements OnInit {
     }
   }
 
-  gifSelect(gif) {
-    console.log('gif: ', gif);
-  }
-
   cleanAllContent() {
     this.gifs = undefined;
     this.stickers = undefined;
@@ -153,36 +167,39 @@ export class EditPhotoDialogComponent implements OnInit {
   async onFileUpload(event) {
     let file = event?.target?.files[0];
 
-    if (this.imageService.isValidImage(file)) {
-      this.uploaded_file_is_gif = this.imageService.isGif(file);
+    if (file) {
+      if (this.imageService.isValidImage(file)) {
+        this.uploaded_file_is_gif = this.imageService.isGif(file);
 
-      /*
-      Uploaded file is: 
-        gif -> show gif
-        not gif -> show cropper to crop the image
-      */
-      if (this.uploaded_file_is_gif) {
-        this.file_uploaded = true;
-        this.showUploadedGif(file);
+        /*
+        Uploaded file is: 
+          gif -> show gif
+          not gif -> show cropper to crop the image
+        */
+        if (this.uploaded_file_is_gif) {
+          this.file_uploaded = true;
+          this.showUploadedGif(file);
+        } else {
+          this.startImageCroppingLoading();
+          let base64 = await this.imageService.fileTobase64(file);
+          this.imageService
+            .compressImage(base64, this.compressed_image_height_size)
+            .then(async (compressed_base64) => {
+              let compressed_file = await this.imageService.base64ToFile(
+                compressed_base64
+              );
+              this.image_for_cropper = { target: { files: [compressed_file] } };
+              this.file_uploaded = true;
+            });
+        }
       } else {
-        this.startImageCroppingLoading();
-        let base64 = await this.imageService.fileTobase64(file);
-        this.imageService
-          .compressImage(base64, this.compressed_image_height_size)
-          .then(async (compressed_base64) => {
-            let compressed_file = await this.imageService.base64ToFile(
-              compressed_base64
-            );
-            this.image_for_cropper = { target: { files: [compressed_file] } };
-            this.file_uploaded = true;
-          });
+        // show image is not valid
       }
-    } else {
-      // show image is not valid
     }
   }
 
   showUploadedGif(file) {
+    this.custom_image = file;
     const reader = new FileReader();
     reader.onload = (e) => (this.uploaded_gif = reader.result);
     reader.readAsDataURL(file);
@@ -193,7 +210,7 @@ export class EditPhotoDialogComponent implements OnInit {
     this.stopImageCroppingLoading();
     const url = event.base64;
 
-    this.cropped_image = await this.imageService.base64ToFile(url);
+    this.custom_image = await this.imageService.base64ToFile(url);
   }
 
   imageLoaded() {
@@ -225,7 +242,7 @@ export class EditPhotoDialogComponent implements OnInit {
     this.uploaded_file_is_gif = undefined;
     this.uploaded_gif = undefined;
     this.image_for_cropper = undefined;
-    this.cropped_image = undefined;
+    this.custom_image = undefined;
     this.image_cropping_loading = false;
   }
 
