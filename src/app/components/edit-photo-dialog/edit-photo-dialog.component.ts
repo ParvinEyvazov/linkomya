@@ -54,6 +54,7 @@ export class EditPhotoDialogComponent implements OnInit {
 
   confirm() {
     // send back just url
+    console.log(this.selected_content_url);
   }
 
   cancel() {
@@ -116,7 +117,18 @@ export class EditPhotoDialogComponent implements OnInit {
   }
 
   onContentSelected(content) {
-    this.selected_content_url = content.images?.original?.url;
+    var selected_radio = document.getElementById(content.images.original.url);
+
+    if (this.selected_content_url === content.images?.original?.url) {
+      selected_radio['checked'] = false;
+      this.selected_content_url = undefined;
+    } else {
+      this.selected_content_url = content.images?.original?.url;
+    }
+  }
+
+  gifSelect(gif) {
+    console.log('gif: ', gif);
   }
 
   cleanAllContent() {

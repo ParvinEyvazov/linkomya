@@ -66,8 +66,7 @@
                 name="contentGroup"
                 value="1"
                 id="{{ gif.images.original.url }}"
-                (change)="onContentSelected(gif)"
-                (ngModelChange)="onContentSelected(gif)"
+                (click)="onContentSelected(gif)"
               />
               <label class="checkbox-alias" for="{{ gif.images.original.url }}">
                 <img src="{{ gif.images.fixed_height.url }}" alt="gif" />
@@ -93,7 +92,7 @@
                 name="contentGroup"
                 value="1"
                 id="{{ sticker.images.original.url }}"
-                (change)="onContentSelected(sticker)"
+                (click)="onContentSelected(sticker)"
               />
               <label
                 class="checkbox-alias"
