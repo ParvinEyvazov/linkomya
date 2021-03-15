@@ -161,13 +161,18 @@ $content-selector: "~ .content > section";
         input {
           border: 0;
           background: none;
-          border: 1px solid rgba(0, 0, 0, 0.397);
+          border: 1px solid #b1b1c5;
           background: #ffffff;
           padding: 10px;
           width: 100%;
           outline: none;
           border-radius: 20px;
           font-size: 1.1em;
+          color: #b1b1c5;
+        }
+        ::placeholder {
+          color: #b1b1c5;
+          opacity: 1;
         }
       }
 
@@ -272,7 +277,7 @@ $content-selector: "~ .content > section";
 
       .image-container {
         height: 350px;
-        margin: 10px 20px;
+        margin: 10px 10px;
         position: relative;
 
         .cancel-loading-button {
@@ -450,6 +455,10 @@ $content-selector: "~ .content > section";
   }
 }
 
+mat-divider {
+  margin: 0px 10px;
+}
+
 .buttons {
   display: flex;
   margin-top: 15px;
@@ -480,7 +489,7 @@ $content-selector: "~ .content > section";
     display: flex;
     justify-content: center;
     input {
-      border: 0;
+      // border: 0;
       background: none;
       display: block;
       border: 2px solid #7b77ff;
