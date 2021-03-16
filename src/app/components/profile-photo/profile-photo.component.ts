@@ -20,7 +20,7 @@ export class ProfilePhotoComponent implements OnInit {
   @Input() in_user_card: boolean = false;
   @Input() user_id: string;
 
-  @Output() event = new EventEmitter<object>();
+  @Output() event = new EventEmitter<boolean>();
 
   loading: boolean = false;
 
@@ -28,45 +28,49 @@ export class ProfilePhotoComponent implements OnInit {
     this.url == undefined ? (this.url = this.default_photo) : undefined;
   }
 
-  onFileChanged(event) {
-    let file;
-    const files = event.target.files;
-    if (files.length > 0 && files && this.can_edit) {
-      file = files[0];
-      this.startLoading();
-      this.storageService
-        .giveFileAndGetUrl(file)
-        .then((url) => {
-          this.uploadPhoto(url);
-        })
-        .catch((error) => {
-          this.stopLoading();
-          this.event.emit({ error: error });
-        });
-    }
+  openEditPhotoDialog() {
+    this.event.emit(true);
   }
 
-  uploadPhoto(url) {
-    if (this.can_edit) {
-      this.apiService
-        .uploadPhoto(url, true)
-        .toPromise()
-        .then((data) => {
-          this.stopLoading();
-          this.event.emit({ data: data });
-        })
-        .catch((error) => {
-          this.stopLoading();
-          this.event.emit({ error: error.error.message });
-        });
-    }
-  }
+  // onFileChanged(event) {
+  //   let file;
+  //   const files = event.target.files;
+  //   if (files.length > 0 && files && this.can_edit) {
+  //     file = files[0];
+  //     this.startLoading();
+  //     this.storageService
+  //       .giveFileAndGetUrl(file)
+  //       .then((url) => {
+  //         this.uploadPhoto(url);
+  //       })
+  //       .catch((error) => {
+  //         this.stopLoading();
+  //         this.event.emit({ error: error });
+  //       });
+  //   }
+  // }
 
-  startLoading() {
-    this.loading = true;
-  }
+  // uploadPhoto(url) {
+  //   if (this.can_edit) {
+  //     this.apiService
+  //       .uploadPhoto(url, true)
+  //       .toPromise()
+  //       .then((data) => {
+  //         this.stopLoading();
+  //         this.event.emit({ data: data });
+  //       })
+  //       .catch((error) => {
+  //         this.stopLoading();
+  //         this.event.emit({ error: error.error.message });
+  //       });
+  //   }
+  // }
 
-  stopLoading() {
-    this.loading = false;
-  }
+  // startLoading() {
+  //   this.loading = true;
+  // }
+
+  // stopLoading() {
+  //   this.loading = false;
+  // }
 }

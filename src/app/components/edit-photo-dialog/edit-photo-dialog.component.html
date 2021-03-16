@@ -1,5 +1,7 @@
 <!-- <div class="container" style="max-height: 350px; overflow: auto"> </div> -->
 <div class="tabs" style="max-height: 500px; min-height: 400px">
+  <div class="overlay-container" *ngIf="image_uploading"></div>
+
   <input
     type="radio"
     id="explore-tab"
@@ -205,13 +207,17 @@
 <mat-divider></mat-divider>
 
 <div class="buttons">
-  <mat-spinner *ngIf="false" class="spinner" diameter="25"></mat-spinner>
+  <mat-spinner
+    *ngIf="image_uploading"
+    class="spinner"
+    diameter="25"
+  ></mat-spinner>
 
-  <div *ngIf="true" class="cancel-box">
+  <div *ngIf="!image_uploading" class="cancel-box" (click)="cancel()">
     <p>CANCEL</p>
   </div>
 
-  <div *ngIf="true" class="confirm-box">
+  <div *ngIf="!image_uploading" class="confirm-box">
     <a>
       <input type="submit" name="submit" value="Confirm" (click)="confirm()" />
     </a>

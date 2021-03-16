@@ -1,9 +1,19 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { GiphyService } from '../../services/giphy-service/giphy.service';
 import { ImageService } from '../../services/image-service/image.service';
-import { GiphyContent } from '../../interfaces/data';
+import { EditPhotoSpinnerService } from '../../services/spinner-services/edit-photo-spinner/edit-photo-spinner.service';
+import { EditPhoto, GiphyContent } from '../../interfaces/data';
 import { debounceTime } from 'rxjs/operators';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { ChangeDetectorRef } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { StorageService } from 'src/app/services/storage-service/storage.service';
 
 @Component({
   selector: 'edit-photo-dialog',
@@ -11,6 +21,8 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
   styleUrls: ['./edit-photo-dialog.component.scss'],
 })
 export class EditPhotoDialogComponent implements OnInit {
+  @Output() event = new EventEmitter<EditPhoto>();
+
   // VARIABLE - Tab
   selected_tab: string = 'explore-tab';
 
@@ -28,22 +40,46 @@ export class EditPhotoDialogComponent implements OnInit {
   uploaded_file_is_gif: boolean;
   uploaded_gif: any;
   image_for_cropper: any;
-  // cropped_image: any;
   custom_image: any;
   image_cropping_loading: boolean = false;
-  // just created for ng binding
-  cropped_image_value;
-
+  cropped_image_value; // just created for ng binding
   compressed_image_height_size = 1000;
+
+  // VARIABLE - COMMON
+  image_uploading: boolean = false;
+  edit_photo_loading_subscription: Subscription;
 
   constructor(
     private giphyService: GiphyService,
-    private imageService: ImageService
+    private imageService: ImageService,
+    private storageService: StorageService,
+    private editPhotoSpinnerService: EditPhotoSpinnerService,
+    private cdRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
+    this.init();
     this.startContentLoadings();
     this.getInitialContent();
+  }
+
+  init() {
+    this.edit_photo_loading_subscription = this.editPhotoSpinnerService
+      .getSpinner()
+      .subscribe((state) => {
+        this.image_uploading = state;
+        // if false -> clean the dialog
+        if (this.image_uploading == false) {
+          console.log('');
+          this.cleanDialog();
+        }
+
+        this.cdRef.detectChanges();
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.edit_photo_loading_subscription.unsubscribe();
   }
 
   ngAfterViewInit(): void {
@@ -58,25 +94,49 @@ export class EditPhotoDialogComponent implements OnInit {
     });
   }
 
-  confirm() {
-    // send back just url
-    if (this.custom_image && this.selected_content_url) {
-      console.log('both have, take tab one', this.selected_tab);
-    } else if (this.custom_image) {
-      console.log('this.custom_image', this.custom_image);
-    } else if (this.selected_content_url) {
-      console.log('this.selected_content_url', this.selected_content_url);
-    } else {
-      console.log('secilmemis hicbisey');
-    }
-  }
-
   selectTab(tab) {
     this.selected_tab = tab;
   }
 
+  confirm() {
+    this.image_uploading = true;
+
+    let edit_photo_object = {
+      confirmed: true,
+    };
+
+    // both gif selected and image uploaded
+    if (this.custom_image && this.selected_content_url) {
+      if (this.selected_tab === 'explore-tab') {
+        edit_photo_object['url'] = this.selected_content_url;
+        this.event.emit(edit_photo_object);
+      } else {
+        this.storageService.giveFileAndGetUrl(this.custom_image).then((url) => {
+          edit_photo_object['url'] = url;
+          this.event.emit(edit_photo_object);
+        });
+      }
+    }
+    // just image uploaded
+    else if (this.custom_image) {
+      this.storageService.giveFileAndGetUrl(this.custom_image).then((url) => {
+        edit_photo_object['url'] = url;
+        this.event.emit(edit_photo_object);
+      });
+    }
+    // just gif selected
+    else if (this.selected_content_url) {
+      edit_photo_object['url'] = this.selected_content_url;
+      this.event.emit(edit_photo_object);
+    } else {
+      // show select something error - or maybe not
+      console.log('secilmemis hicbisey');
+    }
+  }
+
   cancel() {
-    // clean everything - gif search to images
+    this.cleanDialog();
+    this.event.emit({ confirmed: false });
   }
 
   //--EXPLORE PART
@@ -247,4 +307,24 @@ export class EditPhotoDialogComponent implements OnInit {
   }
 
   // HELPER - COMMON functions
+  cleanDialog() {
+    this.selected_tab = 'explore-tab';
+    window.document.getElementById('explore-tab')['checked'] = true;
+
+    this.search_text = '';
+    this.getInitialContent();
+    // gifs: GiphyContent[];
+    // stickers: GiphyContent[];
+    // this.gifs_loading = false;
+    // this.stickers_loading = false;
+    this.selected_content_url = undefined;
+
+    // VARIABLE - custom image upload
+    this.file_uploaded = false;
+    this.uploaded_file_is_gif = undefined;
+    this.uploaded_gif = undefined;
+    this.image_for_cropper = undefined;
+    this.custom_image = undefined;
+    this.image_cropping_loading = false;
+  }
 }

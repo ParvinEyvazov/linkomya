@@ -21,3 +21,7 @@ export interface SearchResult {
 export interface GiphyContent {
   [key: string]: any;
 }
+
+export interface EditPhoto {
+  [key: string]: any;
+}

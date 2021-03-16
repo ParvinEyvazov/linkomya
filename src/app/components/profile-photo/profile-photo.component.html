@@ -1,13 +1,13 @@
 <div [ngClass]="{ small: in_user_card }" class="profile-photo">
-  <input
+  <!-- <input
     class="input"
     type="file"
     (change)="onFileChanged($event)"
     [disabled]="loading"
     #fileInput
-  />
+  /> -->
   <img class="photo" src="{{ url }}" />
-  <div *ngIf="can_edit" (click)="fileInput.click()" class="edit-photo">
+  <div *ngIf="can_edit" (click)="openEditPhotoDialog()" class="edit-photo">
     <mat-spinner *ngIf="loading" [diameter]="25"></mat-spinner>
     <img
       *ngIf="!loading"

@@ -98,7 +98,8 @@
     <div id="dialog">
       <label id="dlg-back" for="dialog-state-profile-photo"></label>
       <div id="dlg-wrap">
-        <edit-photo-dialog> </edit-photo-dialog>
+        <edit-photo-dialog (event)="editPhotoEvent($event, true)">
+        </edit-photo-dialog>
       </div>
     </div>
 
@@ -115,7 +116,7 @@
       <profile-photo
         [url]="user.profile_photo"
         [can_edit]="true"
-        (event)="uploadPhotoEvent($event, true)"
+        (event)="openEditProfilePhotoDialog($event)"
       ></profile-photo>
 
       <div class="photo-upload-error">
@@ -194,7 +195,7 @@
 
           <label for="dialog-${editing_connection_id}">
             <div
-              (click)="openEditDialog(connection._id)"
+              (click)="openEditConnectionDialog(connection._id)"
               [ngClass]="{
                 'edit-link-close': edit_open == false,
                 'edit-link-open': edit_open == true

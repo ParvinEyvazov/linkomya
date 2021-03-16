@@ -7,9 +7,9 @@ import { debounceTime } from 'rxjs/operators';
 import { ValidationService } from 'src/app/services/validation.service';
 import { MessageService } from 'src/app/services/message.service';
 import { MicroService } from 'src/app/services/micro-services/micro.service';
-import { StorageService } from 'src/app/services/storage-service/storage.service';
 import { environment } from '../../../environments/environment';
 import { PageSpinnerService } from 'src/app/services/spinner-services/page-spinner/page-spinner.service';
+import { EditPhotoSpinnerService } from 'src/app/services/spinner-services/edit-photo-spinner/edit-photo-spinner.service';
 
 @Component({
   selector: 'app-profile',
@@ -45,7 +45,7 @@ export class ProfileComponent implements AfterViewInit {
   //dialog states
   dialog_state_edit_connection: boolean = false;
   dialog_state_add_connection: boolean = false;
-  dialog_state_edit_profile_photo: boolean = true;
+  dialog_state_edit_profile_photo: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -53,8 +53,8 @@ export class ProfileComponent implements AfterViewInit {
     private validator: ValidationService,
     private message: MessageService,
     private microService: MicroService,
-    private storageService: StorageService,
-    private pageSpinnerService: PageSpinnerService
+    private pageSpinnerService: PageSpinnerService,
+    private editPhotoSpinnerService: EditPhotoSpinnerService
   ) {}
 
   ngAfterViewInit(): void {
@@ -64,7 +64,6 @@ export class ProfileComponent implements AfterViewInit {
   }
 
   ngOnInit(): void {
-    //get user info
     this.getUser(this.userService.getUserId());
   }
 
@@ -181,7 +180,7 @@ export class ProfileComponent implements AfterViewInit {
     this.dialog_state_edit_connection = false;
   }
 
-  openEditDialog(editing_connection_id: string) {
+  openEditConnectionDialog(editing_connection_id: string) {
     this.editing_connection_id = editing_connection_id;
     this.editing_connection = this.getConnectionFromId(
       this.editing_connection_id
@@ -194,6 +193,28 @@ export class ProfileComponent implements AfterViewInit {
     } else {
       this.showPhotoError(event.error, is_profile_photo);
     }
+  }
+
+  openEditProfilePhotoDialog(open_event) {
+    if (open_event == true) {
+      this.dialog_state_edit_profile_photo = true;
+    }
+  }
+
+  editPhotoEvent(event, is_profile_photo) {
+    if (event.confirmed === true) {
+      // upload this photo according to is profile photo or not
+
+      this.editPhotoSpinnerService.stop();
+      this.dialog_state_edit_profile_photo = false;
+      // fetch user data
+    } else if (event.confirmed === false) {
+      this.dialog_state_edit_profile_photo = false;
+    } else {
+      // unknown event
+    }
+
+    console.log(event, is_profile_photo);
   }
 
   //-------------------------API FUNCTIONS------------------------
