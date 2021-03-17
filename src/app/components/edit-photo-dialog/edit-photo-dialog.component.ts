@@ -194,13 +194,15 @@ export class EditPhotoDialogComponent implements OnInit {
   }
 
   onContentSelected(content) {
-    var selected_radio = document.getElementById(content.images.original.url);
+    var selected_radio = document.getElementById(
+      content.images.fixed_height.url
+    );
 
-    if (this.selected_content_url === content.images?.original?.url) {
+    if (this.selected_content_url === content.images?.fixed_height?.url) {
       selected_radio['checked'] = false;
       this.selected_content_url = undefined;
     } else {
-      this.selected_content_url = content.images?.original?.url;
+      this.selected_content_url = content.images?.fixed_height?.url;
     }
   }
 

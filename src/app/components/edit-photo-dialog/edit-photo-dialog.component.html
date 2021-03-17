@@ -78,10 +78,10 @@
                 type="radio"
                 name="contentGroup"
                 value="1"
-                id="{{ gif.images.original.url }}"
+                id="{{ gif.images.fixed_height.url }}"
                 (click)="onContentSelected(gif)"
               />
-              <label class="checkbox-alias" for="{{ gif.images.original.url }}">
+              <label class="checkbox-alias" for="{{ gif.images.fixed_height.url }}">
                 <img src="{{ gif.images.fixed_height.url }}" alt="gif" />
               </label>
 
@@ -104,12 +104,12 @@
                 type="radio"
                 name="contentGroup"
                 value="1"
-                id="{{ sticker.images.original.url }}"
+                id="{{ sticker.images.fixed_height.url }}"
                 (click)="onContentSelected(sticker)"
               />
               <label
                 class="checkbox-alias"
-                for="{{ sticker.images.original.url }}"
+                for="{{ sticker.images.fixed_height.url }}"
               >
                 <img src="{{ sticker.images.fixed_height.url }}" alt="gif" />
               </label>

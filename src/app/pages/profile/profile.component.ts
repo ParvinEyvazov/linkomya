@@ -226,7 +226,7 @@ export class ProfileComponent implements AfterViewInit {
       // unknown event
     }
 
-    console.log(event, is_profile_photo);
+    // console.log(event, is_profile_photo);
   }
 
   //-------------------------API FUNCTIONS------------------------
