@@ -15,7 +15,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
@@ -53,7 +52,6 @@ import { ImageCropperModule } from 'ngx-image-cropper';
   declarations: [
     AppComponent,
     LandingPageComponent,
-    SearchBarComponent,
     SignInComponent,
     SignUpComponent,
     SearchPageComponent,

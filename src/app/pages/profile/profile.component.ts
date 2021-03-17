@@ -206,8 +206,6 @@ export class ProfileComponent implements AfterViewInit {
 
   editPhotoEvent(event, is_profile_photo) {
     if (event.confirmed === true) {
-      // upload this photo according to is profile photo or not
-
       this.uploadPhoto(event.url, is_profile_photo)
         .toPromise()
         .then((data) => {
@@ -216,8 +214,6 @@ export class ProfileComponent implements AfterViewInit {
         .catch((error) => {
           console.log('error on upload photo: ', error);
         });
-
-      // fetch user data
     }
     // cancel button
     else if (event.confirmed === false) {
@@ -225,8 +221,6 @@ export class ProfileComponent implements AfterViewInit {
     } else {
       // unknown event
     }
-
-    // console.log(event, is_profile_photo);
   }
 
   //-------------------------API FUNCTIONS------------------------

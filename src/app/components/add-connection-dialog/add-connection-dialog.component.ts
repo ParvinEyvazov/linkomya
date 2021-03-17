@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { SocialMedia, User } from 'src/app/interfaces/data';
+import { SocialMedia } from 'src/app/interfaces/data';
 import { ApiService } from 'src/app/services/api-services/api.service';
 import { MessageService } from 'src/app/services/message.service';
 import { SocialMediaService } from 'src/app/services/social-media-services/social-media.service';
