@@ -30,6 +30,7 @@ export class ProfileComponent implements AfterViewInit {
   //--------NON-NEW USER
   edit_open: boolean = false;
   user: User;
+  user_id: string;
   profile_photo_loading = false;
   profile_photo_error: string = '';
   background_photo_loading = false;
@@ -64,7 +65,8 @@ export class ProfileComponent implements AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.getUser(this.userService.getUserId());
+    this.user_id = this.userService.getUserId();
+    this.getUser(this.user_id);
   }
 
   //-------------------------NEW USER------------------------
@@ -92,7 +94,7 @@ export class ProfileComponent implements AfterViewInit {
                 .postUsername(this.username)
                 .toPromise()
                 .then((data) => {
-                  this.getUser(this.userService.getUserId());
+                  this.getUser(this.user_id);
                 })
                 .catch((error) => {
                   this.showUsernameError(error.error.message);
@@ -151,7 +153,7 @@ export class ProfileComponent implements AfterViewInit {
   //--ADD NEW CONNECTION
   closeAddConnectionDialog(event) {
     if (event == true) {
-      this.getConnections(this.userService.getUserId());
+      this.getConnections(this.user_id);
       this.closeAddNewConnectionDialog();
     } else {
       this.closeAddNewConnectionDialog();
@@ -166,7 +168,7 @@ export class ProfileComponent implements AfterViewInit {
   closeEditConnectionDialog(event) {
     if (event == true) {
       this.closeEditDialog();
-      this.getConnections(this.userService.getUserId());
+      this.getConnections(this.user_id);
     } else {
       this.closeEditDialog();
     }
@@ -187,9 +189,10 @@ export class ProfileComponent implements AfterViewInit {
     );
   }
 
+  // -- will be deleted after background upload
   uploadPhotoEvent(event, is_profile_photo) {
     if (!event.error) {
-      this.getUser(this.userService.getUserId());
+      this.getUser(this.user_id);
     } else {
       this.showPhotoError(event.error, is_profile_photo);
     }
@@ -205,10 +208,19 @@ export class ProfileComponent implements AfterViewInit {
     if (event.confirmed === true) {
       // upload this photo according to is profile photo or not
 
-      this.editPhotoSpinnerService.stop();
-      this.dialog_state_edit_profile_photo = false;
+      this.uploadPhoto(event.url, is_profile_photo)
+        .toPromise()
+        .then((data) => {
+          this.getUser(this.user_id);
+        })
+        .catch((error) => {
+          console.log('error on upload photo: ', error);
+        });
+
       // fetch user data
-    } else if (event.confirmed === false) {
+    }
+    // cancel button
+    else if (event.confirmed === false) {
       this.dialog_state_edit_profile_photo = false;
     } else {
       // unknown event
@@ -220,6 +232,7 @@ export class ProfileComponent implements AfterViewInit {
   //-------------------------API FUNCTIONS------------------------
   getUser(user_id) {
     this.pageSpinnerService.start();
+
     this.apiService
       .getUser(user_id)
       .toPromise()
@@ -227,6 +240,8 @@ export class ProfileComponent implements AfterViewInit {
         if (data) {
           this.user = data[0];
           this.pageSpinnerService.stop();
+          this.editPhotoSpinnerService.stop();
+          this.dialog_state_edit_profile_photo = false;
           this.showPage(this.user);
         }
       })
@@ -244,6 +259,10 @@ export class ProfileComponent implements AfterViewInit {
           this.connections = data;
         }
       });
+  }
+
+  uploadPhoto(url, is_profile_photo) {
+    return this.apiService.uploadPhoto(url, is_profile_photo);
   }
 
   //-------------------------HELPER FUNCTIONS------------------------

@@ -70,7 +70,6 @@ export class EditPhotoDialogComponent implements OnInit {
         this.image_uploading = state;
         // if false -> clean the dialog
         if (this.image_uploading == false) {
-          console.log('');
           this.cleanDialog();
         }
 
