@@ -17,8 +17,6 @@ export class ProfilePhotoComponent implements OnInit {
 
   @Output() event = new EventEmitter<boolean>();
 
-  loading: boolean = false;
-
   ngOnInit(): void {
     this.url == undefined ? (this.url = this.default_photo) : undefined;
   }

@@ -1,6 +1,7 @@
 import {
   Component,
   EventEmitter,
+  Input,
   OnInit,
   Output,
   ViewChild,
@@ -19,8 +20,10 @@ import { StorageService } from 'src/app/services/storage-service/storage.service
   selector: 'edit-photo-dialog',
   templateUrl: './edit-photo-dialog.component.html',
   styleUrls: ['./edit-photo-dialog.component.scss'],
+  providers: [],
 })
 export class EditPhotoDialogComponent implements OnInit {
+  @Input() photo_type: string = 'profile'; // can be -> background, profile
   @Output() event = new EventEmitter<EditPhoto>();
 
   // VARIABLE - Tab
@@ -58,6 +61,7 @@ export class EditPhotoDialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // console.log('1: ', this.photo_type);
     this.init();
     this.startContentLoadings();
     this.getInitialContent();

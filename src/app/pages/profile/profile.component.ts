@@ -47,6 +47,7 @@ export class ProfileComponent implements AfterViewInit {
   dialog_state_edit_connection: boolean = false;
   dialog_state_add_connection: boolean = false;
   dialog_state_edit_profile_photo: boolean = false;
+  dialog_state_edit_background_photo: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -204,6 +205,12 @@ export class ProfileComponent implements AfterViewInit {
     }
   }
 
+  openEditBackgroundPhotoDialog(open_event) {
+    if (open_event == true) {
+      this.dialog_state_edit_background_photo = true;
+    }
+  }
+
   editPhotoEvent(event, is_profile_photo) {
     if (event.confirmed === true) {
       this.uploadPhoto(event.url, is_profile_photo)
@@ -218,6 +225,7 @@ export class ProfileComponent implements AfterViewInit {
     // cancel button
     else if (event.confirmed === false) {
       this.dialog_state_edit_profile_photo = false;
+      this.dialog_state_edit_background_photo = false;
     } else {
       // unknown event
     }
@@ -236,6 +244,7 @@ export class ProfileComponent implements AfterViewInit {
           this.pageSpinnerService.stop();
           this.editPhotoSpinnerService.stop();
           this.dialog_state_edit_profile_photo = false;
+          this.dialog_state_edit_background_photo = false;
           this.showPage(this.user);
         }
       })

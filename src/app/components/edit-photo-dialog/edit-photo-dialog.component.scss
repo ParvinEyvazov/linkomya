@@ -240,7 +240,7 @@ $content-selector: "~ .content > section";
               margin: auto;
               margin-bottom: 2px;
 
-              .checkbox-alias {
+              .checkbox-gif {
                 display: inline-block;
                 width: 100px;
                 height: 100px;
@@ -254,9 +254,14 @@ $content-selector: "~ .content > section";
                   height: 100%;
                 }
               }
+
+              .background_size {
+                width: 200px;
+                height: 100px;
+              }
             }
 
-            .image input[type="radio"]:checked + .checkbox-alias {
+            .image input[type="radio"]:checked + .checkbox-gif {
               transition: 0.25s;
               border-image-slice: 1;
               border-width: 3px;
@@ -580,6 +585,11 @@ mat-divider {
         .image-container {
           .image {
             img {
+            }
+
+            .background_size {
+              width: 110px !important;
+              height: 55px !important;
             }
           }
         }

@@ -1,22 +1,6 @@
 <div class="background-image">
-  <input
-    style="display: none"
-    type="file"
-    (change)="onFileChanged($event)"
-    [disabled]="loading"
-    #fileInputBackground
-  />
-
   <img class="back-image" src="{{ url }}" />
-  <div
-    (click)="fileInputBackground.click()"
-    class="edit-photo"
-    *ngIf="can_edit"
-  >
-    <mat-spinner *ngIf="loading" [diameter]="25"></mat-spinner>
-    <img
-      *ngIf="!loading"
-      src="../../../../assets/icons/social_media_icons/edit.svg"
-    />
+  <div (click)="openEditPhotoDialog()" class="edit-photo" *ngIf="can_edit">
+    <img src="../../../../assets/icons/social_media_icons/edit.svg" />
   </div>
 </div>
