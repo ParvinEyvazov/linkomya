@@ -133,7 +133,8 @@ export class EditPhotoDialogComponent implements OnInit {
       this.event.emit(edit_photo_object);
     } else {
       // show select something error - or maybe not
-      console.log('secilmemis hicbisey');
+      this.image_uploading = false;
+      // console.log('secilmemis hicbisey');
     }
   }
 

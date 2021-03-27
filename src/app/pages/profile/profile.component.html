@@ -99,6 +99,7 @@
       <label id="dlg-back" for="dialog-state-background-photo"></label>
       <div id="dlg-wrap">
         <edit-photo-dialog
+          *ngIf="dialog_state_edit_background_photo"
           photo_type="background"
           (event)="editPhotoEvent($event, false)"
         >
@@ -117,7 +118,11 @@
     <div id="dialog">
       <label id="dlg-back" for="dialog-state-profile-photo"></label>
       <div id="dlg-wrap">
-        <edit-photo-dialog (event)="editPhotoEvent($event, true)">
+        <edit-photo-dialog
+          *ngIf="dialog_state_edit_profile_photo"
+          photo_type="profile"
+          (event)="editPhotoEvent($event, true)"
+        >
         </edit-photo-dialog>
       </div>
     </div>

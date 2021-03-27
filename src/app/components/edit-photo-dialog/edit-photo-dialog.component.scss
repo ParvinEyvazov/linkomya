@@ -144,21 +144,6 @@ $content-selector: "~ .content > section";
         iteration-count: 1;
       }
       line-height: 1.4;
-
-      h2 {
-        color: $accent;
-        display: none;
-        &::after {
-          content: "";
-          position: relative;
-          display: block;
-          width: 30px;
-          height: 3px;
-          background: $accent;
-          margin-top: 5px;
-          left: 1px;
-        }
-      }
     }
 
     .explore-section {
