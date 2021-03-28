@@ -9,7 +9,6 @@ import { AuthService } from './services/auth-services/auth.service';
 import { PageSpinnerService } from '../app/services/spinner-services/page-spinner/page-spinner.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { HostListener } from '@angular/core';
-import { timeStamp } from 'console';
 
 @Component({
   selector: 'app-root',
@@ -30,6 +29,9 @@ export class AppComponent implements OnInit {
   search_loading: boolean = false;
   users: User[];
   page_loading: boolean = true;
+
+  non_showable_search_pages: string[] = ['/search'];
+  show_search_bar: boolean = true;
 
   constructor(
     private authService: AuthService,
@@ -58,9 +60,33 @@ export class AppComponent implements OnInit {
     });
 
     this.routeData.subscribe((data: any) => {
+      console.log('a', data);
+
+      if (this.containsNonShowableLink(data.url)) {
+        console.log('dont show');
+        this.show_search_bar = false;
+      } else {
+        this.show_search_bar = true;
+      }
+
       this.setToken();
       this.setTitle(data);
     });
+  }
+
+  containsNonShowableLink(url: string) {
+    let response: boolean = false;
+
+    if (url === '/') {
+      response = true;
+    }
+    this.non_showable_search_pages.forEach((element) => {
+      if (url.includes(element)) {
+        response = true;
+      }
+    });
+
+    return response;
   }
 
   ngAfterViewInit() {

@@ -7,7 +7,7 @@
   <div class="tools">
     <!-- search bar -->
     <div class="search-bar">
-      <div class="search">
+      <div class="search" *ngIf="show_search_bar">
         <input
           type="text"
           #input="ngModel"
@@ -45,8 +45,13 @@
       </div>
     </div>
 
-    <div class="search-phone-button" (click)="navigateSearchPage('')">
-      <button type="submit" class="search-phone-icon">
+    <div class="search-phone-button">
+      <button
+        type="submit"
+        class="search-phone-icon"
+        *ngIf="show_search_bar"
+        (click)="navigateSearchPage('')"
+      >
         <i class="fa fa-search"></i>
       </button>
     </div>
