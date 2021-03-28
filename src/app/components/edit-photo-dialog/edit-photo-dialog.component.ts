@@ -15,6 +15,7 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { StorageService } from 'src/app/services/storage-service/storage.service';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'edit-photo-dialog',
@@ -51,17 +52,18 @@ export class EditPhotoDialogComponent implements OnInit {
   // VARIABLE - COMMON
   image_uploading: boolean = false;
   edit_photo_loading_subscription: Subscription;
+  error_message: string = '';
 
   constructor(
     private giphyService: GiphyService,
     private imageService: ImageService,
     private storageService: StorageService,
     private editPhotoSpinnerService: EditPhotoSpinnerService,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
-    // console.log('1: ', this.photo_type);
     this.init();
     this.startContentLoadings();
     this.getInitialContent();
@@ -102,7 +104,7 @@ export class EditPhotoDialogComponent implements OnInit {
   }
 
   confirm() {
-    this.image_uploading = true;
+    this.startImageUploadLoading();
 
     let edit_photo_object = {
       confirmed: true,
@@ -114,27 +116,42 @@ export class EditPhotoDialogComponent implements OnInit {
         edit_photo_object['url'] = this.selected_content_url;
         this.event.emit(edit_photo_object);
       } else {
-        this.storageService.giveFileAndGetUrl(this.custom_image).then((url) => {
-          edit_photo_object['url'] = url;
-          this.event.emit(edit_photo_object);
-        });
+        this.storageService
+          .giveFileAndGetUrl(this.custom_image)
+          .then((url) => {
+            edit_photo_object['url'] = url;
+            this.event.emit(edit_photo_object);
+          })
+          .catch((error) => {
+            this.stopImageUploadLoading();
+            this.showError(error);
+          });
       }
     }
     // just image uploaded
     else if (this.custom_image) {
-      this.storageService.giveFileAndGetUrl(this.custom_image).then((url) => {
-        edit_photo_object['url'] = url;
-        this.event.emit(edit_photo_object);
-      });
+      this.storageService
+        .giveFileAndGetUrl(this.custom_image)
+        .then((url) => {
+          edit_photo_object['url'] = url;
+          this.event.emit(edit_photo_object);
+        })
+        .catch((error) => {
+          this.stopImageUploadLoading();
+          this.showError(error);
+        });
     }
     // just gif selected
     else if (this.selected_content_url) {
       edit_photo_object['url'] = this.selected_content_url;
       this.event.emit(edit_photo_object);
-    } else {
-      // show select something error - or maybe not
-      this.image_uploading = false;
-      // console.log('secilmemis hicbisey');
+    }
+    //neither image oploaded nor gif selected
+    else {
+      this.stopImageUploadLoading();
+      this.showError(
+        this.messageService.ErrorMessages.image_not_selected_error
+      );
     }
   }
 
@@ -256,10 +273,15 @@ export class EditPhotoDialogComponent implements OnInit {
               );
               this.image_for_cropper = { target: { files: [compressed_file] } };
               this.file_uploaded = true;
+            })
+            .catch((error) => {
+              this.showError(
+                this.messageService.ErrorMessages.image_compress_error
+              );
             });
         }
       } else {
-        // show image is not valid
+        this.showError(this.messageService.ErrorMessages.wrong_file_type);
       }
     }
   }
@@ -288,6 +310,7 @@ export class EditPhotoDialogComponent implements OnInit {
   }
 
   loadImageFailed() {
+    this.showError(this.messageService.ErrorMessages.cannot_upload_file);
     // show error when failed to load
   }
 
@@ -301,6 +324,25 @@ export class EditPhotoDialogComponent implements OnInit {
 
   stopImageCroppingLoading() {
     this.image_cropping_loading = false;
+  }
+
+  startImageUploadLoading() {
+    this.image_uploading = true;
+  }
+
+  stopImageUploadLoading() {
+    this.image_uploading = false;
+  }
+
+  showError(error) {
+    this.error_message = error;
+    setTimeout(() => {
+      this.error_message = '';
+    }, 3000);
+  }
+
+  hideError() {
+    this.error_message = '';
   }
 
   removeImage() {

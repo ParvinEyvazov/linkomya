@@ -14,6 +14,9 @@ export class MessageService {
     wrong_link_type: 'This is not a valid url.',
     wrong_file_type: "The file type doesn't match.",
     cannot_upload_file: 'File cannot be uploaded.',
+    image_not_selected_error: 'Please select or upload a new file.',
+    image_compress_error:
+      'Error occurs while compressing file. Please select different file.',
   };
 
   SuccessMessages = {};

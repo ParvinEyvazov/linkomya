@@ -458,9 +458,22 @@ mat-divider {
   margin: 0px 10px;
 }
 
+.error-container {
+  // background: lawngreen;
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  span {
+    width: 80%;
+    font-size: 1rem;
+    color: var(--error-message-color);
+  }
+}
+
 .buttons {
   display: flex;
-  margin-top: 15px;
+  margin-top: 5px;
   justify-content: space-between;
   align-items: center;
 
@@ -579,6 +592,12 @@ mat-divider {
           }
         }
       }
+    }
+  }
+
+  .error-container {
+    span {
+      font-size: 0.8rem;
     }
   }
 
