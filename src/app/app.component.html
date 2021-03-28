@@ -7,7 +7,7 @@
   <div class="tools">
     <!-- search bar -->
     <div class="search-bar">
-      <div class="search" *ngIf="show_search_bar">
+      <div class="search" [ngClass]="{ 'non-visible': !show_search_bar }">
         <input
           type="text"
           #input="ngModel"

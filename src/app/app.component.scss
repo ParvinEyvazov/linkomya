@@ -59,6 +59,10 @@
 
       transition: 0.25s;
 
+      .non-visible {
+        display: none;
+      }
+
       .search {
         // background: black;
         position: relative;

@@ -60,10 +60,10 @@ export class AppComponent implements OnInit {
     });
 
     this.routeData.subscribe((data: any) => {
-      console.log('a', data);
+      this.clearSearchList();
+      this.clearSearchText();
 
       if (this.containsNonShowableLink(data.url)) {
-        console.log('dont show');
         this.show_search_bar = false;
       } else {
         this.show_search_bar = true;
@@ -174,6 +174,10 @@ export class AppComponent implements OnInit {
 
   clearSearchList() {
     this.users = [];
+  }
+
+  clearSearchText() {
+    this.search_text = '';
   }
 
   logout() {
