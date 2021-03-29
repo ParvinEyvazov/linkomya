@@ -16,9 +16,6 @@
     span {
       transition: 0.25s;
       font-size: 2.1rem;
-      letter-spacing: 3px;
-      line-height: 1;
-      word-break: keep-all;
     }
   }
 
@@ -27,9 +24,6 @@
     margin-top: 15px;
     span {
       font-size: 0.8rem;
-      letter-spacing: 2px;
-      line-height: 1;
-      word-break: keep-all;
       .link {
         cursor: pointer;
         outline: none;
@@ -48,20 +42,6 @@
       margin-top: 15px !important;
       img {
         width: 250px;
-      }
-    }
-
-    .information-container {
-      span {
-      }
-    }
-
-    .back-button-container {
-      span {
-        .link {
-        }
-        .link:hover {
-        }
       }
     }
   }
@@ -86,10 +66,6 @@
     .back-button-container {
       span {
         font-size: 0.8rem;
-        .link {
-        }
-        .link:hover {
-        }
       }
     }
   }

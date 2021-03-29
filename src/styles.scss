@@ -1,6 +1,6 @@
 @import "assets/fonts/fonts";
-
 @import "~@angular/material/theming";
+
 // @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 // Plus imports for other components in your app.
 
@@ -31,12 +31,7 @@ $linkomya-theme: mat-light-theme(
   )
 );
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 @include angular-material-theme($linkomya-theme);
-
-/* You can add global styles to this file, and also import other style files */
 
 html,
 body {
@@ -60,7 +55,11 @@ input {
   font-family: "Poppins-medium" !important;
 }
 
-/* font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;*/
+.page-explanation {
+  letter-spacing: 2px;
+  line-height: 1;
+  word-break: keep-all;
+}
 
 // variables
 :root {
@@ -95,7 +94,7 @@ input {
   --transition-slow: all 1s cubic-bezier(0.32, 0, 0.67, 0);
 
   //shadows
-  --box-below-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+  --box-below-shadow: rgba(255, 0, 0, 0) 0px 1px 1px 0px inset,
     rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }

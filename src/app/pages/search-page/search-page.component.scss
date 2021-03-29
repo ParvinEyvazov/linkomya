@@ -82,9 +82,6 @@
         margin-top: 10px;
         span {
           font-size: 1rem;
-          letter-spacing: 2px;
-          line-height: 1;
-          word-break: keep-all;
         }
       }
     }
@@ -97,12 +94,6 @@
       .search {
         margin-left: 10% !important;
         margin-right: 10% !important;
-
-        .searchTerm {
-        }
-
-        .searchButton {
-        }
       }
     }
 
@@ -115,8 +106,6 @@
         width: 300px !important;
       }
       .information-container {
-        span {
-        }
       }
     }
   }
@@ -138,16 +127,12 @@
       }
     }
 
-    .profile-box {
-    }
-
     .search-information {
       margin-top: 25% !important;
       .image-container {
         width: 200px !important;
       }
       .information-container {
-        margin-top: 10px !important;
         span {
           font-size: 0.8rem !important;
         }

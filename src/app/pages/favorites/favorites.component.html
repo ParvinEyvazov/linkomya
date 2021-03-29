@@ -11,6 +11,21 @@
         </div>
       </div>
 
+      <div class="favorite-information" *ngIf="favorites?.length == 0">
+        <div class="image-container">
+          <img src="../../../assets/svg/empty_favorite_page.svg" />
+        </div>
+
+        <div class="information-container">
+          <span class="page-explanation">
+            Add your friends to your favorite list. Start with
+            <span class="search-link" [routerLink]="['/search']"
+              >searching for them</span
+            >.</span
+          >
+        </div>
+      </div>
+
       <div class="profile-box">
         <app-user-card
           *ngFor="let favorite of favorites"
