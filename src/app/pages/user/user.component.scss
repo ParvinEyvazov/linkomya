@@ -32,7 +32,7 @@
     .information {
       transition: var(--transition-normal);
       position: relative;
-      top: -110px;
+      top: -100px;
       display: list-item;
     }
 
@@ -101,8 +101,6 @@
 
       .links {
         width: 50% !important;
-        .box {
-        }
       }
     }
   }
@@ -117,17 +115,12 @@
         left: 62% !important;
       }
 
-      .information {
-      }
-
       .divider {
         width: 60% !important;
       }
 
       .links {
         width: 60% !important;
-        .box {
-        }
       }
     }
   }
@@ -142,17 +135,12 @@
         left: 65% !important;
       }
 
-      .information {
-      }
-
       .divider {
         width: 80% !important;
       }
 
       .links {
         width: 80% !important;
-        .box {
-        }
       }
     }
   }

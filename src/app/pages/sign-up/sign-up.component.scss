@@ -4,10 +4,8 @@
   overflow-x: hidden;
 
   main {
-    //  background: lightblue;
     width: 100vw;
     .image-part {
-      //background-color: rgb(123, 119, 255,0.2);
       design-circle {
         position: fixed;
         left: -150px;
@@ -27,12 +25,10 @@
 
     .form {
       z-index: 999;
-      //background: lightgreen;
       margin: auto;
       margin-top: 5%;
       transition: 0.25s;
       .box {
-        // background: red;
         text-align: center;
 
         h1 {
@@ -53,7 +49,6 @@
           display: block;
           margin: auto;
           margin-bottom: 10px;
-          //text-align: center;
           border: 2px solid #7b77ff;
           background: #7b77ff;
           padding: 14px;
@@ -99,7 +94,6 @@
           margin: 20px auto;
           text-align: center;
           border: 2px solid #7b77ff;
-          //background: #7B77FF;
           padding: 7px 60px;
           outline: none;
           color: black;

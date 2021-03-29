@@ -121,7 +121,7 @@
     .information {
       transition: 0.25s;
       position: relative;
-      top: -60px;
+      top: -50px;
       display: list-item;
     }
 
@@ -129,7 +129,7 @@
       transition: 0.25s;
       margin: auto;
       position: relative;
-      top: -50px;
+      top: -45px;
       width: 30%;
       position: relative;
       height: 70px;
@@ -146,7 +146,6 @@
         .copy-button {
           transition: 0.25s;
           cursor: pointer;
-          //border: 1px solid rgba(var(--f52, 142, 142, 142), 1);
           border: 1px solid rgba(73, 73, 73, 0.104);
           border-radius: 50%;
           height: 45px;
@@ -155,8 +154,6 @@
         }
         .copy-button:hover {
           background: lightgrey;
-        }
-        span {
         }
       }
 
@@ -177,8 +174,6 @@
         }
         .eye-button:hover {
           background: lightgrey;
-        }
-        span {
         }
       }
 
@@ -338,7 +333,6 @@
     width: 30%;
     max-height: 800px;
     border-radius: 50px;
-    /*border: 1px solid #969696;*/
     background: #fff;
     box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
     opacity: 0;
@@ -447,7 +441,6 @@
       }
 
       .information {
-        // background: moccasin;
         top: -40px !important;
       }
 
@@ -515,29 +508,6 @@
 
       .links {
         width: 50% !important;
-        .box {
-          a:link {
-          }
-
-          .child-box {
-            .circle {
-              img {
-              }
-            }
-
-            .link-name {
-              h1 {
-              }
-            }
-          }
-
-          .edit-link-open {
-            img {
-            }
-          }
-          .edit-link-close {
-          }
-        }
       }
     }
   }
@@ -562,58 +532,17 @@
     }
 
     main {
-      .cicle {
-      }
-
-      .information {
-      }
-
       .divider {
         width: 60% !important;
-        .edit-close {
-          img {
-          }
-        }
-
-        .edit-open {
-          img {
-          }
-        }
       }
 
       .links {
         width: 60% !important;
-        .box {
-          a:link {
-          }
-
-          .child-box {
-            .circle {
-              img {
-              }
-            }
-
-            .link-name {
-              h1 {
-              }
-            }
-          }
-
-          .edit-link-open {
-            img {
-            }
-          }
-          .edit-link-close {
-          }
-        }
       }
     }
   }
 
   #dialog {
-    #dlg-back {
-    }
-
     #dlg-wrap {
       width: 80% !important;
     }
@@ -657,58 +586,17 @@
     }
 
     main {
-      .cicle {
-      }
-
-      .information {
-      }
-
       .divider {
         width: 80% !important;
-        .edit-close {
-          img {
-          }
-        }
-
-        .edit-open {
-          img {
-          }
-        }
       }
 
       .links {
         width: 80% !important;
-        .box {
-          a:link {
-          }
-
-          .child-box {
-            .circle {
-              img {
-              }
-            }
-
-            .link-name {
-              h1 {
-              }
-            }
-          }
-
-          .edit-link-open {
-            img {
-            }
-          }
-          .edit-link-close {
-          }
-        }
       }
     }
   }
 
   #dialog {
-    #dlg-back {
-    }
-
     #dlg-wrap {
       width: 90% !important;
     }

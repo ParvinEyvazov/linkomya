@@ -1,4 +1,3 @@
-/* colors */
 $blue: #7b77ff;
 $red: #ff4a53;
 
@@ -459,7 +458,6 @@ mat-divider {
 }
 
 .error-container {
-  // background: lawngreen;
   margin-top: 5px;
   display: flex;
   justify-content: center;
@@ -501,7 +499,6 @@ mat-divider {
     display: flex;
     justify-content: center;
     input {
-      // border: 0;
       background: none;
       display: block;
       border: 2px solid #7b77ff;
@@ -578,13 +575,8 @@ mat-divider {
 
     .images {
       .content-container {
-        span {
-        }
         .image-container {
           .image {
-            img {
-            }
-
             .background_size {
               width: 110px !important;
               height: 55px !important;
@@ -602,15 +594,10 @@ mat-divider {
   }
 
   .buttons {
-    .spinner {
-    }
-
     .cancel-box {
       p {
         font-size: 0.9em;
       }
-    }
-    .cancel-box:hover {
     }
 
     .confirm-box {

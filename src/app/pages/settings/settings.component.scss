@@ -14,19 +14,15 @@
   }
 
   main {
-    // height: calc(100vh - 80px);
     width: 100vw;
   }
 
   .content {
-    //    background: lightcoral;
     text-align: center;
     transition: 0.25s;
-    // background: lightcoral;
     width: 40%;
     margin: auto;
     .text {
-      // background: lightcyan;
       margin: auto;
       margin-top: 30px;
       height: auto;
@@ -47,7 +43,6 @@
       position: relative;
       top: 30px;
       width: 100%;
-      //  background: lightgreen;
       text-align: center;
 
       .form {
@@ -55,7 +50,6 @@
         margin: auto;
         text-align: center;
         width: 90%;
-        // background: lightcoral;
 
         .child-box {
           position: relative;
@@ -71,7 +65,6 @@
           input {
             border: 0;
             background: none;
-            //text-align: center;
             border: 1px solid rgba(0, 0, 0, 0.397);
             background: #ffffff;
             padding: 14px;
@@ -195,7 +188,6 @@
     width: 30%;
     max-height: 800px;
     border-radius: 50px;
-    /*border: 1px solid #969696;*/
     background: #fff;
     box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
     opacity: 0;
@@ -273,9 +265,6 @@
 
 @media screen and (max-width: 767px) {
   #dialog {
-    #dlg-back {
-    }
-
     #dlg-wrap {
       width: 80% !important;
     }
@@ -297,8 +286,6 @@
       top: 10px !important;
 
       .form {
-        // background: lightcoral;
-
         .child-box {
           margin-bottom: 10px !important;
           p {
@@ -314,9 +301,6 @@
             margin-top: 30px !important;
             padding: 3px 40px !important;
             font-size: 1em !important;
-          }
-
-          input[type="submit"]:hover {
           }
         }
       }
@@ -337,16 +321,10 @@
           font-size: 1.3em !important;
         }
       }
-
-      .delete-account:hover {
-      }
     }
   }
 
   #dialog {
-    #dlg-back {
-    }
-
     #dlg-wrap {
       width: 90% !important;
     }

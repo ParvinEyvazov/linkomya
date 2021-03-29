@@ -41,13 +41,11 @@
     right: 10%;
     width: 30%;
     height: 50px;
-    //     background: purple;
 
     //search bar part
     .search-bar {
       width: 90%;
       height: 100%;
-      //      background: red;
 
       display: flex;
 
@@ -58,7 +56,6 @@
       }
 
       .search {
-        // background: black;
         position: relative;
         right: 0;
         margin: auto;
@@ -111,7 +108,6 @@
       display: none;
       width: 90%;
       height: 100%;
-      //     background: lightpink;
       text-align: end;
 
       .search-phone-icon {
@@ -121,7 +117,6 @@
         right: 5%;
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
-        //   background: lightsalmon;
         background: transparent;
         border: none;
         text-align: center;
@@ -134,7 +129,6 @@
 
     .login-button {
       margin: auto;
-      //      background: lightgreen;
 
       .icon-login {
         transition: 0.25s;
@@ -149,7 +143,6 @@
     .menu {
       text-align: center;
       margin: auto;
-      //      background: blue;
       padding-top: 5px;
 
       .account_button {
@@ -201,7 +194,4 @@
   .icon-login {
     font-size: 1.1em !important;
   }
-}
-
-@media screen and (max-width: 575px) {
 }

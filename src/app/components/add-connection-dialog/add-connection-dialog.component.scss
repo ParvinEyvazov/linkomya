@@ -17,7 +17,6 @@
     .title {
       font-size: 1.1em;
       margin-left: 5%;
-      //background: red;
       transition: 0.25s;
     }
 
@@ -38,7 +37,6 @@
       input {
         border: 0;
         background: none;
-        //text-align: center;
         border: 1px solid rgba(0, 0, 0, 0.397);
         background: #ffffff;
         padding: 14px;
@@ -302,18 +300,12 @@
       input {
         font-size: 1em !important;
       }
-
-      input[type="submit"]:hover {
-      }
     }
 
     .delete-account {
       p {
         font-size: 1em !important;
       }
-    }
-
-    .delete-account:hover {
     }
   }
 
@@ -322,7 +314,4 @@
       font-size: 1.1rem !important;
     }
   }
-}
-
-@media screen and (max-width: 767px) {
 }

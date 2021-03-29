@@ -39,7 +39,6 @@
       input {
         border: 0;
         background: none;
-        //text-align: center;
         border: 1px solid rgba(0, 0, 0, 0.397);
         background: #ffffff;
         padding: 14px;
@@ -75,7 +74,6 @@
       input {
         border: 0;
         background: none;
-        //text-align: center;
         border: 1px solid rgba(0, 0, 0, 0.397);
         background: #ffffff;
         padding: 14px;
@@ -180,9 +178,6 @@
           padding: 14px !important;
           font-size: 1em !important;
         }
-
-        .copy-button {
-        }
       }
     }
 
@@ -204,9 +199,6 @@
         margin-top: 20px !important;
         font-size: 1em !important;
       }
-
-      input[type="submit"]:hover {
-      }
     }
 
     .delete-account {
@@ -215,19 +207,9 @@
         font-size: 1em !important;
       }
     }
-    .delete-account:hover {
-    }
-
-    mat-divider {
-    }
 
     .delete-button {
       margin-top: 10px;
-      mat-icon {
-      }
-
-      mat-icon:hover {
-      }
     }
   }
 }

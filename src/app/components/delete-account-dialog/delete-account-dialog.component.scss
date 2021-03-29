@@ -17,7 +17,6 @@
     margin-left: 8%;
     margin-right: 8%;
     .information {
-      //margin: 15px 8% 15px 8%;
     }
 
     .question-box {
@@ -25,7 +24,6 @@
       .question {
         margin: auto;
         font-weight: bold;
-        //display: none;
       }
     }
   }
@@ -112,15 +110,6 @@
       font-size: 1.1em;
       margin-left: 2% !important;
       margin-right: 2% !important;
-      .information {
-        //margin: 15px 8% 15px 8%;
-      }
-
-      .question-box {
-        .question {
-          //display: none;
-        }
-      }
     }
 
     .buttons {
@@ -129,22 +118,12 @@
           font-size: 1em !important;
           padding: 7px 40px !important;
         }
-
-        input[type="submit"]:hover {
-        }
-        .spinner {
-          mat-spinner {
-          }
-        }
       }
 
       .cancel-button {
         input {
           font-size: 1em;
           padding: 7px 43.5px !important;
-        }
-
-        input[type="submit"]:hover {
         }
       }
     }
