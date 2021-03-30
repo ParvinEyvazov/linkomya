@@ -24,6 +24,8 @@ export class SearchPageComponent implements OnInit {
   users: User[];
   loading: boolean = false;
   max_limit: number = 5;
+  increase_limit: number = 5;
+  can_be_more: boolean = false;
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -48,12 +50,18 @@ export class SearchPageComponent implements OnInit {
   getUsers(search_text) {
     this.startLoading();
     this.apiService
-      .getSearchedUsers(search_text, 10)
+      .getSearchedUsers(search_text, this.max_limit)
       .toPromise()
       .then((data) => {
         this.users = data.users;
+        this.can_be_more = data.can_be_more;
         this.stopLoading();
       });
+  }
+
+  getMore() {
+    this.max_limit += this.increase_limit;
+    this.getUsers(this.search_text);
   }
 
   changeQueryParams(search_text) {

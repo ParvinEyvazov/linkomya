@@ -24,6 +24,10 @@
         [country]="user.country"
         [verified]="user.verified"
       ></app-user-card>
+
+      <div class="more-container">
+        <span *ngIf="can_be_more" (click)="getMore()">more</span>
+      </div>
     </div>
 
     <div class="spinner" *ngIf="loading">
