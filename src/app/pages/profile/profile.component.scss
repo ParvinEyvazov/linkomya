@@ -134,6 +134,10 @@
       position: relative;
       height: 70px;
 
+      span {
+        font-size: 0.9em;
+      }
+
       hr {
         position: absolute;
         bottom: -2px;
@@ -205,6 +209,7 @@
           .edit-close:hover {
             background: lightgrey;
           }
+
           .edit-open {
             transition: 0.25s;
             cursor: pointer;
@@ -449,6 +454,10 @@
         width: 50% !important;
         height: 55px !important;
 
+        span {
+          font-size: 0.7em !important;
+        }
+
         .profile-copy {
           .copy-button {
             height: 30px !important;
@@ -460,9 +469,6 @@
               font-size: 1.2em !important;
             }
           }
-          span {
-            font-size: 0.8em !important;
-          }
         }
 
         .see-profile {
@@ -470,9 +476,6 @@
             height: 30px !important;
             width: 30px !important;
             padding: 5px !important;
-          }
-          span {
-            font-size: 0.8em !important;
           }
         }
 
@@ -499,9 +502,6 @@
                 max-height: 80% !important;
               }
             }
-          }
-          span {
-            font-size: 0.8em !important;
           }
         }
       }

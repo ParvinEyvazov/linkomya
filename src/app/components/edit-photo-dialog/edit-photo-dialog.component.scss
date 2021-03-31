@@ -195,12 +195,13 @@ $content-selector: "~ .content > section";
         text-align: center;
         overflow-y: scroll;
         max-height: 350px;
+
         .content-container {
           margin-top: 10px;
           width: 50%;
           span {
             color: #b1b1c5;
-            font-size: 1rem;
+            font-size: 0.8rem;
           }
 
           .spinner {
