@@ -38,7 +38,16 @@ const routes: Routes = [
     component: FavoritesComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
+  {
+    path: 'settings',
+    component: SettingsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'settings/:type',
+    component: SettingsComponent,
+    canActivate: [AuthGuard],
+  },
   { path: ':username', component: UserComponent },
   { path: '**', component: NotFoundComponent },
 ];

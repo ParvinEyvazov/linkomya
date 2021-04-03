@@ -40,10 +40,10 @@
     }
 
     .main-container {
-      position: relative;
-      top: 30px;
+      width: 80%;
       height: 100%;
-      .main-selection-part {
+      margin: auto;
+      .selection-part {
         display: flex;
         flex-flow: column;
         height: 100%;
@@ -52,6 +52,7 @@
           .selection {
             transition: var(--transition-normal);
             margin: 10px 0px;
+            outline: none;
             cursor: pointer;
             .selection-content {
               transition: var(--transition-normal);
@@ -100,6 +101,29 @@
           .delete-account:hover {
             color: rgb(250, 4, 4);
           }
+        }
+      }
+
+      .tab-part {
+        .back-container {
+          cursor: pointer;
+          outline: none;
+          margin: 30px 0px 30px -15px;
+          display: flex;
+          transition: 0.25s;
+          span {
+            transition: 0.25s;
+            font-size: 1.2em;
+          }
+        }
+
+        .back-container:hover {
+          span {
+            margin-left: 3px;
+          }
+        }
+
+        .tab-container {
         }
       }
     }
@@ -319,7 +343,8 @@
     }
 
     .main-container {
-      .main-selection-part {
+      width: 100% !important;
+      .selection-part {
         top: 10px !important;
         .selection-container {
           .selection {
@@ -342,6 +367,23 @@
               font-size: 1.3em !important;
             }
           }
+        }
+      }
+
+      .tab-part {
+        .back-container {
+          margin-top: 10px !important;
+          margin-bottom: 25px !important;
+          span {
+          }
+        }
+
+        .back-container:hover {
+          span {
+          }
+        }
+
+        .tab-container {
         }
       }
     }

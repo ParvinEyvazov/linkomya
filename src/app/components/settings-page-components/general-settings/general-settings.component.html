@@ -1,1 +1,60 @@
-<p>general-settings works!</p>
+<div class="general-container">
+  <div class="form">
+    <form class="box" action="" method="POST">
+      <div class="child-box">
+        <p>full name</p>
+        <input
+          type="text"
+          name="name"
+          placeholder="name"
+          [(ngModel)]="user.fullname"
+        />
+      </div>
+      <div class="child-box">
+        <p>country</p>
+        <input
+          type="text"
+          name="country"
+          placeholder="country"
+          [(ngModel)]="user.country"
+        />
+      </div>
+      <div class="child-box">
+        <p>city</p>
+        <input
+          type="text"
+          name="city"
+          placeholder="city"
+          [(ngModel)]="user.city"
+        />
+      </div>
+      <div class="child-box">
+        <p>job</p>
+        <input
+          type="text"
+          name="job"
+          placeholder="job"
+          [(ngModel)]="user.job"
+        />
+      </div>
+
+      <div class="error">
+        <span>{{ error }}</span>
+      </div>
+
+      <div class="button-box">
+        <input
+          *ngIf="!loading"
+          type="submit"
+          name="submit"
+          (click)="save()"
+          value="SAVE"
+        />
+
+        <div class="spinner" *ngIf="loading">
+          <mat-spinner [diameter]="25"></mat-spinner>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

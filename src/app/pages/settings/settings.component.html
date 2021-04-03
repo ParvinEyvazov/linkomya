@@ -33,9 +33,9 @@
 
       <div class="main-container">
         <!-- 1 - SELECTION PART -->
-        <div class="main-selection-part">
+        <div class="selection-part" *ngIf="show_selection_menu">
           <div class="selection-container">
-            <div class="selection">
+            <div class="selection" [routerLink]="['/settings', 'general']">
               <div class="selection-content">
                 <span>General Settings</span>
                 <span>></span>
@@ -44,7 +44,7 @@
               <mat-divider></mat-divider>
             </div>
 
-            <div class="selection">
+            <div class="selection" [routerLink]="['/settings', 'username']">
               <div class="selection-content">
                 <span>Change username</span>
                 <span>></span>
@@ -53,7 +53,7 @@
               <mat-divider></mat-divider>
             </div>
 
-            <div class="selection">
+            <div class="selection" [routerLink]="['/settings', 'password']">
               <div class="selection-content">
                 <span>Update password</span>
                 <span>></span>
@@ -63,11 +63,8 @@
             </div>
           </div>
 
-          <!-- divider -->
           <div class="delete-container">
             <mat-divider></mat-divider>
-
-            <!-- delete button -->
             <label for="dialog_state">
               <div class="delete-account">
                 <mat-icon class="icon-delete" aria-label="place"
@@ -78,7 +75,25 @@
             </label>
           </div>
         </div>
+
         <!-- 2 - SELECTED TAB -->
+        <div class="tab-part" *ngIf="!show_selection_menu">
+          <div class="back-container" [routerLink]="['/settings']">
+            <span>< {{ page_name }}</span>
+          </div>
+
+          <div class="tab-container" *ngIf="show_general_setting">
+            <general-settings></general-settings>
+          </div>
+
+          <div class="tab-container" *ngIf="show_update_password">
+            <password-settings></password-settings>
+          </div>
+
+          <div class="tab-container" *ngIf="show_change_username">
+            <username-settings></username-settings>
+          </div>
+        </div>
       </div>
 
       <div class="settings-box" *ngIf="false">

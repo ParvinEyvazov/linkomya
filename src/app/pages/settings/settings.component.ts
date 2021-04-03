@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/interfaces/data';
 import { ApiService } from 'src/app/services/api-services/api.service';
 import { MessageService } from 'src/app/services/message.service';
@@ -18,17 +19,72 @@ export class SettingsComponent implements OnInit {
 
   dialog_state_delele_account: boolean = false;
 
+  show_selection_menu: boolean = true;
+  show_general_setting: boolean = false;
+  show_change_username: boolean = false;
+  show_update_password: boolean = false;
+
+  page_name: string;
+  page_names = {
+    general: 'General settings',
+    username: 'Change username',
+    password: 'Update password',
+  };
+
   constructor(
     private apiService: ApiService,
     private userService: UserService,
     private validator: ValidationService,
     private messageService: MessageService,
-    private pageSpinnerService: PageSpinnerService
+    private pageSpinnerService: PageSpinnerService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.getUser(this.userService.getUserId());
+
+    this.route.params.subscribe((data) => {
+      this.changeView(data.type);
+    });
   }
+
+  changeView(view) {
+    // view -> selection_menu & general & username & password
+    this.hideAllView();
+    switch (view) {
+      case 'selection_menu':
+        this.show_selection_menu = true;
+        break;
+      case 'general':
+        this.changePageName(this.page_names.general);
+        this.show_general_setting = true;
+        break;
+      case 'username':
+        this.changePageName(this.page_names.username);
+        this.show_change_username = true;
+        break;
+      case 'password':
+        this.changePageName(this.page_names.password);
+        this.show_update_password = true;
+        break;
+      default:
+        this.show_selection_menu = true;
+        break;
+    }
+  }
+
+  hideAllView() {
+    this.show_selection_menu = false;
+    this.show_general_setting = false;
+    this.show_change_username = false;
+    this.show_update_password = false;
+  }
+
+  changePageName(page_name) {
+    this.page_name = page_name;
+  }
+
+  // old
 
   save() {
     this.startLoading();
