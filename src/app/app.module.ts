@@ -47,6 +47,9 @@ import { SearchOptionComponent } from './components/search-option/search-option.
 import { EditPhotoDialogComponent } from './components/edit-photo-dialog/edit-photo-dialog.component';
 import { DragAndDropDirective } from './directives/drag-and-drop.directive';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { GeneralSettingsComponent } from './components/settings-page-components/general-settings/general-settings.component';
+import { UsernameSettingsComponent } from './components/settings-page-components/username-settings/username-settings.component';
+import { PasswordSettingsComponent } from './components/settings-page-components/password-settings/password-settings.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +79,9 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     SearchOptionComponent,
     EditPhotoDialogComponent,
     DragAndDropDirective,
+    GeneralSettingsComponent,
+    UsernameSettingsComponent,
+    PasswordSettingsComponent,
   ],
   imports: [
     MatIconModule,
