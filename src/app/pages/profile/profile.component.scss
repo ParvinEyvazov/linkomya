@@ -23,6 +23,7 @@
         top: 40px;
         margin: auto;
         width: 30%;
+
         p {
           transition: 0.25s;
           margin: 0;
@@ -36,7 +37,6 @@
           transition: 0.25s;
           border: 0;
           background: none;
-          //text-align: center;
           border: 1px solid rgba(0, 0, 0, 0.397);
           background: #ffffff;
           padding: 14px;
@@ -49,7 +49,6 @@
 
         .icon {
           transition: 0.25s;
-          //background: lightgreen;
           position: absolute;
           top: 50%;
           right: 20px;
@@ -565,8 +564,6 @@
         margin-bottom: 10px !important;
         top: 35px;
         width: 90% !important;
-        p {
-        }
 
         input {
           font-size: 1em !important;
