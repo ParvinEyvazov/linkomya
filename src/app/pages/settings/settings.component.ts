@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/interfaces/data';
 import { ApiService } from 'src/app/services/api-services/api.service';
-import { MessageService } from 'src/app/services/message.service';
 import { PageSpinnerService } from 'src/app/services/spinner-services/page-spinner/page-spinner.service';
 import { UserService } from 'src/app/services/user-services/user.service';
-import { ValidationService } from 'src/app/services/validation.service';
 
 @Component({
   selector: 'app-settings',
@@ -34,8 +32,7 @@ export class SettingsComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private userService: UserService,
-    private validator: ValidationService,
-    private messageService: MessageService,
+    private router: Router,
     private pageSpinnerService: PageSpinnerService,
     private route: ActivatedRoute
   ) {}
@@ -73,6 +70,33 @@ export class SettingsComponent implements OnInit {
     }
   }
 
+  save(event) {
+    this.apiService
+      .updateUser(event.user)
+      .toPromise()
+      .then((data) => {
+        this.router.navigate(['/settings']);
+      })
+      .catch((error) => {});
+  }
+
+  getUser(user_id) {
+    this.pageSpinnerService.start();
+    this.apiService
+      .getUser(user_id)
+      .toPromise()
+      .then((data) => {
+        if (data) {
+          this.user = data[0];
+          this.pageSpinnerService.stop();
+        }
+      })
+      .catch((error) => {
+        this.pageSpinnerService.reset();
+      });
+  }
+
+  // HELPER FUNCTIONS
   hideAllView() {
     this.show_selection_menu = false;
     this.show_general_setting = false;
@@ -84,28 +108,6 @@ export class SettingsComponent implements OnInit {
     this.page_name = page_name;
   }
 
-  // old
-
-  save() {
-    this.startLoading();
-    this.cleanError();
-    if (this.validator.validateFullname(this.user.fullname)) {
-      this.apiService
-        .updateUser(this.user)
-        .toPromise()
-        .then((data) => {
-          this.stopLoading();
-        })
-        .catch((error) => {
-          this.stopLoading();
-          this.showError(error.error);
-        });
-    } else {
-      this.stopLoading();
-      this.showError(this.messageService.ErrorMessages.fullname_validation);
-    }
-  }
-
   closeDeleteDialog(event) {
     if (event == false) {
       this.closeDialog();
@@ -114,37 +116,5 @@ export class SettingsComponent implements OnInit {
 
   closeDialog() {
     this.dialog_state_delele_account = false;
-  }
-
-  getUser(user_id) {
-    this.pageSpinnerService.start();
-    this.apiService
-      .getUser(user_id)
-      .toPromise()
-      .then((data) => {
-        if (data) {
-          this.user = data[0];
-        }
-        this.pageSpinnerService.stop();
-      })
-      .catch((error) => {
-        this.pageSpinnerService.reset();
-      });
-  }
-
-  startLoading() {
-    this.loading = true;
-  }
-
-  stopLoading() {
-    this.loading = false;
-  }
-
-  showError(error) {
-    this.error = error;
-  }
-
-  cleanError() {
-    this.error = '';
   }
 }

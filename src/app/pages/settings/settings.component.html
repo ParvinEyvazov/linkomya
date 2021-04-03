@@ -83,7 +83,10 @@
           </div>
 
           <div class="tab-container" *ngIf="show_general_setting">
-            <general-settings></general-settings>
+            <general-settings
+              [user]="user"
+              (event)="save($event)"
+            ></general-settings>
           </div>
 
           <div class="tab-container" *ngIf="show_update_password">
