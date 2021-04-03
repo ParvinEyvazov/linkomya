@@ -15,12 +15,14 @@
 
   main {
     width: 100vw;
+    height: 80%;
   }
 
   .content {
     text-align: center;
     transition: 0.25s;
     width: 40%;
+    height: 100%;
     margin: auto;
     .text {
       margin: auto;
@@ -34,6 +36,71 @@
         text-align: center;
         width: 45%;
         margin: auto;
+      }
+    }
+
+    .main-container {
+      position: relative;
+      top: 30px;
+      height: 100%;
+      .main-selection-part {
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+        justify-content: space-between;
+        .selection-container {
+          .selection {
+            transition: var(--transition-normal);
+            margin: 10px 0px;
+            cursor: pointer;
+            .selection-content {
+              transition: var(--transition-normal);
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              span {
+                transition: 0.25s;
+                font-size: 1.2em;
+              }
+            }
+            mat-divider {
+              margin-top: 10px;
+            }
+          }
+
+          .selection:hover {
+            .selection-content {
+              span {
+                margin-left: 3px;
+              }
+            }
+          }
+        }
+
+        .delete-container {
+          mat-divider {
+            margin: 10px 0px;
+          }
+
+          .delete-account {
+            cursor: pointer;
+            position: relative;
+            display: inline-flex;
+            color: rgba(250, 4, 4, 0.411);
+
+            p {
+              font-size: 1.2em;
+            }
+
+            .icon-delete {
+              margin-right: 5px;
+            }
+          }
+
+          .delete-account:hover {
+            color: rgb(250, 4, 4);
+          }
+        }
       }
     }
 
@@ -113,35 +180,6 @@
             }
           }
         }
-      }
-
-      .divider {
-        position: relative;
-        top: 60px;
-        text-align: center;
-        width: 45%;
-        margin: auto;
-      }
-
-      .delete-account {
-        cursor: pointer;
-        position: relative;
-        top: 120px;
-        padding-bottom: 50px;
-        display: inline-flex;
-        color: rgba(250, 4, 4, 0.411);
-
-        p {
-          font-size: 1.2em;
-        }
-
-        .icon-delete {
-          margin-right: 5px;
-        }
-      }
-
-      .delete-account:hover {
-        color: rgb(250, 4, 4);
       }
     }
   }
@@ -271,12 +309,40 @@
 
 @media screen and (max-width: 575px) {
   .content {
-    width: 90% !important;
+    width: 80% !important;
     .text {
       font-size: 1.7em !important;
 
       .divider {
         width: 80% !important;
+      }
+    }
+
+    .main-container {
+      .main-selection-part {
+        top: 10px !important;
+        .selection-container {
+          .selection {
+            .selection-content {
+              span {
+                font-size: 1em !important;
+              }
+            }
+          }
+        }
+
+        .delete-container {
+          .delete-account {
+            p {
+              font-size: 1em !important;
+            }
+
+            .icon-delete {
+              margin-right: 0px !important;
+              font-size: 1.3em !important;
+            }
+          }
+        }
       }
     }
 
@@ -298,23 +364,6 @@
             padding: 3px 40px !important;
             font-size: 1em !important;
           }
-        }
-      }
-
-      .divider {
-        width: 80% !important;
-      }
-
-      .delete-account {
-        top: 120px;
-
-        p {
-          font-size: 1em !important;
-        }
-
-        .icon-delete {
-          margin-right: 0px !important;
-          font-size: 1.3em !important;
         }
       }
     }

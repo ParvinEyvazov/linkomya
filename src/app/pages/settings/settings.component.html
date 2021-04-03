@@ -31,7 +31,57 @@
         </div>
       </div>
 
-      <div class="settings-box">
+      <div class="main-container">
+        <!-- 1 - SELECTION PART -->
+        <div class="main-selection-part">
+          <div class="selection-container">
+            <div class="selection">
+              <div class="selection-content">
+                <span>General Settings</span>
+                <span>></span>
+              </div>
+
+              <mat-divider></mat-divider>
+            </div>
+
+            <div class="selection">
+              <div class="selection-content">
+                <span>Change username</span>
+                <span>></span>
+              </div>
+
+              <mat-divider></mat-divider>
+            </div>
+
+            <div class="selection">
+              <div class="selection-content">
+                <span>Update password</span>
+                <span>></span>
+              </div>
+
+              <mat-divider></mat-divider>
+            </div>
+          </div>
+
+          <!-- divider -->
+          <div class="delete-container">
+            <mat-divider></mat-divider>
+
+            <!-- delete button -->
+            <label for="dialog_state">
+              <div class="delete-account">
+                <mat-icon class="icon-delete" aria-label="place"
+                  >delete</mat-icon
+                >
+                <p>DELETE ACCOUNT</p>
+              </div>
+            </label>
+          </div>
+        </div>
+        <!-- 2 - SELECTED TAB -->
+      </div>
+
+      <div class="settings-box" *ngIf="false">
         <!-- form part -->
         <div class="form">
           <form class="box" action="" method="POST">
@@ -91,18 +141,6 @@
             </div>
           </form>
         </div>
-        <!-- divider -->
-        <div class="divider">
-          <hr />
-        </div>
-
-        <!-- delete button -->
-        <label for="dialog_state">
-          <div class="delete-account">
-            <mat-icon class="icon-delete" aria-label="place">delete</mat-icon>
-            <p>DELETE ACCOUNT</p>
-          </div>
-        </label>
       </div>
     </div>
   </main>
