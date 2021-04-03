@@ -1,1 +1,41 @@
-<p>username-settings works!</p>
+<div class="username-container">
+  <div class="form">
+    <form class="box" action="" method="post" #form="ngForm">
+      <div class="child-box">
+        <p>username</p>
+        <input
+          required
+          matInput
+          #input="ngModel"
+          [(ngModel)]="username"
+          placeholder="username"
+          type="text"
+          (keydown.space)="$event.preventDefault()"
+          name="username"
+        />
+        <div class="icon">
+          <mat-icon *ngIf="username_check_error" class="clear">clear</mat-icon>
+          <mat-spinner
+            *ngIf="username_check_loading"
+            [diameter]="23"
+          ></mat-spinner>
+          <mat-icon *ngIf="username_check_success" class="done"
+            >done_outline</mat-icon
+          >
+        </div>
+      </div>
+
+      <p class="username-error">{{ username_error }}asadsadsa</p>
+
+      <div class="button-box">
+        <input
+          [disabled]="!form.valid"
+          type="submit"
+          name="submit"
+          value="SAVE"
+          (click)="assignUsername()"
+        />
+      </div>
+    </form>
+  </div>
+</div>
