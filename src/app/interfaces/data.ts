@@ -25,3 +25,7 @@ export interface GiphyContent {
 export interface EditPhoto {
   [key: string]: any;
 }
+
+export interface ChangePassword {
+  [key: string]: any;
+}
