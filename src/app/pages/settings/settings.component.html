@@ -85,16 +85,18 @@
           <div class="tab-container" *ngIf="show_general_setting">
             <general-settings
               [user]="user"
-              (event)="save($event)"
+              (event)="saveGeneralSettings($event)"
             ></general-settings>
+          </div>
+
+          <div class="tab-container" *ngIf="show_change_username">
+            <username-settings
+              (event)="saveUsername($event)"
+            ></username-settings>
           </div>
 
           <div class="tab-container" *ngIf="show_update_password">
             <password-settings></password-settings>
-          </div>
-
-          <div class="tab-container" *ngIf="show_change_username">
-            <username-settings></username-settings>
           </div>
         </div>
       </div>

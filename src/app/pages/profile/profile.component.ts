@@ -1,9 +1,8 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { UserService } from '../../services/user-services/user.service';
 import { ApiService } from '../../services/api-services/api.service';
 
 import { Connection, User } from '../../interfaces/data';
-import { debounceTime } from 'rxjs/operators';
 import { ValidationService } from 'src/app/services/validation.service';
 import { MessageService } from 'src/app/services/message.service';
 import { MicroService } from 'src/app/services/micro-services/micro.service';
@@ -16,7 +15,7 @@ import { EditPhotoSpinnerService } from 'src/app/services/spinner-services/edit-
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements AfterViewInit {
+export class ProfileComponent implements OnInit {
   new_user: boolean;
 
   //-------NEW USER
@@ -52,18 +51,10 @@ export class ProfileComponent implements AfterViewInit {
   constructor(
     private userService: UserService,
     private apiService: ApiService,
-    private validator: ValidationService,
-    private message: MessageService,
     private microService: MicroService,
     private pageSpinnerService: PageSpinnerService,
     private editPhotoSpinnerService: EditPhotoSpinnerService
   ) {}
-
-  ngAfterViewInit(): void {
-    this.input.update.pipe(debounceTime(1000)).subscribe((value) => {
-      this.usernameOperation(false);
-    });
-  }
 
   ngOnInit(): void {
     this.user_id = this.userService.getUserId();
@@ -71,83 +62,10 @@ export class ProfileComponent implements AfterViewInit {
   }
 
   //-------------------------NEW USER------------------------
-  assignUsername() {
-    this.usernameOperation(true);
-  }
-
-  private usernameOperation(post_username) {
-    this.clearErrorMessages();
-    this.usernameState('clear');
-
-    //check username validation
-    if (this.validator.validateUsername(this.username)) {
-      this.usernameState('loading');
-
-      this.apiService
-        .checkUsername(this.username)
-        .toPromise()
-        .then((data) => {
-          if (data == true) {
-            this.usernameState('success');
-            //post username
-            if (post_username) {
-              this.apiService
-                .postUsername(this.username)
-                .toPromise()
-                .then((data) => {
-                  this.getUser(this.user_id);
-                })
-                .catch((error) => {
-                  this.showUsernameError(error.error.message);
-                  this.usernameState('error');
-                });
-            }
-          } else {
-            this.showUsernameError(this.message.ErrorMessages.used_username);
-            this.usernameState('error');
-          }
-        })
-        .catch((error) => {
-          this.showUsernameError(error.error.message);
-          this.usernameState('error');
-        });
-    } else {
-      if (this.username.length > 0) {
-        this.showUsernameError(this.message.ErrorMessages.username_validation);
-        this.usernameState('error');
-      }
+  assignUsername(event) {
+    if (event === true) {
+      this.getUser(this.user_id);
     }
-  }
-
-  private usernameState(state) {
-    switch (state) {
-      case 'error':
-        this.username_check_error = true;
-        this.username_check_loading = false;
-        this.username_check_success = false;
-        break;
-      case 'loading':
-        this.username_check_error = false;
-        this.username_check_loading = true;
-        this.username_check_success = false;
-        break;
-      case 'success':
-        this.username_check_error = false;
-        this.username_check_loading = false;
-        this.username_check_success = true;
-        break;
-      case 'clear':
-        this.username_check_error = false;
-        this.username_check_loading = false;
-        this.username_check_success = false;
-        break;
-      default:
-        break;
-    }
-  }
-
-  private showUsernameError(error_message) {
-    this.username_error = error_message;
   }
 
   //------------------------NON NEW USER------------------------
@@ -239,6 +157,7 @@ export class ProfileComponent implements AfterViewInit {
       .getUser(user_id)
       .toPromise()
       .then((data) => {
+        this.hidePage();
         if (data) {
           this.user = data[0];
           this.pageSpinnerService.stop();
@@ -278,6 +197,10 @@ export class ProfileComponent implements AfterViewInit {
     }
   }
 
+  hidePage() {
+    this.new_user = undefined;
+  }
+
   getConnectionFromId(editin_connection_id) {
     for (let connection of this.connections) {
       if (connection._id == editin_connection_id) {
@@ -288,10 +211,6 @@ export class ProfileComponent implements AfterViewInit {
 
   isNewUser(is_new_user) {
     this.new_user = is_new_user;
-  }
-
-  clearErrorMessages() {
-    this.username_error = '';
   }
 
   copyMessage() {

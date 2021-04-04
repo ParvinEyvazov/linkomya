@@ -70,14 +70,20 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-  save(event) {
+  saveGeneralSettings(event) {
     this.apiService
       .updateUser(event.user)
       .toPromise()
       .then((data) => {
-        this.router.navigate(['/settings']);
+        this.navigateSettings();
       })
       .catch((error) => {});
+  }
+
+  saveUsername(event) {
+    if (event === true) {
+      this.navigateSettings();
+    }
   }
 
   getUser(user_id) {
@@ -97,6 +103,10 @@ export class SettingsComponent implements OnInit {
   }
 
   // HELPER FUNCTIONS
+  navigateSettings() {
+    this.router.navigate(['/settings']);
+  }
+
   hideAllView() {
     this.show_selection_menu = false;
     this.show_general_setting = false;
