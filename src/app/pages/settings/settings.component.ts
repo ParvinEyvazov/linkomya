@@ -70,23 +70,7 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-  saveGeneralSettings(event) {
-    this.apiService
-      .updateUser(event.user)
-      .toPromise()
-      .then((data) => {
-        this.navigateSettings();
-      })
-      .catch((error) => {});
-  }
-
-  saveUsername(event) {
-    if (event === true) {
-      this.navigateSettings();
-    }
-  }
-
-  updatedPassword(event) {
+  confirmOutputEvent(event) {
     if (event === true) {
       this.navigateSettings();
     }

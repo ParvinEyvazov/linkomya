@@ -85,19 +85,19 @@
           <div class="tab-container" *ngIf="show_general_setting">
             <general-settings
               [user]="user"
-              (event)="saveGeneralSettings($event)"
+              (event)="confirmOutputEvent($event)"
             ></general-settings>
           </div>
 
           <div class="tab-container" *ngIf="show_change_username">
             <username-settings
-              (event)="saveUsername($event)"
+              (event)="confirmOutputEvent($event)"
             ></username-settings>
           </div>
 
           <div class="tab-container" *ngIf="show_update_password">
             <password-settings
-              (event)="updatedPassword($event)"
+              (event)="confirmOutputEvent($event)"
             ></password-settings>
           </div>
         </div>
