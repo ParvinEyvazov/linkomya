@@ -26,6 +26,8 @@ export interface EditPhoto {
   [key: string]: any;
 }
 
-export interface ChangePassword {
-  [key: string]: any;
+export interface UpdatePassword {
+  previous_password: string;
+  new_password: string;
+  confirmed_password: string;
 }

@@ -24,3 +24,7 @@ export interface PasswordRecoveryValidateCodeResult {
 export interface PasswordRecoveryChangePassword {
   [key: string]: any;
 }
+
+export interface UpdatedPassword {
+  [key: string]: any;
+}

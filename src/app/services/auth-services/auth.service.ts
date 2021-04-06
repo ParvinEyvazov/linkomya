@@ -9,9 +9,11 @@ import {
   PasswordRecoveryValidateCodeResult,
   RegisterSendInfoResult,
   RegisterValidateCodeResult,
+  UpdatedPassword,
 } from '../../interfaces/auth';
 import { tap } from 'rxjs/operators';
 import { EncryptionService } from '../encryption.service';
+import { UpdatePassword } from 'src/app/interfaces/data';
 
 @Injectable({
   providedIn: 'root',
@@ -173,6 +175,19 @@ export class AuthService {
           this.cleanLocalStorage();
         })
       );
+  }
+
+  //-----------CHANGE PASSWORD-----------
+  updatePassword(passwords: UpdatePassword) {
+    passwords = {
+      previous_password: this.encryptor.encode(passwords.previous_password),
+      new_password: this.encryptor.encode(passwords.new_password),
+      confirmed_password: this.encryptor.encode(passwords.confirmed_password),
+    };
+
+    const url = `${environment.url}fn-execute/updatePassword`;
+
+    return this.http.post<UpdatedPassword>(url, { passwords: passwords });
   }
 
   //-----------LOGOUT-----------

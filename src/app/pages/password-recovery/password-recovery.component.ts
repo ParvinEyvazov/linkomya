@@ -89,7 +89,7 @@ export class PasswordRecoveryComponent implements OnInit {
 
     if (this.validator.validatePassword(this.password_recovery_password1)) {
       if (
-        this.password_recovery_password1 == this.password_recovery_password2
+        this.password_recovery_password1 === this.password_recovery_password2
       ) {
         this.password_recovery_password = this.password_recovery_password1;
         this.authService

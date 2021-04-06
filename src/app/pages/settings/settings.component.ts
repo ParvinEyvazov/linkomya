@@ -86,6 +86,12 @@ export class SettingsComponent implements OnInit {
     }
   }
 
+  updatedPassword(event) {
+    if (event === true) {
+      this.navigateSettings();
+    }
+  }
+
   getUser(user_id) {
     this.pageSpinnerService.start();
     this.apiService

@@ -7,6 +7,10 @@ export class MessageService {
   ErrorMessages = {
     email_validation: 'Invalid Email address',
     password_validation: 'Password must be at least 6 characters',
+    previous_password_validation:
+      'Previous password must be at least 6 characters',
+    previous_and_new_password_matched:
+      'New password cannot be same with previous password.',
     password_not_same: 'Passwords are not same',
     fullname_validation: 'Full name must be at least 1 character',
     username_validation: 'Username with non valid characters.',
