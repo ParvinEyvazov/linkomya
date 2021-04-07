@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from 'src/app/interfaces/data';
 import { ApiService } from 'src/app/services/api-services/api.service';
 import { MessageService } from 'src/app/services/message.service';
+import { MicroService } from 'src/app/services/micro-services/micro.service';
 import { ValidationService } from 'src/app/services/validation.service';
 
 @Component({
@@ -28,6 +29,8 @@ export class GeneralSettingsComponent implements OnInit {
     this.startLoading();
     this.cleanError();
 
+    this.user = this.cleanExtraSpaces(this.user);
+
     if (this.validator.validateFullname(this.user.fullname)) {
       this.apiService
         .updateUser(this.user)
@@ -43,6 +46,14 @@ export class GeneralSettingsComponent implements OnInit {
       this.stopLoading();
       this.showError(this.messageService.ErrorMessages.fullname_validation);
     }
+  }
+
+  cleanExtraSpaces(user: User) {
+    Object.keys(user).map(function (key) {
+      user[key] = user[key].toString().replace(/\s+/g, ' ').trim();
+    });
+
+    return user;
   }
 
   startLoading() {

@@ -34,4 +34,9 @@ export class MicroService {
     document.execCommand('copy');
     document.body.removeChild(selBox);
   }
+
+  extraWhiteSpaceDeleter(str) {
+    str = str.replace(/\s+/g, ' ').trim();
+    return str;
+  }
 }

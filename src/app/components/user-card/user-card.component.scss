@@ -25,14 +25,15 @@
       position: relative;
       display: flex;
       align-items: center;
-      h1 {
+      span {
         transition: var(--transition-normal);
         margin: 0;
         font-size: 1.6em;
+        white-space: pre;
       }
 
       .icon-verify {
-        margin-left: 5%;
+        margin-left: 2%;
         display: flex;
         align-items: center;
         transition: var(--transition-normal);
@@ -99,7 +100,7 @@
 
       .name-part {
         margin-left: 3% !important;
-        h1 {
+        span {
           font-size: 1em !important;
         }
 
