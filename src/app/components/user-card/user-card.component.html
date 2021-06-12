@@ -1,22 +1,20 @@
 <div class="card" [routerLink]="['/', username]">
-  <div class="row">
+  <div class="content">
     <profile-photo [url]="profile_photo" [in_user_card]="true"></profile-photo>
 
-    <div class="name-part">
-      <span>{{ fullname }}</span>
-      <mat-icon *ngIf="verified" class="icon-verify" aria-label="place"
-        >verified_user</mat-icon
-      >
-    </div>
+    <div class="user-information">
+      <!-- name -->
+      <div class="name-part">
+        <span>{{ fullname }}</span>
+        <mat-icon *ngIf="verified" class="icon-verify">verified_user</mat-icon>
+      </div>
 
-    <div class="place-part">
-      <div class="place">
-        <div id="place-row" class="row" *ngIf="country">
-          <div class="icon">
-            <mat-icon aria-label="place">place</mat-icon>
-          </div>
-          <h1>{{ country }}</h1>
+      <!-- place part -->
+      <div class="place-container">
+        <div class="icon" *ngIf="country">
+          <mat-icon aria-label="place">place</mat-icon>
         </div>
+        <span>{{ country }}</span>
       </div>
     </div>
   </div>

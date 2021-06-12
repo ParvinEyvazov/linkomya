@@ -1,73 +1,248 @@
+// .card {
+//   cursor: pointer;
+//   height: 200px;
+//   width: 40%;
+//   border: var(--user-card-border);
+//   border-radius: var(--border-radius-soft);
+//   position: relative;
+//   padding: 50px;
+//   padding-left: 3%;
+//   padding-right: 3%;
+//   margin: 10px auto;
+//   outline: none;
+//   transition: var(--transition-normal);
+
+//   .content {
+//     position: relative;
+
+//     profile-photo {
+//       transition: var(--transition-normal);
+//     }
+
+//     .name-part {
+//       transition: var(--transition-normal);
+//       margin-left: 3%;
+//       position: relative;
+//       display: flex;
+//       align-items: center;
+//       span {
+//         transition: var(--transition-normal);
+//         margin: 0;
+//         background: red;
+
+//         font-size: 1.6em;
+//         white-space: pre;
+
+//         // max-width: 100%;
+//         // flex-grow: 1;
+//         white-space: nowrap;
+//         overflow: hidden !important;
+//         text-overflow: ellipsis;
+//       }
+
+//       .icon-verify {
+//         margin-left: 2%;
+//         display: flex;
+//         align-items: center;
+//         transition: var(--transition-normal);
+//         font-size: 1.2em;
+//         margin-top: 5px;
+//         color: var(--verified-icon-color);
+//       }
+//     }
+
+//     .place-part {
+//       transition: var(--transition-normal);
+//       position: absolute;
+//       right: 0;
+//       top: 58%;
+//       .place {
+//         margin: 0;
+//         position: relative;
+//         top: 50%;
+//         -ms-transform: translateY(-50%);
+//         transform: translateY(-50%);
+
+//         #place-row {
+//           margin: auto;
+
+//           .icon {
+//             mat-icon {
+//               transition: var(--transition-normal);
+//               float: right;
+//               font-size: 1.8em;
+//             }
+//           }
+//           h1 {
+//             transition: var(--transition-normal);
+//             font-size: 1.3em;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 1350px) {
+//   .card {
+//     width: 50% !important;
+//   }
+
+//   .name-part {
+//     span {
+//       // max-width: 220px !important;
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 992px) {
+//   .card {
+//     width: 80% !important;
+//   }
+// }
+
+// @media screen and (max-width: 575px) {
+//   .card {
+//     height: 100px !important;
+//     padding: 25px !important;
+//     padding-left: 1.5% !important;
+//     padding-right: 1.5% !important;
+//     .content {
+//       profile-photo {
+//         margin-left: 7% !important;
+//       }
+
+//       .name-part {
+//         margin-left: 3% !important;
+//         span {
+//           // max-width: 100px !important;
+//           font-size: 1em !important;
+//         }
+
+//         .icon-verify {
+//           margin-top: 2px !important;
+//           font-size: 0.9em !important;
+//         }
+//       }
+
+//       .place-part {
+//         right: 6%;
+//         top: 62%;
+//         .place {
+//           #place-row {
+//             .icon {
+//               position: relative;
+//               mat-icon {
+//                 position: relative;
+//                 top: 15%;
+//                 font-size: 1.2em !important;
+//               }
+//             }
+//             h1 {
+//               font-size: 0.8em !important;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// ---------------------refactor
 .card {
   cursor: pointer;
   height: 200px;
   width: 40%;
   border: var(--user-card-border);
   border-radius: var(--border-radius-soft);
-  position: relative;
-  padding: 50px;
+  // position: relative;
+  // padding: 50px;
   padding-left: 3%;
   padding-right: 3%;
   margin: 10px auto;
   outline: none;
   transition: var(--transition-normal);
 
-  .row {
-    position: relative;
+  .content {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     profile-photo {
       transition: var(--transition-normal);
     }
 
-    .name-part {
-      transition: var(--transition-normal);
-      margin-left: 3%;
-      position: relative;
+    .user-information {
       display: flex;
+      // background: rgb(108, 170, 20);
       align-items: center;
-      span {
-        transition: var(--transition-normal);
-        margin: 0;
-        font-size: 1.6em;
-        white-space: pre;
-      }
-
-      .icon-verify {
-        margin-left: 2%;
+      width: 100%;
+      justify-content: space-between;
+      .name-part {
+        // background: cornsilk;
         display: flex;
         align-items: center;
         transition: var(--transition-normal);
-        font-size: 1.2em;
-        margin-top: 5px;
-        color: var(--verified-icon-color);
+
+        flex-shrink: 1;
+        flex-grow: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        span {
+          // background: cornflowerblue;
+          margin: 0px 10px;
+          transition: var(--transition-normal);
+
+          white-space: pre;
+
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+
+        .icon-verify {
+          transition: var(--transition-normal);
+          display: flex;
+          align-items: center;
+
+          color: var(--verified-icon-color);
+        }
       }
-    }
 
-    .place-part {
-      transition: var(--transition-normal);
-      position: absolute;
-      right: 0;
-      top: 58%;
-      .place {
-        margin: 0;
-        position: relative;
-        top: 50%;
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
+      .place-container {
+        margin: 0px 10px;
+        // background: red;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .icon {
+        }
+        span {
+        }
+      }
 
-        #place-row {
-          margin: auto;
+      .place-part {
+        transition: var(--transition-normal);
 
-          .icon {
-            mat-icon {
-              transition: var(--transition-normal);
-              float: right;
-              font-size: 1.8em;
+        .place {
+          #place-row {
+            margin: auto;
+
+            .icon {
+              mat-icon {
+                transition: var(--transition-normal);
+
+                font-size: 1.8em;
+              }
             }
-          }
-          h1 {
-            transition: var(--transition-normal);
-            font-size: 1.3em;
+            h1 {
+              transition: var(--transition-normal);
+              font-size: 1.3em;
+            }
           }
         }
       }
@@ -93,33 +268,25 @@
     padding: 25px !important;
     padding-left: 1.5% !important;
     padding-right: 1.5% !important;
-    .row {
+    .content {
       profile-photo {
-        margin-left: 7% !important;
       }
 
       .name-part {
-        margin-left: 3% !important;
         span {
           font-size: 1em !important;
         }
 
         .icon-verify {
-          margin-top: 2px !important;
           font-size: 0.9em !important;
         }
       }
 
       .place-part {
-        right: 6%;
-        top: 62%;
         .place {
           #place-row {
             .icon {
-              position: relative;
               mat-icon {
-                position: relative;
-                top: 15%;
                 font-size: 1.2em !important;
               }
             }
