@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { SocialMedia } from 'src/app/interfaces/data';
 import { ApiService } from '../api-services/api.service';
 

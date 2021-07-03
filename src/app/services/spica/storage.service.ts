@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as SpicaStorage from '@spica-devkit/storage';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment';
 import { MessageService } from '../message.service';
 
 @Injectable({
