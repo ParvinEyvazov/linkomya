@@ -14,7 +14,7 @@ import { debounceTime } from 'rxjs/operators';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { StorageService } from 'src/app/services/storage-service/storage.service';
+import { StorageService } from 'src/app/services/spica/storage.service';
 import { MessageService } from 'src/app/services/message.service';
 
 @Component({
@@ -255,7 +255,7 @@ export class EditPhotoDialogComponent implements OnInit {
         this.uploaded_file_is_gif = this.imageService.isGif(file);
 
         /*
-        Uploaded file is: 
+        Uploaded file is:
           gif -> show gif
           not gif -> show cropper to crop the image
         */
