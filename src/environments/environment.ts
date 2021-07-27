@@ -9,10 +9,12 @@ export const environment = {
   public_api_key: '405opg1kfvo5ie1',
 
   bucket: {
-    user: '5f70766c3c717f1a0b8a4ab6/',
-    social_media: '5f8df21a85c7865453fafc87/',
-    connection: '5f8df29b85c7864751fafc89/',
-    favorites: '5f8df36385c786f39ffafc8b/',
+    user: '60fdd94175aa6f002c4ad10f',
+    socialMedia: '60fddb9875aa6f002c4ad111',
+    connection: '60fddcb775aa6f002c4ad114',
+    favorites: '60fde27b75aa6f002c4ad123',
+    verifiedUser: "60fdddc875aa6f002c4ad116",
+    configurations: '60fde12575aa6f002c4ad120',
   },
 
   function: {

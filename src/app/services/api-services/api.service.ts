@@ -30,7 +30,7 @@ export class ApiService {
   }
 
   getAllSocialMedia() {
-    const url = this.getBucketUrl(environment.bucket.social_media);
+    const url = this.getBucketUrl(environment.bucket.socialMedia);
 
     return this.http.get<SocialMedia[]>(url);
   }
@@ -83,7 +83,7 @@ export class ApiService {
 
   uploadPhoto(photo_url, is_profile_photo) {
     const url = this.getFunctionUrl(environment.function.upload_photo);
-    
+
     const data = {
       url: photo_url,
       is_profile_photo: is_profile_photo,
